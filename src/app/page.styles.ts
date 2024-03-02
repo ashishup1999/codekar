@@ -1,17 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
-
-export const GlobalStyle = createGlobalStyle`
-  body{
-    margin: 0;
-    padding: 0;
-    *{
-      box-sizing: border-box;
-      font-family: sans-serif;
-    }
-  };
-`;
 
 export const HomeWrapper = styled.div`
   display: flex;
@@ -29,11 +18,12 @@ export const HeaderDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: auto;
-  padding: 0px 25px;
+  padding: 10px 25px;
 `;
 
 export const LogoImg = styled(Image)`
-  height: 50px;
+  height: 45px;
+  cursor: pointer;
 `;
 
 export const HeaderTextSpan = styled.span`
@@ -45,14 +35,14 @@ export const HeaderTextSpan = styled.span`
 export const HeaderText = styled.p<{ color: string }>`
   display: inline;
   font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 30px;
+  letter-spacing: 2.5px;
+  font-size: 35px;
   color: ${(props) => props.color};
 `;
 
 export const UserImg = styled(Image)`
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   padding: 0px 15px;
   border-radius: 50px;
   box-shadow: 0px 0px 7px -3px #000000;
@@ -75,6 +65,5 @@ export const FooterDiv = styled.div`
 `;
 
 export const CopyrigthtText = styled.p`
-  font-weight: 600;
   font-size: 14px;
 `;

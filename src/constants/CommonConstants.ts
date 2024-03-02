@@ -18,7 +18,7 @@ export const HOME_OPTIONS = [
   {
     imgSrc: OPTION_ICONS.whiteBoard,
     imgAlt: "wbs",
-    toRoute: "/projects",
+    toRoute: "/whiteboards",
     themeColor: "#3FA526",
     buttonTitle: "Whiteboards",
   },
@@ -39,5 +39,22 @@ export const COLOR_CONSTANTS = {
 export const COMMON_TEXTS = {
   appName1: "CODE",
   appName2: "KAR",
-  copyRight:"CodeKar © 2024"
+  copyRight: "CodeKar © 2024",
+};
+
+export const LINEAR_GRADS: { [key: string]: string } = {
+  orange:
+    "linear-gradient(180deg, rgba(221,84,7,1) 0%, rgba(221,84,7,0.73) 100%)",
+  blue: "linear-gradient(180deg, rgba(14,168,217,1) 0%, rgba(14,168,217,0.73) 100%)",
+  green:
+    "linear-gradient(180deg, rgba(63,165,38,1) 0%, rgba(63,165,38,0.73) 100%)",
+  brightRed:
+    "linear-gradient(180deg, rgba(227,29,41,1) 0%, rgba(227,29,41,0.73) 100%)",
+};
+
+export const HEADER_TO_GRADIENT: { [key: string]: string } = {
+  projects: LINEAR_GRADS.orange,
+  playgrounds: LINEAR_GRADS.blue,
+  whiteboards: LINEAR_GRADS.green,
+  explore: LINEAR_GRADS.brightRed,
 };

@@ -4,7 +4,6 @@ import {
   ContentDiv,
   CopyrigthtText,
   FooterDiv,
-  GlobalStyle,
   HeaderDiv,
   HeaderText,
   HeaderTextSpan,
@@ -24,7 +23,6 @@ import userCircle from "@/images/userCircle.svg";
 const Home = () => {
   return (
     <>
-      <GlobalStyle/>
       <HomeWrapper>
         <HeaderDiv>
           <LogoImg src={logo} alt="" />

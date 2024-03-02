@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Open Sans Codekar";
+  src: url("../fonts/open_sans/OpenSans-Medium.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans Codekar";
+  margin: 0;
+  padding: 0;
+}
