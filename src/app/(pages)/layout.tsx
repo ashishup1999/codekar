@@ -1,5 +1,6 @@
 "use client";
 import {
+  Content,
   CopyrigthtText,
   FooterDiv,
   HeaderDiv,
@@ -9,7 +10,10 @@ import {
   LogoImg,
   UserImg,
 } from "@/app/(pages)/layout.styles";
-import { COMMON_TEXTS, HEADER_TO_BORDER_CLR } from "@/constants/CommonConstants";
+import {
+  COMMON_TEXTS,
+  HEADER_TO_BORDER_CLR,
+} from "@/constants/CommonConstants";
 import logo from "@/images/logo.svg";
 import userCircle from "@/images/userCircle.svg";
 import { usePathname, useRouter } from "next/navigation";
@@ -34,7 +38,7 @@ export default function PageLayouts({
           </HeaderTextWrapper>
           <UserImg src={userCircle} alt="" />
         </HeaderDiv>
-        {children}
+        <Content>{children}</Content>
         <FooterDiv>
           <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
         </FooterDiv>

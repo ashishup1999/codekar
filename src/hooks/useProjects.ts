@@ -1,4 +1,4 @@
-import projectsAPIs from "@/apis/projects";
+import projectsAPIs from "@/mock_apis/projects";
 import { useEffect, useState } from "react";
 
 const useProjects = () => {

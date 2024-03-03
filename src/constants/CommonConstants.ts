@@ -72,3 +72,9 @@ export const HEADER_TO_BORDER_CLR: { [key: string]: string } = {
   whiteboards: COLORS.green,
   explore: COLORS.brightRed,
 };
+
+export const PROJECT_FILES: { [key: string]: { id: string; name: string } } = {
+  html: { id: "html", name: "index.html" },
+  css: { id: "css", name: "style.css" },
+  javascript: { id: "javascript", name: "script.js" },
+};
