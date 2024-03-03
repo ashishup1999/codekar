@@ -9,7 +9,7 @@ import {
   LogoImg,
   UserImg,
 } from "@/app/(pages)/layout.styles";
-import { COMMON_TEXTS, HEADER_TO_GRADIENT } from "@/constants/CommonConstants";
+import { COMMON_TEXTS, HEADER_TO_BORDER_CLR } from "@/constants/CommonConstants";
 import logo from "@/images/logo.svg";
 import userCircle from "@/images/userCircle.svg";
 import { usePathname, useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ export default function PageLayouts({
       <HomeWrapper>
         <HeaderDiv>
           <LogoImg src={logo} alt="" onClick={() => router.push("/")} />
-          <HeaderTextWrapper grad={HEADER_TO_GRADIENT[pageName]}>
+          <HeaderTextWrapper borderclr={HEADER_TO_BORDER_CLR[pageName]}>
             <HeaderText>
               {pageName.toUpperCase()[0] + pageName.slice(1)}
             </HeaderText>

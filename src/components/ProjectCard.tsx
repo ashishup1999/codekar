@@ -13,14 +13,26 @@ import {
 } from "./ProjectCard.styles";
 import { ACTION_ACTIONS, OPTION_ICONS } from "@/constants/StaticImages";
 
-const ProjectCard = () => {
+const ProjectCard = ({
+  id,
+  name,
+  author,
+  thumbnail,
+}: {
+  id: string;
+  name: string;
+  author: string;
+  thumbnail: string;
+}) => {
+  const router = useRouter();
+
   return (
-    <PCWrapper>
-      <PCPreviewImg src={''} alt="" />
-      <PCName>Project Name</PCName>
+    <PCWrapper key={id} onClick={() => router.push(`/projects/${id}`)}>
+      <PCPreviewImg width={1000} height={1000} src={thumbnail} alt="" />
+      <PCName>{name}</PCName>
       <PCAuthorSpan>
         <PCAuthorTitle>Author : </PCAuthorTitle>
-        <PCAuthorName>Ashish Upadhyay</PCAuthorName>
+        <PCAuthorName>{author}</PCAuthorName>
         <PCExtraActions>
           <PCAction src={ACTION_ACTIONS.heartOutliine} alt="" />
           <PCAction src={ACTION_ACTIONS.comment} alt="" />

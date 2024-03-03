@@ -58,3 +58,17 @@ export const HEADER_TO_GRADIENT: { [key: string]: string } = {
   whiteboards: LINEAR_GRADS.green,
   explore: LINEAR_GRADS.brightRed,
 };
+
+export const COLORS: { [key: string]: string } = {
+  orange: "#DD5407",
+  blue: "#0EA8D9",
+  green: "#3FA526",
+  brightRed: "#E31D29",
+};
+
+export const HEADER_TO_BORDER_CLR: { [key: string]: string } = {
+  projects: COLORS.orange,
+  playgrounds: COLORS.blue,
+  whiteboards: COLORS.green,
+  explore: COLORS.brightRed,
+};

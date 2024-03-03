@@ -45,20 +45,19 @@ export const HeaderDiv = styled.div`
   padding: 15px 25px;
 `;
 
-export const HeaderTextWrapper = styled.div<{ grad: string }>`
+export const HeaderTextWrapper = styled.div<{ borderclr: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 55px;
   flex: 1;
-  background-image: ${(props) => props.grad};
   border-radius: 50px;
   margin: 0 30px 0 15px;
   box-shadow: 0px 1px 15px -7px #000000;
+  border: 1px solid ${(props) => props.borderclr};
 `;
 
 export const HeaderText = styled.p`
-  color: white;
   font-weight: bold;
   font-size: 20px;
   letter-spacing: 2px;

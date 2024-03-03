@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "Clock",
+    "author": "John Wick",
+    "thumbnail": "https://static.wikia.nocookie.net/onepiece/images/6/6d/Monkey_D._Luffy_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200429191518"
+  },
+  {
+    "id": "2",
+    "name": "Dog",
+    "author": "Ashish Up.",
+    "thumbnail": "https://static.wikia.nocookie.net/onepiece/images/6/6d/Monkey_D._Luffy_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200429191518"
+  },
+  {
+    "id": "3",
+    "name": "Oggy",
+    "author": "Ironman",
+    "thumbnail": "https://static.wikia.nocookie.net/onepiece/images/6/6d/Monkey_D._Luffy_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200429191518"
+  }
+]
