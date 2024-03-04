@@ -18,6 +18,12 @@ import logo from "@/images/logo.svg";
 import userCircle from "@/images/userCircle.svg";
 import { usePathname, useRouter } from "next/navigation";
 
+declare global {
+  interface Window {
+    monaco: any;
+  }
+}
+
 export default function PageLayouts({
   children,
 }: {

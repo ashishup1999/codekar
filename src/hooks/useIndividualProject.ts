@@ -1,6 +1,7 @@
 import { PROJECT_FILES } from "@/constants/CommonConstants";
-import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useReducer } from "react";
+import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
+import { emmetHTML } from "emmet-monaco-es";
+import { useEffect, useReducer } from "react";
 
 const initialState: {
   currFile: string;
@@ -9,6 +10,7 @@ const initialState: {
     css: string;
     javascript: string;
   };
+  preview: any;
 } = {
   currFile: PROJECT_FILES.html.id,
   values: {
@@ -16,11 +18,17 @@ const initialState: {
     css: "",
     javascript: "",
   },
+  preview: null,
 };
 
 const useIndividualProject = () => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { currFile, values } = state;
+  const { currFile, values, preview, updatePreview } = state;
+
+  useEffect(() => {
+    getHtmlPreviewAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values, updatePreview]);
 
   const selectFile = (val: string) => {
     dispatch({ payload: { currFile: val } });
@@ -30,7 +38,23 @@ const useIndividualProject = () => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
 
-  return { currFile, values, selectFile, setValue };
+  const getHtmlPreviewAPI = () => {
+    const data = getPreview(values);
+    dispatch({ payload: { preview: data } });
+  };
+
+  const handleEditorDidMount = (_: any, monaco: any) => {
+    if (currFile === PROJECT_FILES.html.id) emmetHTML(monaco);
+  };
+
+  return {
+    currFile,
+    values,
+    preview,
+    selectFile,
+    setValue,
+    handleEditorDidMount,
+  };
 };
 
 export default useIndividualProject;

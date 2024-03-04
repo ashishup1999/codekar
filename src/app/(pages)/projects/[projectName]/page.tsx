@@ -7,15 +7,24 @@ import {
   FileNameDiv,
   FileSelectionDiv,
   FileTypeImage,
+  Preview,
   PreviewSection,
+  ProjectName,
   Wrapper,
 } from "./IndividualProject.styles";
 import { LANG_ICONS } from "@/constants/StaticImages";
 import { PROJECT_FILES } from "@/constants/CommonConstants";
 import useIndividualProject from "@/hooks/useIndividualProject";
 
-const IndividualProjects = ({ params }: { params: { projectNo: string } }) => {
-  const { currFile, values, selectFile, setValue } = useIndividualProject();
+const IndividualProjects = ({ params }: { params: { projectName: string } }) => {
+  const {
+    currFile,
+    values,
+    preview,
+    selectFile,
+    setValue,
+    handleEditorDidMount,
+  } = useIndividualProject();
   return (
     <Wrapper>
       <EditorSection>
@@ -39,10 +48,16 @@ const IndividualProjects = ({ params }: { params: { projectNo: string } }) => {
             value={values[currFile]}
             defaultLanguage={currFile}
             onChange={(val: any) => setValue(currFile, val)}
+            onMount={handleEditorDidMount}
           />
         </EditorWrapper>
       </EditorSection>
-      <PreviewSection>Project number {params.projectNo}</PreviewSection>
+      <PreviewSection>
+        <ProjectName>{params?.projectName}</ProjectName>
+        <Preview>
+          <div dangerouslySetInnerHTML={{ __html: preview }}></div>
+        </Preview>
+      </PreviewSection>
     </Wrapper>
   );
 };

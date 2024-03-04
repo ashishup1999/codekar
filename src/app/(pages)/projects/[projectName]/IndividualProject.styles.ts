@@ -17,7 +17,6 @@ export const EditorSection = styled.div`
   flex: 1;
   height: 100%;
   max-width: 50%;
-  padding: 10px;
 `;
 
 export const PreviewSection = styled.div`
@@ -29,6 +28,13 @@ export const PreviewSection = styled.div`
   padding: 10px;
   border: 1px solid #d2d2d2;
   border-radius: 10px;
+`;
+
+export const Preview = styled.div`
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 10px;
 `;
 
 export const FileSelectionDiv = styled.div`
@@ -55,6 +61,16 @@ export const FileNameDiv = styled.div<{ selected: boolean }>`
   padding: 3px;
   gap: 5px;
   cursor: pointer;
+`;
+
+export const ProjectName = styled.div`
+  display: flex;
+  width: fit-content;
+  background-color: "white";
+  border-radius: 3px;
+  padding: 3px 15px 8px;
+  justify-content: center;
+  box-shadow: 0px 0px 5px -3px #000000;
 `;
 
 export const FileTypeImage = styled(Image)`
