@@ -8,6 +8,7 @@ import {
   FileSelectionDiv,
   FileTypeImage,
   Preview,
+  PreviewFrame,
   PreviewSection,
   ProjectName,
   Wrapper,
@@ -16,7 +17,11 @@ import { LANG_ICONS } from "@/constants/StaticImages";
 import { PROJECT_FILES } from "@/constants/CommonConstants";
 import useIndividualProject from "@/hooks/useIndividualProject";
 
-const IndividualProjects = ({ params }: { params: { projectName: string } }) => {
+const IndividualProjects = ({
+  params,
+}: {
+  params: { projectName: string };
+}) => {
   const {
     currFile,
     values,
@@ -55,7 +60,7 @@ const IndividualProjects = ({ params }: { params: { projectName: string } }) => 
       <PreviewSection>
         <ProjectName>{params?.projectName}</ProjectName>
         <Preview>
-          <div dangerouslySetInnerHTML={{ __html: preview }}></div>
+          <PreviewFrame srcDoc={preview} frameBorder={0}></PreviewFrame>
         </Preview>
       </PreviewSection>
     </Wrapper>

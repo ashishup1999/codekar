@@ -42,7 +42,7 @@ export const FileSelectionDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 45px;
+  min-height: 45px;
   background-color: #d9d9d9;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -71,6 +71,7 @@ export const ProjectName = styled.div`
   padding: 3px 15px 8px;
   justify-content: center;
   box-shadow: 0px 0px 5px -3px #000000;
+  border: 1px solid black;
 `;
 
 export const FileTypeImage = styled(Image)`
@@ -85,6 +86,11 @@ export const FileName = styled.p`
 export const EditorWrapper = styled.div`
   display: flex;
   flex: 1;
-  max-height: calc(100%-45px);
+  max-height: calc(100% - 45px);
   width: 100%;
+`;
+
+export const PreviewFrame = styled.iframe`
+  width: 100%;
+  height: 100%;
 `;

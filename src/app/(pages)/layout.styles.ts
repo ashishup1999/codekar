@@ -15,11 +15,12 @@ export const HomeWrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 115px);
   padding: 10px;
 `;
 
 export const FooterDiv = styled.div`
+  height: 30px;
   width: 100%;
   padding: 5px 15px;
   margin-top: auto;
