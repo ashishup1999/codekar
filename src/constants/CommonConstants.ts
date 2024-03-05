@@ -78,3 +78,12 @@ export const PROJECT_FILES: { [key: string]: { id: string; name: string } } = {
   css: { id: "css", name: "style.css" },
   javascript: { id: "javascript", name: "script.js" },
 };
+
+export const PG_LANG_OPTIONS: { [key: string]: string } = {
+  python: "Python",
+  javascript: "Javascript",
+  java: "Java",
+  cpp: "C++",
+};
+
+export const DEFAULT_PLAYGROUND="python"
