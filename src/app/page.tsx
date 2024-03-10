@@ -25,14 +25,9 @@ const Home = () => {
     <>
       <HomeWrapper>
         <HeaderDiv>
-          <LogoImg src={logo} alt="" />
           <HeaderTextSpan>
-            <HeaderText color={COLOR_CONSTANTS.red}>
-              {COMMON_TEXTS.appName1}
-            </HeaderText>
-            <HeaderText color={COLOR_CONSTANTS.purple}>
-              {COMMON_TEXTS.appName2}
-            </HeaderText>
+            <LogoImg src={logo} alt="" />
+            <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
           <UserImg src={userCircle} alt="" />
         </HeaderDiv>

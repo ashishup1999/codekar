@@ -1,5 +1,6 @@
 "use client";
 import { COLOR_CONSTANTS, COMMON_TEXTS } from "@/constants/CommonConstants";
+import logo from "@/images/logo.svg";
 import {
   AuthDiv,
   ContentDiv,
@@ -9,6 +10,7 @@ import {
   HeaderText,
   HeaderTextSpan,
   HomeWrapper,
+  LogoImg,
 } from "../page.styles";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
@@ -17,12 +19,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       <HomeWrapper>
         <HeaderDiv>
           <HeaderTextSpan>
-            <HeaderText color={COLOR_CONSTANTS.red}>
-              {COMMON_TEXTS.appName1}
-            </HeaderText>
-            <HeaderText color={COLOR_CONSTANTS.purple}>
-              {COMMON_TEXTS.appName2}
-            </HeaderText>
+            <LogoImg src={logo} alt="" />
+            <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
         </HeaderDiv>
         <ContentDiv>

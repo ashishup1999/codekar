@@ -37,8 +37,7 @@ export const COLOR_CONSTANTS = {
 };
 
 export const COMMON_TEXTS = {
-  appName1: "CODE",
-  appName2: "KAR",
+  appName: "CodeKar",
   copyRight: "CodeKar © 2024",
 };
 
@@ -50,6 +49,8 @@ export const LINEAR_GRADS: { [key: string]: string } = {
     "linear-gradient(180deg, rgba(63,165,38,1) 0%, rgba(63,165,38,0.73) 100%)",
   brightRed:
     "linear-gradient(180deg, rgba(227,29,41,1) 0%, rgba(227,29,41,0.73) 100%)",
+  brandText:
+    "linear-gradient(180deg, rgba(229,28,28,1) 0%, rgba(91,16,127,1) 100%)",
 };
 
 export const HEADER_TO_GRADIENT: { [key: string]: string } = {
@@ -86,4 +87,4 @@ export const PG_LANG_OPTIONS: { [key: string]: string } = {
   cpp: "C++",
 };
 
-export const DEFAULT_PLAYGROUND="python"
+export const DEFAULT_PLAYGROUND = "python";

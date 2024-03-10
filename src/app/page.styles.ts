@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
+import { LINEAR_GRADS } from "@/constants/CommonConstants";
 
 export const HomeWrapper = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ export const HeaderDiv = styled.div`
   justify-content: center;
   margin-bottom: auto;
   padding: 10px 25px;
+  margin-top: 20px;
 `;
 
 export const LogoImg = styled(Image)`
@@ -28,17 +30,19 @@ export const LogoImg = styled(Image)`
 
 export const HeaderTextSpan = styled.span`
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin: auto;
 `;
 
-export const HeaderText = styled.p<{ color: string }>`
+export const HeaderText = styled.p`
   display: inline;
-  font-weight: bold;
+  font-weight: bolder;
   letter-spacing: 2.5px;
   font-size: 35px;
-  color: ${(props) => props.color};
+  font-weight: bold;
+  background: ${LINEAR_GRADS.brandText};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 3px;
 `;
 
 export const UserImg = styled(Image)`
