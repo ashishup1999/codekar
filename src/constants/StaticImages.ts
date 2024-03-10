@@ -7,6 +7,7 @@ import comment from "@/images/comment.svg";
 import html from "@/images/html.svg";
 import css from "@/images/css.svg";
 import javascript from "@/images/js.svg";
+import errorExl from "@/images/errorExclamation.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -25,3 +26,5 @@ export const LANG_ICONS: { [key: string]: string } = {
   css,
   javascript,
 };
+
+export const ERROR_EXLAMATION = errorExl;

@@ -1,5 +1,7 @@
 import { OPTION_ICONS } from "./StaticImages";
 
+export const PUBLIC_ROUTES = ["/login", "/signUp", "/forgotPassword"];
+
 export const HOME_OPTIONS = [
   {
     imgSrc: OPTION_ICONS.ui,
@@ -88,3 +90,10 @@ export const PG_LANG_OPTIONS: { [key: string]: string } = {
 };
 
 export const DEFAULT_PLAYGROUND = "python";
+
+export const RESP_MESSAGES: { [key: string]: string } = {
+  DB_ERR: "Data Fetch Error",
+  USER_ALREADY_EXISTS: "Username/Email already exists, Please Login",
+  USER_DOES_NOT_EXIST: "Username does not exists, Pleaase Sign Up",
+  FALSE_CREDS: "False, credential, Please try again",
+};

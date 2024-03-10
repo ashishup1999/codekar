@@ -2,18 +2,21 @@ import axios from "axios";
 
 export const ajaxAPI = {
   headers: {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    origin: "http://127.0.0.1:3000",
-    optionsSuccessStatus: 200,
+    "Content-Type": "application/json",
   },
   get: async (url: string, config: any) => {
-    return axios.get(url, { ...{ headers: ajaxAPI.headers }, ...config });
+    const res = await axios.get(url, {
+      ...{ headers: ajaxAPI.headers },
+      ...config,
+    });
+    return res.data;
   },
   post: async (url: string, payload: any, ...config: any) => {
-    return axios.post(url, payload, {
+    const res = await axios.post(url, payload, {
       ...{ headers: ajaxAPI.headers },
-      ...config[0],
+      ...config,
     });
+    return res.data;
   },
 };
 

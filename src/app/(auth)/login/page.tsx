@@ -2,6 +2,8 @@
 import {
   AuthHeader,
   CheckBoxIcon,
+  ErrAlerIcon,
+  ErrAlertMessage,
   ExtraOptionDiv,
   EyeDiv,
   EyeIcon,
@@ -16,6 +18,7 @@ import tickCheck from "@/images/tickChecked.svg";
 import tickUncheck from "@/images/tickUnchecked.svg";
 import { TextInput } from "../AuthInputs";
 import useLogin from "@/hooks/useLogin";
+import { ERROR_EXLAMATION } from "@/constants/StaticImages";
 
 const Login = () => {
   const {
@@ -23,14 +26,22 @@ const Login = () => {
     errors,
     showPass,
     rememberMe,
+    isBtnActive,
+    alertMsg,
     onChangeUserName,
     onChangePassword,
     onEyeClick,
     onRememberMe,
+    onProceed,
   } = useLogin();
 
   return (
     <>
+      {alertMsg && (
+        <ErrAlertMessage>
+          <ErrAlerIcon src={ERROR_EXLAMATION} alt="" /> {alertMsg}
+        </ErrAlertMessage>
+      )}
       <AuthHeader>Login</AuthHeader>
       <TextInput
         label="Username"
@@ -62,7 +73,9 @@ const Login = () => {
         <LinkText href="/forgotPassword">Forgot Password?</LinkText>
       </ExtraOptionDiv>
       <MinGapDiv />
-      <FinalButton>Login</FinalButton>
+      <FinalButton disabled={!isBtnActive} onClick={onProceed}>
+        Login
+      </FinalButton>
       <span>
         <NormalText>or</NormalText> <LinkText href="/signUp">Sign Up</LinkText>
       </span>

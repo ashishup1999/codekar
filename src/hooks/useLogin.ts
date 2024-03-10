@@ -1,5 +1,8 @@
+import authService from "@/services/AuthService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import { useRouter } from "next/navigation";
+import { RESP_MESSAGES } from "@/constants/CommonConstants";
 
 const initialState: {
   values: {
@@ -12,6 +15,8 @@ const initialState: {
   };
   showPass: boolean;
   rememberMe: boolean;
+  isBtnActive: boolean;
+  alertMsg: string;
 } = {
   values: {
     userName: "",
@@ -23,11 +28,38 @@ const initialState: {
   },
   showPass: false,
   rememberMe: false,
+  isBtnActive: false,
+  alertMsg: "",
 };
 
 const useLogin = () => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { values, errors, showPass, rememberMe } = state;
+  const { values, errors, showPass, rememberMe, isBtnActive, alertMsg } = state;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (alertMsg) {
+      setTimeout(() => {
+        dispatch({ payload: { alertMsg: "" } });
+      }, 3000);
+    }
+  }, [alertMsg]);
+
+  useEffect(() => {
+    if (validateFields()) {
+      dispatch({ payload: { isBtnActive: true } });
+    } else {
+      dispatch({ payload: { isBtnActive: false } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values, errors]);
+
+  const validateFields = () => {
+    for (let key in values) {
+      if (!values[key] || errors[key]) return false;
+    }
+    return true;
+  };
 
   const onChangeUserName = (e: any) => {
     const val = e.target.value;
@@ -59,15 +91,43 @@ const useLogin = () => {
     dispatch({ payload: { rememberMe: !rememberMe } });
   };
 
+  const onProceed = async () => {
+    try {
+      const reqPayload = {
+        userName: values.userName,
+        password: values.password,
+      };
+      const res = await authService.authenticateUser(reqPayload);
+      if (res?.status === "SUCCESS") {
+        localStorage.removeItem("userName");
+        sessionStorage.removeItem("userName");
+        if (rememberMe) {
+          localStorage.setItem("userName", values.userName);
+        } else {
+          sessionStorage.setItem("userName", values.userName);
+        }
+      } else throw res;
+    } catch (error: any) {
+      if (RESP_MESSAGES[error?.message]) {
+        dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
+      } else {
+        dispatch({ payload: { alertMsg: "Technical Error, Try again later" } });
+      }
+    }
+  };
+
   return {
     values,
     errors,
     showPass,
     rememberMe,
+    isBtnActive,
+    alertMsg,
     onChangeUserName,
     onChangePassword,
     onEyeClick,
     onRememberMe,
+    onProceed,
   };
 };
 

@@ -26,7 +26,7 @@ export const LabelText = styled.label`
 `;
 
 export const ErrorText = styled.label`
-  color: #E51C1C;
+  color: #e51c1c;
   font-size: 10px;
   line-height: 12px;
   margin-left: 2px;
@@ -102,14 +102,14 @@ export const CheckBoxIcon = styled(Image)`
   cursor: pointer;
 `;
 
-export const FinalButton = styled.button`
+export const FinalButton = styled.button<{ disabled: boolean }>`
   min-width: 120px;
   font-size: 18px;
   padding: 10px 20px;
   color: white;
   margin-top: auto;
   margin-bottom: 5px;
-  background-color: #7f104c;
+  background-color: ${(props) => (props.disabled ? "grey" : "#7f104c")};
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -118,4 +118,26 @@ export const FinalButton = styled.button`
 
 export const MinGapDiv = styled.div`
   height: 50px;
-`
+`;
+
+export const ErrAlertMessage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e51c1c;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 0px 9px 0px #0000003f;
+  position: absolute;
+  top: 12%;
+  gap: 7px
+`;
+
+export const ErrAlerIcon = styled(Image)`
+  height: 12px;
+  width: 12px;
+`;

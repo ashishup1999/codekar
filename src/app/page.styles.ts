@@ -60,6 +60,7 @@ export const ContentDiv = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
 `;
 
 export const FooterDiv = styled.div`

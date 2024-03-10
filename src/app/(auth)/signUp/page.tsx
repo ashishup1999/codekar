@@ -1,6 +1,8 @@
 "use client";
 import {
   AuthHeader,
+  ErrAlerIcon,
+  ErrAlertMessage,
   EyeDiv,
   EyeIcon,
   FinalButton,
@@ -12,21 +14,30 @@ import eyeIcon from "@/images/eye.svg";
 import eyeCloseIcon from "@/images/eyeClose.svg";
 import { TextInput } from "../AuthInputs";
 import useSignUp from "@/hooks/useSignUp";
+import { ERROR_EXLAMATION } from "@/constants/StaticImages";
 
 const SignUp = () => {
   const {
     values,
     errors,
     showPass,
+    isBtnActive,
+    alertMsg,
     onChangeUserName,
     onChangePassword,
     onChangeEmail,
     onChangeFullName,
     onEyeClick,
+    onProceed,
   } = useSignUp();
 
   return (
     <>
+      {alertMsg && (
+        <ErrAlertMessage>
+          <ErrAlerIcon src={ERROR_EXLAMATION} alt="" /> {alertMsg}
+        </ErrAlertMessage>
+      )}
       <AuthHeader>Sign Up</AuthHeader>
       <TextInput
         label="Username"
@@ -65,7 +76,9 @@ const SignUp = () => {
         onChange={onChangePassword}
       />
       <MinGapDiv />
-      <FinalButton>Sign Up</FinalButton>
+      <FinalButton disabled={!isBtnActive} onClick={onProceed}>
+        Sign Up
+      </FinalButton>
       <span>
         <NormalText>or</NormalText> <LinkText href="/login">Login</LinkText>
       </span>
