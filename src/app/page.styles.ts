@@ -16,7 +16,7 @@ export const HeaderDiv = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: auto;
   padding: 10px 25px;
 `;
@@ -30,6 +30,7 @@ export const HeaderTextSpan = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
 `;
 
 export const HeaderText = styled.p<{ color: string }>`
@@ -66,4 +67,19 @@ export const FooterDiv = styled.div`
 
 export const CopyrigthtText = styled.p`
   font-size: 14px;
+`;
+
+export const AuthDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  min-height: 400px;
+  max-height: 100%;
+  height: fit-content;
+  align-items: center;
+  padding: 30px 40px;
+  border-radius: 25px;
+  background-color: #ffffffef;
+  box-shadow: 0px 0px 12px -6px #000000;
 `;
