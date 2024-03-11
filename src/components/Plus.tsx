@@ -2,6 +2,8 @@
 import Image from "next/image";
 import styled from "styled-components";
 import plusIcon from "@/images/plus.svg";
+import { ChangeEventHandler, MouseEventHandler } from "react";
+import CreateNew from "./CreateNew";
 
 const PlusDiv = styled.div<{ grad: string }>`
   display: flex;
@@ -13,7 +15,7 @@ const PlusDiv = styled.div<{ grad: string }>`
   box-shadow: 0px 0px 7px -3px black;
   padding: 8px 15px;
   margin: 0 0 20px 15px;
-  gap:5px;
+  gap: 5px;
   cursor: pointer;
 `;
 
@@ -29,12 +31,41 @@ const PlusText = styled.p`
   color: white;
 `;
 
-const Plus = ({ grad }: { grad: string }) => {
+const Plus = ({
+  themeColor,
+  grad,
+  isModalOpen,
+  fileName,
+  modalTitle,
+  onCreateNew,
+  onCreateProject,
+  onFileNameChange,
+}: {
+  themeColor: string;
+  grad: string;
+  isModalOpen: boolean;
+  fileName: string;
+  modalTitle: string;
+  onCreateNew: MouseEventHandler;
+  onCreateProject: MouseEventHandler;
+  onFileNameChange: ChangeEventHandler;
+}) => {
   return (
-    <PlusDiv grad={grad}>
-      <PlusImg src={plusIcon} alt="" />
-      <PlusText>Create New</PlusText>
-    </PlusDiv>
+    <>
+      <PlusDiv grad={grad} onClick={onCreateNew}>
+        <PlusImg src={plusIcon} alt="" />
+        <PlusText>Create New</PlusText>
+      </PlusDiv>
+      {isModalOpen && (
+        <CreateNew
+          title={modalTitle}
+          inputVal={fileName}
+          themeColor={themeColor}
+          onBtnClick={onCreateProject}
+          onNameChange={onFileNameChange}
+        />
+      )}
+    </>
   );
 };
 

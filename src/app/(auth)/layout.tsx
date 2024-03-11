@@ -1,5 +1,5 @@
 "use client";
-import { COLOR_CONSTANTS, COMMON_TEXTS } from "@/constants/CommonConstants";
+import { COMMON_TEXTS } from "@/constants/CommonConstants";
 import logo from "@/images/logo.svg";
 import {
   AuthDiv,

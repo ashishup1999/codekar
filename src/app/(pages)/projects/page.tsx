@@ -4,19 +4,35 @@ import React from "react";
 import { ProjectsDiv, ProjectsWrapper } from "./page.styles";
 import Plus from "@/components/Plus";
 import { usePathname } from "next/navigation";
-import { HEADER_TO_GRADIENT } from "@/constants/CommonConstants";
+import { COLORS, HEADER_TO_GRADIENT } from "@/constants/CommonConstants";
 import useProjects from "@/hooks/useProjects";
 
 const Projects = () => {
   const pathName = usePathname();
   const secName = pathName.split("/")[1];
-  const { projects } = useProjects();
-  
+  const {
+    createFileName,
+    isCreateModalOpen,
+    projects,
+    onFileNameChange,
+    onCreateNewClick,
+    onCreateFile,
+  } = useProjects();
+
   return (
     <ProjectsWrapper>
-      <Plus grad={HEADER_TO_GRADIENT[secName]} />
+      <Plus
+        themeColor={COLORS.orange}
+        grad={HEADER_TO_GRADIENT[secName]}
+        isModalOpen={isCreateModalOpen}
+        fileName={createFileName}
+        modalTitle="Project name"
+        onCreateNew={onCreateNewClick}
+        onCreateProject={onCreateFile}
+        onFileNameChange={onFileNameChange}
+      />
       <ProjectsDiv>
-        {projects.map((obj) => (
+        {projects.map((obj: any) => (
           <ProjectCard key={obj?.id} {...obj} />
         ))}
       </ProjectsDiv>

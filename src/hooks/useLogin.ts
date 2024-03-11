@@ -106,6 +106,7 @@ const useLogin = () => {
         } else {
           sessionStorage.setItem("userName", values.userName);
         }
+        router.push("/")
       } else throw res;
     } catch (error: any) {
       if (RESP_MESSAGES[error?.message]) {

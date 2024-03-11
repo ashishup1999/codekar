@@ -11,12 +11,16 @@ export default function RootLayout({
 }) {
   const router = useRouter();
   const pathName = usePathname();
-  const isLoggedIn =
-    localStorage.getItem("userName") || sessionStorage.getItem("userName");
+  let isLoggedIn;
+  if (typeof window !== "undefined") {
+    isLoggedIn =
+      localStorage.getItem("userName") || sessionStorage.getItem("userName");
+  }
   if (!PUBLIC_ROUTES.includes(pathName) && !isLoggedIn) {
     router.replace("/login");
-    return <></>
-  } return (
+    return <></>;
+  }
+  return (
     <html lang="en">
       <meta name="description" content="Code kar befikar"></meta>
       <head>

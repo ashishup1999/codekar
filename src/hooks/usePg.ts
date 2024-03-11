@@ -1,4 +1,3 @@
-import projectsAPIs from "@/mock_apis/projects";
 import { useEffect, useState } from "react";
 
 const usePg = () => {
@@ -10,12 +9,6 @@ const usePg = () => {
   }, []);
 
   const getAllProjects = async () => {
-    try {
-      const res = await projectsAPIs.getProjects();
-      setProjects(res);
-    } catch (error) {
-      debugger;
-    }
   };
 
   return { pgs: projects };

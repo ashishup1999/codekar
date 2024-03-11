@@ -63,7 +63,7 @@ export const HeaderTextWrapper = styled.div<{ borderclr: string }>`
   height: 55px;
   flex: 1;
   border-radius: 50px;
-  margin: 0 30px 0 15px;
+  margin: 5px 30px 0 15px;
   box-shadow: 0px 1px 15px -7px #000000;
   border: 1px solid ${(props) => props.borderclr};
 `;

@@ -1,24 +1,41 @@
-import projectsAPIs from "@/mock_apis/projects";
-import { useEffect, useState } from "react";
+import { defaultStateReducer } from "@/utils/CommonUtils";
+import { useEffect, useReducer, useState } from "react";
+
+const initialState: {
+  createFileName: string;
+  projects: Array<any>;
+  isCreateModalOpen: boolean;
+} = {
+  createFileName: "",
+  projects: [],
+  isCreateModalOpen: false,
+};
 
 const useProjects = () => {
-  const [projects, setProjects]: [projects: Array<any>, setProjects: Function] =
-    useState([]);
+  const [state, dispatch] = useReducer(defaultStateReducer, initialState);
+  const { createFileName, isCreateModalOpen, projects } = state;
 
-  useEffect(() => {
-    getAllProjects();
-  }, []);
-
-  const getAllProjects = async () => {
-    try {
-      const res = await projectsAPIs.getProjects();
-      setProjects(res);
-    } catch (error) {
-      debugger;
-    }
+  const onCreateNewClick = () => {
+    dispatch({ payload: { isCreateModalOpen: true } });
   };
 
-  return { projects };
+  const onCreateFile = () => {
+    dispatch({ payload: { isCreateModalOpen: false } });
+  };
+
+  const onFileNameChange = (e: any) => {
+    const val = e.target.value;
+    dispatch({ payload: { createFileName: val } });
+  };
+
+  return {
+    createFileName,
+    isCreateModalOpen,
+    projects,
+    onFileNameChange,
+    onCreateNewClick,
+    onCreateFile,
+  };
 };
 
 export default useProjects;
