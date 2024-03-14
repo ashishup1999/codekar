@@ -1,9 +1,24 @@
 import { PROJECT_FILES } from "@/constants/CommonConstants";
+import projectService from "@/services/ProjectService";
 import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
 import { emmetHTML } from "emmet-monaco-es";
 import { useEffect, useReducer } from "react";
 
+interface GetProjRespIntr {
+  status: string;
+  message: string;
+  projectData: {
+    projectName: string;
+    userName: string;
+    html: string;
+    css: string;
+    javascript: string;
+  };
+}
+
 const initialState: {
+  projectName: string;
+  projectAuthor: string;
   currFile: string;
   values: {
     html: string;
@@ -12,6 +27,8 @@ const initialState: {
   };
   preview: any;
 } = {
+  projectName: "",
+  projectAuthor: "",
   currFile: PROJECT_FILES.html.id,
   values: {
     html: "",
@@ -21,9 +38,41 @@ const initialState: {
   preview: null,
 };
 
-const useIndividualProject = () => {
+const useIndividualProject = ({ projectId }: { projectId: string }) => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { currFile, values, preview, updatePreview } = state;
+  const {
+    projectName,
+    projectAuthor,
+    currFile,
+    values,
+    preview,
+    updatePreview,
+  } = state;
+
+  useEffect(() => {
+    getProjectInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getProjectInfo = async () => {
+    try {
+      const res: GetProjRespIntr = await projectService.getProjectById(
+        projectId
+      );
+      if (res?.status != "SUCCESS") return;
+      const { projectData } = res;
+      const payload = {
+        projectName: projectData?.projectName,
+        projectAuthor: projectData?.userName,
+        values: {
+          html: projectData?.html,
+          css: projectData?.css,
+          javascript: projectData?.javascript,
+        },
+      };
+      dispatch({ payload });
+    } catch (error) {}
+  };
 
   useEffect(() => {
     getHtmlPreviewAPI();
@@ -47,13 +96,29 @@ const useIndividualProject = () => {
     if (currFile === PROJECT_FILES.html.id) emmetHTML(monaco);
   };
 
+  const onSaveProject = async () => {
+    try {
+      const req = {
+        projectId: projectId,
+        html: values.html,
+        javascript: values.javascript,
+        css: values.css,
+        projectName: projectName,
+      };
+      await projectService.updateProject(req);
+    } catch (error) {}
+  };
+
   return {
     currFile,
     values,
     preview,
+    projectName,
+    projectAuthor,
     selectFile,
     setValue,
     handleEditorDidMount,
+    onSaveProject
   };
 };
 

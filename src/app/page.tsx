@@ -12,7 +12,6 @@ import {
   UserImg,
 } from "@/app/page.styles";
 import {
-  COLOR_CONSTANTS,
   COMMON_TEXTS,
   HOME_OPTIONS,
 } from "@/constants/CommonConstants";

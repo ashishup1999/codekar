@@ -1,27 +1,50 @@
 "use client";
-import ProjectCard from "@/components/ProjectCard";
 import React from "react";
-import Plus from "@/components/Plus";
-import { usePathname } from "next/navigation";
-import { HEADER_TO_GRADIENT } from "@/constants/CommonConstants";
+import { useRouter } from "next/navigation";
+import {
+  HEADER_TO_BORDER_CLR,
+  LINEAR_GRADS,
+} from "@/constants/CommonConstants";
 import usePg from "@/hooks/usePg";
 import { PgDiv, PgWrapper } from "./page.styles";
 import PGCard from "@/components/PgCard";
+import {
+  HeaderDiv,
+  HeaderText,
+  HeaderTextWrapper,
+  LogoImg,
+  UserImg,
+} from "../layout.styles";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const Playgrounds = () => {
-  const pathName = usePathname();
-  const secName = pathName.split("/")[1];
+  const router = useRouter();
   const { pgs } = usePg();
 
   return (
-    <PgWrapper>
-      <Plus grad={HEADER_TO_GRADIENT[secName]} />
-      <PgDiv>
-        {pgs.map((obj) => (
-          <PGCard key={obj?.id} {...obj} />
-        ))}
-      </PgDiv>
-    </PgWrapper>
+    <>
+      <HeaderDiv>
+        <LogoImg
+          src={COMMON_IMAGES.logo}
+          alt=""
+          onClick={() => router.push("/")}
+        />
+        <HeaderTextWrapper
+          bgColorGrad={LINEAR_GRADS.blue}
+          borderclr={HEADER_TO_BORDER_CLR.playgrounds}
+        >
+          <HeaderText>Playgrounds</HeaderText>
+        </HeaderTextWrapper>
+        <UserImg src={COMMON_IMAGES.userCircle} alt="" />
+      </HeaderDiv>
+      <PgWrapper>
+        <PgDiv>
+          {pgs.map((obj) => (
+            <PGCard key={obj?.id} {...obj} />
+          ))}
+        </PgDiv>
+      </PgWrapper>
+    </>
   );
 };
 

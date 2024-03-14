@@ -11,25 +11,30 @@ import {
   PreviewFrame,
   PreviewSection,
   ProjectName,
+  SaveBtn,
+  SaveSection,
   Wrapper,
 } from "./IndividualProject.styles";
 import { LANG_ICONS } from "@/constants/StaticImages";
 import { PROJECT_FILES } from "@/constants/CommonConstants";
 import useIndividualProject from "@/hooks/useIndividualProject";
+import { useContext } from "react";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
-const IndividualProjects = ({
-  params,
-}: {
-  params: { projectName: string };
-}) => {
+const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
   const {
     currFile,
     values,
     preview,
+    projectName,
+    projectAuthor,
     selectFile,
     setValue,
     handleEditorDidMount,
-  } = useIndividualProject();
+    onSaveProject,
+  } = useIndividualProject({ projectId: params.projectId });
   return (
     <Wrapper>
       <EditorSection>
@@ -58,7 +63,12 @@ const IndividualProjects = ({
         </EditorWrapper>
       </EditorSection>
       <PreviewSection>
-        <ProjectName>{params?.projectName}</ProjectName>
+        <SaveSection>
+          <ProjectName>{projectName}</ProjectName>
+          {userName === projectAuthor && (
+            <SaveBtn onClick={onSaveProject}>Save</SaveBtn>
+          )}
+        </SaveSection>
         <Preview>
           <PreviewFrame srcDoc={preview} frameBorder={0}></PreviewFrame>
         </Preview>

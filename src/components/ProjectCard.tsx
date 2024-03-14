@@ -2,41 +2,36 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import {
-  PCAction,
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
-  PCExtraActions,
   PCName,
   PCPreviewImg,
   PCWrapper,
 } from "./ProjectCard.styles";
-import { ACTION_ACTIONS, OPTION_ICONS } from "@/constants/StaticImages";
 
-const ProjectCard = ({
-  id,
-  name,
-  author,
-  thumbnail,
-}: {
-  id: string;
-  name: string;
-  author: string;
-  thumbnail: string;
-}) => {
+const ProjectCard = ({ projInfo }: { projInfo: any }) => {
   const router = useRouter();
 
   return (
-    <PCWrapper key={id} onClick={() => router.push(`/projects/${id}`)}>
-      <PCPreviewImg width={1000} height={1000} src={thumbnail} alt="" />
-      <PCName>{name}</PCName>
+    <PCWrapper
+      key={projInfo?.id}
+      onClick={() => router.push(`/projects/${projInfo?.id}`)}
+    >
+      <PCPreviewImg
+        width={1000}
+        height={1000}
+        src={projInfo?.thumbnail}
+        alt=""
+      />
+      <PCName>{projInfo?.name}</PCName>
       <PCAuthorSpan>
         <PCAuthorTitle>Author : </PCAuthorTitle>
-        <PCAuthorName>{author}</PCAuthorName>
-        <PCExtraActions>
+        <PCAuthorName>{projInfo?.author}</PCAuthorName>
+        {/* <PCExtraActions>
           <PCAction src={ACTION_ACTIONS.heartOutliine} alt="" />
           <PCAction src={ACTION_ACTIONS.comment} alt="" />
-        </PCExtraActions>
+        </PCExtraActions> */}
       </PCAuthorSpan>
     </PCWrapper>
   );

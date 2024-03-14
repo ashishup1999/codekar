@@ -21,12 +21,8 @@ const IndividualPlayGround = ({ params }: { params: { pgName: string } }) => {
   const {
     selectedLang,
     values,
-    input,
-    output,
     selectLang,
     setValue,
-    setInput,
-    setOutput,
   } = useIndividualPg();
 
   return (

@@ -3,20 +3,11 @@ import {
   Content,
   CopyrigthtText,
   FooterDiv,
-  HeaderDiv,
-  HeaderText,
-  HeaderTextWrapper,
   HomeWrapper,
-  LogoImg,
-  UserImg,
 } from "@/app/(pages)/layout.styles";
-import {
-  COMMON_TEXTS,
-  HEADER_TO_BORDER_CLR,
-} from "@/constants/CommonConstants";
-import logo from "@/images/logo.svg";
-import userCircle from "@/images/userCircle.svg";
-import { usePathname, useRouter } from "next/navigation";
+import { COMMON_TEXTS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useContext, useEffect } from "react";
 
 declare global {
   interface Window {
@@ -29,21 +20,20 @@ export default function PageLayouts({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const pathName = usePathname();
-  const pageName = pathName.split("/")[1];
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
+  useEffect(() => {
+    setBasicDetails({
+      payload: {
+        userName:
+          localStorage.getItem("userName") ||
+          sessionStorage.getItem("userName"),
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <HomeWrapper>
-        <HeaderDiv>
-          <LogoImg src={logo} alt="" onClick={() => router.push("/")} />
-          <HeaderTextWrapper borderclr={HEADER_TO_BORDER_CLR[pageName]}>
-            <HeaderText>
-              {pageName.toUpperCase()[0] + pageName.slice(1)}
-            </HeaderText>
-          </HeaderTextWrapper>
-          <UserImg src={userCircle} alt="" />
-        </HeaderDiv>
         <Content>{children}</Content>
         <FooterDiv>
           <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>

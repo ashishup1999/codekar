@@ -14,9 +14,10 @@ export const HomeWrapper = styled.div`
 
 export const Content = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: calc(100% - 115px);
-  padding: 10px;
+  flex: 1;
+  padding: 0 10px;
 `;
 
 export const FooterDiv = styled.div`
@@ -56,20 +57,25 @@ export const HeaderDiv = styled.div`
   padding: 15px 25px;
 `;
 
-export const HeaderTextWrapper = styled.div<{ borderclr: string }>`
+export const HeaderTextWrapper = styled.div<{
+  borderclr: string;
+  bgColorGrad: string;
+}>`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 55px;
+  height: 47px;
   flex: 1;
   border-radius: 50px;
   margin: 5px 30px 0 15px;
   box-shadow: 0px 1px 15px -7px #000000;
   border: 1px solid ${(props) => props.borderclr};
+  background-image: ${(props) => props.bgColorGrad};
 `;
 
 export const HeaderText = styled.p`
   font-weight: bold;
   font-size: 20px;
   letter-spacing: 2px;
+  color: white;
 `;

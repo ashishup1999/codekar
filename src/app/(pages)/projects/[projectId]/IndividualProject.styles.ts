@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/CommonConstants";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -63,15 +64,36 @@ export const FileNameDiv = styled.div<{ selected: boolean }>`
   cursor: pointer;
 `;
 
+export const SaveSection = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 6px;
+`;
+
 export const ProjectName = styled.div`
   display: flex;
   width: fit-content;
-  background-color: "white";
-  border-radius: 3px;
-  padding: 3px 15px 8px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
   justify-content: center;
-  box-shadow: 0px 0px 5px -3px #000000;
-  border: 1px solid black;
+  font-size: 12px;
+  background-color: ${COLORS.orange};
+  border: 1px solid ${COLORS.orange};
+`;
+
+export const SaveBtn = styled.div`
+  display: flex;
+  width: fit-content;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  justify-content: center;
+  font-size: 12px;
+  margin-left: auto;
+  background-color: #17a952;
+  border: 1px solid #17a952;
+  cursor: pointer;
 `;
 
 export const FileTypeImage = styled(Image)`

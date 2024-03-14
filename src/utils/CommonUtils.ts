@@ -4,7 +4,7 @@ export const ajaxAPI = {
   headers: {
     "Content-Type": "application/json",
   },
-  get: async (url: string, config: any) => {
+  get: async (url: string, ...config: any) => {
     const res = await axios.get(url, {
       ...{ headers: ajaxAPI.headers },
       ...config,

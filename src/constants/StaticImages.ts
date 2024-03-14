@@ -8,6 +8,8 @@ import html from "@/images/html.svg";
 import css from "@/images/css.svg";
 import javascript from "@/images/js.svg";
 import errorExl from "@/images/errorExclamation.svg";
+import logo from "@/images/logo.svg";
+import userCircle from "@/images/userCircle.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -25,6 +27,11 @@ export const LANG_ICONS: { [key: string]: string } = {
   html,
   css,
   javascript,
+};
+
+export const COMMON_IMAGES = {
+  logo,
+  userCircle,
 };
 
 export const ERROR_EXLAMATION = errorExl;

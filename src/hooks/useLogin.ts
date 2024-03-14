@@ -1,8 +1,9 @@
 import authService from "@/services/AuthService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
 import { RESP_MESSAGES } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const initialState: {
   values: {
@@ -34,6 +35,7 @@ const initialState: {
 
 const useLogin = () => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
   const { values, errors, showPass, rememberMe, isBtnActive, alertMsg } = state;
   const router = useRouter();
 
@@ -106,7 +108,8 @@ const useLogin = () => {
         } else {
           sessionStorage.setItem("userName", values.userName);
         }
-        router.push("/")
+        setBasicDetails({ payload: { userName: values.userName } });
+        router.push("/");
       } else throw res;
     } catch (error: any) {
       if (RESP_MESSAGES[error?.message]) {
