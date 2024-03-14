@@ -45,7 +45,7 @@ const Projects = () => {
           bgColorGrad={LINEAR_GRADS.orange}
           borderclr={HEADER_TO_BORDER_CLR.projects}
         >
-          <HeaderText>Playgrounds</HeaderText>
+          <HeaderText>Projects</HeaderText>
         </HeaderTextWrapper>
         <UserImg src={COMMON_IMAGES.userCircle} alt="" />
       </HeaderDiv>

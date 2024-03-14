@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
@@ -17,7 +16,7 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100%;
   flex: 1;
-  padding: 0 10px;
+  padding:10px;
 `;
 
 export const FooterDiv = styled.div`
@@ -50,11 +49,10 @@ export const UserImg = styled(Image)`
 export const HeaderDiv = styled.div`
   display: flex;
   width: 100%;
-  min-height: 85px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: auto;
-  padding: 15px 25px;
+  padding: 10px 15px;
 `;
 
 export const HeaderTextWrapper = styled.div<{

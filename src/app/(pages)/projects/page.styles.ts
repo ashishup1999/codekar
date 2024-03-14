@@ -11,7 +11,7 @@ export const ProjectsWrapper = styled.div`
 
 export const ProjectsDiv = styled.div`
   display: flex;
-  height: fit-content;
-  width: fit-content;
+  justify-content: flex-start;
+  width: 100%;
   flex-wrap: wrap;
 `;

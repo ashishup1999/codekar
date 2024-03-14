@@ -28,21 +28,16 @@ const useProjects = () => {
 
   const getAllProjects = async () => {
     try {
-      debugger
       const res = await projectService.getAllProjectsByUser(userName);
       if (res?.status === "SUCCESS") {
         let allProjs: Array<any> = [];
         for (let i = 0; i < res?.projects.length; i++) {
           const proj = res?.projects[i];
-          const imgRes = await projectService.getProjectThumbnail(
-            proj.projectId
-          );
-          const imageUrl = "data:image/png;base64," + imgRes?.base64Img;
           const tp: any = {
             id: proj.projectId,
             author: proj.userName,
             name: proj.projectName,
-            thumbnail: imageUrl,
+            previewHtml: proj.previewHtml,
           };
           allProjs.push(tp);
         }

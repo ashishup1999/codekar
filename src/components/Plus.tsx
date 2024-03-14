@@ -5,6 +5,10 @@ import plusIcon from "@/images/plus.svg";
 import { ChangeEventHandler, MouseEventHandler } from "react";
 import CreateNew from "./CreateNew";
 
+const PlusWrapper = styled.div`
+  margin-right: auto;
+`;
+
 const PlusDiv = styled.div<{ grad: string }>`
   display: flex;
   justify-content: center;
@@ -13,7 +17,7 @@ const PlusDiv = styled.div<{ grad: string }>`
   width: fit-content;
   background-image: ${(props) => props.grad};
   box-shadow: 0px 0px 7px -3px black;
-  padding: 8px 15px;
+  padding: 10px 25px;
   margin: 0 0 20px 15px;
   gap: 5px;
   cursor: pointer;
@@ -51,7 +55,7 @@ const Plus = ({
   onFileNameChange: ChangeEventHandler;
 }) => {
   return (
-    <>
+    <PlusWrapper>
       <PlusDiv grad={grad} onClick={onCreateNew}>
         <PlusImg src={plusIcon} alt="" />
         <PlusText>Create New</PlusText>
@@ -65,7 +69,7 @@ const Plus = ({
           onNameChange={onFileNameChange}
         />
       )}
-    </>
+    </PlusWrapper>
   );
 };
 

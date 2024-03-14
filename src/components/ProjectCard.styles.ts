@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const PCWrapper = styled.div`
@@ -6,21 +6,42 @@ export const PCWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 220px;
-  height: fit-content;
+  width: 24%;
+  aspect-ratio: 1.3;
   padding: 12px;
   border-radius: 22px;
   box-shadow: 0px 0px 7px -3px #000000;
   margin: 10px;
   background-color: white;
+  cursor: pointer;
+  position: relative;
+  @media (max-width: 1400px) {
+    width: 31%;
+  }
+  @media (max-width: 1100px) {
+    width: 48%;
+  }
+  @media (max-width: 750px) {
+    width: 98%;
+  }
 `;
 
-export const PCPreviewImg = styled(Image)`
+export const PCPreviewImg = styled.iframe`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 100px;
+  flex: 1;
   border-radius: 12px;
   margin-bottom: 5px;
   border: none;
+  overflow: hidden;
+  border: 1px solid #d9d9d9;
+`;
+
+export const PCLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  position: absolute;
 `;
 
 export const PCName = styled.p`
@@ -46,14 +67,4 @@ export const PCAuthorTitle = styled.p`
 export const PCAuthorName = styled.p`
   display: inline;
   font-size: 14px;
-`;
-
-export const PCExtraActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
-
-export const PCAction = styled(Image)`
-  height: 45px;
 `;

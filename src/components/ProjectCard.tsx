@@ -1,37 +1,25 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import {
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
+  PCLink,
   PCName,
   PCPreviewImg,
   PCWrapper,
 } from "./ProjectCard.styles";
 
 const ProjectCard = ({ projInfo }: { projInfo: any }) => {
-  const router = useRouter();
 
   return (
-    <PCWrapper
-      key={projInfo?.id}
-      onClick={() => router.push(`/projects/${projInfo?.id}`)}
-    >
-      <PCPreviewImg
-        width={1000}
-        height={1000}
-        src={projInfo?.thumbnail}
-        alt=""
-      />
+    <PCWrapper key={projInfo?.id}>
+      <PCLink href={`/projects/${projInfo?.id}`} />
+      <PCPreviewImg srcDoc={projInfo?.previewHtml} />
       <PCName>{projInfo?.name}</PCName>
       <PCAuthorSpan>
         <PCAuthorTitle>Author : </PCAuthorTitle>
         <PCAuthorName>{projInfo?.author}</PCAuthorName>
-        {/* <PCExtraActions>
-          <PCAction src={ACTION_ACTIONS.heartOutliine} alt="" />
-          <PCAction src={ACTION_ACTIONS.comment} alt="" />
-        </PCExtraActions> */}
       </PCAuthorSpan>
     </PCWrapper>
   );
