@@ -42,7 +42,7 @@ const Plus = ({
   fileName,
   modalTitle,
   onCreateNew,
-  onCreateProject,
+  onCreateFile,
   onFileNameChange,
 }: {
   themeColor: string;
@@ -51,7 +51,7 @@ const Plus = ({
   fileName: string;
   modalTitle: string;
   onCreateNew: MouseEventHandler;
-  onCreateProject: MouseEventHandler;
+  onCreateFile: MouseEventHandler;
   onFileNameChange: ChangeEventHandler;
 }) => {
   return (
@@ -65,7 +65,7 @@ const Plus = ({
           title={modalTitle}
           inputVal={fileName}
           themeColor={themeColor}
-          onBtnClick={onCreateProject}
+          onBtnClick={onCreateFile}
           onNameChange={onFileNameChange}
         />
       )}

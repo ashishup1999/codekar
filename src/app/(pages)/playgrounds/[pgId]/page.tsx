@@ -17,7 +17,7 @@ import { DEFAULT_PLAYGROUND, PG_LANG_OPTIONS } from "@/constants/CommonConstants
 import runIcon from "@/images/run.svg";
 import useIndividualPg from "@/hooks/useIndividualPg";
 
-const IndividualPlayGround = ({ params }: { params: { pgName: string } }) => {
+const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
   const {
     selectedLang,
     values,
@@ -29,7 +29,7 @@ const IndividualPlayGround = ({ params }: { params: { pgName: string } }) => {
     <Wrapper>
       <EditorSection>
         <PgHeaderDiv>
-          <PgNameDiv>{params?.pgName}</PgNameDiv>
+          <PgNameDiv>{params?.pgId}</PgNameDiv>
           <PgHeaderRightDiv>
             <RunButton src={runIcon} alt="" />
             <LanguageDD value={DEFAULT_PLAYGROUND} onChange={selectLang}>

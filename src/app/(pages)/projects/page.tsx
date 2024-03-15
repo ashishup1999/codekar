@@ -57,7 +57,7 @@ const Projects = () => {
           fileName={createFileName}
           modalTitle="Project name"
           onCreateNew={onCreateNewClick}
-          onCreateProject={onCreateFile}
+          onCreateFile={onCreateFile}
           onFileNameChange={onFileNameChange}
         />
         <ProjectsDiv>

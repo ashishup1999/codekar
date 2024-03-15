@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -26,6 +27,34 @@ export const PCWrapper = styled.div`
   }
 `;
 
+export const PCMiniWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18%;
+  aspect-ratio: 1.3;
+  padding: 12px;
+  border-radius: 22px;
+  box-shadow: 0px 0px 7px -3px #000000;
+  margin: 10px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  @media (max-width: 1400px) {
+    width: 24%;
+  }
+  @media (max-width: 1100px) {
+    width: 31%;
+  }
+  @media (max-width: 750px) {
+    width: 48%;
+  }
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+`;
+
 export const PCPreviewImg = styled.iframe`
   display: flex;
   justify-content: center;
@@ -36,6 +65,19 @@ export const PCPreviewImg = styled.iframe`
   border: none;
   overflow: hidden;
   border: 1px solid #d9d9d9;
+`;
+
+export const PCDefaultImg = styled(Image)`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  border: none;
+  overflow: hidden;
+  border: 1px solid #d9d9d9;
+  padding: 10%;
 `;
 
 export const PCLink = styled(Link)`

@@ -1,45 +1,33 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import {
-  PCAction,
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
-  PCExtraActions,
+  PCDefaultImg,
+  PCLink,
+  PCMiniWrapper,
   PCName,
   PCPreviewImg,
-  PCWrapper,
 } from "./ProjectCard.styles";
-import { ACTION_ACTIONS } from "@/constants/StaticImages";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
-const PGCard = ({
-  id,
-  name,
-  author,
-  thumbnail,
-}: {
-  id: string;
-  name: string;
-  author: string;
-  thumbnail: string;
-}) => {
-  const router = useRouter();
-
+const PgCard = ({ pgInfo }: { pgInfo: any }) => {
   return (
-    <PCWrapper key={id} onClick={() => router.push(`/playgrounds/${name}`)}>
-      <PCPreviewImg width={1000} height={1000} src={thumbnail} alt="" />
-      <PCName>{name}</PCName>
+    <PCMiniWrapper key={pgInfo?.id}>
+      <PCLink href={`/playgrounds/${pgInfo?.id}`} />
+      {pgInfo?.previewHtml ? (
+        <PCPreviewImg srcDoc={pgInfo?.previewHtml} />
+      ) : (
+        <PCDefaultImg src={COMMON_IMAGES.logo} alt="" />
+      )}
+      <PCName>{pgInfo?.name}</PCName>
       <PCAuthorSpan>
         <PCAuthorTitle>Author : </PCAuthorTitle>
-        <PCAuthorName>{author}</PCAuthorName>
-        <PCExtraActions>
-          <PCAction src={ACTION_ACTIONS.heartOutliine} alt="" />
-          <PCAction src={ACTION_ACTIONS.comment} alt="" />
-        </PCExtraActions>
+        <PCAuthorName>{pgInfo?.author}</PCAuthorName>
       </PCAuthorSpan>
-    </PCWrapper>
+    </PCMiniWrapper>
   );
 };
 
-export default PGCard;
+export default PgCard;

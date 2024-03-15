@@ -6,7 +6,10 @@ const API_CONSTANTS = {
   GET_ALL_PROJS_BY_USER: `${BASE_URL}/getAllProjectsByUser`,
   GET_PROJ_BY_ID: `${BASE_URL}/getProjectById`,
   UPDATE_PROJ: `${BASE_URL}/updateProject`,
-  GET_PROJ_THUMBNAIL: `${BASE_URL}/getProjectThumbnail`
+  CREATE_PG: `${BASE_URL}/createNewPgByUser`,
+  GET_ALL_PGS_BY_USER: `${BASE_URL}/getAllPgsByUser`,
+  GET_PG_BY_ID: `${BASE_URL}/getPgById`,
+  UPDATE_PG: `${BASE_URL}/updatePg`,
 };
 
 export default API_CONSTANTS;

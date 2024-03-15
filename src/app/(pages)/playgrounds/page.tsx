@@ -2,7 +2,9 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import {
+  COLORS,
   HEADER_TO_BORDER_CLR,
+  HEADER_TO_GRADIENT,
   LINEAR_GRADS,
 } from "@/constants/CommonConstants";
 import usePg from "@/hooks/usePg";
@@ -16,10 +18,18 @@ import {
   UserImg,
 } from "../layout.styles";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
+import Plus from "@/components/Plus";
 
 const Playgrounds = () => {
   const router = useRouter();
-  const { pgs } = usePg();
+  const {
+    pgs,
+    pgName,
+    isCreateModalOpen,
+    onCreateFile,
+    onCreateNewClick,
+    onFileNameChange,
+  } = usePg();
 
   return (
     <>
@@ -38,9 +48,19 @@ const Playgrounds = () => {
         <UserImg src={COMMON_IMAGES.userCircle} alt="" />
       </HeaderDiv>
       <PgWrapper>
+        <Plus
+          themeColor={COLORS.blue}
+          grad={HEADER_TO_GRADIENT.playgrounds}
+          isModalOpen={isCreateModalOpen}
+          fileName={pgName}
+          modalTitle="Playground Name"
+          onCreateNew={onCreateNewClick}
+          onCreateFile={onCreateFile}
+          onFileNameChange={onFileNameChange}
+        />
         <PgDiv>
-          {pgs.map((obj) => (
-            <PGCard key={obj?.id} {...obj} />
+          {pgs.map((obj: any) => (
+            <PGCard key={obj?.id} pgInfo={obj} />
           ))}
         </PgDiv>
       </PgWrapper>

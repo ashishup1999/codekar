@@ -19,15 +19,10 @@ const updateProject = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.UPDATE_PROJ, payload);
 };
 
-const getProjectThumbnail = async (id: string) => {
-  return await ajaxAPI.get(`${API_CONSTANTS.GET_PROJ_THUMBNAIL}/${id}`);
-};
-
 const projectService = {
   createNewProject,
   getAllProjectsByUser,
   getProjectById,
   updateProject,
-  getProjectThumbnail,
 };
 export default projectService;
