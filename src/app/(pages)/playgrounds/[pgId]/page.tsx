@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   EditorSection,
   EditorWrapper,
@@ -8,31 +8,66 @@ import {
   PgHeaderDiv,
   PgHeaderRightDiv,
   PgNameDiv,
-  PreviewSection,
+  ConsoleSection,
   RunButton,
   Wrapper,
+  SaveSection,
+  SaveBtn,
+  PgNameEdit,
+  InputDiv,
+  FieldName,
+  InputField,
+  OutputDiv,
+  OutputArea,
 } from "./IndividualPg.styles";
 import { Editor } from "@monaco-editor/react";
-import { DEFAULT_PLAYGROUND, PG_LANG_OPTIONS } from "@/constants/CommonConstants";
+import { PG_LANG_OPTIONS } from "@/constants/CommonConstants";
 import runIcon from "@/images/run.svg";
 import useIndividualPg from "@/hooks/useIndividualPg";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
   const {
+    pgName,
+    pgAuthor,
     selectedLang,
     values,
+    input,
+    output,
+    nameEdit,
+    pageNameRef,
+    nameEditToggle,
     selectLang,
     setValue,
-  } = useIndividualPg();
+    setInput,
+    onChangePgName,
+  } = useIndividualPg({ pgId: params?.pgId });
 
   return (
     <Wrapper>
       <EditorSection>
         <PgHeaderDiv>
-          <PgNameDiv>{params?.pgId}</PgNameDiv>
+          <SaveSection>
+            {nameEdit ? (
+              <PgNameEdit
+                ref={pageNameRef}
+                value={pgName}
+                onChange={onChangePgName}
+                onBlur={nameEditToggle}
+                maxLength={40}
+              />
+            ) : (
+              <PgNameDiv onClick={nameEditToggle}>{pgName}</PgNameDiv>
+            )}
+            {pgAuthor === basicDetails?.userName && <SaveBtn>Save</SaveBtn>}
+          </SaveSection>
           <PgHeaderRightDiv>
             <RunButton src={runIcon} alt="" />
-            <LanguageDD value={DEFAULT_PLAYGROUND} onChange={selectLang}>
+            <LanguageDD
+              value={PG_LANG_OPTIONS[selectedLang]}
+              onChange={selectLang}
+            >
               {Object.keys(PG_LANG_OPTIONS).map((key) => {
                 return (
                   <LanguageDDOption key={key} value={PG_LANG_OPTIONS[key]}>
@@ -53,7 +88,16 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
           />
         </EditorWrapper>
       </EditorSection>
-      <PreviewSection></PreviewSection>
+      <ConsoleSection>
+        <OutputDiv>
+          <FieldName>Output</FieldName>
+          <OutputArea>{output}</OutputArea>
+        </OutputDiv>
+        <InputDiv>
+          <FieldName>Input</FieldName>
+          <InputField value={input} onChange={setInput} />
+        </InputDiv>
+      </ConsoleSection>
     </Wrapper>
   );
 };
