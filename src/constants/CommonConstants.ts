@@ -86,7 +86,8 @@ export const PG_LANG_OPTIONS: { [key: string]: string } = {
   python: "Python",
   javascript: "Javascript",
   java: "Java",
-  cpp: "C++",
+  cpp: "CPP",
+  go: "Go",
 };
 
 export const DEFAULT_PLAYGROUND = "python";

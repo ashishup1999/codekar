@@ -67,6 +67,7 @@ export const FileNameDiv = styled.div<{ selected: boolean }>`
 export const SaveSection = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 6px;
 `;
 
@@ -90,11 +91,19 @@ export const SaveBtn = styled.div`
   padding: 5px 10px;
   justify-content: center;
   font-size: 12px;
-  margin-left: auto;
   background-color: #17a952;
   border: 1px solid #17a952;
   cursor: pointer;
 `;
+
+export const Saved = styled.p`
+  font-size: 12px;
+  padding: 3px 6px;
+  color: #a9a9a9;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+`;
+
 
 export const FileTypeImage = styled(Image)`
   height: 15px;

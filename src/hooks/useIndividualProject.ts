@@ -26,6 +26,7 @@ const initialState: {
     javascript: string;
   };
   preview: any;
+  saved: boolean;
 } = {
   projectName: "",
   projectAuthor: "",
@@ -36,6 +37,7 @@ const initialState: {
     javascript: "",
   },
   preview: null,
+  saved: false,
 };
 
 const useIndividualProject = ({ projectId }: { projectId: string }) => {
@@ -47,6 +49,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     values,
     preview,
     updatePreview,
+    saved,
   } = state;
 
   useEffect(() => {
@@ -96,6 +99,14 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     if (currFile === PROJECT_FILES.html.id) emmetHTML(monaco);
   };
 
+  useEffect(() => {
+    if (saved) {
+      setTimeout(() => {
+        dispatch({ payload: { saved: false } });
+      }, 1000);
+    }
+  }, [saved]);
+
   const onSaveProject = async () => {
     try {
       const req = {
@@ -105,7 +116,10 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
         css: values.css,
         projectName: projectName,
       };
-      await projectService.updateProject(req);
+      const res = await projectService.updateProject(req);
+      if (res?.status === "SUCCESS") {
+        dispatch({ payload: { saved: true } });
+      } else throw res;
     } catch (error) {}
   };
 
@@ -115,10 +129,11 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     preview,
     projectName,
     projectAuthor,
+    saved,
     selectFile,
     setValue,
     handleEditorDidMount,
-    onSaveProject
+    onSaveProject,
   };
 };
 

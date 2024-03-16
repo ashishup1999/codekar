@@ -48,7 +48,9 @@ export const OutputDiv = styled.div`
   height: 70%;
 `;
 
-export const OutputArea = styled.p`
+export const OutputArea = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 15px;
@@ -122,6 +124,7 @@ export const RunButton = styled(Image)`
 
 export const SaveSection = styled.div`
   display: flex;
+  align-items: center;
   gap: 6px;
 `;
 
@@ -158,6 +161,14 @@ export const SaveBtn = styled.div`
   border: 1px solid #17a952;
   cursor: pointer;
   border: none;
+`;
+
+export const Saved = styled.p`
+  font-size: 12px;
+  padding: 3px 6px;
+  color: #a9a9a9;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
 `;
 
 export const ProjectName = styled.div`

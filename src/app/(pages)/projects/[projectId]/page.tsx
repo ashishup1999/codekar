@@ -13,6 +13,7 @@ import {
   ProjectName,
   SaveBtn,
   SaveSection,
+  Saved,
   Wrapper,
 } from "./IndividualProject.styles";
 import { LANG_ICONS } from "@/constants/StaticImages";
@@ -30,6 +31,7 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
     preview,
     projectName,
     projectAuthor,
+    saved,
     selectFile,
     setValue,
     handleEditorDidMount,
@@ -66,7 +68,10 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
         <SaveSection>
           <ProjectName>{projectName}</ProjectName>
           {userName === projectAuthor && (
-            <SaveBtn onClick={onSaveProject}>Save</SaveBtn>
+            <>
+              <SaveBtn onClick={onSaveProject}>Save</SaveBtn>
+              {saved && <Saved>Saved...</Saved>}
+            </>
           )}
         </SaveSection>
         <Preview>

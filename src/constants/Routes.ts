@@ -10,6 +10,7 @@ const API_CONSTANTS = {
   GET_ALL_PGS_BY_USER: `${BASE_URL}/getAllPgsByUser`,
   GET_PG_BY_ID: `${BASE_URL}/getPgById`,
   UPDATE_PG: `${BASE_URL}/updatePg`,
+  COMPILE:`${BASE_URL}/compile`
 };
 
 export default API_CONSTANTS;
