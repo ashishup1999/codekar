@@ -10,6 +10,10 @@ const API_CONSTANTS = {
   GET_ALL_PGS_BY_USER: `${BASE_URL}/getAllPgsByUser`,
   GET_PG_BY_ID: `${BASE_URL}/getPgById`,
   UPDATE_PG: `${BASE_URL}/updatePg`,
+  CREATE_WB: `${BASE_URL}/createNewWbByUser`,
+  GET_ALL_WBS_BY_USER: `${BASE_URL}/getAllWbsByUser`,
+  GET_WB_BY_ID: `${BASE_URL}/getWbById`,
+  UPDATE_WB: `${BASE_URL}/updateWb`,
   COMPILE:`${BASE_URL}/compile`
 };
 
