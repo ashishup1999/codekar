@@ -8,7 +8,7 @@ export const PCWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 24%;
+  width: 23vw;
   aspect-ratio: 1.3;
   padding: 12px;
   border-radius: 22px;
@@ -18,13 +18,13 @@ export const PCWrapper = styled.div`
   cursor: pointer;
   position: relative;
   @media (max-width: 1400px) {
-    width: 31%;
+    width: 30vw;
   }
   @media (max-width: 1100px) {
-    width: 48%;
+    width: 45vw;
   }
   @media (max-width: 750px) {
-    width: 98%;
+    width: 90vw;
   }
 `;
 
@@ -34,7 +34,7 @@ export const PCMiniWrapper = styled.div`
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 18%;
+  width: 16vw;
   aspect-ratio: 1.3;
   padding: 12px;
   border-radius: 22px;
@@ -44,16 +44,16 @@ export const PCMiniWrapper = styled.div`
   cursor: pointer;
   position: relative;
   @media (max-width: 1400px) {
-    width: 24%;
+    width: 23vw;
   }
   @media (max-width: 1100px) {
-    width: 31%;
+    width: 30vw;
   }
   @media (max-width: 750px) {
-    width: 48%;
+    width: 45vw;
   }
   @media (max-width: 450px) {
-    width: 100%;
+    width: 90vw;
   }
 `;
 

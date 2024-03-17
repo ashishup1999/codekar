@@ -102,11 +102,8 @@ const useLogin = () => {
       const res = await authService.authenticateUser(reqPayload);
       if (res?.status === "SUCCESS") {
         localStorage.removeItem("userName");
-        sessionStorage.removeItem("userName");
         if (rememberMe) {
           localStorage.setItem("userName", values.userName);
-        } else {
-          sessionStorage.setItem("userName", values.userName);
         }
         setBasicDetails({ payload: { userName: values.userName } });
         router.push("/");

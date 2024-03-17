@@ -30,12 +30,7 @@ const FollowButton = styled.div`
   border-radius: 10px;
 `;
 
-const ProfileCard = ({
-  userName,
-}: {
-  profileImg: string;
-  userName: string;
-}) => {
+const ProfileCard = ({ userName }: { userName: string }) => {
   return (
     <PCMiniWrapper>
       <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />

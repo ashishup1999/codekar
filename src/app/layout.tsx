@@ -18,8 +18,7 @@ export default function RootLayout({
   useEffect(() => {
     let isLoggedIn;
     if (typeof window !== "undefined") {
-      isLoggedIn =
-        localStorage.getItem("userName") || sessionStorage.getItem("userName");
+      isLoggedIn = localStorage.getItem("userName");
     }
     if (!PUBLIC_ROUTES.includes(pathName) && !isLoggedIn) {
       router.replace("/login");

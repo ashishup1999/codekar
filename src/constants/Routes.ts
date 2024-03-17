@@ -14,7 +14,11 @@ const API_CONSTANTS = {
   GET_ALL_WBS_BY_USER: `${BASE_URL}/getAllWbsByUser`,
   GET_WB_BY_ID: `${BASE_URL}/getWbById`,
   UPDATE_WB: `${BASE_URL}/updateWb`,
-  COMPILE:`${BASE_URL}/compile`
+  COMPILE: `${BASE_URL}/compile`,
+  SEARCH_USERS: `${BASE_URL}/getProfilesByName`,
+  SEARCH_PROJS: `${BASE_URL}/getProjsByName`,
+  SEARCH_PGS: `${BASE_URL}/getPgsByName`,
+  SEARCH_WBS: `${BASE_URL}/getWbsByName`,
 };
 
 export default API_CONSTANTS;

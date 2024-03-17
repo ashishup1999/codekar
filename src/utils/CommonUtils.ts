@@ -56,3 +56,20 @@ export const getPreview = (values: { [key: string]: string }) => {
   </body>
   </html>`;
 };
+
+export function debounce(
+  this: void,
+  func: Function,
+  timer: NodeJS.Timeout,
+  setTimer: Function,
+  timeout: number = 300
+) {
+  let tid: NodeJS.Timeout;
+  return (...args: any) => {
+    clearTimeout(timer);
+    tid = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+    setTimer(tid);
+  };
+}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
+import bgLogo from "@/images/bgLogo.svg";
 
 export const ExploreWrapper = styled.div`
   display: flex;
@@ -7,8 +8,13 @@ export const ExploreWrapper = styled.div`
   flex: 1;
   width: 100%;
   margin-top: 20px;
-  padding: 18px;
-  gap: 15px;
+  padding: 10px;
+  gap: 40px;
+  background: url(${bgLogo.src}) no-repeat center;
+  @media (max-width: 450px) {
+    align-items: center;
+    padding: 10px 0;
+  }
 `;
 
 export const ExploreDiv = styled.div`
@@ -20,10 +26,10 @@ export const ExploreDiv = styled.div`
 export const SearchBarDiv = styled.div`
   display: flex;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   height: 45px;
   box-shadow: 0px 0px 9px 0px #0000003f;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-top: 5px;
   background-color: white;
 `;
@@ -32,46 +38,39 @@ export const SearchBarInput = styled.input`
   flex: 1;
   height: 100%;
   border: none;
-  border-radius: 5px;
-  padding: 0 10px;
+  border-radius: 15px;
+  padding: 0 15px;
   &:focus {
     outline: none;
   }
 `;
 
-export const SearchIconDiv = styled.div`
-  display: flex;
-  flex: 0;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  aspect-ratio: 1;
-  box-shadow: 0px 0px 9px 0px #0000003f;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
 export const SearchIcon = styled(Image)`
-  margin-top: 5px;
-  height: 60%;
+  height: 100%;
   width: auto;
+  padding: 12px;
+  margin-left: auto;
 `;
 
 export const EachSection = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   overflow-x: scroll;
   margin-bottom: 20px;
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  & ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
-  &:hover {
-    &::-webkit-scrollbar-thumb {
-      background-color: #babac0;
-      border-radius: 16px;
-      border: 4px solid #fff;
+  &: hover {
+    -ms-overflow-style: auto; /* Internet Explorer 10+ */
+    scrollbar-width: auto; /* Firefox */
+    & ::-webkit-scrollbar {
+      display: auto; /* Safari and Chrome */
     }
   }
 `;
@@ -80,4 +79,5 @@ export const SecName = styled.p`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
+  margin-left: 10px;
 `;

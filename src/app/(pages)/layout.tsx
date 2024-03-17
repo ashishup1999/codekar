@@ -25,8 +25,7 @@ export default function PageLayouts({
     setBasicDetails({
       payload: {
         userName:
-          localStorage.getItem("userName") ||
-          sessionStorage.getItem("userName"),
+          localStorage.getItem("userName")
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
