@@ -16,8 +16,8 @@ import {
   HOME_OPTIONS,
 } from "@/constants/CommonConstants";
 import OptionCards from "@/components/OptionCards";
-import logo from "@/images/logo.svg";
 import userCircle from "@/images/userCircle.svg";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const Home = () => {
   return (
@@ -25,7 +25,7 @@ const Home = () => {
       <HomeWrapper>
         <HeaderDiv>
           <HeaderTextSpan>
-            <LogoImg src={logo} alt="" />
+            <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
           <UserImg src={userCircle} alt="" />

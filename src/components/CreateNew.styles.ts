@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CreateNewWrapper = styled.div`
+export const CreateNewWrapper = styled.div<{bggrad:string}>`
   display: flex;
   width: 100%;
   height: 100%;
@@ -8,14 +8,17 @@ export const CreateNewWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  background-image:${props => props.bggrad};
+  padding: 20px;
+  border-radius: 10px;
 `;
 
-export const Title = styled.label<{ color: string }>`
+export const Title = styled.label`
   width: 100%;
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: ${(props) => props.color};
+  color: white;
 `;
 
 export const NameInput = styled.input<{ bdcolor: string }>`
@@ -29,12 +32,13 @@ export const NameInput = styled.input<{ bdcolor: string }>`
   }
 `;
 
-export const CreateBtn = styled.button<{ bgcolor: string }>`
+export const CreateBtn = styled.button<{ color: string }>`
   padding: 10px 25px;
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  background-color: white;
   border: none;
-  background-color: ${(props) => props.bgcolor};
+  color: ${(props) => props.color};
   border-radius: 10px;
+  cursor: pointer;
 `;

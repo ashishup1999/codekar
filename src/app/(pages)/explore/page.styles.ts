@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styled from "styled-components";
-import bgLogo from "@/images/bgLogo.svg";
 
 export const ExploreWrapper = styled.div`
   display: flex;
@@ -10,7 +9,6 @@ export const ExploreWrapper = styled.div`
   margin-top: 20px;
   padding: 10px;
   gap: 40px;
-  background: url(${bgLogo.src}) no-repeat center;
   @media (max-width: 450px) {
     align-items: center;
     padding: 10px 0;

@@ -28,7 +28,7 @@ export const ConsoleSection = styled.div`
   height: 100%;
   max-width: 35%;
   padding: 10px;
-  border: 1px solid #d2d2d2;
+  background-color: white;
   border-radius: 10px;
 `;
 
@@ -72,6 +72,7 @@ export const EditiorField = styled.textarea`
   border: none;
   resize: none;
   white-space: pre-wrap;
+  border-radius: 10px;
   &:focus {
     outline: none;
   }

@@ -11,22 +11,24 @@ const CreateNew = ({
   title,
   inputVal,
   themeColor,
+  themeGrad,
   onBtnClick,
   onNameChange,
 }: {
   title: string;
   inputVal: string;
-  themeColor: string;
+    themeColor: string;
+    themeGrad: string;
   onBtnClick: MouseEventHandler;
   onNameChange: ChangeEventHandler;
 }) => {
   return (
-    <Modal width="250px" height="fit-content">
-      <CreateNewWrapper>
-        <Title color={themeColor}>{title}</Title>
+    <Modal width="300px" height="220px">
+      <CreateNewWrapper bggrad={themeGrad}>
+        <Title>{title}</Title>
         <NameInput value={inputVal} bdcolor={themeColor} onChange={onNameChange}/>
         <CreateBtn
-          bgcolor={themeColor}
+          color={themeColor}
           onClick={inputVal ? onBtnClick : () => {}}
         >
           Create

@@ -27,3 +27,7 @@
 *::-webkit-scrollbar-button {
   display: none;
 }
+
+body {
+  background-image: radial-gradient(circle at center, #642121 0, #000000 100%);
+}

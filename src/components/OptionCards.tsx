@@ -11,11 +11,13 @@ const OptionCards = ({
   imgAlt,
   toRoute,
   themeColor,
+  themeGrad,
   buttonTitle,
 }: {
   imgSrc: string;
   imgAlt: string;
   toRoute: string;
+  themeGrad: string;
   themeColor: string;
   buttonTitle: string;
 }) => {
@@ -25,7 +27,7 @@ const OptionCards = ({
   };
 
   return (
-    <OptionWrapper>
+    <OptionWrapper bggrad={themeGrad}>
       <OptionIcon src={imgSrc} alt={imgAlt} />
       <OptionButton bgcolor={themeColor} onClick={onClickNavigation}>
         {buttonTitle}

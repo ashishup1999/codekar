@@ -56,8 +56,9 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
         </FileSelectionDiv>
         <EditorWrapper>
           <Editor
-            defaultValue={values[currFile]}
+            key={currFile}
             value={values[currFile]}
+            theme="vs-dark"
             defaultLanguage={currFile}
             onChange={(val: any) => setValue(currFile, val)}
             onMount={handleEditorDidMount}

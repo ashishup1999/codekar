@@ -2,33 +2,56 @@ import { OPTION_ICONS } from "./StaticImages";
 
 export const PUBLIC_ROUTES = ["/login", "/signUp", "/forgotPassword"];
 
+export const GRADIENTS = {
+  radialBlackRed: "radial-gradient(circle at center, #642121 0, #000000 100%)",
+  lightOrange: "linear-gradient(0deg, #F1722B 0%, #9D491A 100%)",
+  orange: "linear-gradient(0deg, #DD5407 0%, #772D04 100%)",
+  lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
+  lightGreen: "linear-gradient(0deg, #40AA26 0%, #2C7719 100%)",
+  redishPink: "linear-gradient(0deg, #DF3A3A 0%, #7D1017 100%)",
+  whiteGreyish: "linear-gradient(0deg, #FFFEFE 0%, #777777 100%)",
+};
+
+export const COLORS = {
+  orange: "#DD5407",
+  blue: "#0EA8D9",
+  green: "#3FA526",
+  brightRed: "#E31D29",
+  bluishBlack: "#11051F",
+  vsBlack:"#1E1E1E"
+};
+
 export const HOME_OPTIONS = [
   {
     imgSrc: OPTION_ICONS.ui,
     imgAlt: "UI/UX",
     toRoute: "/projects",
-    themeColor: "#DD5407",
+    themeColor: COLORS.orange,
+    themeGrad: GRADIENTS.lightOrange,
     buttonTitle: "Projects",
   },
   {
     imgSrc: OPTION_ICONS.playCode,
     imgAlt: "plgs",
     toRoute: "/playgrounds",
-    themeColor: "#0EA8D9",
+    themeColor: COLORS.blue,
+    themeGrad: GRADIENTS.lightBlue,
     buttonTitle: "Playgrounds",
   },
   {
     imgSrc: OPTION_ICONS.whiteBoard,
     imgAlt: "wbs",
     toRoute: "/whiteboards",
-    themeColor: "#3FA526",
+    themeColor: COLORS.green,
+    themeGrad: GRADIENTS.lightGreen,
     buttonTitle: "Whiteboards",
   },
   {
     imgSrc: OPTION_ICONS.search,
     imgAlt: "explr",
     toRoute: "/explore",
-    themeColor: "#E31D29",
+    themeColor: COLORS.brightRed,
+    themeGrad: GRADIENTS.redishPink,
     buttonTitle: "Explore",
   },
 ];
@@ -41,39 +64,6 @@ export const COLOR_CONSTANTS = {
 export const COMMON_TEXTS = {
   appName: "CodeKar",
   copyRight: "CodeKar © 2024",
-};
-
-export const LINEAR_GRADS: { [key: string]: string } = {
-  orange:
-    "linear-gradient(180deg, rgba(221,84,7,1) 0%, rgba(221,84,7,0.73) 100%)",
-  blue: "linear-gradient(180deg, rgba(14,168,217,1) 0%, rgba(14,168,217,0.73) 100%)",
-  green:
-    "linear-gradient(180deg, rgba(63,165,38,1) 0%, rgba(63,165,38,0.73) 100%)",
-  brightRed:
-    "linear-gradient(180deg, rgba(227,29,41,1) 0%, rgba(227,29,41,0.73) 100%)",
-  brandText:
-    "linear-gradient(180deg, rgba(229,28,28,1) 0%, rgba(91,16,127,1) 100%)",
-};
-
-export const HEADER_TO_GRADIENT: { [key: string]: string } = {
-  projects: LINEAR_GRADS.orange,
-  playgrounds: LINEAR_GRADS.blue,
-  whiteboards: LINEAR_GRADS.green,
-  explore: LINEAR_GRADS.brightRed,
-};
-
-export const COLORS: { [key: string]: string } = {
-  orange: "#DD5407",
-  blue: "#0EA8D9",
-  green: "#3FA526",
-  brightRed: "#E31D29",
-};
-
-export const HEADER_TO_BORDER_CLR: { [key: string]: string } = {
-  projects: COLORS.orange,
-  playgrounds: COLORS.blue,
-  whiteboards: COLORS.green,
-  explore: COLORS.brightRed,
 };
 
 export const PROJECT_FILES: { [key: string]: { id: string; name: string } } = {

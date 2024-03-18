@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   gap: 10px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
+  background-color: ${COLORS.vsBlack};
 `;
 
 export const EditorSection = styled.div`
@@ -28,7 +29,7 @@ export const ConsoleSection = styled.div`
   height: 100%;
   max-width: 35%;
   padding: 10px;
-  border: 1px solid #d2d2d2;
+  border: 1px solid black;
   border-radius: 10px;
 `;
 
@@ -55,6 +56,7 @@ export const OutputArea = styled.div`
   height: 100%;
   padding: 15px;
   font-size: 14px;
+  color: white;
 `;
 
 export const InputDiv = styled.div`
@@ -72,6 +74,8 @@ export const InputField = styled.textarea`
   border: none;
   resize: none;
   white-space: pre-wrap;
+  background-color: ${COLORS.vsBlack};
+  color: white;
   &:focus {
     outline: none;
   }
@@ -83,10 +87,7 @@ export const PgHeaderDiv = styled.div`
   align-items: center;
   width: 100%;
   min-height: 45px;
-  background-color: white;
-  box-shadow: 0px 0px 5px -3px #000000;
   margin-bottom: 10px;
-  border-radius: 10px;
   padding: 10px;
 `;
 
@@ -109,6 +110,7 @@ export const LanguageDD = styled.select`
   background-color: #d9d9d9;
   background-position: 96%;
   background-size: 20%;
+  cursor: pointer;
 `;
 
 export const LanguageDDOption = styled.option`

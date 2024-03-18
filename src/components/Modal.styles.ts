@@ -7,7 +7,7 @@ export const ModalBg = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-color: #d9d9d977;
+  background-color: rgb(217, 217, 217, 25%);
   z-index: 1;
   top: 0;
   right: 0;
@@ -20,6 +20,5 @@ export const ModalContainer = styled.div<{ width: string; height: string }>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   border-radius: 10px;
-  box-shadow: 0px 0px 9px 0px #0000003f;
-  padding: 15px;
+  box-shadow: 0px 4px 9px 0px #0000003f;
 `;

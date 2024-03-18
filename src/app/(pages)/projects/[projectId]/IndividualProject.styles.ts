@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   gap: 10px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
+  background-color: ${COLORS.vsBlack};
 `;
 
 export const EditorSection = styled.div`
@@ -29,6 +30,7 @@ export const PreviewSection = styled.div`
   padding: 10px;
   border: 1px solid #d2d2d2;
   border-radius: 10px;
+  background-color: white;
 `;
 
 export const Preview = styled.div`
@@ -57,7 +59,7 @@ export const FileNameDiv = styled.div<{ selected: boolean }>`
   height: 100%;
   background-color: ${(props) => (props.selected ? "white" : "inherit")};
   box-shadow: ${(props) =>
-    props.selected ? "0px 0px 5px -3px #000000" : "none"};
+    props.selected ? "0px 0px 9px 0px #0000003f" : "none"};
   border-radius: 10px;
   padding: 3px;
   gap: 5px;
@@ -103,7 +105,6 @@ export const Saved = styled.p`
   border: 1px solid #d9d9d9;
   border-radius: 12px;
 `;
-
 
 export const FileTypeImage = styled(Image)`
   height: 15px;

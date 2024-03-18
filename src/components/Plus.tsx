@@ -65,6 +65,7 @@ const Plus = ({
           title={modalTitle}
           inputVal={fileName}
           themeColor={themeColor}
+          themeGrad={grad}
           onBtnClick={onCreateFile}
           onNameChange={onFileNameChange}
         />

@@ -90,8 +90,8 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
         <EditorWrapper>
           <Editor
             key={selectedLang}
-            defaultValue={values[selectedLang]}
             value={values[selectedLang]}
+            theme="vs-dark"
             defaultLanguage={selectedLang}
             onChange={(val: any) => setValue(selectedLang, val)}
           />

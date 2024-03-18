@@ -1,44 +1,44 @@
 import styled from "styled-components";
 import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
-import { LINEAR_GRADS } from "@/constants/CommonConstants";
+import { GRADIENTS } from "@/constants/CommonConstants";
 
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  min-height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   background: url(${bgLogo.src}) no-repeat center;
+  overflow-x: hidden;
 `;
 
 export const HeaderDiv = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
   margin-bottom: auto;
   padding: 10px 25px;
   margin-top: 20px;
 `;
 
 export const LogoImg = styled(Image)`
-  height: 45px;
+  height: 40px;
   cursor: pointer;
 `;
 
 export const HeaderTextSpan = styled.span`
   display: flex;
-  margin: auto;
+  margin-right: auto;
 `;
 
 export const HeaderText = styled.p`
   display: inline;
   font-weight: bolder;
   letter-spacing: 2.5px;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
-  background: ${LINEAR_GRADS.brandText};
+  background: ${GRADIENTS.whiteGreyish};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 3px;
@@ -47,9 +47,10 @@ export const HeaderText = styled.p`
 export const UserImg = styled(Image)`
   height: 45px;
   width: 45px;
-  padding: 0px 15px;
-  border-radius: 50px;
+  padding: 0px 10px;
+  border-radius: 10px;
   box-shadow: 0px 0px 7px -3px #000000;
+  background-color: white;
   cursor: pointer;
 `;
 
@@ -66,10 +67,11 @@ export const FooterDiv = styled.div`
   width: 100%;
   padding: 5px 15px;
   margin-top: auto;
-  background-color: #eee9e9;
+  background-color: black;
 `;
 
 export const CopyrigthtText = styled.p`
+  color: white;
   font-size: 14px;
 `;
 

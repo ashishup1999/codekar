@@ -1,27 +1,40 @@
 "use client";
 import React from "react";
 import {
+  ActionDiv,
+  ActionIcon,
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
+  PCInfo,
   PCLink,
   PCName,
-  PCPreviewImg,
-  PCWrapper,
-} from "./ProjectCard.styles";
+  PCPreview,
+  PCPreviewWrapper,
+  PCWrapper2,
+} from "./Card.styles";
+import { GRADIENTS } from "@/constants/CommonConstants";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const ProjectCard = ({ projInfo }: { projInfo: any }) => {
-
   return (
-    <PCWrapper key={projInfo?.id}>
-      <PCLink href={`/projects/${projInfo?.id}`} />
-      <PCPreviewImg srcDoc={projInfo?.previewHtml} />
-      <PCName>{projInfo?.name}</PCName>
-      <PCAuthorSpan>
-        <PCAuthorTitle>Author : </PCAuthorTitle>
-        <PCAuthorName>{projInfo?.author}</PCAuthorName>
-      </PCAuthorSpan>
-    </PCWrapper>
+    <PCWrapper2 bggrad={GRADIENTS.orange}>
+      <PCInfo bggrad={GRADIENTS.lightOrange}>
+        <PCLink href={`/projects/${projInfo?.id}`} />
+        <PCName>{projInfo?.name}</PCName>
+        <PCAuthorSpan>
+          <PCAuthorTitle>by </PCAuthorTitle>
+          <PCAuthorName>{projInfo?.author}</PCAuthorName>
+        </PCAuthorSpan>
+        <ActionDiv>
+          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+        </ActionDiv>
+      </PCInfo>
+      <PCPreviewWrapper>
+        <PCLink href={`/projects/${projInfo?.id}`} />
+        <PCPreview srcDoc={projInfo?.previewHtml} />
+      </PCPreviewWrapper>
+    </PCWrapper2>
   );
 };
 

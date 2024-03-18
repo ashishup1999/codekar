@@ -1,13 +1,19 @@
 "use client";
-import {
-  Content,
-  CopyrigthtText,
-  FooterDiv,
-  HomeWrapper,
-} from "@/app/(pages)/layout.styles";
 import { COMMON_TEXTS } from "@/constants/CommonConstants";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useContext, useEffect } from "react";
+import {
+  CopyrigthtText,
+  FooterDiv,
+  HeaderDiv,
+  HeaderText,
+  HeaderTextSpan,
+  HomeWrapper,
+  LogoImg,
+  UserImg,
+} from "../page.styles";
+import { Content } from "./layout.styles";
 
 declare global {
   interface Window {
@@ -24,8 +30,7 @@ export default function PageLayouts({
   useEffect(() => {
     setBasicDetails({
       payload: {
-        userName:
-          localStorage.getItem("userName")
+        userName: localStorage.getItem("userName"),
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,6 +38,13 @@ export default function PageLayouts({
   return (
     <>
       <HomeWrapper>
+        <HeaderDiv>
+          <HeaderTextSpan>
+            <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
+            <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
+          </HeaderTextSpan>
+          <UserImg src={COMMON_IMAGES.userCircle} alt="" />
+        </HeaderDiv>
         <Content>{children}</Content>
         <FooterDiv>
           <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>

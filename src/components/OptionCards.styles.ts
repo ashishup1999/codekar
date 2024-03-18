@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export const OptionWrapper = styled.div`
+export const OptionWrapper = styled.div<{ bggrad: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@ export const OptionWrapper = styled.div`
   width: 200px;
   padding: 25px 15px;
   border-radius: 30px;
+  background-image: ${(props) => props.bggrad};
   box-shadow: 0px 0px 7px -3px #000000;
   margin: 10px;
   background-color: white;
@@ -17,6 +18,7 @@ export const OptionWrapper = styled.div`
 export const OptionIcon = styled(Image)`
   height: 60px;
   margin-bottom: 25px;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 `;
 
 export const OptionButton = styled.button<{ bgcolor: string }>`
@@ -30,4 +32,5 @@ export const OptionButton = styled.button<{ bgcolor: string }>`
   font-size: 18px;
   letter-spacing: 1px;
   cursor: pointer;
+  box-shadow: 0px 3px 9px 0px #0000003f;
 `;

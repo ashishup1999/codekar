@@ -1,9 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
-import {
-  HEADER_TO_BORDER_CLR,
-  LINEAR_GRADS,
-} from "@/constants/CommonConstants";
 import {
   EachSection,
   ExploreDiv,
@@ -13,14 +8,7 @@ import {
   SearchIcon,
   SecName,
 } from "./page.styles";
-import {
-  HeaderDiv,
-  HeaderText,
-  HeaderTextWrapper,
-  LogoImg,
-  UserImg,
-} from "../layout.styles";
-import { COMMON_IMAGES, OPTION_ICONS } from "@/constants/StaticImages";
+import { OPTION_ICONS } from "@/constants/StaticImages";
 import useExplore from "@/hooks/useExplore";
 import ProfileCard from "@/components/ProfileCard";
 import ProjectCard from "@/components/ProjectCard";
@@ -28,7 +16,6 @@ import PgCard from "@/components/PgCard";
 import WbCard from "@/components/WbCard";
 
 const Explore = () => {
-  const router = useRouter();
   const {
     profilesRef,
     projsRef,
@@ -45,20 +32,6 @@ const Explore = () => {
 
   return (
     <>
-      <HeaderDiv>
-        <LogoImg
-          src={COMMON_IMAGES.logo}
-          alt=""
-          onClick={() => router.push("/")}
-        />
-        <HeaderTextWrapper
-          bgColorGrad={LINEAR_GRADS.brightRed}
-          borderclr={HEADER_TO_BORDER_CLR.explore}
-        >
-          <HeaderText>Explore</HeaderText>
-        </HeaderTextWrapper>
-        <UserImg src={COMMON_IMAGES.userCircle} alt="" />
-      </HeaderDiv>
       <ExploreWrapper>
         <SearchBarDiv>
           <SearchBarInput value={searchKey} onChange={onChangeSearch} />
