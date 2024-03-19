@@ -18,8 +18,11 @@ import {
 import OptionCards from "@/components/OptionCards";
 import userCircle from "@/images/userCircle.svg";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
+const router = useRouter();
+  const lsUserName = localStorage.getItem("userName");
   return (
     <>
       <HomeWrapper>
@@ -28,7 +31,7 @@ const Home = () => {
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
-          <UserImg src={userCircle} alt="" />
+          <UserImg src={userCircle} alt="" onClick={() => router.push(`/profile/${lsUserName}`)}/>
         </HeaderDiv>
         <ContentDiv>
           {HOME_OPTIONS.map((obj) => {

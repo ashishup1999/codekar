@@ -12,6 +12,10 @@ import logo from "@/images/logo.svg";
 import logoWhite from "@/images/logoWhite.svg";
 import userCircle from "@/images/userCircle.svg";
 import deleteIcon from "@/images/delete.svg";
+import group from "@/images/group.svg";
+import setting from "@/images/setting.svg";
+import redPen from "@/images/redPen.svg";
+import powerOnOff from "@/images/powerOnOff.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -36,6 +40,10 @@ export const COMMON_IMAGES = {
   logoWhite,
   userCircle,
   deleteIcon,
+  group,
+  setting,
+  redPen,
+  powerOnOff,
 };
 
 export const ERROR_EXLAMATION = errorExl;

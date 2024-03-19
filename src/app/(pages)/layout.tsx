@@ -14,6 +14,7 @@ import {
   UserImg,
 } from "../page.styles";
 import { Content } from "./layout.styles";
+import { useRouter } from "next/navigation";
 
 declare global {
   interface Window {
@@ -26,15 +27,15 @@ export default function PageLayouts({
 }: {
   children: React.ReactNode;
 }) {
+const router = useRouter();
+  const lsUserName = localStorage.getItem("userName");
   const { setBasicDetails } = useContext(BasicDetailsInterface);
+
   useEffect(() => {
-    setBasicDetails({
-      payload: {
-        userName: localStorage.getItem("userName"),
-      },
-    });
+    setBasicDetails({ payload: { userName: lsUserName } });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <HomeWrapper>
@@ -43,7 +44,11 @@ export default function PageLayouts({
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
-          <UserImg src={COMMON_IMAGES.userCircle} alt="" />
+          <UserImg
+            src={COMMON_IMAGES.userCircle}
+            alt=""
+            onClick={() => router.push(`/profile/${lsUserName}`)}
+          />
         </HeaderDiv>
         <Content>{children}</Content>
         <FooterDiv>
