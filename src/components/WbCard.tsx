@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   ActionDiv,
   ActionIcon,
@@ -12,8 +12,11 @@ import {
 } from "./Card.styles";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { GRADIENTS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const WbCard = ({ wbInfo }: { wbInfo: any }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
   return (
     <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
       <PCLink href={`/whiteboards/whiteboard/${wbInfo?.id}`} />
@@ -24,9 +27,11 @@ const WbCard = ({ wbInfo }: { wbInfo: any }) => {
           <PCAuthorName>{wbInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
       </div>
-      <ActionDiv className="del">
-        <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-      </ActionDiv>
+      {userName === wbInfo?.author && (
+        <ActionDiv className="del">
+          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+        </ActionDiv>
+      )}
     </PCMiniWrapper>
   );
 };

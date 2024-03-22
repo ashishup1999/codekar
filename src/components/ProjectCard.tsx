@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   ActionDiv,
   ActionIcon,
@@ -15,8 +15,11 @@ import {
 } from "./Card.styles";
 import { GRADIENTS } from "@/constants/CommonConstants";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const ProjectCard = ({ projInfo }: { projInfo: any }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
   return (
     <PCWrapper2 bggrad={GRADIENTS.orange}>
       <PCInfo bggrad={GRADIENTS.lightOrange}>
@@ -26,9 +29,11 @@ const ProjectCard = ({ projInfo }: { projInfo: any }) => {
           <PCAuthorTitle>by </PCAuthorTitle>
           <PCAuthorName>{projInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
-        <ActionDiv>
-          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-        </ActionDiv>
+        {userName === projInfo?.author && (
+          <ActionDiv>
+            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+          </ActionDiv>
+        )}
       </PCInfo>
       <PCPreviewWrapper>
         <PCLink href={`/projects/project/${projInfo?.id}`} />

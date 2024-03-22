@@ -34,7 +34,7 @@ const Home = () => {
       setBasicDetails({ payload: { userName: lsUserName } });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userName]);
 
   return (
     <>

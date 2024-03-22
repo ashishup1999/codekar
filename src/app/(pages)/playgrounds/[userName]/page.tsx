@@ -1,12 +1,14 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
 import usePg from "@/hooks/usePg";
 import { PgDiv, PgWrapper } from "./page.styles";
 import PGCard from "@/components/PgCard";
 import Plus from "@/components/Plus";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const Playgrounds = ({ params }: { params: { userName: string } }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
   const {
     pgs,
     pgName,
@@ -19,16 +21,18 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
   return (
     <>
       <PgWrapper>
-        <Plus
-          themeColor={COLORS.blue}
-          grad={GRADIENTS.lightBlue}
-          isModalOpen={isCreateModalOpen}
-          fileName={pgName}
-          modalTitle="Playground Name"
-          onCreateNew={onCreateNewClick}
-          onCreateFile={onCreateFile}
-          onFileNameChange={onFileNameChange}
-        />
+        {basicDetails.userName === params.userName && (
+          <Plus
+            themeColor={COLORS.blue}
+            grad={GRADIENTS.lightBlue}
+            isModalOpen={isCreateModalOpen}
+            fileName={pgName}
+            modalTitle="Playground Name"
+            onCreateNew={onCreateNewClick}
+            onCreateFile={onCreateFile}
+            onFileNameChange={onFileNameChange}
+          />
+        )}
         <PgDiv>
           {pgs.map((obj: any) => (
             <PGCard key={obj?.id} pgInfo={obj} />

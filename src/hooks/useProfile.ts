@@ -26,8 +26,8 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
   };
 
   const logOut = () => {
-    setBasicDetails({ payload: { userName: "" } });
     localStorage.removeItem("userName");
+    setBasicDetails({ payload: { userName: "" } });
   };
 
   return { fullName, logOut };

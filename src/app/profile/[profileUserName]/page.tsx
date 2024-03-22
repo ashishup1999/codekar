@@ -20,8 +20,10 @@ import {
 import ProfileDetails from "@/components/ProfileDetails";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import useProfile from "@/hooks/useProfile";
+import { useRouter } from "next/navigation";
 
 const Profile = ({ params }: { params: { profileUserName: string } }) => {
+  const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   const { fullName, logOut } = useProfile({
@@ -44,11 +46,28 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
               fullName={fullName}
             />
             <VisitSections>
-              <VisitOptions bggrad={GRADIENTS.orange}>Projects</VisitOptions>
-              <VisitOptions bggrad={GRADIENTS.lightBlue}>
+              <VisitOptions
+                bggrad={GRADIENTS.orange}
+                onClick={() =>
+                  router.push(`/projects/${params?.profileUserName}`)
+                }
+              >
+                Projects
+              </VisitOptions>
+              <VisitOptions
+                bggrad={GRADIENTS.lightBlue}
+                onClick={() =>
+                  router.push(`/playgrounds/${params?.profileUserName}`)
+                }
+              >
                 Playgrounds
               </VisitOptions>
-              <VisitOptions bggrad={GRADIENTS.lightGreen}>
+              <VisitOptions
+                bggrad={GRADIENTS.lightGreen}
+                onClick={() =>
+                  router.push(`/whiteboards/${params?.profileUserName}`)
+                }
+              >
                 Whiteboards
               </VisitOptions>
             </VisitSections>

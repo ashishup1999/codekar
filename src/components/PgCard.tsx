@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   ActionDiv,
   ActionIcon,
@@ -12,8 +12,11 @@ import {
 } from "./Card.styles";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { GRADIENTS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const PgCard = ({ pgInfo }: { pgInfo: any }) => {
+  const { basicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
   return (
     <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
       <PCLink href={`/playgrounds/pg/${pgInfo?.id}`} />
@@ -24,9 +27,11 @@ const PgCard = ({ pgInfo }: { pgInfo: any }) => {
           <PCAuthorName>{pgInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
       </div>
-      <ActionDiv className="del">
-        <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-      </ActionDiv>
+      {userName === pgInfo?.author && (
+        <ActionDiv className="del">
+          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+        </ActionDiv>
+      )}
     </PCMiniWrapper>
   );
 };
