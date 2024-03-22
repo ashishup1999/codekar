@@ -4,6 +4,10 @@ import { UserInfoWrapper } from "./Card.styles";
 import styled from "styled-components";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
+import { MouseEventHandler, useContext, useState } from "react";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useRouter } from "next/navigation";
+import userService from "@/services/UserService";
 
 const ProfileImage = styled(Image)`
   width: 60px;
@@ -33,12 +37,31 @@ const FollowButton = styled.div`
   box-shadow: 0px 0px 7px -3px #000000;
 `;
 
-const ProfileCard = ({ userName }: { userName: string }) => {
+const ProfileCard = ({
+  userName,
+  connections,
+  onConnectClick,
+}: {
+  userName: string;
+  connections: Array<string>;
+  onConnectClick: Function;
+}) => {
+  const router = useRouter();
+  const { basicDetails } = useContext(BasicDetailsInterface);
+
   return (
-    <UserInfoWrapper bggrad={GRADIENTS.redishPink}>
+    <UserInfoWrapper
+      bggrad={GRADIENTS.redishPink}
+      onClick={() => router.push(`/profile/${userName}`)}
+    >
       <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />
       <UserName>{userName}</UserName>
-      <FollowButton>Connect</FollowButton>
+      {basicDetails?.userName !== userName &&
+        !connections.includes(userName) && (
+          <FollowButton onClick={(e) => onConnectClick(e, userName)}>
+            Connect
+          </FollowButton>
+        )}
     </UserInfoWrapper>
   );
 };

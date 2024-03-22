@@ -1,6 +1,15 @@
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import exploreService from "@/services/ExploreService";
+import userService from "@/services/UserService";
 import { debounce, defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer, useRef, useState } from "react";
+import {
+  MouseEventHandler,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 
 interface StateInterface {
   searchKey: string;
@@ -14,6 +23,8 @@ interface StateInterface {
     pgs: number;
     wbs: number;
   };
+  connections: Array<string>;
+  connUpdatedKey: boolean;
 }
 
 const initialState: StateInterface = {
@@ -28,17 +39,20 @@ const initialState: StateInterface = {
     pgs: 1,
     wbs: 1,
   },
+  connections: [],
+  connUpdatedKey: false,
 };
 
 const useExplore = () => {
   const [state, dispatch]: [state: StateInterface, dispatch: Function] =
     useReducer(defaultStateReducer, initialState);
-  const { searchKey, profiles, projs, pgs, wbs, pageNos } = state;
+  const { searchKey, profiles, projs, pgs, wbs, pageNos, connections, connUpdatedKey } = state;
   const [debTimer, setDebTimer]: [debTimer: any, setDebTimer: any] = useState();
   const profilesRef = useRef<HTMLDivElement>(null);
   const projsRef = useRef<HTMLDivElement>(null);
   const pgsRef = useRef<HTMLDivElement>(null);
   const wbsRef = useRef<HTMLDivElement>(null);
+  const { basicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     const allEachSections = document.querySelectorAll(".EachSection");
@@ -175,6 +189,34 @@ const useExplore = () => {
     }
   };
 
+  useEffect(() => {
+    getConnections();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [connUpdatedKey]);
+
+  const getConnections = async () => {
+    try {
+      const res = await userService.getConnectionsByUser(
+        basicDetails?.userName
+      );
+      if (res?.status != "SUCCESS") throw res;
+      dispatch({ payload: { connections: res?.connections } });
+    } catch (error) {}
+  };
+
+  const onConnectClick = async (e: MouseEvent, otherUserName: string) => {
+    e.stopPropagation();
+    try {
+      const req = {
+        userName1: basicDetails?.userName,
+        userName2: otherUserName,
+      };
+      const res = await userService.connectUsers(req);
+      if (res?.status != "SUCCESS") throw res;
+      dispatch({ payload: { connUpdatedKey: !connUpdatedKey } });
+    } catch (error) {}
+  };
+
   return {
     profilesRef,
     projsRef,
@@ -185,8 +227,10 @@ const useExplore = () => {
     pgs,
     wbs,
     searchKey,
+    connections,
     onChangeSearch,
     handleScroll,
+    onConnectClick,
   };
 };
 

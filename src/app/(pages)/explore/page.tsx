@@ -26,8 +26,10 @@ const Explore = () => {
     pgs,
     wbs,
     searchKey,
+    connections,
     onChangeSearch,
     handleScroll,
+    onConnectClick,
   } = useExplore();
 
   return (
@@ -45,7 +47,14 @@ const Explore = () => {
             onScroll={() => handleScroll(profilesRef, 0)}
           >
             {profiles.map((obj) => {
-              return <ProfileCard key={obj?.userId} userName={obj?.userName} />;
+              return (
+                <ProfileCard
+                  key={obj?.userId}
+                  userName={obj?.userName}
+                  connections={connections}
+                  onConnectClick={onConnectClick}
+                />
+              );
             })}
           </EachSection>
           {Boolean(projs?.length) && <SecName>Projects</SecName>}

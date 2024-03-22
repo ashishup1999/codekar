@@ -174,6 +174,7 @@ export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   justify-centent; center;
   align-items: center;
   width: 16vw;
+  height: 180PX;
   padding: 20px;
   border-radius: 22px;
   box-shadow: 0px 0px 7px -3px #000000;

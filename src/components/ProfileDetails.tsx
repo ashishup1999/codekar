@@ -7,13 +7,19 @@ import {
   UserName,
 } from "./ProfileDetails.styles";
 
-const ProfileDetails = () => {
+const ProfileDetails = ({
+  userName,
+  fullName,
+}: {
+  userName: string;
+  fullName: string;
+}) => {
   return (
     <ProfileInfoWrapper>
       <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />
       <TextInfos>
-        <UserFullName>Ashish Upadhyay</UserFullName>
-        <UserName>@ashishup1999</UserName>
+        <UserFullName>{fullName}</UserFullName>
+        <UserName>{userName}</UserName>
       </TextInfos>
     </ProfileInfoWrapper>
   );

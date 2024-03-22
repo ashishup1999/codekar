@@ -27,9 +27,9 @@ export default function PageLayouts({
 }: {
   children: React.ReactNode;
 }) {
-const router = useRouter();
+  const router = useRouter();
   const lsUserName = localStorage.getItem("userName");
-  const { setBasicDetails } = useContext(BasicDetailsInterface);
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     setBasicDetails({ payload: { userName: lsUserName } });
@@ -38,23 +38,26 @@ const router = useRouter();
 
   return (
     <>
-      <HomeWrapper>
-        <HeaderDiv>
-          <HeaderTextSpan>
-            <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
-            <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
-          </HeaderTextSpan>
-          <UserImg
-            src={COMMON_IMAGES.userCircle}
-            alt=""
-            onClick={() => router.push(`/profile/${lsUserName}`)}
-          />
-        </HeaderDiv>
-        <Content>{children}</Content>
-        <FooterDiv>
-          <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
-        </FooterDiv>
-      </HomeWrapper>
+      {" "}
+      {basicDetails?.userName && (
+        <HomeWrapper>
+          <HeaderDiv>
+            <HeaderTextSpan>
+              <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
+              <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
+            </HeaderTextSpan>
+            <UserImg
+              src={COMMON_IMAGES.userCircle}
+              alt=""
+              onClick={() => router.push(`/profile/${lsUserName}`)}
+            />
+          </HeaderDiv>
+          <Content>{children}</Content>
+          <FooterDiv>
+            <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
+          </FooterDiv>
+        </HomeWrapper>
+      )}
     </>
   );
 }

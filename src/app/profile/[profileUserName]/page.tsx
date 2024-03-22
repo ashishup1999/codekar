@@ -24,7 +24,9 @@ import useProfile from "@/hooks/useProfile";
 const Profile = ({ params }: { params: { profileUserName: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
-  const { logOut } = useProfile();
+  const { fullName, logOut } = useProfile({
+    profileUserName: params?.profileUserName,
+  });
 
   return (
     <>
@@ -37,7 +39,10 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
         </HeaderDiv>
         <ProfileWrapper>
           <ProfileDiv>
-            <ProfileDetails />
+            <ProfileDetails
+              userName={params?.profileUserName}
+              fullName={fullName}
+            />
             <VisitSections>
               <VisitOptions bggrad={GRADIENTS.orange}>Projects</VisitOptions>
               <VisitOptions bggrad={GRADIENTS.lightBlue}>

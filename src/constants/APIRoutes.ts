@@ -19,6 +19,9 @@ const API_CONSTANTS = {
   SEARCH_PROJS: `${BASE_URL}/getProjsByName`,
   SEARCH_PGS: `${BASE_URL}/getPgsByName`,
   SEARCH_WBS: `${BASE_URL}/getWbsByName`,
+  CONNECT: `${BASE_URL}/addConnection`,
+  GET_CONNECTIONS_BY_USER: `${BASE_URL}/connectionByUser`,
+  USER_INFO: `${BASE_URL}/userInfo`,
 };
 
 export default API_CONSTANTS;

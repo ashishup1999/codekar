@@ -1,4 +1,4 @@
-import API_CONSTANTS from "@/constants/Routes";
+import API_CONSTANTS from "@/constants/APIRoutes";
 import { ajaxAPI } from "@/utils/CommonUtils";
 
 const getProfilesByName = async (payload: any) => {
