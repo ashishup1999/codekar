@@ -78,4 +78,5 @@ export const SecName = styled.p`
   font-weight: bold;
   margin-bottom: 10px;
   margin-left: 10px;
+  color: white;
 `;

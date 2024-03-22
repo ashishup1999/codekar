@@ -2,14 +2,7 @@ import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import exploreService from "@/services/ExploreService";
 import userService from "@/services/UserService";
 import { debounce, defaultStateReducer } from "@/utils/CommonUtils";
-import {
-  MouseEventHandler,
-  useContext,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useReducer, useRef, useState } from "react";
 
 interface StateInterface {
   searchKey: string;
@@ -17,12 +10,7 @@ interface StateInterface {
   projs: Array<any>;
   pgs: Array<any>;
   wbs: Array<any>;
-  pageNos: {
-    profiles: number;
-    projs: number;
-    pgs: number;
-    wbs: number;
-  };
+  pageSize: number;
   connections: Array<string>;
   connUpdatedKey: boolean;
 }
@@ -33,12 +21,7 @@ const initialState: StateInterface = {
   projs: [],
   pgs: [],
   wbs: [],
-  pageNos: {
-    profiles: 1,
-    projs: 1,
-    pgs: 1,
-    wbs: 1,
-  },
+  pageSize: 10,
   connections: [],
   connUpdatedKey: false,
 };
@@ -46,7 +29,16 @@ const initialState: StateInterface = {
 const useExplore = () => {
   const [state, dispatch]: [state: StateInterface, dispatch: Function] =
     useReducer(defaultStateReducer, initialState);
-  const { searchKey, profiles, projs, pgs, wbs, pageNos, connections, connUpdatedKey } = state;
+  const {
+    searchKey,
+    profiles,
+    projs,
+    pgs,
+    wbs,
+    pageSize,
+    connections,
+    connUpdatedKey,
+  } = state;
   const [debTimer, setDebTimer]: [debTimer: any, setDebTimer: any] = useState();
   const profilesRef = useRef<HTMLDivElement>(null);
   const projsRef = useRef<HTMLDivElement>(null);
@@ -67,19 +59,7 @@ const useExplore = () => {
   const onChangeSearch = (e: any) => {
     const val = e.target.value;
     dispatch({
-      payload: {
-        searchKey: val,
-        profiles: [],
-        projs: [],
-        pgs: [],
-        wbs: [],
-        pageNos: {
-          profiles: 1,
-          projs: 1,
-          pgs: 1,
-          wbs: 1,
-        },
-      },
+      payload: { searchKey: val, profiles: [], projs: [], pgs: [], wbs: [] },
     });
   };
 
@@ -106,76 +86,56 @@ const useExplore = () => {
 
   const getProfiles = async () => {
     try {
-      if (profiles.length < (pageNos.profiles - 1) * 10) return;
+      if (profiles.length % 10 !== 0) return;
       const req: { name: string; pageNo: Number } = {
         name: searchKey,
-        pageNo: pageNos.profiles,
+        pageNo: Math.floor(profiles.length / pageSize) + 1,
       };
       const res: any = await exploreService.getProfilesByName(req);
       if (res?.status === "SUCCESS" && res?.profiles) {
-        dispatch({
-          payload: {
-            profiles: [...profiles, ...res?.profiles],
-            pageNos: { ...pageNos, profiles: pageNos.profiles + 1 },
-          },
-        });
+        dispatch({ payload: { profiles: [...profiles, ...res?.profiles] } });
       } else throw res;
     } catch (error) {}
   };
 
   const getProjs = async () => {
     try {
-      if (projs.length < (pageNos.projs - 1) * 10) return;
+      if (projs.length % 10 !== 0) return;
       const req: { projName: string; pageNo: Number } = {
         projName: searchKey,
-        pageNo: pageNos.projs,
+        pageNo: Math.floor(projs.length / pageSize) + 1,
       };
       const res: any = await exploreService.getProjsByName(req);
       if (res?.status === "SUCCESS" && res?.projects) {
-        dispatch({
-          payload: {
-            projs: [...projs, ...res?.projects],
-            pageNos: { ...pageNos, projs: pageNos.projs + 1 },
-          },
-        });
+        dispatch({ payload: { projs: [...projs, ...res?.projects] } });
       } else throw res;
     } catch (error) {}
   };
 
   const getPgs = async () => {
     try {
-      if (pgs.length < (pageNos.pgs - 1) * 10) return;
+      if (pgs.length % 10 !== 0) return;
       const req: { pgName: string; pageNo: Number } = {
         pgName: searchKey,
-        pageNo: pageNos.pgs,
+        pageNo: Math.floor(pgs.length / pageSize) + 1,
       };
       const res: any = await exploreService.getPgsByName(req);
       if (res?.status === "SUCCESS" && res?.pgs) {
-        dispatch({
-          payload: {
-            pgs: [...pgs, ...res?.pgs],
-            pageNos: { ...pageNos, pgs: pageNos.pgs + 1 },
-          },
-        });
+        dispatch({ payload: { pgs: [...pgs, ...res?.pgs] } });
       } else throw res;
     } catch (error) {}
   };
 
   const getWbs = async () => {
     try {
-      if (wbs.length < (pageNos.wbs - 1) * 10) return;
+      if (wbs.length % 10 !== 0) return;
       const req: { wbName: string; pageNo: Number } = {
         wbName: searchKey,
-        pageNo: pageNos.wbs,
+        pageNo: Math.floor(wbs.length / pageSize) + 1,
       };
       const res: any = await exploreService.getWbsByName(req);
       if (res?.status === "SUCCESS" && res?.wbs) {
-        dispatch({
-          payload: {
-            wbs: [...wbs, ...res?.wbs],
-            pageNos: { ...pageNos, wbs: pageNos.wbs + 1 },
-          },
-        });
+        dispatch({ payload: { wbs: [...wbs, ...res?.wbs] } });
       } else throw res;
     } catch (error) {}
   };

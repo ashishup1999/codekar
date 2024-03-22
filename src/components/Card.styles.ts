@@ -171,7 +171,7 @@ export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  justify-centent; center;
+  justify-content: center;
   align-items: center;
   width: 16vw;
   height: 180PX;
