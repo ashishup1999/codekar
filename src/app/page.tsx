@@ -11,17 +11,14 @@ import {
   LogoImg,
   UserImg,
 } from "@/app/page.styles";
-import {
-  COMMON_TEXTS,
-  HOME_OPTIONS,
-} from "@/constants/CommonConstants";
+import { COMMON_TEXTS, HOME_OPTIONS } from "@/constants/CommonConstants";
 import OptionCards from "@/components/OptionCards";
 import userCircle from "@/images/userCircle.svg";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { useRouter } from "next/navigation";
 
 const Home = () => {
-const router = useRouter();
+  const router = useRouter();
   const lsUserName = localStorage.getItem("userName");
   return (
     <>
@@ -31,11 +28,21 @@ const router = useRouter();
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
-          <UserImg src={userCircle} alt="" onClick={() => router.push(`/profile/${lsUserName}`)}/>
+          <UserImg
+            src={userCircle}
+            alt=""
+            onClick={() => router.push(`/profile/${lsUserName}`)}
+          />
         </HeaderDiv>
         <ContentDiv>
           {HOME_OPTIONS.map((obj) => {
-            return <OptionCards key={obj?.buttonTitle} {...obj} />;
+            return (
+              <OptionCards
+                key={obj?.buttonTitle}
+                {...obj}
+                toRoute={obj?.userDep? `${obj?.toRoute}/${lsUserName}`:obj?.toRoute}
+              />
+            );
           })}
         </ContentDiv>
         <FooterDiv>

@@ -6,7 +6,7 @@ import Plus from "@/components/Plus";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
 import useProjects from "@/hooks/useProjects";
 
-const Projects = () => {
+const Projects = ({ params }: { params: { userName: string } }) => {
   const {
     createFileName,
     isCreateModalOpen,
@@ -14,7 +14,7 @@ const Projects = () => {
     onFileNameChange,
     onCreateNewClick,
     onCreateFile,
-  } = useProjects();
+  } = useProjects({ userName: params.userName });
 
   return (
     <>

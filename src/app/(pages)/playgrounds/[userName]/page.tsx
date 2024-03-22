@@ -6,7 +6,7 @@ import { PgDiv, PgWrapper } from "./page.styles";
 import PGCard from "@/components/PgCard";
 import Plus from "@/components/Plus";
 
-const Playgrounds = () => {
+const Playgrounds = ({ params }: { params: { userName: string } }) => {
   const {
     pgs,
     pgName,
@@ -14,7 +14,7 @@ const Playgrounds = () => {
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
-  } = usePg();
+  } = usePg({ userName: params.userName });
 
   return (
     <>

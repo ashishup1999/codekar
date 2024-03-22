@@ -16,7 +16,7 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 const WbCard = ({ wbInfo }: { wbInfo: any }) => {
   return (
     <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
-      <PCLink href={`/whiteboards/${wbInfo?.id}`} />
+      <PCLink href={`/whiteboards/whiteboard/${wbInfo?.id}`} />
       <div>
         <PCName>{wbInfo?.name}</PCName>
         <PCAuthorSpan>

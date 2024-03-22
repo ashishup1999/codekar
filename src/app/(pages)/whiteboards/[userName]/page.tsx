@@ -6,7 +6,7 @@ import WbCard from "@/components/WbCard";
 import Plus from "@/components/Plus";
 import useWb from "@/hooks/useWb";
 
-const WhiteBoards = () => {
+const WhiteBoards = ({ params }: { params: { userName: string } }) => {
   const {
     wbs,
     wbName,
@@ -14,7 +14,7 @@ const WhiteBoards = () => {
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
-  } = useWb();
+  } = useWb({ userName: params.userName });
 
   return (
     <>

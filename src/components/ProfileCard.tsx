@@ -38,7 +38,7 @@ const ProfileCard = ({ userName }: { userName: string }) => {
     <UserInfoWrapper bggrad={GRADIENTS.redishPink}>
       <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />
       <UserName>{userName}</UserName>
-      <FollowButton>Follow</FollowButton>
+      <FollowButton>Connect</FollowButton>
     </UserInfoWrapper>
   );
 };

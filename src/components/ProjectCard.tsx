@@ -20,7 +20,7 @@ const ProjectCard = ({ projInfo }: { projInfo: any }) => {
   return (
     <PCWrapper2 bggrad={GRADIENTS.orange}>
       <PCInfo bggrad={GRADIENTS.lightOrange}>
-        <PCLink href={`/projects/${projInfo?.id}`} />
+        <PCLink href={`/projects/project/${projInfo?.id}`} />
         <PCName>{projInfo?.name}</PCName>
         <PCAuthorSpan>
           <PCAuthorTitle>by </PCAuthorTitle>
@@ -31,7 +31,7 @@ const ProjectCard = ({ projInfo }: { projInfo: any }) => {
         </ActionDiv>
       </PCInfo>
       <PCPreviewWrapper>
-        <PCLink href={`/projects/${projInfo?.id}`} />
+        <PCLink href={`/projects/project/${projInfo?.id}`} />
         <PCPreview srcDoc={projInfo?.previewHtml} />
       </PCPreviewWrapper>
     </PCWrapper2>

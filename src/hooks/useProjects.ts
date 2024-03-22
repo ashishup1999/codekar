@@ -1,8 +1,7 @@
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useContext, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
-import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const initialState: {
   createFileName: string;
@@ -14,10 +13,8 @@ const initialState: {
   isCreateModalOpen: false,
 };
 
-const useProjects = () => {
+const useProjects = ({ userName }: { userName: string }) => {
   const router = useRouter();
-  const { basicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { createFileName, isCreateModalOpen, projects } = state;
 
@@ -53,13 +50,13 @@ const useProjects = () => {
   const onCreateFile = async () => {
     try {
       const req = {
-        userName: basicDetails?.userName,
+        userName,
         projectName: createFileName,
       };
       const res = await projectService.createNewProject(req);
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { isCreateModalOpen: false } });
-      router.push(`/projects/${res?.projectId}`);
+      router.push(`/projects/project/${res?.projectId}`);
     } catch (error) {}
   };
 

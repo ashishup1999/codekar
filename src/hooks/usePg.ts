@@ -1,7 +1,6 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useContext, useEffect, useReducer } from "react";
+import {  useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
-import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import pgService from "@/services/PgService";
 
 const initialState: {
@@ -14,10 +13,8 @@ const initialState: {
   isCreateModalOpen: false,
 };
 
-const usePg = () => {
+const usePg = ({ userName }: { userName: string }) => {
   const router = useRouter();
-  const { basicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { pgName, pgs, isCreateModalOpen } = state;
 
@@ -52,13 +49,13 @@ const usePg = () => {
   const onCreateFile = async () => {
     try {
       const req = {
-        userName: basicDetails?.userName,
+        userName,
         pgName,
       };
       const res = await pgService.createNewPg(req);
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { isCreateModalOpen: false } });
-      router.push(`/playgrounds/${res?.pgId}`);
+      router.push(`/playgrounds/pg/${res?.pgId}`);
     } catch (error) {}
   };
 

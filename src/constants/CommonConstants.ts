@@ -18,7 +18,7 @@ export const COLORS = {
   green: "#3FA526",
   brightRed: "#E31D29",
   bluishBlack: "#11051F",
-  vsBlack:"#1E1E1E"
+  vsBlack: "#1E1E1E",
 };
 
 export const HOME_OPTIONS = [
@@ -29,6 +29,7 @@ export const HOME_OPTIONS = [
     themeColor: COLORS.orange,
     themeGrad: GRADIENTS.lightOrange,
     buttonTitle: "Projects",
+    userDep: true,
   },
   {
     imgSrc: OPTION_ICONS.playCode,
@@ -37,6 +38,7 @@ export const HOME_OPTIONS = [
     themeColor: COLORS.blue,
     themeGrad: GRADIENTS.lightBlue,
     buttonTitle: "Playgrounds",
+    userDep: true,
   },
   {
     imgSrc: OPTION_ICONS.whiteBoard,
@@ -45,6 +47,7 @@ export const HOME_OPTIONS = [
     themeColor: COLORS.green,
     themeGrad: GRADIENTS.lightGreen,
     buttonTitle: "Whiteboards",
+    userDep: true,
   },
   {
     imgSrc: OPTION_ICONS.search,
@@ -53,6 +56,7 @@ export const HOME_OPTIONS = [
     themeColor: COLORS.brightRed,
     themeGrad: GRADIENTS.redishPink,
     buttonTitle: "Explore",
+    userDep: false,
   },
 ];
 

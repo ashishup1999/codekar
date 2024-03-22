@@ -1,7 +1,6 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useContext, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
-import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import wbService from "@/services/WbService";
 
 const initialState: {
@@ -14,10 +13,8 @@ const initialState: {
   isCreateModalOpen: false,
 };
 
-const useWb = () => {
+const useWb = ({ userName }: { userName: string }) => {
   const router = useRouter();
-  const { basicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { wbName, wbs, isCreateModalOpen } = state;
 
@@ -52,13 +49,13 @@ const useWb = () => {
   const onCreateFile = async () => {
     try {
       const req = {
-        userName: basicDetails?.userName,
+        userName,
         wbName,
       };
       const res = await wbService.createNewWb(req);
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { isCreateModalOpen: false } });
-      router.push(`/whiteboards/${res?.wbId}`);
+      router.push(`/whiteboards/whiteboard/${res?.wbId}`);
     } catch (error) {}
   };
 

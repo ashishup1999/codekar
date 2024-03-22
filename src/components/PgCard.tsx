@@ -16,7 +16,7 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 const PgCard = ({ pgInfo }: { pgInfo: any }) => {
   return (
     <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
-      <PCLink href={`/playgrounds/${pgInfo?.id}`} />
+      <PCLink href={`/playgrounds/pg/${pgInfo?.id}`} />
       <div>
         <PCName>{pgInfo?.name}</PCName>
         <PCAuthorSpan>
