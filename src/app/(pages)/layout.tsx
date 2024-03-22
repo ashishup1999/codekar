@@ -28,18 +28,25 @@ export default function PageLayouts({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const lsUserName = localStorage.getItem("userName");
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
+  const lsUserName =
+    typeof window !== "undefined" ? localStorage.getItem("userName") : "";
 
   useEffect(() => {
-    setBasicDetails({ payload: { userName: lsUserName } });
+    if (!userName) {
+      if (!lsUserName) {
+        router.push("/login");
+        return;
+      }
+      setBasicDetails({ payload: { userName: lsUserName } });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      {" "}
-      {basicDetails?.userName && (
+      {userName && (
         <HomeWrapper>
           <HeaderDiv>
             <HeaderTextSpan>
@@ -49,7 +56,7 @@ export default function PageLayouts({
             <UserImg
               src={COMMON_IMAGES.userCircle}
               alt=""
-              onClick={() => router.push(`/profile/${lsUserName}`)}
+              onClick={() => router.push(`/profile/${userName}`)}
             />
           </HeaderDiv>
           <Content>{children}</Content>

@@ -1,44 +1,26 @@
 "use client";
-import StyledComponentsRegistry from "@/app/registry";
 import "@/app/global.css";
-import { usePathname, useRouter } from "next/navigation";
-import { PUBLIC_ROUTES } from "@/constants/CommonConstants";
+import StyledComponentsRegistry from "@/app/registry";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 import BasicDetailsContext from "@/context/BasicDetailsContext";
-import { useEffect, useState } from "react";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const pathName = usePathname();
-  const [comp, setComp] = useState(<></>);
-
-  useEffect(() => {
-    let isLoggedIn;
-    if (typeof window !== "undefined") {
-      isLoggedIn = localStorage.getItem("userName");
-    }
-    if (!PUBLIC_ROUTES.includes(pathName) && !isLoggedIn) {
-      router.replace("/login");
-    } else {
-      setComp(
-        <BasicDetailsContext>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </BasicDetailsContext>
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <html lang="en">
       <meta name="description" content="Code kar befikar"></meta>
+      <link rel="icon" type="image/x-icon" href={COMMON_IMAGES.logoWhite.src}></link>
       <head>
         <title>CodeKar</title>
       </head>
-      <body>{comp}</body>
+      <body>
+        <BasicDetailsContext>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </BasicDetailsContext>
+      </body>
     </html>
   );
 }

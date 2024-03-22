@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   ContentDiv,
   CopyrigthtText,
@@ -16,39 +16,61 @@ import OptionCards from "@/components/OptionCards";
 import userCircle from "@/images/userCircle.svg";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { useRouter } from "next/navigation";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const Home = () => {
   const router = useRouter();
-  const lsUserName = localStorage.getItem("userName");
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
+  const lsUserName =
+    typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+
+  useEffect(() => {
+    if (!userName) {
+      if (!lsUserName) {
+        router.push("/login");
+        return;
+      }
+      setBasicDetails({ payload: { userName: lsUserName } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <HomeWrapper>
-        <HeaderDiv>
-          <HeaderTextSpan>
-            <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
-            <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
-          </HeaderTextSpan>
-          <UserImg
-            src={userCircle}
-            alt=""
-            onClick={() => router.push(`/profile/${lsUserName}`)}
-          />
-        </HeaderDiv>
-        <ContentDiv>
-          {HOME_OPTIONS.map((obj) => {
-            return (
-              <OptionCards
-                key={obj?.buttonTitle}
-                {...obj}
-                toRoute={obj?.userDep? `${obj?.toRoute}/${lsUserName}`:obj?.toRoute}
-              />
-            );
-          })}
-        </ContentDiv>
-        <FooterDiv>
-          <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
-        </FooterDiv>
-      </HomeWrapper>
+      {userName && (
+        <HomeWrapper>
+          <HeaderDiv>
+            <HeaderTextSpan>
+              <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
+              <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
+            </HeaderTextSpan>
+            <UserImg
+              src={userCircle}
+              alt=""
+              onClick={() => router.push(`/profile/${userName}`)}
+            />
+          </HeaderDiv>
+          <ContentDiv>
+            {HOME_OPTIONS.map((obj) => {
+              return (
+                <OptionCards
+                  key={obj?.buttonTitle}
+                  {...obj}
+                  toRoute={
+                    obj?.userDep
+                      ? `${obj?.toRoute}/${userName}`
+                      : obj?.toRoute
+                  }
+                />
+              );
+            })}
+          </ContentDiv>
+          <FooterDiv>
+            <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
+          </FooterDiv>
+        </HomeWrapper>
+      )}
     </>
   );
 };

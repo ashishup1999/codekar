@@ -1,14 +1,14 @@
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import userService from "@/services/UserService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useRouter } from "next/navigation";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 
 const initialState = {
   fullName: "",
 };
 
 const useProfile = ({ profileUserName }: { profileUserName: string }) => {
-  const router = useRouter();
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { fullName } = state;
 
@@ -21,13 +21,13 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
     try {
       const res = await userService.getUserInfo(profileUserName);
       if (res?.status != "SUCCESS") throw res;
-      dispatch({ payload: { connections: res?.connections } });
+      dispatch({ payload: { fullName: res?.fullName } });
     } catch (error) {}
   };
 
   const logOut = () => {
+    setBasicDetails({ payload: { userName: "" } });
     localStorage.removeItem("userName");
-    router.push("/login");
   };
 
   return { fullName, logOut };

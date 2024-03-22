@@ -1,18 +1,27 @@
-"use client"
+"use client";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useRouter } from "next/navigation";
 import React, { ReactElement, useContext, useEffect } from "react";
 
 const ProfileLayout = ({ children }: { children: ReactElement }) => {
-  const { setBasicDetails } = useContext(BasicDetailsInterface);
+  const router = useRouter();
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
+  const lsUserName =
+    typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+
   useEffect(() => {
-    setBasicDetails({
-      payload: {
-        userName: localStorage.getItem("userName"),
-      },
-    });
+    if (!userName) {
+      if (!lsUserName) {
+        router.push("/login");
+        return;
+      }
+      setBasicDetails({ payload: { userName: lsUserName } });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <>{children}</>;
+
+  return <>{userName && children}</>;
 };
 
 export default ProfileLayout;

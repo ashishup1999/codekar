@@ -1,7 +1,5 @@
 import { OPTION_ICONS } from "./StaticImages";
 
-export const PUBLIC_ROUTES = ["/login", "/signUp", "/forgotPassword"];
-
 export const GRADIENTS = {
   radialBlackRed: "radial-gradient(circle at center, #642121 0, #000000 100%)",
   lightOrange: "linear-gradient(0deg, #F1722B 0%, #9D491A 100%)",

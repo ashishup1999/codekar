@@ -12,8 +12,29 @@ import {
   HomeWrapper,
   LogoImg,
 } from "../page.styles";
+import { useContext, useEffect } from "react";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useRouter } from "next/navigation";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
+  const { userName } = basicDetails;
+  const lsUserName =
+    typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+
+  useEffect(() => {
+    if (userName) router.push("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userName]);
+
+  useEffect(() => {
+    if (lsUserName) {
+      setBasicDetails({ payload: { userName: lsUserName } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <HomeWrapper>
