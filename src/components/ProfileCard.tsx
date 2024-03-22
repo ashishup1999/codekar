@@ -4,10 +4,9 @@ import { UserInfoWrapper } from "./Card.styles";
 import styled from "styled-components";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
-import { MouseEventHandler, useContext, useState } from "react";
+import { useContext } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useRouter } from "next/navigation";
-import userService from "@/services/UserService";
 
 const ProfileImage = styled(Image)`
   width: 60px;
