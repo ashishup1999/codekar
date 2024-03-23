@@ -7,6 +7,7 @@ import {
   PCAuthorSpan,
   PCAuthorTitle,
   PCLink,
+  PCLinkWrapper,
   PCMiniWrapper,
   PCName,
 } from "./Card.styles";
@@ -18,21 +19,23 @@ const PgCard = ({ pgInfo }: { pgInfo: any }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
-    <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
+    <PCLinkWrapper>
       <PCLink href={`/playgrounds/pg/${pgInfo?.id}`} />
-      <div>
-        <PCName>{pgInfo?.name}</PCName>
-        <PCAuthorSpan>
-          <PCAuthorTitle>Author : </PCAuthorTitle>
-          <PCAuthorName>{pgInfo?.author}</PCAuthorName>
-        </PCAuthorSpan>
-      </div>
-      {userName === pgInfo?.author && (
-        <ActionDiv className="del">
-          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-        </ActionDiv>
-      )}
-    </PCMiniWrapper>
+      <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
+        <div>
+          <PCName>{pgInfo?.name}</PCName>
+          <PCAuthorSpan>
+            <PCAuthorTitle>Author : </PCAuthorTitle>
+            <PCAuthorName>{pgInfo?.author}</PCAuthorName>
+          </PCAuthorSpan>
+        </div>
+        {userName === pgInfo?.author && (
+          <ActionDiv className="del">
+            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+          </ActionDiv>
+        )}
+      </PCMiniWrapper>
+    </PCLinkWrapper>
   );
 };
 

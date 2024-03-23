@@ -37,7 +37,6 @@ export const PCMiniWrapper = styled.div<{ bggrad: string }>`
   padding: 20px;
   border-radius: 22px;
   box-shadow: 0px 0px 7px -3px #000000;
-  margin: 10px;
   background-image: ${(props) => props.bggrad};
   cursor: pointer;
   position: relative;
@@ -59,6 +58,12 @@ export const PCMiniWrapper = styled.div<{ bggrad: string }>`
     margin-left: auto;
   }
 `;
+
+export const PCLinkWrapper = styled.div`
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+`
 
 export const PCLink = styled(Link)`
   width: 100%;

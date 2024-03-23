@@ -7,6 +7,7 @@ import {
   PCAuthorSpan,
   PCAuthorTitle,
   PCLink,
+  PCLinkWrapper,
   PCMiniWrapper,
   PCName,
 } from "./Card.styles";
@@ -18,21 +19,23 @@ const WbCard = ({ wbInfo }: { wbInfo: any }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
-    <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
+    <PCLinkWrapper>
       <PCLink href={`/whiteboards/whiteboard/${wbInfo?.id}`} />
-      <div>
-        <PCName>{wbInfo?.name}</PCName>
-        <PCAuthorSpan>
-          <PCAuthorTitle>Author : </PCAuthorTitle>
-          <PCAuthorName>{wbInfo?.author}</PCAuthorName>
-        </PCAuthorSpan>
-      </div>
-      {userName === wbInfo?.author && (
-        <ActionDiv className="del">
-          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-        </ActionDiv>
-      )}
-    </PCMiniWrapper>
+      <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
+        <div>
+          <PCName>{wbInfo?.name}</PCName>
+          <PCAuthorSpan>
+            <PCAuthorTitle>Author : </PCAuthorTitle>
+            <PCAuthorName>{wbInfo?.author}</PCAuthorName>
+          </PCAuthorSpan>
+        </div>
+        {userName === wbInfo?.author && (
+          <ActionDiv className="del">
+            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+          </ActionDiv>
+        )}
+      </PCMiniWrapper>
+    </PCLinkWrapper>
   );
 };
 
