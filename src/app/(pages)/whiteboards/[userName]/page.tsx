@@ -16,6 +16,7 @@ const WhiteBoards = ({ params }: { params: { userName: string } }) => {
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
+    deleteWb,
   } = useWb({ userName: params.userName });
 
   return (
@@ -35,7 +36,7 @@ const WhiteBoards = ({ params }: { params: { userName: string } }) => {
         )}
         <WbDiv>
           {wbs.map((obj: any) => (
-            <WbCard key={obj?.id} wbInfo={obj} />
+            <WbCard key={obj?.id} wbInfo={obj} onDelete={deleteWb} />
           ))}
         </WbDiv>
       </WbWrapper>

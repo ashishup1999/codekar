@@ -7,28 +7,30 @@ const initialState: {
   wbName: string;
   wbs: Array<any>;
   isCreateModalOpen: boolean;
+  compKey: boolean;
 } = {
   wbName: "",
   wbs: [],
   isCreateModalOpen: false,
+  compKey: true,
 };
 
 const useWb = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { wbName, wbs, isCreateModalOpen } = state;
+  const { wbName, wbs, isCreateModalOpen, compKey } = state;
 
   useEffect(() => {
     if (userName) getAllWbs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userName]);
+  }, [userName, compKey]);
 
   const getAllWbs = async () => {
     try {
       const res = await wbService.getAllWbByUser(userName);
       if (res?.status === "SUCCESS") {
         let allWbs: Array<any> = [];
-        for (let i = 0; i < res?.wbs.length; i++) {
+        for (let i = 0; i < res?.wbs?.length; i++) {
           const wb = res?.wbs[i];
           const tp: any = {
             id: wb.wbId,
@@ -64,6 +66,14 @@ const useWb = ({ userName }: { userName: string }) => {
     dispatch({ payload: { wbName: val } });
   };
 
+  const deleteWb = async (id: string) => {
+    try {
+      const res = await wbService.deleteWb(id);
+      if (res?.status !== "SUCCESS") throw res;
+      dispatch({ payload: { compKey: !compKey } });
+    } catch (error) {}
+  };
+
   return {
     wbs,
     wbName,
@@ -71,6 +81,7 @@ const useWb = ({ userName }: { userName: string }) => {
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
+    deleteWb,
   };
 };
 

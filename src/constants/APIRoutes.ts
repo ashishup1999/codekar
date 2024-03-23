@@ -25,6 +25,9 @@ const API_CONSTANTS = {
   GET_OTP: `${BASE_URL}/getVerificationCode`,
   VALIDATE_OTP: `${BASE_URL}/validateOtp`,
   UPDATE_PASSWORD: `${BASE_URL}/updatePassword`,
+  DELETE_PROJ: `${BASE_URL}/deleteProject`,
+  DELETE_PG: `${BASE_URL}/deletePg`,
+  DELETE_WB:`${BASE_URL}/deleteWb`
 };
 
 export default API_CONSTANTS;

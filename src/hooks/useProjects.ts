@@ -7,28 +7,30 @@ const initialState: {
   createFileName: string;
   projects: Array<any>;
   isCreateModalOpen: boolean;
+  compKey: boolean;
 } = {
   createFileName: "",
   projects: [],
   isCreateModalOpen: false,
+  compKey: true,
 };
 
 const useProjects = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { createFileName, isCreateModalOpen, projects } = state;
+  const { createFileName, isCreateModalOpen, projects, compKey } = state;
 
   useEffect(() => {
     if (userName) getAllProjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userName]);
+  }, [userName, compKey]);
 
   const getAllProjects = async () => {
     try {
       const res = await projectService.getAllProjectsByUser(userName);
       if (res?.status === "SUCCESS") {
         let allProjs: Array<any> = [];
-        for (let i = 0; i < res?.projects.length; i++) {
+        for (let i = 0; i < res?.projects?.length; i++) {
           const proj = res?.projects[i];
           const tp: any = {
             id: proj.projectId,
@@ -65,6 +67,14 @@ const useProjects = ({ userName }: { userName: string }) => {
     dispatch({ payload: { createFileName: val } });
   };
 
+  const deleteProject = async (id: string) => {
+    try {
+      const res = await projectService.deleteProject(id);
+      if (res?.status !== "SUCCESS") throw res;
+      dispatch({ payload: { compKey: !compKey } });
+    } catch (error) {}
+  };
+
   return {
     createFileName,
     isCreateModalOpen,
@@ -72,6 +82,7 @@ const useProjects = ({ userName }: { userName: string }) => {
     onFileNameChange,
     onCreateNewClick,
     onCreateFile,
+    deleteProject,
   };
 };
 

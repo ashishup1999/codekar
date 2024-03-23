@@ -19,10 +19,16 @@ const updateProject = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.UPDATE_PROJ, payload);
 };
 
+const deleteProject = async (id: string) => {
+  return await ajaxAPI.get(`${API_CONSTANTS.DELETE_PROJ}/${id}`);
+};
+
+
 const projectService = {
   createNewProject,
   getAllProjectsByUser,
   getProjectById,
   updateProject,
+  deleteProject
 };
 export default projectService;

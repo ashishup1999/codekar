@@ -16,6 +16,7 @@ const Projects = ({ params }: { params: { userName: string } }) => {
     onFileNameChange,
     onCreateNewClick,
     onCreateFile,
+    deleteProject,
   } = useProjects({ userName: params.userName });
 
   return (
@@ -35,7 +36,11 @@ const Projects = ({ params }: { params: { userName: string } }) => {
         )}
         <ProjectsDiv>
           {projects.map((obj: any) => (
-            <ProjectCard key={obj?.id} projInfo={obj} />
+            <ProjectCard
+              key={obj?.id}
+              projInfo={obj}
+              onDelete={deleteProject}
+            />
           ))}
         </ProjectsDiv>
       </ProjectsWrapper>

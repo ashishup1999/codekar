@@ -17,11 +17,16 @@ const updateWb = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.UPDATE_WB, payload);
 };
 
+const deleteWb = async (id: string) => {
+  return await ajaxAPI.get(`${API_CONSTANTS.DELETE_WB}/${id}`);
+};
+
 const wbService = {
   createNewWb,
   getAllWbByUser,
   getWbById,
   updateWb,
+  deleteWb
 };
 
 export default wbService;

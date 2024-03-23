@@ -17,11 +17,17 @@ const updatePg = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.UPDATE_PG, payload);
 };
 
+const deletePg = async (id: string) => {
+  return await ajaxAPI.get(`${API_CONSTANTS.DELETE_PG}/${id}`);
+};
+
+
 const pgService = {
   createNewPg,
   getAllPgByUser,
   getPgById,
   updatePg,
+  deletePg
 };
 
 export default pgService;

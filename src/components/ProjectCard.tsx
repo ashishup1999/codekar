@@ -17,13 +17,18 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
-const ProjectCard = ({ projInfo }: { projInfo: any }) => {
+const ProjectCard = ({
+  projInfo,
+  onDelete,
+}: {
+  projInfo: any;
+  onDelete: Function;
+}) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
     <PCWrapper2 bggrad={GRADIENTS.orange}>
       <PCInfo bggrad={GRADIENTS.lightOrange}>
-        <PCLink href={`/projects/project/${projInfo?.id}`} />
         <PCName>{projInfo?.name}</PCName>
         <PCAuthorSpan>
           <PCAuthorTitle>by </PCAuthorTitle>
@@ -31,7 +36,11 @@ const ProjectCard = ({ projInfo }: { projInfo: any }) => {
         </PCAuthorSpan>
         {userName === projInfo?.author && (
           <ActionDiv>
-            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+            <ActionIcon
+              src={COMMON_IMAGES.deleteIcon}
+              alt=""
+              onClick={() => onDelete(projInfo?.id)}
+            />
           </ActionDiv>
         )}
       </PCInfo>

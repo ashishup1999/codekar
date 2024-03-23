@@ -6,7 +6,6 @@ import {
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
-  PCLink,
   PCLinkWrapper,
   PCMiniWrapper,
   PCName,
@@ -14,28 +13,29 @@ import {
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { GRADIENTS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useRouter } from "next/navigation";
 
 const PgCard = ({ pgInfo }: { pgInfo: any }) => {
+  const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
-    <PCLinkWrapper>
-      <PCLink href={`/playgrounds/pg/${pgInfo?.id}`} />
-      <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
-        <div>
-          <PCName>{pgInfo?.name}</PCName>
-          <PCAuthorSpan>
-            <PCAuthorTitle>Author : </PCAuthorTitle>
-            <PCAuthorName>{pgInfo?.author}</PCAuthorName>
-          </PCAuthorSpan>
-        </div>
-        {userName === pgInfo?.author && (
-          <ActionDiv className="del">
-            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-          </ActionDiv>
-        )}
-      </PCMiniWrapper>
-    </PCLinkWrapper>
+    <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
+      <PCLinkWrapper
+        onClick={() => router.push(`/playgrounds/pg/${pgInfo?.id}`)}
+      >
+        <PCName>{pgInfo?.name}</PCName>
+        <PCAuthorSpan>
+          <PCAuthorTitle>Author : </PCAuthorTitle>
+          <PCAuthorName>{pgInfo?.author}</PCAuthorName>
+        </PCAuthorSpan>
+      </PCLinkWrapper>
+      {userName === pgInfo?.author && (
+        <ActionDiv className="del">
+          <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
+        </ActionDiv>
+      )}
+    </PCMiniWrapper>
   );
 };
 

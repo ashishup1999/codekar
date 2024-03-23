@@ -6,7 +6,6 @@ import {
   PCAuthorName,
   PCAuthorSpan,
   PCAuthorTitle,
-  PCLink,
   PCLinkWrapper,
   PCMiniWrapper,
   PCName,
@@ -14,28 +13,31 @@ import {
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { GRADIENTS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { useRouter } from "next/navigation";
 
-const WbCard = ({ wbInfo }: { wbInfo: any }) => {
+const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete: Function }) => {
+  const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
-    <PCLinkWrapper>
-      <PCLink href={`/whiteboards/whiteboard/${wbInfo?.id}`} />
-      <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
-        <div>
-          <PCName>{wbInfo?.name}</PCName>
-          <PCAuthorSpan>
-            <PCAuthorTitle>Author : </PCAuthorTitle>
-            <PCAuthorName>{wbInfo?.author}</PCAuthorName>
-          </PCAuthorSpan>
-        </div>
-        {userName === wbInfo?.author && (
-          <ActionDiv className="del">
-            <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
-          </ActionDiv>
-        )}
-      </PCMiniWrapper>
-    </PCLinkWrapper>
+    <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
+      <PCLinkWrapper onClick={() => router.push(`/whiteboards/whiteboard/${wbInfo?.id}`)}>
+        <PCName>{wbInfo?.name}</PCName>
+        <PCAuthorSpan>
+          <PCAuthorTitle>Author : </PCAuthorTitle>
+          <PCAuthorName>{wbInfo?.author}</PCAuthorName>
+        </PCAuthorSpan>
+      </PCLinkWrapper>
+      {userName === wbInfo?.author && (
+        <ActionDiv className="del">
+          <ActionIcon
+            src={COMMON_IMAGES.deleteIcon}
+            alt=""
+            onClick={() => onDelete(wbInfo?.id)}
+          />
+        </ActionDiv>
+      )}
+    </PCMiniWrapper>
   );
 };
 

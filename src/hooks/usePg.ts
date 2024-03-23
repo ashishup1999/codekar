@@ -1,5 +1,5 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import {  useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
 import pgService from "@/services/PgService";
 
@@ -7,16 +7,18 @@ const initialState: {
   pgName: string;
   pgs: Array<any>;
   isCreateModalOpen: boolean;
+  compKey: boolean;
 } = {
   pgName: "",
   pgs: [],
   isCreateModalOpen: false,
+  compKey: true,
 };
 
 const usePg = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { pgName, pgs, isCreateModalOpen } = state;
+  const { pgName, pgs, isCreateModalOpen, compKey } = state;
 
   useEffect(() => {
     if (userName) getAllPgs();
@@ -64,13 +66,23 @@ const usePg = ({ userName }: { userName: string }) => {
     dispatch({ payload: { pgName: val } });
   };
 
+  const deletePg = async (id: string) => {
+    try {
+      const res = await pgService.deletePg(id);
+      if (res?.status !== "SUCCESS") throw res;
+      dispatch({ payload: { compKey: !compKey } });
+    } catch (error) {}
+  };
+
   return {
     pgs,
     pgName,
     isCreateModalOpen,
+    compKey,
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
+    deletePg,
   };
 };
 

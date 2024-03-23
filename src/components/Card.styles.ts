@@ -1,6 +1,5 @@
 import { COLORS } from "@/constants/CommonConstants";
 import Image from "next/image";
-import Link from "next/link";
 import styled from "styled-components";
 
 export const PCWrapper = styled.div`
@@ -40,6 +39,7 @@ export const PCMiniWrapper = styled.div<{ bggrad: string }>`
   background-image: ${(props) => props.bggrad};
   cursor: pointer;
   position: relative;
+  margin: 10px;
   @media (max-width: 1400px) {
     width: 23vw;
   }
@@ -60,15 +60,9 @@ export const PCMiniWrapper = styled.div<{ bggrad: string }>`
 `;
 
 export const PCLinkWrapper = styled.div`
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-`
-
-export const PCLink = styled(Link)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const PCName = styled.p`
@@ -179,7 +173,7 @@ export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   justify-content: center;
   align-items: center;
   width: 16vw;
-  height: 180PX;
+  height: 180px;
   padding: 20px;
   border-radius: 22px;
   box-shadow: 0px 0px 7px -3px #000000;
