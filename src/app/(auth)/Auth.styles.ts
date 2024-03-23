@@ -52,6 +52,9 @@ export const InputField = styled.input`
   &:focus {
     outline: none;
   }
+  &:disabled {
+    background-color: #ebebeb;
+  }
 `;
 
 export const EyeDiv = styled.div`
@@ -134,10 +137,23 @@ export const ErrAlertMessage = styled.div`
   box-shadow: 0px 0px 9px 0px #0000003f;
   position: absolute;
   top: 12%;
-  gap: 7px
+  gap: 7px;
 `;
 
 export const ErrAlerIcon = styled(Image)`
   height: 12px;
   width: 12px;
+`;
+
+export const ChangeSuccessSec = styled.span`
+  text-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  fontWeight: bold;
+`;
+
+
+export const ChangeSuccessIcon = styled(Image)`
+  height: 15px;
+  width: 15px;
 `;

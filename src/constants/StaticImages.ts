@@ -8,6 +8,7 @@ import html from "@/images/html.svg";
 import css from "@/images/css.svg";
 import javascript from "@/images/js.svg";
 import errorExl from "@/images/errorExclamation.svg";
+import greenTick from "@/images/greenTick.svg";
 import logo from "@/images/logo.svg";
 import logoWhite from "@/images/logoWhite.svg";
 import userCircle from "@/images/userCircle.svg";
@@ -47,3 +48,4 @@ export const COMMON_IMAGES = {
 };
 
 export const ERROR_EXLAMATION = errorExl;
+export const GREEN_TICK = greenTick;

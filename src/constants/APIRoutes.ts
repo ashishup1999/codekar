@@ -22,6 +22,9 @@ const API_CONSTANTS = {
   CONNECT: `${BASE_URL}/addConnection`,
   GET_CONNECTIONS_BY_USER: `${BASE_URL}/connectionByUser`,
   USER_INFO: `${BASE_URL}/userInfo`,
+  GET_OTP: `${BASE_URL}/getVerificationCode`,
+  VALIDATE_OTP: `${BASE_URL}/validateOtp`,
+  UPDATE_PASSWORD: `${BASE_URL}/updatePassword`,
 };
 
 export default API_CONSTANTS;

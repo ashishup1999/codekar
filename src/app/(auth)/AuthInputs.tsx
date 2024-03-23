@@ -12,6 +12,7 @@ export const TextInput = ({
   suffix,
   value,
   err,
+  disabled,
   onChange,
 }: {
   label: string;
@@ -19,6 +20,7 @@ export const TextInput = ({
   suffix: any;
   value: string;
   err: string;
+  disabled?: boolean;
   onChange: Function;
 }) => {
   return (
@@ -28,6 +30,7 @@ export const TextInput = ({
         <InputField
           type={type}
           value={value}
+          disabled={disabled}
           onChange={(e) => onChange(e)}
         />
         {suffix}

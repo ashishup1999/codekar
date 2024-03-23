@@ -85,8 +85,14 @@ export const PG_LANG_OPTIONS: { [key: string]: string } = {
 export const DEFAULT_PLAYGROUND = "python";
 
 export const RESP_MESSAGES: { [key: string]: string } = {
-  DB_ERR: "Data Fetch Error",
+  DB_ERROR: "Data Fetch Error",
   USER_ALREADY_EXISTS: "Username/Email already exists, Please Login",
-  USER_DOES_NOT_EXIST: "Username does not exists, Pleaase Sign Up",
+  USER_DOES_NOT_EXIST: "Username does not exists, Please Sign Up",
+  EMAIL_DOES_NOT_EXIST: "Email does not exists, Please Sign Up",
   FALSE_CREDS: "False, credential, Please try again",
+  OTP_GENERATION_FAILED: "Could not generate otp, please try again later",
+  UNABLE_TO_SEND_MAIL: "Unable to send mail, please try again later",
+  PASSWORD_COULD_NOT_BE_UPDATED:
+    "Could not update password, please try again later",
+  INVALID_OTP: "Invalid OTP",
 };
