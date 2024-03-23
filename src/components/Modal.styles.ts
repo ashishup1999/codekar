@@ -7,13 +7,16 @@ export const ModalBg = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-color: rgb(217, 217, 217, 25%);
+  background-color: rgb(217, 217, 217, 7%);
   z-index: 1;
   top: 0;
   right: 0;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
-export const ModalContainer = styled.div<{ width: string; height: string }>`
+export const ModalContainer = styled.div<{ width?: string; height?: string }>`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;

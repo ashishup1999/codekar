@@ -17,6 +17,7 @@ import group from "@/images/group.svg";
 import setting from "@/images/setting.svg";
 import redPen from "@/images/redPen.svg";
 import powerOnOff from "@/images/powerOnOff.svg";
+import cross from "@/images/cross.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -45,6 +46,7 @@ export const COMMON_IMAGES = {
   setting,
   redPen,
   powerOnOff,
+  cross
 };
 
 export const ERROR_EXLAMATION = errorExl;

@@ -1,3 +1,4 @@
+import { GRADIENTS } from "@/constants/CommonConstants";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -9,9 +10,8 @@ export const ProfileWrapper = styled.div`
   margin: 20px 0px;
   padding: 10px 40px;
   gap: 40px;
-  @media (max-width: 450px) {
-    align-items: center;
-    padding: 10px 0;
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -39,6 +39,7 @@ export const VisitOptions = styled.p<{ bggrad: string }>`
 
 export const IconSection = styled.div`
   display: flex;
+  flex-direction: column;
   width: 130px;
   flex-wrap: wrap;
   gap: 5px;
@@ -48,9 +49,71 @@ export const Icon = styled(Image)`
   width: 60px;
   height: 60px;
   background-color: white;
-  margin: auto;
   box-shadow: 0px 0px 7px -3px #000000;
   border-radius: 5px;
   padding: 14px 0;
+  cursor: pointer;
+  margin-right: auto;
+`;
+
+export const IconSmall = styled(Image)`
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  box-shadow: 0px 0px 7px -3px #000000;
+  border-radius: 30px;
+  padding: 5px 0;
+  cursor: pointer;
+  margin: 0 10px;
+`;
+
+export const ConnectionWrapper = styled.div`
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  width: 400px;
+  min-height: 200px;
+`;
+
+export const ConnectionSec = styled.div`
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  margin-top: 30px;
+  flex-wrap: wrap;
+`;
+
+export const Connection = styled.div`
+  display: flex;
+  flex: 0;
+  align-items: center;
+  padding: 15px 10px;
+  margin: 5px;
+  min-width: 180px;
+  height: fit-content;
+  border-radius: 10px;
+  background-image: ${GRADIENTS.redishPink};
+  box-shadow: 0px 0px 7px -3px #000000;
+  cursor: pointer;
+`;
+
+export const ConnName = styled.p`
+  font-size: 12px;
+  color: white;
+  margin-right: auto;
+`
+
+export const CrossIcon = styled(Image)`
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
   cursor: pointer;
 `;

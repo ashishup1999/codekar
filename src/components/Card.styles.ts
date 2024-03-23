@@ -1,5 +1,6 @@
 import { COLORS } from "@/constants/CommonConstants";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const PCWrapper = styled.div`
@@ -63,6 +64,12 @@ export const PCLinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+`;
+
+export const PCLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  position: absolute;
 `;
 
 export const PCName = styled.p`

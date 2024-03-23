@@ -9,6 +9,7 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  MobileViewDiv,
   UserImg,
 } from "@/app/page.styles";
 import { COMMON_TEXTS, HOME_OPTIONS } from "@/constants/CommonConstants";
@@ -51,6 +52,7 @@ const Home = () => {
               onClick={() => router.push(`/profile/${userName}`)}
             />
           </HeaderDiv>
+          <MobileViewDiv>Please open the site in Desktop Mode</MobileViewDiv>
           <ContentDiv>
             {HOME_OPTIONS.map((obj) => {
               return (
@@ -58,9 +60,7 @@ const Home = () => {
                   key={obj?.buttonTitle}
                   {...obj}
                   toRoute={
-                    obj?.userDep
-                      ? `${obj?.toRoute}/${userName}`
-                      : obj?.toRoute
+                    obj?.userDep ? `${obj?.toRoute}/${userName}` : obj?.toRoute
                   }
                 />
               );

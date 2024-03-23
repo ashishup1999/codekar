@@ -8,8 +8,8 @@ const Modal = ({
   height,
 }: {
   children: React.ReactNode;
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
 }) => {
   return (
     <ModalBg>

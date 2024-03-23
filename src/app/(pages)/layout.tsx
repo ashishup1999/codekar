@@ -11,6 +11,7 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  MobileViewDiv,
   UserImg,
 } from "../page.styles";
 import { Content } from "./layout.styles";
@@ -59,6 +60,7 @@ export default function PageLayouts({
               onClick={() => router.push(`/profile/${userName}`)}
             />
           </HeaderDiv>
+          <MobileViewDiv>Please open the site in Desktop Mode</MobileViewDiv>
           <Content>{children}</Content>
           <FooterDiv>
             <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>

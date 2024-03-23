@@ -52,6 +52,9 @@ export const UserImg = styled(Image)`
   box-shadow: 0px 0px 7px -3px #000000;
   background-color: white;
   cursor: pointer;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ContentDiv = styled.div`
@@ -61,6 +64,22 @@ export const ContentDiv = styled.div`
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MobileViewDiv = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  color: white;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const FooterDiv = styled.div`

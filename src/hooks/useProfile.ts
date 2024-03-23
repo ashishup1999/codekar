@@ -5,12 +5,14 @@ import { useContext, useEffect, useReducer } from "react";
 
 const initialState = {
   fullName: "",
+  connections: [],
+  connModelOpen: false,
 };
 
 const useProfile = ({ profileUserName }: { profileUserName: string }) => {
   const { setBasicDetails } = useContext(BasicDetailsInterface);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { fullName } = state;
+  const { fullName, connections, connModelOpen } = state;
 
   useEffect(() => {
     getUserInfo();
@@ -21,7 +23,9 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
     try {
       const res = await userService.getUserInfo(profileUserName);
       if (res?.status != "SUCCESS") throw res;
-      dispatch({ payload: { fullName: res?.fullName } });
+      dispatch({
+        payload: { fullName: res?.fullName, connections: res?.connections },
+      });
     } catch (error) {}
   };
 
@@ -30,7 +34,11 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
     setBasicDetails({ payload: { userName: "" } });
   };
 
-  return { fullName, logOut };
+  const connToggle = () => {
+    dispatch({ payload: { connModelOpen: !connModelOpen } });
+  };
+
+  return { fullName, connections, connModelOpen, logOut, connToggle };
 };
 
 export default useProfile;
