@@ -16,6 +16,7 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,
+    deletePg,
   } = usePg({ userName: params.userName });
 
   return (
@@ -35,7 +36,7 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
         )}
         <PgDiv>
           {pgs.map((obj: any) => (
-            <PGCard key={obj?.id} pgInfo={obj} />
+            <PGCard key={obj?.id} pgInfo={obj} onDelete={deletePg} />
           ))}
         </PgDiv>
       </PgWrapper>

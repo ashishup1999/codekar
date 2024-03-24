@@ -15,7 +15,7 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useRouter } from "next/navigation";
 
-const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete: Function }) => {
+const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete?: Function }) => {
   const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
@@ -28,7 +28,7 @@ const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete: Function }) => {
           <PCAuthorName>{wbInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
       </PCLinkWrapper>
-      {userName === wbInfo?.author && (
+      {userName === wbInfo?.author && onDelete && (
         <ActionDiv className="del">
           <ActionIcon
             src={COMMON_IMAGES.deleteIcon}

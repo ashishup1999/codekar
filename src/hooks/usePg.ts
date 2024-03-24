@@ -23,14 +23,14 @@ const usePg = ({ userName }: { userName: string }) => {
   useEffect(() => {
     if (userName) getAllPgs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userName]);
+  }, [userName, compKey]);
 
   const getAllPgs = async () => {
     try {
       const res = await pgService.getAllPgByUser(userName);
       if (res?.status === "SUCCESS") {
         let allPgs: Array<any> = [];
-        for (let i = 0; i < res?.pgs.length; i++) {
+        for (let i = 0; i < res?.pgs?.length; i++) {
           const pg = res?.pgs[i];
           const tp: any = {
             id: pg.pgId,
@@ -78,7 +78,6 @@ const usePg = ({ userName }: { userName: string }) => {
     pgs,
     pgName,
     isCreateModalOpen,
-    compKey,
     onCreateFile,
     onCreateNewClick,
     onFileNameChange,

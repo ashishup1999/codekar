@@ -15,7 +15,7 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useRouter } from "next/navigation";
 
-const PgCard = ({ pgInfo }: { pgInfo: any }) => {
+const PgCard = ({ pgInfo, onDelete }: { pgInfo: any; onDelete?: Function }) => {
   const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
@@ -30,8 +30,8 @@ const PgCard = ({ pgInfo }: { pgInfo: any }) => {
           <PCAuthorName>{pgInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
       </PCLinkWrapper>
-      {userName === pgInfo?.author && (
-        <ActionDiv className="del">
+      {userName === pgInfo?.author && onDelete && (
+        <ActionDiv className="del" onClick={() => onDelete(pgInfo?.id)}>
           <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
         </ActionDiv>
       )}

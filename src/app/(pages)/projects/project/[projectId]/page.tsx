@@ -21,6 +21,7 @@ import { PROJECT_FILES } from "@/constants/CommonConstants";
 import useIndividualProject from "@/hooks/useIndividualProject";
 import { useContext } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { PgNameEdit } from "@/app/(pages)/playgrounds/pg/[pgId]/IndividualPg.styles";
 
 const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -32,10 +33,14 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
     projectName,
     projectAuthor,
     saved,
+    pageNameRef,
+    nameEdit,
     selectFile,
     setValue,
     handleEditorDidMount,
     onSaveProject,
+    nameEditToggle,
+    onChangeFileName,
   } = useIndividualProject({ projectId: params.projectId });
   return (
     <Wrapper>
@@ -67,7 +72,17 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
       </EditorSection>
       <PreviewSection>
         <SaveSection>
-          <ProjectName>{projectName}</ProjectName>
+          {nameEdit ? (
+            <PgNameEdit
+              ref={pageNameRef}
+              value={projectName}
+              onChange={onChangeFileName}
+              onBlur={nameEditToggle}
+              maxLength={40}
+            />
+          ) : (
+            <ProjectName onClick={nameEditToggle}>{projectName}</ProjectName>
+          )}
           {userName === projectAuthor && (
             <>
               <SaveBtn onClick={onSaveProject}>Save</SaveBtn>

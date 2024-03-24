@@ -2,7 +2,7 @@ import { PROJECT_FILES } from "@/constants/CommonConstants";
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
 import { emmetHTML } from "emmet-monaco-es";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
   status: string;
@@ -27,6 +27,7 @@ const initialState: {
   };
   preview: any;
   saved: boolean;
+  nameEdit: boolean;
 } = {
   projectName: "",
   projectAuthor: "",
@@ -38,9 +39,11 @@ const initialState: {
   },
   preview: null,
   saved: false,
+  nameEdit: false,
 };
 
 const useIndividualProject = ({ projectId }: { projectId: string }) => {
+  const pageNameRef: any = useRef(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     projectName,
@@ -50,6 +53,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     preview,
     updatePreview,
     saved,
+    nameEdit,
   } = state;
 
   useEffect(() => {
@@ -123,6 +127,21 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     } catch (error) {}
   };
 
+  const onChangeFileName = (e: any) => {
+    const { value } = e?.target;
+    dispatch({ payload: { projectName: value || "Untitled" } });
+  };
+
+  useEffect(() => {
+    if (nameEdit && pageNameRef?.current) {
+      pageNameRef.current.focus();
+    }
+  }, [nameEdit]);
+
+  const nameEditToggle = () => {
+    dispatch({ payload: { nameEdit: !nameEdit } });
+  };
+
   return {
     currFile,
     values,
@@ -130,10 +149,14 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     projectName,
     projectAuthor,
     saved,
+    pageNameRef,
+    nameEdit,
     selectFile,
     setValue,
     handleEditorDidMount,
     onSaveProject,
+    nameEditToggle,
+    onChangeFileName
   };
 };
 

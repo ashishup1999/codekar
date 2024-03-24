@@ -22,7 +22,7 @@ const ProjectCard = ({
   onDelete,
 }: {
   projInfo: any;
-  onDelete: Function;
+  onDelete?: Function;
 }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
@@ -34,7 +34,7 @@ const ProjectCard = ({
           <PCAuthorTitle>by </PCAuthorTitle>
           <PCAuthorName>{projInfo?.author}</PCAuthorName>
         </PCAuthorSpan>
-        {userName === projInfo?.author && (
+        {userName === projInfo?.author && onDelete && (
           <ActionDiv>
             <ActionIcon
               src={COMMON_IMAGES.deleteIcon}
