@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_CONSTANTS = {
   CREATE_ACCOUNT: `${BASE_URL}/createUserAccount`,
   AUTHENTICATE_USER: `${BASE_URL}/authenticateUser`,
