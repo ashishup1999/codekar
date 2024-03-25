@@ -1,5 +1,5 @@
 import API_CONSTANTS from "@/constants/APIRoutes";
-import { ajaxAPI } from "@/utils/CommonUtils";
+import { ajaxAPI } from "@/utils/ApiUtils";
 
 const createUserAccount = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.CREATE_ACCOUNT, payload);

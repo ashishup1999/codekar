@@ -1,5 +1,5 @@
 import API_CONSTANTS from "@/constants/APIRoutes";
-import { ajaxAPI } from "@/utils/CommonUtils";
+import { ajaxAPI } from "@/utils/ApiUtils";
 
 const getProfilesByName = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.SEARCH_USERS, payload);

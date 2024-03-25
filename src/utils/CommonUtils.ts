@@ -1,25 +1,3 @@
-import axios from "axios";
-
-export const ajaxAPI = {
-  headers: {
-    "Content-Type": "application/json",
-  },
-  get: async (url: string, ...config: any) => {
-    const res = await axios.get(url, {
-      ...{ headers: ajaxAPI.headers },
-      ...config,
-    });
-    return res.data;
-  },
-  post: async (url: string, payload: any, ...config: any) => {
-    const res = await axios.post(url, payload, {
-      ...{ headers: ajaxAPI.headers },
-      ...config,
-    });
-    return res.data;
-  },
-};
-
 export const defaultStateReducer = (state: any, action: any) => {
   const { payload } = action;
   const newState = { ...state, ...payload };

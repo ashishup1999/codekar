@@ -1,5 +1,5 @@
 import API_CONSTANTS from "@/constants/APIRoutes";
-import { ajaxAPI } from "@/utils/CommonUtils";
+import { ajaxAPI } from "@/utils/ApiUtils";
 
 const createNewPg = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.CREATE_PG, payload);
@@ -21,13 +21,12 @@ const deletePg = async (id: string) => {
   return await ajaxAPI.get(`${API_CONSTANTS.DELETE_PG}/${id}`);
 };
 
-
 const pgService = {
   createNewPg,
   getAllPgByUser,
   getPgById,
   updatePg,
-  deletePg
+  deletePg,
 };
 
 export default pgService;

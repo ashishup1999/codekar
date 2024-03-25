@@ -1,5 +1,5 @@
 import API_CONSTANTS from "@/constants/APIRoutes";
-import { ajaxAPI } from "@/utils/CommonUtils";
+import { ajaxAPI } from "@/utils/ApiUtils";
 
 const connectUsers = async (payload: any) => {
   return await ajaxAPI.post(API_CONSTANTS.CONNECT, payload);
@@ -12,14 +12,12 @@ const getConnectionsByUser = async (userName: string) => {
 };
 
 const getUserInfo = async (userName: string) => {
-  return await ajaxAPI.get(
-    `${API_CONSTANTS.USER_INFO}/${userName}`
-  );
+  return await ajaxAPI.get(`${API_CONSTANTS.USER_INFO}/${userName}`);
 };
 
 const userService = {
   connectUsers,
   getConnectionsByUser,
-  getUserInfo
+  getUserInfo,
 };
 export default userService;

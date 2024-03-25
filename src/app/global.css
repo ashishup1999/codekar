@@ -28,6 +28,10 @@
   display: none;
 }
 
+html {
+  background-color: #642121;
+}
+
 body {
   background-image: radial-gradient(circle at center, #642121 0, #000000 100%);
 }
