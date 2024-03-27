@@ -11,6 +11,7 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  MobileViewDiv,
 } from "../page.styles";
 import { useContext, useEffect } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
@@ -44,6 +45,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
         </HeaderDiv>
+        <MobileViewDiv>Please open the site in Desktop Mode</MobileViewDiv>
         <ContentDiv>
           <AuthDiv>{children}</AuthDiv>
         </ContentDiv>
