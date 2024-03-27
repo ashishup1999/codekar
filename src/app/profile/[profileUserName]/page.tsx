@@ -6,7 +6,6 @@ import {
   HeaderText,
   HeaderTextSpan,
   LogoImg,
-  MobileViewDiv,
   FooterDiv,
   CopyrigthtText,
 } from "@/app/page.styles";
@@ -50,7 +49,6 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
         </HeaderDiv>
-        <MobileViewDiv>Please open the site in Desktop Mode</MobileViewDiv>
         <ProfileWrapper>
           <ProfileDiv>
             <ProfileDetails
@@ -94,8 +92,8 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
           </ProfileDiv>
         </ProfileWrapper>
         <FooterDiv>
-            <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
-          </FooterDiv>
+          <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
+        </FooterDiv>
       </HomeWrapper>
       {connModelOpen && (
         <Modal>

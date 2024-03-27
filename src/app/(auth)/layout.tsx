@@ -1,6 +1,5 @@
 "use client";
 import { COMMON_TEXTS } from "@/constants/CommonConstants";
-import logo from "@/images/logo.svg";
 import {
   AuthDiv,
   ContentDiv,
@@ -11,11 +10,11 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
-  MobileViewDiv,
 } from "../page.styles";
 import { useContext, useEffect } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useRouter } from "next/navigation";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -41,11 +40,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       <HomeWrapper>
         <HeaderDiv>
           <HeaderTextSpan>
-            <LogoImg src={logo} alt="" />
+            <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
         </HeaderDiv>
-        <MobileViewDiv>Please open the site in Desktop Mode</MobileViewDiv>
         <ContentDiv>
           <AuthDiv>{children}</AuthDiv>
         </ContentDiv>

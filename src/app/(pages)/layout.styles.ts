@@ -6,7 +6,4 @@ export const Content = styled.div`
   width: 100%;
   flex: 1;
   padding:10px;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 `;

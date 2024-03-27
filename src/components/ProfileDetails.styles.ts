@@ -12,6 +12,9 @@ export const ProfileInfoWrapper = styled.div`
   background-image: ${GRADIENTS.redishPink};
   box-shadow: 0px 0px 7px -3px #000000;
   gap: 10px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ProfileImage = styled(Image)`

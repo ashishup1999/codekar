@@ -8,6 +8,7 @@ export const HomeWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100dvw;
+  min-width: 300px;
   height: 100dvh;
   background: url(${bgLogo.src}) no-repeat center;
   overflow-x: hidden;
@@ -25,6 +26,11 @@ export const HeaderDiv = styled.div`
 export const LogoImg = styled(Image)`
   height: 40px;
   cursor: pointer;
+  @media only screen and (max-width: 768px) {
+    height: 35px;
+    width: 50px;
+    margin-right: 10px;
+  }
 `;
 
 export const HeaderTextSpan = styled.span`
@@ -42,6 +48,9 @@ export const HeaderText = styled.p`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 3px;
+  @media only screen and (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 export const UserImg = styled(Image)`
@@ -53,7 +62,8 @@ export const UserImg = styled(Image)`
   background-color: white;
   cursor: pointer;
   @media only screen and (max-width: 768px) {
-    display: none;
+    height: 35px;
+    width: 35px;
   }
 `;
 
@@ -65,20 +75,8 @@ export const ContentDiv = styled.div`
   flex-wrap: wrap;
   position: relative;
   @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const MobileViewDiv = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  color: white;
-  @media only screen and (min-width: 768px) {
-    display: none;
+    padding: 10px;
+    margin-bottom: auto;
   }
 `;
 

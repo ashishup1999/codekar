@@ -10,14 +10,14 @@ export const ProfileWrapper = styled.div`
   margin: 20px 0px;
   padding: 10px 40px;
   gap: 40px;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const ProfileDiv = styled.div`
   display: flex;
   gap: 20px;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const VisitSections = styled.div`
@@ -43,6 +43,10 @@ export const IconSection = styled.div`
   width: 130px;
   flex-wrap: wrap;
   gap: 5px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    flex-direction: row;
+  }
 `;
 
 export const Icon = styled(Image)`
@@ -54,6 +58,9 @@ export const Icon = styled(Image)`
   padding: 14px 0;
   cursor: pointer;
   margin-right: auto;
+  @media only screen and (max-width: 768px) {
+    margin-right: 5px;
+  }
 `;
 
 export const IconSmall = styled(Image)`

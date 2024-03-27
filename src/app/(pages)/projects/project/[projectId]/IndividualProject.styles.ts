@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
   background-color: ${COLORS.vsBlack};
+  @media only screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const EditorSection = styled.div`
@@ -19,6 +22,9 @@ export const EditorSection = styled.div`
   flex: 1;
   height: 100%;
   max-width: 50%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 export const PreviewSection = styled.div`
@@ -31,6 +37,9 @@ export const PreviewSection = styled.div`
   border: 1px solid #d2d2d2;
   border-radius: 10px;
   background-color: white;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 export const Preview = styled.div`

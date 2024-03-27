@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
   background-color: ${COLORS.vsBlack};
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    background-color: transparent;
+  }
 `;
 
 export const EditorSection = styled.div`
@@ -20,6 +24,11 @@ export const EditorSection = styled.div`
   flex: 1;
   height: 100%;
   max-width: 65%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+    min-height: 500px;
+    background-color: ${COLORS.vsBlack};
+  }
 `;
 
 export const ConsoleSection = styled.div`
@@ -31,6 +40,13 @@ export const ConsoleSection = styled.div`
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    max-width: 100%;
+    min-height: 500px;
+    border: 1px solid white;
+    background-color: ${COLORS.vsBlack};
+  }
 `;
 
 export const FieldName = styled.div`

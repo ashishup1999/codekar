@@ -7,6 +7,9 @@ export const WbWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
   padding: 18px;
+  @media only screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `;
 
 export const WbDiv = styled.div`
