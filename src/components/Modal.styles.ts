@@ -11,9 +11,6 @@ export const ModalBg = styled.div`
   z-index: 1;
   top: 0;
   right: 0;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const ModalContainer = styled.div<{ width?: string; height?: string }>`

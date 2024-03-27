@@ -8,6 +8,7 @@ import {
   LogoImg,
   FooterDiv,
   CopyrigthtText,
+  UserImg,
 } from "@/app/page.styles";
 import { COMMON_TEXTS, GRADIENTS } from "@/constants/CommonConstants";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
@@ -48,6 +49,13 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
+          {userName !== params?.profileUserName && (
+            <UserImg
+              src={COMMON_IMAGES.userCircle}
+              alt=""
+              onClick={() => router.push(`/profile/${userName}`)}
+            />
+          )}
         </HeaderDiv>
         <ProfileWrapper>
           <ProfileDiv>

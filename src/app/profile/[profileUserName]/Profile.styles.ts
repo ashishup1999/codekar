@@ -82,6 +82,9 @@ export const ConnectionWrapper = styled.div`
   position: relative;
   width: 400px;
   min-height: 200px;
+  @media only screen and (max-width: 768px) {
+    width: 97vw;
+  }
 `;
 
 export const ConnectionSec = styled.div`
@@ -105,6 +108,9 @@ export const Connection = styled.div`
   background-image: ${GRADIENTS.redishPink};
   box-shadow: 0px 0px 7px -3px #000000;
   cursor: pointer;
+  @media only screen and (max-width: 768px) {
+    flex: 1;
+  }
 `;
 
 export const ConnName = styled.p`
