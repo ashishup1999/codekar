@@ -3,14 +3,14 @@ import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
 import { GRADIENTS } from "@/constants/CommonConstants";
 
-export const HomeWrapper = styled.div`
+export const HomeWrapper = styled.div<{ plainBg?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100dvw;
   min-width: 300px;
   height: 100dvh;
-  background: url(${bgLogo.src}) no-repeat center;
+  background: url(${(props) => props.plainBg || bgLogo.src}) no-repeat center;
   overflow-x: hidden;
 `;
 
@@ -105,4 +105,25 @@ export const AuthDiv = styled.div`
   border-radius: 25px;
   background-color: #ffffffef;
   box-shadow: 0px 0px 12px -6px #000000;
+`;
+
+export const ErrorIcon = styled(Image)`
+  height: 100px;
+`;
+
+export const ErrorText = styled.p`
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+`;
+
+export const ErrorContentDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 20px;
 `;

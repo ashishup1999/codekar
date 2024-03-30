@@ -18,6 +18,9 @@ import setting from "@/images/setting.svg";
 import redPen from "@/images/redPen.svg";
 import powerOnOff from "@/images/powerOnOff.svg";
 import cross from "@/images/cross.svg";
+import techErr from "@/images/techError.svg";
+import notFound from "@/images/notFound.svg";
+import tokenExpire from "@/images/tokenExpire.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -46,7 +49,10 @@ export const COMMON_IMAGES = {
   setting,
   redPen,
   powerOnOff,
-  cross
+  cross,
+  techErr,
+  tokenExpire,
+  notFound,
 };
 
 export const ERROR_EXLAMATION = errorExl;

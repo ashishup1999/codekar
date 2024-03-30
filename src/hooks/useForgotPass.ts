@@ -1,8 +1,9 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
-import { RESP_MESSAGES } from "@/constants/CommonConstants";
+import { useContext, useEffect, useReducer } from "react";
+import { ERROR_MSGS, RESP_MESSAGES } from "@/constants/CommonConstants";
 import { useRouter } from "next/navigation";
 import authService from "@/services/AuthService";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 interface StateInterface {
   values: {
@@ -55,6 +56,7 @@ const useForgotPass = () => {
     changeAlert,
     currStep,
   } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     if (alertMsg) {
@@ -120,7 +122,9 @@ const useForgotPass = () => {
       if (RESP_MESSAGES[error?.message]) {
         dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
       } else {
-        dispatch({ payload: { alertMsg: "Technical Error, Try again later" } });
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
       }
     }
   };
@@ -135,7 +139,9 @@ const useForgotPass = () => {
       if (RESP_MESSAGES[error?.message]) {
         dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
       } else {
-        dispatch({ payload: { alertMsg: "Technical Error, Try again later" } });
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
       }
     }
   };
@@ -152,7 +158,9 @@ const useForgotPass = () => {
       if (RESP_MESSAGES[error?.message]) {
         dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
       } else {
-        dispatch({ payload: { alertMsg: "Technical Error, Try again later" } });
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
       }
     }
   };

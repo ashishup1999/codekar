@@ -8,6 +8,7 @@ export const BasicDetailsInterface = createContext<{
 
 const initialState = {
   userName: "",
+  errorMsg: "",
 };
 
 const BasicDetailsContext = ({ children }: { children: React.ReactNode }) => {

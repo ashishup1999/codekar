@@ -1,8 +1,9 @@
-import { DEFAULT_PLAYGROUND } from "@/constants/CommonConstants";
+import { DEFAULT_PLAYGROUND, ERROR_MSGS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import pgService from "@/services/PgService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer, useRef } from "react";
+import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetPgRespIntr {
   status: string;
@@ -51,16 +52,17 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     nameEdit,
     saved,
   } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
-    getProjectInfo();
+    getPgInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getProjectInfo = async () => {
+  const getPgInfo = async () => {
     try {
       const res: GetPgRespIntr = await pgService.getPgById(pgId);
-      if (res?.status != "SUCCESS") return;
+      if (res?.status != "SUCCESS") throw res;
       const { pgData } = res;
       const payload = {
         pgName: pgData?.pgName,
@@ -74,7 +76,16 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
         },
       };
       dispatch({ payload });
-    } catch (error) {}
+    } catch (error: any) {
+      debugger
+      if (error?.message === ERROR_MSGS.PG_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const selectLang = (e: any) => {
@@ -118,7 +129,9 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
         dispatch({ payload: { output: resp?.output?.split("\n") } });
       } else throw resp;
     } catch (error) {
-      console.log(error);
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
     }
   };
 
@@ -145,7 +158,11 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
       if (res?.status === "SUCCESS") {
         dispatch({ payload: { saved: true } });
       } else throw res;
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   return {

@@ -1,8 +1,9 @@
-import { PROJECT_FILES } from "@/constants/CommonConstants";
+import { ERROR_MSGS, PROJECT_FILES } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
 import { emmetHTML } from "emmet-monaco-es";
-import { useEffect, useReducer, useRef } from "react";
+import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
   status: string;
@@ -55,6 +56,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     saved,
     nameEdit,
   } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     getProjectInfo();
@@ -66,7 +68,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
       const res: GetProjRespIntr = await projectService.getProjectById(
         projectId
       );
-      if (res?.status != "SUCCESS") return;
+      if (res?.status != "SUCCESS") throw res;
       const { projectData } = res;
       const payload = {
         projectName: projectData?.projectName,
@@ -78,7 +80,15 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
         },
       };
       dispatch({ payload });
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.PROJECT_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -124,7 +134,11 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
       if (res?.status === "SUCCESS") {
         dispatch({ payload: { saved: true } });
       } else throw res;
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const onChangeFileName = (e: any) => {
@@ -156,7 +170,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     handleEditorDidMount,
     onSaveProject,
     nameEditToggle,
-    onChangeFileName
+    onChangeFileName,
   };
 };
 

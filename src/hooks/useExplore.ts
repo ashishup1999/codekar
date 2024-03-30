@@ -1,3 +1,4 @@
+import { ERROR_MSGS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import exploreService from "@/services/ExploreService";
 import userService from "@/services/UserService";
@@ -44,7 +45,7 @@ const useExplore = () => {
   const projsRef = useRef<HTMLDivElement>(null);
   const pgsRef = useRef<HTMLDivElement>(null);
   const wbsRef = useRef<HTMLDivElement>(null);
-  const { basicDetails } = useContext(BasicDetailsInterface);
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     const allEachSections = document.querySelectorAll(".EachSection");
@@ -94,8 +95,12 @@ const useExplore = () => {
       const res: any = await exploreService.getProfilesByName(req);
       if (res?.status === "SUCCESS" && res?.profiles) {
         dispatch({ payload: { profiles: [...profiles, ...res?.profiles] } });
-      } else throw res;
-    } catch (error) {}
+      } else if(res?.status !== "SUCCESS") throw res;
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const getProjs = async () => {
@@ -108,8 +113,12 @@ const useExplore = () => {
       const res: any = await exploreService.getProjsByName(req);
       if (res?.status === "SUCCESS" && res?.projects) {
         dispatch({ payload: { projs: [...projs, ...res?.projects] } });
-      } else throw res;
-    } catch (error) {}
+      } else if(res?.status !== "SUCCESS") throw res;
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const getPgs = async () => {
@@ -122,8 +131,12 @@ const useExplore = () => {
       const res: any = await exploreService.getPgsByName(req);
       if (res?.status === "SUCCESS" && res?.pgs) {
         dispatch({ payload: { pgs: [...pgs, ...res?.pgs] } });
-      } else throw res;
-    } catch (error) {}
+      } else if(res?.status !== "SUCCESS") throw res;
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const getWbs = async () => {
@@ -136,8 +149,12 @@ const useExplore = () => {
       const res: any = await exploreService.getWbsByName(req);
       if (res?.status === "SUCCESS" && res?.wbs) {
         dispatch({ payload: { wbs: [...wbs, ...res?.wbs] } });
-      } else throw res;
-    } catch (error) {}
+      } else if(res?.status !== "SUCCESS") throw  res;
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const getFns = [getProfiles, getProjs, getPgs, getWbs];
@@ -161,7 +178,11 @@ const useExplore = () => {
       );
       if (res?.status != "SUCCESS") throw res;
       dispatch({ payload: { connections: res?.connections } });
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const onConnectClick = async (e: MouseEvent, otherUserName: string) => {
@@ -174,7 +195,11 @@ const useExplore = () => {
       const res = await userService.connectUsers(req);
       if (res?.status != "SUCCESS") throw res;
       dispatch({ payload: { connUpdatedKey: !connUpdatedKey } });
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   return {

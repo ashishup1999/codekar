@@ -1,8 +1,9 @@
-import { RESP_MESSAGES } from "@/constants/CommonConstants";
+import { ERROR_MSGS, RESP_MESSAGES } from "@/constants/CommonConstants";
 import authService from "@/services/AuthService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const initialState: {
   values: {
@@ -42,6 +43,7 @@ const useSignUp = () => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { values, errors, showPass, isBtnActive, alertMsg } = state;
   const router = useRouter();
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     if (alertMsg) {
@@ -131,7 +133,9 @@ const useSignUp = () => {
       if (RESP_MESSAGES[error?.message]) {
         dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
       } else {
-        dispatch({ payload: { alertMsg: "Technical Error, Try again later" } });
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
       }
     }
   };

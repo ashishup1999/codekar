@@ -1,7 +1,9 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
 import wbService from "@/services/WbService";
+import { ERROR_MSGS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const initialState: {
   wbName: string;
@@ -19,6 +21,7 @@ const useWb = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { wbName, wbs, isCreateModalOpen, compKey } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     if (userName) getAllWbs();
@@ -41,7 +44,15 @@ const useWb = ({ userName }: { userName: string }) => {
         }
         dispatch({ payload: { wbs: allWbs } });
       } else throw res;
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const onCreateNewClick = () => {
@@ -58,7 +69,11 @@ const useWb = ({ userName }: { userName: string }) => {
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { isCreateModalOpen: false } });
       router.push(`/whiteboards/whiteboard/${res?.wbId}`);
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const onFileNameChange = (e: any) => {
@@ -71,7 +86,11 @@ const useWb = ({ userName }: { userName: string }) => {
       const res = await wbService.deleteWb(id);
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { compKey: !compKey } });
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   return {

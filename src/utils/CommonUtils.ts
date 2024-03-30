@@ -51,3 +51,7 @@ export function debounce(
     setTimer(tid);
   };
 }
+
+export const isObjEmpty = (obj: any) => {
+  return obj || Object.keys(obj).length === 0;
+};

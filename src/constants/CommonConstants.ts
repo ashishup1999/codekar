@@ -1,4 +1,4 @@
-import { OPTION_ICONS } from "./StaticImages";
+import { COMMON_IMAGES, OPTION_ICONS } from "./StaticImages";
 
 export const GRADIENTS = {
   radialBlackRed: "radial-gradient(circle at center, #642121 0, #000000 100%)",
@@ -95,4 +95,39 @@ export const RESP_MESSAGES: { [key: string]: string } = {
   PASSWORD_COULD_NOT_BE_UPDATED:
     "Could not update password, please try again later",
   INVALID_OTP: "Invalid OTP",
+};
+
+export const FULL_PAGE_ERRORS: { [key: string]: any } = {
+  USER_DOES_NOT_EXISTS: {
+    icon: COMMON_IMAGES.notFound,
+    text: "This username does not exists in our database",
+  },
+  TOKEN_EXPIRE: {
+    icon: COMMON_IMAGES.tokenExpire,
+    text: "Token seems to be expired please refresh to create a new session",
+  },
+  TECH_ERROR: {
+    icon: COMMON_IMAGES.techErr,
+    text: "There is some issue on server side we are trying to fix it soon.",
+  },
+  PROJECT_DOES_NOT_EXISTS: {
+    icon: COMMON_IMAGES.notFound,
+    text: "This project does not exists",
+  },
+  PG_DOES_NOT_EXISTS: {
+    icon: COMMON_IMAGES.notFound,
+    text: "This playground does not exists",
+  },
+  WB_DOES_NOT_EXISTS: {
+    icon: COMMON_IMAGES.notFound,
+    text: "This whiteboard does not exists",
+  },
+};
+
+export const ERROR_MSGS = {
+  USER_DOES_NOT_EXISTS: "USER_DOES_NOT_EXISTS",
+  TECH_ERROR: "TECH_ERROR",
+  PROJECT_DOES_NOT_EXISTS: "PROJECT_DOES_NOT_EXISTS",
+  PG_DOES_NOT_EXISTS: "PG_DOES_NOT_EXISTS",
+  WB_DOES_NOT_EXISTS: "WB_DOES_NOT_EXISTS",
 };

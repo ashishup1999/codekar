@@ -26,20 +26,30 @@ export const ajaxAPI = {
   },
   get: async (url: string, ...config: any) => {
     showLoader();
-    const res = await axios.get(url, {
-      ...{ headers: ajaxAPI.headers },
-      ...config,
-    });
-    hideLoader();
-    return res.data;
+    try {
+      const res = await axios.get(url, {
+        ...{ headers: ajaxAPI.headers },
+        ...config,
+      });
+      hideLoader();
+      return res.data;
+    } catch (error: any) {
+      hideLoader();
+      return error.data;
+    }
   },
   post: async (url: string, payload: any, ...config: any) => {
     showLoader();
-    const res = await axios.post(url, payload, {
-      ...{ headers: ajaxAPI.headers },
-      ...config,
-    });
-    hideLoader();
-    return res.data;
+    try {
+      const res = await axios.post(url, payload, {
+        ...{ headers: ajaxAPI.headers },
+        ...config,
+      });
+      hideLoader();
+      return res.data;
+    } catch (error: any) {
+      hideLoader();
+      return error.data;
+    }
   },
 };

@@ -1,8 +1,9 @@
-import { DEFAULT_PLAYGROUND } from "@/constants/CommonConstants";
+import { DEFAULT_PLAYGROUND, ERROR_MSGS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer, useRef } from "react";
+import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetWbRespIntr {
   status: string;
@@ -51,16 +52,17 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     nameEdit,
     saved,
   } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
-    getProjectInfo();
+    getWbInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getProjectInfo = async () => {
+  const getWbInfo = async () => {
     try {
       const res: GetWbRespIntr = await wbService.getWbById(wbId);
-      if (res?.status != "SUCCESS") return;
+      if (res?.status != "SUCCESS") throw res;
       const { wbData } = res;
       const payload = {
         wbName: wbData?.wbName,
@@ -74,7 +76,15 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
         },
       };
       dispatch({ payload });
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.WB_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const selectLang = (e: any) => {
@@ -118,7 +128,9 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
         dispatch({ payload: { output: resp?.output?.split("\n") } });
       } else throw resp;
     } catch (error) {
-      console.log(error);
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
     }
   };
 
@@ -145,7 +157,11 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
       if (res?.status === "SUCCESS") {
         dispatch({ payload: { saved: true } });
       } else throw res;
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   return {

@@ -1,7 +1,9 @@
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
+import { ERROR_MSGS } from "@/constants/CommonConstants";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 
 const initialState: {
   createFileName: string;
@@ -19,6 +21,7 @@ const useProjects = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { createFileName, isCreateModalOpen, projects, compKey } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     if (userName) getAllProjects();
@@ -42,7 +45,15 @@ const useProjects = ({ userName }: { userName: string }) => {
         }
         dispatch({ payload: { projects: allProjs } });
       } else throw res;
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const onCreateNewClick = () => {

@@ -1,3 +1,4 @@
+import { ERROR_MSGS } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import userService from "@/services/UserService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
@@ -26,7 +27,15 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
       dispatch({
         payload: { fullName: res?.fullName, connections: res?.connections },
       });
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const logOut = () => {

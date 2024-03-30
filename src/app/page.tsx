@@ -11,7 +11,11 @@ import {
   LogoImg,
   UserImg,
 } from "@/app/page.styles";
-import { COMMON_TEXTS, HOME_OPTIONS } from "@/constants/CommonConstants";
+import {
+  COMMON_TEXTS,
+  FULL_PAGE_ERRORS,
+  HOME_OPTIONS,
+} from "@/constants/CommonConstants";
 import OptionCards from "@/components/OptionCards";
 import userCircle from "@/images/userCircle.svg";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
@@ -21,9 +25,12 @@ import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 const Home = () => {
   const router = useRouter();
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
+  const { userName, errorMsg } = basicDetails;
   const lsUserName =
     typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+  if (errorMsg && Object.keys(FULL_PAGE_ERRORS).includes(errorMsg)) {
+    throw FULL_PAGE_ERRORS[errorMsg];
+  }
 
   useEffect(() => {
     if (!userName) {

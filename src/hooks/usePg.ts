@@ -1,7 +1,9 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useRouter } from "next/navigation";
 import pgService from "@/services/PgService";
+import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { ERROR_MSGS } from "@/constants/CommonConstants";
 
 const initialState: {
   pgName: string;
@@ -19,6 +21,7 @@ const usePg = ({ userName }: { userName: string }) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const { pgName, pgs, isCreateModalOpen, compKey } = state;
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     if (userName) getAllPgs();
@@ -41,7 +44,15 @@ const usePg = ({ userName }: { userName: string }) => {
         }
         dispatch({ payload: { pgs: allPgs } });
       } else throw res;
-    } catch (error) {}
+    } catch (error: any) {
+      if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
+        setBasicDetails({ payload: { errorMsg: error?.message } });
+      } else {
+        setBasicDetails({
+          payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+        });
+      }
+    }
   };
 
   const onCreateNewClick = () => {
@@ -58,7 +69,11 @@ const usePg = ({ userName }: { userName: string }) => {
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { isCreateModalOpen: false } });
       router.push(`/playgrounds/pg/${res?.pgId}`);
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   const onFileNameChange = (e: any) => {
@@ -71,7 +86,11 @@ const usePg = ({ userName }: { userName: string }) => {
       const res = await pgService.deletePg(id);
       if (res?.status !== "SUCCESS") throw res;
       dispatch({ payload: { compKey: !compKey } });
-    } catch (error) {}
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
   };
 
   return {

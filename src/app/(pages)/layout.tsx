@@ -1,5 +1,5 @@
 "use client";
-import { COMMON_TEXTS } from "@/constants/CommonConstants";
+import { COMMON_TEXTS, FULL_PAGE_ERRORS } from "@/constants/CommonConstants";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { useContext, useEffect } from "react";
@@ -29,9 +29,13 @@ export default function PageLayouts({
 }) {
   const router = useRouter();
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
+  const { userName, errorMsg } = basicDetails;
   const lsUserName =
     typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+
+  if (errorMsg && Object.keys(FULL_PAGE_ERRORS).includes(errorMsg)) {
+    throw FULL_PAGE_ERRORS[errorMsg];
+  }
 
   useEffect(() => {
     if (!userName) {
@@ -47,7 +51,7 @@ export default function PageLayouts({
   return (
     <>
       {userName && (
-        <HomeWrapper>
+        <HomeWrapper plainBg>
           <HeaderDiv>
             <HeaderTextSpan>
               <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
