@@ -11,6 +11,7 @@ import errorExl from "@/images/errorExclamation.svg";
 import greenTick from "@/images/greenTick.svg";
 import logo from "@/images/logo.svg";
 import logoWhite from "@/images/logoWhite.svg";
+import logoWhitePng from "@/images/logoWhite.png";
 import userCircle from "@/images/userCircle.svg";
 import deleteIcon from "@/images/delete.svg";
 import group from "@/images/group.svg";
@@ -21,6 +22,7 @@ import cross from "@/images/cross.svg";
 import techErr from "@/images/techError.svg";
 import notFound from "@/images/notFound.svg";
 import tokenExpire from "@/images/tokenExpire.svg";
+import bell from "@/images/bell.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -53,6 +55,8 @@ export const COMMON_IMAGES = {
   techErr,
   tokenExpire,
   notFound,
+  bell,
+  logoWhitePng
 };
 
 export const ERROR_EXLAMATION = errorExl;

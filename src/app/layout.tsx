@@ -16,13 +16,14 @@ export default function RootLayout({
       <link
         rel="icon"
         type="image/x-icon"
-        href={COMMON_IMAGES.logoWhite.src}
+        href={COMMON_IMAGES.logoWhitePng.src}
       ></link>
       <link
-        rel="icon"
-        sizes="192x192"
-        href="../../public/logoWhite.png"
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href={COMMON_IMAGES.logoWhite.src}
       ></link>
+      <link rel="icon" sizes="32x32" href={COMMON_IMAGES.logoWhite.src}></link>
       <head>
         <title>CodeKar</title>
       </head>
