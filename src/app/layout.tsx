@@ -20,7 +20,7 @@ export default function RootLayout({
       ></link>
       <link
         rel="apple-touch-icon"
-        sizes="180x180"
+        sizes="76*60"
         href={COMMON_IMAGES.logoWhitePng.src}
       ></link>
       <link
