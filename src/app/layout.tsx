@@ -19,9 +19,9 @@ export default function RootLayout({
         href={COMMON_IMAGES.logoWhite.src}
       ></link>
       <link
-        rel="apple-touch-icon"
+        rel="icon"
         sizes="192x192"
-        href="../images/bgLogo.svg"
+        href="../../public/logoWhite.png"
       ></link>
       <head>
         <title>CodeKar</title>
