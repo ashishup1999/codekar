@@ -43,7 +43,7 @@ const Explore = () => {
           <SearchBarInput
             value={searchKey}
             onChange={onChangeSearch}
-            placeholder="Type to Exlpore"
+            placeholder="Type to Explore"
           />
           <SearchIcon src={OPTION_ICONS.search} alt="" />
         </SearchBarDiv>

@@ -64,7 +64,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
     <>
       <HomeWrapper plainBg>
         <HeaderDiv>
-          <HeaderTextSpan>
+          <HeaderTextSpan onClick={() => router.push(`/`)}>
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
@@ -106,10 +106,10 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                     <Icon src={COMMON_IMAGES.group} alt="" />
                     <IconText>Connections</IconText>
                   </IconDiv>
-                  <IconDiv>
+                  {false && <IconDiv>
                     <Icon src={COMMON_IMAGES.redPen} alt="" />
                     <IconText>Edit Profile</IconText>
-                  </IconDiv>
+                  </IconDiv>}
                   <IconDiv onClick={logOut}>
                     <Icon src={COMMON_IMAGES.powerOnOff} alt="" />
                     <IconText>Log Out</IconText>

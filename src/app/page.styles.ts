@@ -35,6 +35,7 @@ export const LogoImg = styled(Image)`
 
 export const HeaderTextSpan = styled.span`
   display: flex;
+  cursor: pointer;
   margin-right: auto;
 `;
 
@@ -57,6 +58,9 @@ export const NotifImgWrapper = styled.div`
   height: 45px;
   cursor: pointer;
   position: relative;
+  @media only screen and (max-width: 768px) {
+    height: 35px;
+  }
 `;
 
 export const NotifBadge = styled.div`
@@ -81,6 +85,7 @@ export const UserImg = styled(Image)`
   @media only screen and (max-width: 768px) {
     height: 35px;
     width: 35px;
+    margin-left: 5px;
   }
 `;
 

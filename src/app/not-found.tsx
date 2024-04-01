@@ -14,12 +14,14 @@ import {
 } from "@/app/page.styles";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { COMMON_TEXTS, FULL_PAGE_ERRORS } from "@/constants/CommonConstants";
+import { useRouter } from "next/navigation";
 
 const NotFound = () => {
+  const router = useRouter();
   return (
     <HomeWrapper plainBg>
       <HeaderDiv>
-        <HeaderTextSpan>
+        <HeaderTextSpan onClick={() => router.push(`/`)}>
           <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
           <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
         </HeaderTextSpan>

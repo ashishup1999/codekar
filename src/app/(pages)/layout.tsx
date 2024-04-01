@@ -59,7 +59,7 @@ export default function PageLayouts({
       {userName && (
         <HomeWrapper plainBg>
           <HeaderDiv>
-            <HeaderTextSpan>
+            <HeaderTextSpan onClick={() => router.push(`/`)}>
               <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
               <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
             </HeaderTextSpan>

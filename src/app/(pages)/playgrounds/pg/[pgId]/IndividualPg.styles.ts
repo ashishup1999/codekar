@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   gap: 10px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
-  background-color: ${COLORS.vsBlack};
+  background-color: #d9d9d9;
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     background-color: transparent;
@@ -24,10 +24,12 @@ export const EditorSection = styled.div`
   flex: 1;
   height: 100%;
   max-width: 65%;
+  background-color: #1e1e1e;
+  border-radius: 10px;
   @media only screen and (max-width: 768px) {
     max-width: 100%;
     min-height: 500px;
-    background-color: ${COLORS.vsBlack};
+    padding-bottom: 10px;
   }
 `;
 
@@ -38,14 +40,13 @@ export const ConsoleSection = styled.div`
   height: 100%;
   max-width: 35%;
   padding: 10px;
-  border: 1px solid black;
+  background-color: #1e1e1e;
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
     max-width: 100%;
     min-height: 500px;
     border: 1px solid white;
-    background-color: ${COLORS.vsBlack};
   }
 `;
 
@@ -55,7 +56,8 @@ export const FieldName = styled.div`
   font-size: 14px;
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: #d9d9d9;
+  background-color: white;
+  position: relative;
 `;
 
 export const OutputDiv = styled.div`
@@ -86,12 +88,12 @@ export const InputField = styled.textarea`
   display: flex;
   flex: 1;
   width: 100%;
-  padding: 15px;
+  padding: 25px 15px;
+  margin-top: -10px;
   border: none;
   resize: none;
   white-space: pre-wrap;
-  background-color: ${COLORS.vsBlack};
-  color: white;
+  background-color: #d9d9d9;
   &:focus {
     outline: none;
   }

@@ -42,7 +42,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <HomeWrapper>
         <HeaderDiv>
-          <HeaderTextSpan>
+        <HeaderTextSpan onClick={() => router.push(`/`)}>
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
