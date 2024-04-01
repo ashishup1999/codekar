@@ -9,6 +9,8 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  NotifBadge,
+  NotifImgWrapper,
   UserImg,
 } from "@/app/page.styles";
 import {
@@ -17,15 +19,18 @@ import {
   HOME_OPTIONS,
 } from "@/constants/CommonConstants";
 import OptionCards from "@/components/OptionCards";
-import userCircle from "@/images/userCircle.svg";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { useRouter } from "next/navigation";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import useNotificaton from "@/hooks/useNotification";
+import NotificationModal from "@/components/NotificationModal";
 
 const Home = () => {
   const router = useRouter();
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
   const { userName, errorMsg } = basicDetails;
+  const { notifCnt, notifModalOpen, notifModalToggle, setNotifCount } =
+    useNotificaton();
   const lsUserName =
     typeof window !== "undefined" ? localStorage.getItem("userName") : "";
   if (errorMsg && Object.keys(FULL_PAGE_ERRORS).includes(errorMsg)) {
@@ -52,8 +57,12 @@ const Home = () => {
               <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
               <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
             </HeaderTextSpan>
+            <NotifImgWrapper onClick={() => notifModalToggle()}>
+              <UserImg src={COMMON_IMAGES.bell} alt="" />
+              {notifCnt !== 0 && <NotifBadge />}
+            </NotifImgWrapper>
             <UserImg
-              src={userCircle}
+              src={COMMON_IMAGES.userCircle}
               alt=""
               onClick={() => router.push(`/profile/${userName}`)}
             />
@@ -76,6 +85,11 @@ const Home = () => {
           </FooterDiv>
         </HomeWrapper>
       )}
+      <NotificationModal
+        modalOpen={notifModalOpen}
+        onClick={notifModalToggle}
+        setNotifCount={setNotifCount}
+      />
     </>
   );
 };

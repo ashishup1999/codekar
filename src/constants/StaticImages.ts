@@ -23,6 +23,9 @@ import techErr from "@/images/techError.svg";
 import notFound from "@/images/notFound.svg";
 import tokenExpire from "@/images/tokenExpire.svg";
 import bell from "@/images/bell.svg";
+import redPlus from "@/images/redPlus.svg";
+import redCross from "@/images/redCross.svg";
+import redTick from "@/images/redTick.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -56,7 +59,10 @@ export const COMMON_IMAGES = {
   tokenExpire,
   notFound,
   bell,
-  logoWhitePng
+  logoWhitePng,
+  redPlus,
+  redCross,
+  redTick,
 };
 
 export const ERROR_EXLAMATION = errorExl;

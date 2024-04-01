@@ -37,30 +37,38 @@ export const VisitOptions = styled.p<{ bggrad: string }>`
   cursor: pointer;
 `;
 
-export const IconSection = styled.div`
+export const ExtraOptionSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 130px;
+  height: 130px;
   flex-wrap: wrap;
   gap: 5px;
+`;
+
+export const IconDiv = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 4px 15px 4px 7px;
+  height: 40px;
+  background-color: white;
+  box-shadow: 0px 0px 7px -3px #000000;
+  border-radius: 10px;
+  cursor: pointer;
   @media only screen and (max-width: 768px) {
     width: 100%;
-    flex-direction: row;
   }
 `;
 
+export const IconText = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+  color: #4e0a0a;
+`;
+
 export const Icon = styled(Image)`
-  width: 60px;
-  height: 60px;
-  background-color: white;
-  box-shadow: 0px 0px 7px -3px #000000;
-  border-radius: 5px;
-  padding: 14px 0;
-  cursor: pointer;
-  margin-right: auto;
-  @media only screen and (max-width: 768px) {
-    margin-right: 5px;
-  }
+  height: 67%;
+  width: 40px;
+  margin-right: 3px;
 `;
 
 export const IconSmall = styled(Image)`
@@ -76,7 +84,8 @@ export const IconSmall = styled(Image)`
 
 export const ConnectionWrapper = styled.div`
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  padding: 20px;
   width: 100%;
   height: 100%;
   position: relative;
@@ -92,8 +101,9 @@ export const ConnectionSec = styled.div`
   width: 100%;
   height: fit-content;
   position: relative;
-  margin-top: 30px;
+  margin-top: 10px;
   flex-wrap: wrap;
+  gap: 5px;
 `;
 
 export const Connection = styled.div`
@@ -101,14 +111,14 @@ export const Connection = styled.div`
   flex: 0;
   align-items: center;
   padding: 15px 10px;
-  margin: 5px;
-  min-width: 180px;
+  min-width: 48.5%;
   height: fit-content;
   border-radius: 10px;
   background-image: ${GRADIENTS.redishPink};
   box-shadow: 0px 0px 7px -3px #000000;
   cursor: pointer;
   @media only screen and (max-width: 768px) {
+    min-width: 100%;
     flex: 1;
   }
 `;
@@ -117,7 +127,7 @@ export const ConnName = styled.p`
   font-size: 12px;
   color: white;
   margin-right: auto;
-`
+`;
 
 export const CrossIcon = styled(Image)`
   width: 25px;
@@ -126,7 +136,8 @@ export const CrossIcon = styled(Image)`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 10px;
-  margin-right: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
   cursor: pointer;
+  z-index: 1;
 `;

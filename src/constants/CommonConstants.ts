@@ -131,3 +131,9 @@ export const ERROR_MSGS = {
   PG_DOES_NOT_EXISTS: "PG_DOES_NOT_EXISTS",
   WB_DOES_NOT_EXISTS: "WB_DOES_NOT_EXISTS",
 };
+
+export const CONNECTION_STATUS: { [key: string]: any } = {
+  connected: "CONNECTED",
+  requested: "CONNECTION_REQUESTED",
+  notConnected: "NOT_CONNECTED",
+};

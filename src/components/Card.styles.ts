@@ -179,7 +179,7 @@ export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 16vw;
+  width: 200px;
   height: 180px;
   padding: 20px;
   border-radius: 22px;
@@ -188,18 +188,6 @@ export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   background-image: ${(props) => props.bggrad};
   cursor: pointer;
   position: relative;
-  @media (max-width: 1400px) {
-    width: 23vw;
-  }
-  @media (max-width: 1100px) {
-    width: 30vw;
-  }
-  @media (max-width: 750px) {
-    width: 43vw;
-  }
-  @media (max-width: 450px) {
-    width: 90vw;
-  }
 
   & > .del {
     margin: 0;

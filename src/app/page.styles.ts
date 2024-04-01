@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
-import { GRADIENTS } from "@/constants/CommonConstants";
+import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
 
 export const HomeWrapper = styled.div<{ plainBg?: boolean }>`
   display: flex;
@@ -53,6 +53,22 @@ export const HeaderText = styled.p`
   }
 `;
 
+export const NotifImgWrapper = styled.div`
+  height: 45px;
+  cursor: pointer;
+  position: relative;
+`;
+
+export const NotifBadge = styled.div`
+  height: 13px;
+  width: 13px;
+  border-radius: 10px;
+  position: absolute;
+  right: -3px;
+  top: -2px;
+  background-color: ${COLORS.brightRed};
+`;
+
 export const UserImg = styled(Image)`
   height: 45px;
   width: 45px;
@@ -61,6 +77,7 @@ export const UserImg = styled(Image)`
   box-shadow: 0px 0px 7px -3px #000000;
   background-color: white;
   cursor: pointer;
+  margin-left: 10px;
   @media only screen and (max-width: 768px) {
     height: 35px;
     width: 35px;
@@ -126,4 +143,23 @@ export const ErrorContentDiv = styled.div`
   justify-content: center;
   gap: 40px;
   padding: 0 20px;
+`;
+
+export const NotifModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  width: 400px;
+  min-height: 200px;
+  @media only screen and (max-width: 768px) {
+    width: 97vw;
+  }
+`;
+
+export const ModalHeader = styled.div`
+  width: 100%;
+  font-weight: bold;
 `;

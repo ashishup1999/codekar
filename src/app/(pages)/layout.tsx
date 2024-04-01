@@ -11,10 +11,14 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  NotifBadge,
+  NotifImgWrapper,
   UserImg,
 } from "../page.styles";
 import { Content } from "./layout.styles";
 import { useRouter } from "next/navigation";
+import useNotificaton from "@/hooks/useNotification";
+import NotificationModal from "@/components/NotificationModal";
 
 declare global {
   interface Window {
@@ -30,6 +34,8 @@ export default function PageLayouts({
   const router = useRouter();
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
   const { userName, errorMsg } = basicDetails;
+  const { notifCnt, notifModalOpen, notifModalToggle, setNotifCount } =
+    useNotificaton();
   const lsUserName =
     typeof window !== "undefined" ? localStorage.getItem("userName") : "";
 
@@ -57,6 +63,10 @@ export default function PageLayouts({
               <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
               <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
             </HeaderTextSpan>
+            <NotifImgWrapper onClick={() => notifModalToggle()}>
+              <UserImg src={COMMON_IMAGES.bell} alt="" />
+              {notifCnt !== 0 && <NotifBadge />}
+            </NotifImgWrapper>
             <UserImg
               src={COMMON_IMAGES.userCircle}
               alt=""
@@ -69,6 +79,11 @@ export default function PageLayouts({
           </FooterDiv>
         </HomeWrapper>
       )}
+      <NotificationModal
+        modalOpen={notifModalOpen}
+        onClick={notifModalToggle}
+        setNotifCount={setNotifCount}
+      />
     </>
   );
 }

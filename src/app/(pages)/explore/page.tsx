@@ -27,10 +27,8 @@ const Explore = () => {
     pgs,
     wbs,
     searchKey,
-    connections,
     onChangeSearch,
     handleScroll,
-    onConnectClick,
   } = useExplore();
   const outNos =
     Number(profiles?.length) +
@@ -42,7 +40,11 @@ const Explore = () => {
     <>
       <ExploreWrapper>
         <SearchBarDiv>
-          <SearchBarInput value={searchKey} onChange={onChangeSearch} />
+          <SearchBarInput
+            value={searchKey}
+            onChange={onChangeSearch}
+            placeholder="Type to Exlpore"
+          />
           <SearchIcon src={OPTION_ICONS.search} alt="" />
         </SearchBarDiv>
         {searchKey && outNos == 0 ? (
@@ -60,12 +62,7 @@ const Explore = () => {
             >
               {profiles.map((obj) => {
                 return (
-                  <ProfileCard
-                    key={obj?.userId}
-                    userName={obj?.userName}
-                    connections={connections}
-                    onConnectClick={onConnectClick}
-                  />
+                  <ProfileCard key={obj?.userId} userName={obj?.userName} />
                 );
               })}
             </EachSection>

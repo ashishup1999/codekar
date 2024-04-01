@@ -19,7 +19,12 @@ const API_CONSTANTS = {
   SEARCH_PROJS: `${BASE_URL}/getProjsByName`,
   SEARCH_PGS: `${BASE_URL}/getPgsByName`,
   SEARCH_WBS: `${BASE_URL}/getWbsByName`,
-  CONNECT: `${BASE_URL}/addConnection`,
+  CONNECTION_REQ: `${BASE_URL}/connectionReq`,
+  CONNECTION_STATUS: `${BASE_URL}/connectionStatus`,
+  ADD_CONNECTION: `${BASE_URL}/addConnection`,
+  REJECT_CONNECTION_REQ: `${BASE_URL}/rejectConnectionReq`,
+  GET_ALL_CONN_REQS: `${BASE_URL}/getAllConnectionReqs`,
+  REMOVE_CONNECTION: `${BASE_URL}/removeConnection`,
   GET_CONNECTIONS_BY_USER: `${BASE_URL}/connectionByUser`,
   USER_INFO: `${BASE_URL}/userInfo`,
   GET_OTP: `${BASE_URL}/getVerificationCode`,
@@ -27,7 +32,7 @@ const API_CONSTANTS = {
   UPDATE_PASSWORD: `${BASE_URL}/updatePassword`,
   DELETE_PROJ: `${BASE_URL}/deleteProject`,
   DELETE_PG: `${BASE_URL}/deletePg`,
-  DELETE_WB:`${BASE_URL}/deleteWb`
+  DELETE_WB: `${BASE_URL}/deleteWb`,
 };
 
 export default API_CONSTANTS;
