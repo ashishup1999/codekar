@@ -8,11 +8,13 @@ import {
   Connection,
   ConnectionImg,
   ConnName,
+  NoNotification,
   NotifSec,
   NotifType,
   OptionImg,
 } from "./NotificationModal.styles";
 import useConnection from "@/hooks/useConnection";
+import { useRouter } from "next/navigation";
 
 const NotificationModal = ({
   modalOpen,
@@ -32,6 +34,7 @@ const NotificationModal = ({
     acceptConnectionRequest,
     getAllConnReqs,
   } = useConnection();
+  const router = useRouter();
 
   useEffect(() => {
     if (userName) getAllConnReqs(userName);
@@ -46,7 +49,7 @@ const NotificationModal = ({
   return (
     <>
       {modalOpen ? (
-        <Modal width="400px" height="500px">
+        <Modal>
           <NotifModalWrapper>
             <CrossIcon
               src={COMMON_IMAGES.cross}
@@ -54,30 +57,41 @@ const NotificationModal = ({
               onClick={() => onClick()}
             />
             <ModalHeader>Notification</ModalHeader>
-            {connReqs?.length !== 0 && (
+            {connReqs?.length !== 0 ? (
               <NotifSec>
                 <NotifType>Connection Requests</NotifType>
                 {connReqs.map((str) => {
                   return (
                     <>
-                      <Connection key={str}>
+                      <Connection
+                        key={str}
+                        onClick={() => router.push(`/profile/${str}`)}
+                      >
                         <ConnectionImg src={COMMON_IMAGES.userCircle} alt="" />
                         <ConnName>{str}</ConnName>
                         <OptionImg
                           src={COMMON_IMAGES.redTick}
                           alt=""
-                          onClick={() => acceptConnectionRequest(str, userName)}
+                          onClick={(e: any) => {
+                            e.stopPropagation();
+                            acceptConnectionRequest(str, userName);
+                          }}
                         />
                         <OptionImg
                           src={COMMON_IMAGES.redCross}
                           alt=""
-                          onClick={() => rejectConnectionRequest(str, userName)}
+                          onClick={(e: any) => {
+                            e.stopPropagation();
+                            rejectConnectionRequest(str, userName);
+                          }}
                         />
                       </Connection>
                     </>
                   );
                 })}
               </NotifSec>
+            ) : (
+              <NoNotification>No notification as of now</NoNotification>
             )}
           </NotifModalWrapper>
         </Modal>

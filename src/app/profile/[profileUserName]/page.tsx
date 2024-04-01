@@ -39,6 +39,7 @@ import useProfile from "@/hooks/useProfile";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import useConnection from "@/hooks/useConnection";
+import { NoNotification } from "@/components/NotificationModal.styles";
 
 const Profile = ({ params }: { params: { profileUserName: string } }) => {
   const router = useRouter();
@@ -106,10 +107,12 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                     <Icon src={COMMON_IMAGES.group} alt="" />
                     <IconText>Connections</IconText>
                   </IconDiv>
-                  {false && <IconDiv>
-                    <Icon src={COMMON_IMAGES.redPen} alt="" />
-                    <IconText>Edit Profile</IconText>
-                  </IconDiv>}
+                  {false && (
+                    <IconDiv>
+                      <Icon src={COMMON_IMAGES.redPen} alt="" />
+                      <IconText>Edit Profile</IconText>
+                    </IconDiv>
+                  )}
                   <IconDiv onClick={logOut}>
                     <Icon src={COMMON_IMAGES.powerOnOff} alt="" />
                     <IconText>Log Out</IconText>
@@ -161,19 +164,25 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
           <ConnectionWrapper>
             <CrossIcon src={COMMON_IMAGES.cross} alt="" onClick={connToggle} />
             <ModalHeader>Connections</ModalHeader>
-            <ConnectionSec>
-              {connections.map((conn: any) => {
-                return (
-                  <Connection
-                    key={conn}
-                    onClick={() => router.push(`/profile/${conn}`)}
-                  >
-                    <IconSmall src={COMMON_IMAGES.userCircle} alt="" />
-                    <ConnName>{conn}</ConnName>
-                  </Connection>
-                );
-              })}
-            </ConnectionSec>
+            {connections?.length !== 0 ? (
+              <ConnectionSec>
+                {connections.map((conn: any) => {
+                  return (
+                    <Connection
+                      key={conn}
+                      onClick={() => router.push(`/profile/${conn}`)}
+                    >
+                      <IconSmall src={COMMON_IMAGES.userCircle} alt="" />
+                      <ConnName>{conn}</ConnName>
+                    </Connection>
+                  );
+                })}
+              </ConnectionSec>
+            ) : (
+              <NoNotification>
+                No connection, search new connection in Explore!
+              </NoNotification>
+            )}
           </ConnectionWrapper>
         </Modal>
       )}

@@ -8,8 +8,8 @@ export const NotifType = styled.p`
   width: 100%;
   margin-bottom: 5px;
   margin-left: 2px;
-  color:${COLORS.brightRed}
-`
+  color: ${COLORS.brightRed};
+`;
 
 export const NotifSec = styled.div`
   display: flex;
@@ -60,4 +60,14 @@ export const OptionImg = styled(Image)`
   padding: 9px 0;
   cursor: pointer;
   margin: 0 3px;
+`;
+
+export const NoNotification = styled.p`
+  display: flex;
+  width: 70%;
+  margin: auto;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;

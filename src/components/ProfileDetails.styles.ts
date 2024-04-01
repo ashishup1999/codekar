@@ -14,6 +14,7 @@ export const ProfileInfoWrapper = styled.div`
   gap: 10px;
   @media only screen and (max-width: 768px) {
     width: 100%;
+    height: fit-content;
   }
 `;
 
