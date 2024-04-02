@@ -95,6 +95,10 @@ export const RESP_MESSAGES: { [key: string]: string } = {
   PASSWORD_COULD_NOT_BE_UPDATED:
     "Could not update password, please try again later",
   INVALID_OTP: "Invalid OTP",
+  INVALID_PASSWORD: "Please enter valid password",
+  EMAIL_ALREADY_IN_USE: "Email already in use",
+  USERNAME_ALREADY_IN_USE: "USERNAME_ALREADY_IN_USE",
+  UPDATED_SUCCESSFULY: "UPDATED_SUCCESSFULY",
 };
 
 export const FULL_PAGE_ERRORS: { [key: string]: any } = {

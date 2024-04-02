@@ -26,6 +26,10 @@ import bell from "@/images/bell.svg";
 import redPlus from "@/images/redPlus.svg";
 import redCross from "@/images/redCross.svg";
 import redTick from "@/images/redTick.svg";
+import eyeIcon from "@/images/eye.svg";
+import eyeCloseIcon from "@/images/eyeClose.svg";
+import tickCheck from "@/images/tickChecked.svg";
+import tickUncheck from "@/images/tickUnchecked.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -63,6 +67,10 @@ export const COMMON_IMAGES = {
   redPlus,
   redCross,
   redTick,
+  eyeIcon,
+  eyeCloseIcon,
+  tickCheck,
+  tickUncheck,
 };
 
 export const ERROR_EXLAMATION = errorExl;

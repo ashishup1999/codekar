@@ -40,14 +40,23 @@ import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import useConnection from "@/hooks/useConnection";
 import { NoNotification } from "@/components/NotificationModal.styles";
+import EditProfile from "@/components/EditProfile";
+import Link from "next/link";
 
 const Profile = ({ params }: { params: { profileUserName: string } }) => {
   const router = useRouter();
   const { profileUserName } = params;
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
-  const { fullName, connections, connModelOpen, logOut, connToggle } =
-    useProfile({ profileUserName });
+  const {
+    fullName,
+    connections,
+    connModelOpen,
+    editModalOpen,
+    logOut,
+    connToggle,
+    editModalToggle,
+  } = useProfile({ profileUserName });
   const {
     connStatus,
     sendConnectionRequest,
@@ -107,12 +116,10 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                     <Icon src={COMMON_IMAGES.group} alt="" />
                     <IconText>Connections</IconText>
                   </IconDiv>
-                  {false && (
-                    <IconDiv>
-                      <Icon src={COMMON_IMAGES.redPen} alt="" />
-                      <IconText>Edit Profile</IconText>
-                    </IconDiv>
-                  )}
+                  <IconDiv onClick={editModalToggle}>
+                    <Icon src={COMMON_IMAGES.redPen} alt="" />
+                    <IconText>Edit Profile</IconText>
+                  </IconDiv>
                   <IconDiv onClick={logOut}>
                     <Icon src={COMMON_IMAGES.powerOnOff} alt="" />
                     <IconText>Log Out</IconText>
@@ -166,7 +173,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             <ModalHeader>Connections</ModalHeader>
             {connections?.length !== 0 ? (
               <ConnectionSec>
-                {connections.map((conn: any) => {
+                {connections?.map((conn: any) => {
                   return (
                     <Connection
                       key={conn}
@@ -180,12 +187,14 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
               </ConnectionSec>
             ) : (
               <NoNotification>
-                No connection, search new connection in Explore!
+                No connection, <Link href="/explore">explore</Link> new
+                Connections!
               </NoNotification>
             )}
           </ConnectionWrapper>
         </Modal>
       )}
+      {editModalOpen && <EditProfile modalToggle={editModalToggle} />}
     </>
   );
 };

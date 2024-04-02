@@ -60,7 +60,7 @@ const NotificationModal = ({
             {connReqs?.length !== 0 ? (
               <NotifSec>
                 <NotifType>Connection Requests</NotifType>
-                {connReqs.map((str) => {
+                {connReqs?.map((str) => {
                   return (
                     <>
                       <Connection

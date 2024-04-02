@@ -63,11 +63,8 @@ export const OptionImg = styled(Image)`
 `;
 
 export const NoNotification = styled.p`
-  display: flex;
+  display: inline;
   width: 70%;
   margin: auto;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 `;

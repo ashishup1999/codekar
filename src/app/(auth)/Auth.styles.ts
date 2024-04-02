@@ -14,7 +14,7 @@ export const AuthHeader = styled.p`
 export const InputWrapper = styled.div`
   width: 100%;
   height: fit-content;
-  margin: 10px 0 0;
+  margin: 0 0 10px;
 `;
 
 export const LabelText = styled.label`
@@ -79,6 +79,8 @@ export const ExtraOptionDiv = styled.div`
   align-items: center;
   width: 100%;
   margin: 20px 0 0;
+  flex-wrap: wrap;
+  gap: 10px;
 `;
 export const NormalText = styled.p`
   display: inline;
@@ -86,6 +88,7 @@ export const NormalText = styled.p`
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
+  margin-right: 15px;
 `;
 
 export const LinkText = styled(Link)`
@@ -103,6 +106,12 @@ export const CheckBoxIcon = styled(Image)`
   width: 15px;
   margin-right: 5px;
   cursor: pointer;
+`;
+
+export const CheckBoxWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const FinalButton = styled.button<{ disabled: boolean }>`
@@ -149,9 +158,8 @@ export const ChangeSuccessSec = styled.span`
   text-content: center;
   margin-top: auto;
   margin-bottom: auto;
-  fontWeight: bold;
+  fontweight: bold;
 `;
-
 
 export const ChangeSuccessIcon = styled(Image)`
   height: 15px;

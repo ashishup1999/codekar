@@ -35,6 +35,10 @@ const getUserInfo = async (userName: string) => {
   return await ajaxAPI.get(`${API_CONSTANTS.USER_INFO}/${userName}`);
 };
 
+const updateUserDetails = async (payload: any) => {
+  return await ajaxAPI.post(API_CONSTANTS.UPDATE_USER_DETAILS, payload);
+};
+
 const userService = {
   connectionReq,
   connectionStatus,
@@ -44,5 +48,6 @@ const userService = {
   getAllConnReqsByUser,
   getConnectionsByUser,
   getUserInfo,
+  updateUserDetails,
 };
 export default userService;

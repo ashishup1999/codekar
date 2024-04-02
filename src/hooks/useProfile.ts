@@ -8,12 +8,13 @@ const initialState = {
   fullName: "",
   connections: [],
   connModelOpen: false,
+  editModalOpen: false,
 };
 
 const useProfile = ({ profileUserName }: { profileUserName: string }) => {
   const { setBasicDetails } = useContext(BasicDetailsInterface);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { fullName, connections, connModelOpen } = state;
+  const { fullName, connections, connModelOpen, editModalOpen } = state;
 
   useEffect(() => {
     getUserInfo();
@@ -25,7 +26,10 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
       const res = await userService.getUserInfo(profileUserName);
       if (res?.status != "SUCCESS") throw res;
       dispatch({
-        payload: { fullName: res?.fullName, connections: res?.connections },
+        payload: {
+          fullName: res?.fullName,
+          connections: res?.connections || [],
+        },
       });
     } catch (error: any) {
       if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
@@ -47,7 +51,19 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
     dispatch({ payload: { connModelOpen: !connModelOpen } });
   };
 
-  return { fullName, connections, connModelOpen, logOut, connToggle };
+  const editModalToggle = () => {
+    dispatch({ payload: { editModalOpen: !editModalOpen } });
+  };
+
+  return {
+    fullName,
+    connections,
+    connModelOpen,
+    editModalOpen,
+    logOut,
+    connToggle,
+    editModalToggle,
+  };
 };
 
 export default useProfile;

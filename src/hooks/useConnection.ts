@@ -77,7 +77,7 @@ const useConnection = () => {
     try {
       const res = await userService.getAllConnReqsByUser(userName);
       if (res?.status != "SUCCESS") throw res;
-      setConnReqs(res?.connectionReqs);
+      setConnReqs(res?.connectionReqs || []);
     } catch (error) {
       setBasicDetails({
         payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
