@@ -19,30 +19,28 @@ export const Wrapper = styled.div`
 export const EditorSection = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   height: 100%;
-  max-width: 65%;
+  width: 65%;
   background-color: ${COLORS.vsBlack};
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
-    max-width: 100%;
-    min-height: 500px;
+    width: 100%;
+    height: 70vh;
   }
 `;
 
 export const ConsoleSection = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   height: 100%;
-  max-width: 35%;
+  width: 35%;
   padding: 10px;
   background-color: ${COLORS.githubDark};
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
-    max-width: 100%;
-    min-height: 500px;
+    width: 100%;
+    height: 80vh;
   }
 `;
 
@@ -72,6 +70,7 @@ export const OutputArea = styled.div`
   padding: 15px;
   font-size: 14px;
   color: white;
+  overflow: scroll;
 `;
 
 export const InputDiv = styled.div`
