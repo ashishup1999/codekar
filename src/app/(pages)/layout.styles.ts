@@ -4,6 +4,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1;
-  padding:10px;
+  height: calc(100% - 114px);
+  padding: 10px;
+  @media only screen and (max-width: 768px) {
+    flex: 1;
+    height: auto;
+  }
 `;
