@@ -9,6 +9,10 @@ export const EditSecWrapper = styled.div`
   align-items: center;
   padding: 20px 40px;
   position: relative;
+  @media (max-width: 750px) {
+    max-width: auto;
+    width: 100%;
+  }
 `;
 
 export const FinalButton = styled.button<{ disabled: boolean }>`
