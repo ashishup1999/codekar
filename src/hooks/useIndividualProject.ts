@@ -2,7 +2,6 @@ import { ERROR_MSGS, PROJECT_FILES } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
-import { emmetHTML } from "emmet-monaco-es";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
@@ -109,10 +108,6 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     dispatch({ payload: { preview: data } });
   };
 
-  const handleEditorDidMount = (_: any, monaco: any) => {
-    if (currFile === PROJECT_FILES.html.id) emmetHTML(monaco);
-  };
-
   useEffect(() => {
     if (saved) {
       setTimeout(() => {
@@ -167,7 +162,6 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     nameEdit,
     selectFile,
     setValue,
-    handleEditorDidMount,
     onSaveProject,
     nameEditToggle,
     onChangeFileName,

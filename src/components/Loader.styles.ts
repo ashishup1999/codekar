@@ -32,7 +32,7 @@ export const LoaderWrapper = styled.div`
   animation: ${loaderAnim} 0.6s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
-  background-image:${GRADIENTS.radialBlackRed};
+  background-image:${GRADIENTS.radialBlackBlue};
 `;
 
 export const LoaderImage = styled(Image)`

@@ -41,6 +41,7 @@ const initialState: {
 
 const useIndividualWb = ({ wbId }: { wbId: string }) => {
   const pageNameRef: any = useRef(null);
+  const outRef: any = useRef(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     wbName,
@@ -126,6 +127,9 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
       const resp = await commonService.compileCode(req);
       if (resp?.status === "SUCCESS") {
         dispatch({ payload: { output: resp?.output?.split("\n") } });
+        if (outRef?.current) {
+          outRef?.current?.scrollIntoView();
+        }
       } else throw resp;
     } catch (error) {
       setBasicDetails({
@@ -173,6 +177,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     output,
     nameEdit,
     pageNameRef,
+    outRef,
     saved,
     nameEditToggle,
     selectLang,

@@ -1,5 +1,4 @@
 "use client";
-import { Editor } from "@monaco-editor/react";
 import {
   EditorSection,
   EditorWrapper,
@@ -22,6 +21,7 @@ import useIndividualProject from "@/hooks/useIndividualProject";
 import { useContext } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import { PgNameEdit } from "@/app/(pages)/playgrounds/pg/[pgId]/IndividualPg.styles";
+import Editor from "@/components/Editor";
 
 const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -37,7 +37,6 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
     nameEdit,
     selectFile,
     setValue,
-    handleEditorDidMount,
     onSaveProject,
     nameEditToggle,
     onChangeFileName,
@@ -61,12 +60,9 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
         </FileSelectionDiv>
         <EditorWrapper>
           <Editor
-            key={currFile}
             value={values[currFile]}
-            theme="vs-dark"
-            defaultLanguage={currFile}
-            onChange={(val: any) => setValue(currFile, val)}
-            onMount={handleEditorDidMount}
+            selectedLang={currFile}
+            setValue={setValue}
           />
         </EditorWrapper>
       </EditorSection>

@@ -7,7 +7,7 @@ const Loader = ({ defaultDisp }: { defaultDisp?: string }) => {
   return (
     <LoaderBg id="loader" defaultDisp={defaultDisp}>
       <LoaderWrapper>
-        <LoaderImage src={COMMON_IMAGES.logo} alt="" />
+        <LoaderImage src={COMMON_IMAGES.logoWhite} alt="" />
       </LoaderWrapper>
     </LoaderBg>
   );

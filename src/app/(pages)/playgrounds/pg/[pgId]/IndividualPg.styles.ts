@@ -7,14 +7,12 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 10px;
   gap: 10px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
-  background-color: #d9d9d9;
+  background-color: transparent;
   @media only screen and (max-width: 768px) {
     flex-direction: column;
-    background-color: transparent;
   }
 `;
 
@@ -24,12 +22,11 @@ export const EditorSection = styled.div`
   flex: 1;
   height: 100%;
   max-width: 65%;
-  background-color: #1e1e1e;
+  background-color: ${COLORS.vsBlack};
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     max-width: 100%;
     min-height: 500px;
-    padding-bottom: 10px;
   }
 `;
 
@@ -40,13 +37,12 @@ export const ConsoleSection = styled.div`
   height: 100%;
   max-width: 35%;
   padding: 10px;
-  background-color: #1e1e1e;
+  background-color: ${COLORS.githubDark};
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
     max-width: 100%;
     min-height: 500px;
-    border: 1px solid white;
   }
 `;
 
@@ -56,7 +52,8 @@ export const FieldName = styled.div`
   font-size: 14px;
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: white;
+  color: white;
+  background-color: ${COLORS.vsBlack};
   position: relative;
 `;
 
@@ -82,6 +79,11 @@ export const InputDiv = styled.div`
   flex-direction: column;
   width: 100%;
   height: 30%;
+  border-radius: 5px;
+  background-color:${COLORS.githubBlue};
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const InputField = styled.textarea`
@@ -93,7 +95,8 @@ export const InputField = styled.textarea`
   border: none;
   resize: none;
   white-space: pre-wrap;
-  background-color: #d9d9d9;
+  background-color: transparent;
+  color: white;
   &:focus {
     outline: none;
   }

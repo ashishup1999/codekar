@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export const ExploreWrapper = styled.div`
-  display: flex;
+export const ExploreWrapper = styled.div<{ hide?: boolean }>`
+  display: ${(props) => (props.hide ? "none" : "flex")};
   flex-direction: column;
   flex: 1;
   width: 100%;

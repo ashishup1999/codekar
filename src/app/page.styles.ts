@@ -12,6 +12,10 @@ export const HomeWrapper = styled.div<{ plainBg?: boolean }>`
   height: 100dvh;
   background: url(${(props) => props.plainBg || bgLogo.src}) no-repeat center;
   overflow-x: hidden;
+  @media only screen and (max-width: 768px) {
+    background: url(${(props) => props.plainBg || bgLogo.src}) no-repeat center;
+    background-size: 90%;
+  }
 `;
 
 export const HeaderDiv = styled.div`
@@ -50,7 +54,7 @@ export const HeaderText = styled.p`
   -webkit-text-fill-color: transparent;
   margin-top: 3px;
   @media only screen and (max-width: 768px) {
-    font-size: 25px;
+    display: none;
   }
 `;
 
@@ -85,6 +89,7 @@ export const UserImg = styled(Image)`
   @media only screen and (max-width: 768px) {
     height: 35px;
     width: 35px;
+    border-radius: 50px;
   }
 `;
 

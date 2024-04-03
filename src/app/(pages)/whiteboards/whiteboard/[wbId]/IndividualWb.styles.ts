@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 10px;
   gap: 10px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
@@ -35,7 +34,7 @@ export const ConsoleSection = styled.div`
   height: 100%;
   max-width: 35%;
   padding: 10px;
-  background-color: white;
+  background-color: ${COLORS.githubDark};
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
@@ -50,7 +49,8 @@ export const FieldName = styled.div`
   font-size: 14px;
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: #d9d9d9;
+  color: white;
+  background-color: ${COLORS.vsBlack};
 `;
 
 export const OutputDiv = styled.div`
@@ -58,6 +58,7 @@ export const OutputDiv = styled.div`
   flex-direction: column;
   width: 100%;
   height: 70%;
+  color: white;
 `;
 
 export const OutputArea = styled.div`
@@ -74,6 +75,11 @@ export const InputDiv = styled.div`
   flex-direction: column;
   width: 100%;
   height: 30%;
+  background-color: ${COLORS.greenBoard};
+  border-radius: 5px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const EditiorField = styled.textarea`
@@ -85,6 +91,8 @@ export const EditiorField = styled.textarea`
   resize: none;
   white-space: pre-wrap;
   border-radius: 10px;
+  background-color: ${COLORS.greenBoard};
+  color: white;
   &:focus {
     outline: none;
   }
@@ -97,6 +105,8 @@ export const InputField = styled.textarea`
   padding: 15px;
   border: none;
   resize: none;
+  background-color: transparent;
+  color: white;
   white-space: pre-wrap;
   &:focus {
     outline: none;
@@ -109,7 +119,7 @@ export const WbHeaderDiv = styled.div`
   align-items: center;
   width: 100%;
   min-height: 45px;
-  background-color: white;
+  background-color: ${COLORS.vsBlack};
   box-shadow: 0px 0px 5px -3px #000000;
   margin-bottom: 10px;
   border-radius: 10px;

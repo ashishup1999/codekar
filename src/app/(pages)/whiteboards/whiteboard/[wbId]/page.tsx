@@ -38,6 +38,7 @@ const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
     output,
     nameEdit,
     pageNameRef,
+    outRef,
     saved,
     nameEditToggle,
     selectLang,
@@ -96,7 +97,7 @@ const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
         </EditorWrapper>
       </EditorSection>
       <ConsoleSection>
-        <OutputDiv>
+        <OutputDiv ref={outRef}>
           <FieldName>Output</FieldName>
           <OutputArea>
             {output.map((val: any) => (

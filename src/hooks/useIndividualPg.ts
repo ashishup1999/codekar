@@ -41,6 +41,7 @@ const initialState: {
 
 const useIndividualPg = ({ pgId }: { pgId: string }) => {
   const pageNameRef: any = useRef(null);
+  const outRef: any = useRef(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     pgName,
@@ -77,7 +78,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
       };
       dispatch({ payload });
     } catch (error: any) {
-      debugger
+      debugger;
       if (error?.message === ERROR_MSGS.PG_DOES_NOT_EXISTS) {
         setBasicDetails({ payload: { errorMsg: error?.message } });
       } else {
@@ -127,6 +128,9 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
       const resp = await commonService.compileCode(req);
       if (resp?.status === "SUCCESS") {
         dispatch({ payload: { output: resp?.output?.split("\n") } });
+        if (outRef?.current) {
+          outRef?.current?.scrollIntoView();
+        }
       } else throw resp;
     } catch (error) {
       setBasicDetails({
@@ -174,6 +178,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     output,
     nameEdit,
     pageNameRef,
+    outRef,
     saved,
     nameEditToggle,
     selectLang,

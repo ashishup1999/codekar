@@ -1,7 +1,8 @@
 import { COMMON_IMAGES, OPTION_ICONS } from "./StaticImages";
 
 export const GRADIENTS = {
-  radialBlackRed: "radial-gradient(circle at center, #642121 0, #000000 100%)",
+  radialBlackBlue:
+    "radial-gradient(circle, rgba(46,46,46,1) 0%, rgba(0,0,0,1) 100%)",
   lightOrange: "linear-gradient(0deg, #F1722B 0%, #9D491A 100%)",
   orange: "linear-gradient(0deg, #DD5407 0%, #772D04 100%)",
   lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
@@ -17,6 +18,9 @@ export const COLORS = {
   brightRed: "#E31D29",
   bluishBlack: "#11051F",
   vsBlack: "#1E1E1E",
+  githubDark: "#24292E",
+  githubBlue: "#01346E",
+  greenBoard: "#035430",
 };
 
 export const HOME_OPTIONS = [
@@ -140,4 +144,14 @@ export const CONNECTION_STATUS: { [key: string]: any } = {
   connected: "CONNECTED",
   requested: "CONNECTION_REQUESTED",
   notConnected: "NOT_CONNECTED",
+};
+
+export const LANGUAGE_MODES: { [key: string]: string } = {
+  java: "java",
+  python: "python",
+  javascript: "javascript",
+  go: "golang",
+  cpp: "c_cpp",
+  html: "html",
+  css: "css",
 };

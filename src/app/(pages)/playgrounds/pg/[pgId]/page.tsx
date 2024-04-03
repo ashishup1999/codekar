@@ -21,11 +21,11 @@ import {
   OutputArea,
   Saved,
 } from "./IndividualPg.styles";
-import { Editor } from "@monaco-editor/react";
 import { PG_LANG_OPTIONS } from "@/constants/CommonConstants";
 import runIcon from "@/images/run.svg";
 import useIndividualPg from "@/hooks/useIndividualPg";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import Editor from "@/components/Editor";
 
 const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -38,6 +38,7 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
     output,
     nameEdit,
     pageNameRef,
+    outRef,
     saved,
     nameEditToggle,
     selectLang,
@@ -89,16 +90,14 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
         </PgHeaderDiv>
         <EditorWrapper>
           <Editor
-            key={selectedLang}
             value={values[selectedLang]}
-            theme="vs-dark"
-            defaultLanguage={selectedLang}
-            onChange={(val: any) => setValue(selectedLang, val)}
+            selectedLang={selectedLang}
+            setValue={setValue}
           />
         </EditorWrapper>
       </EditorSection>
       <ConsoleSection>
-        <OutputDiv>
+        <OutputDiv ref={outRef}>
           <FieldName>Output</FieldName>
           <OutputArea>
             {output.map((val: any) => (

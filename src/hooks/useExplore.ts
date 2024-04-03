@@ -27,21 +27,13 @@ const initialState: StateInterface = {
 const useExplore = () => {
   const [state, dispatch]: [state: StateInterface, dispatch: Function] =
     useReducer(defaultStateReducer, initialState);
-  const {
-    searchKey,
-    profiles,
-    projs,
-    pgs,
-    wbs,
-    pageSize,
-    connections,
-  } = state;
+  const { searchKey, profiles, projs, pgs, wbs, pageSize, connections } = state;
   const [debTimer, setDebTimer]: [debTimer: any, setDebTimer: any] = useState();
   const profilesRef = useRef<HTMLDivElement>(null);
   const projsRef = useRef<HTMLDivElement>(null);
   const pgsRef = useRef<HTMLDivElement>(null);
   const wbsRef = useRef<HTMLDivElement>(null);
-  const {  setBasicDetails } = useContext(BasicDetailsInterface);
+  const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
     const allEachSections = document.querySelectorAll(".EachSection");
