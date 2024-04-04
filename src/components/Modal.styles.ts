@@ -22,4 +22,6 @@ export const ModalContainer = styled.div<{ width?: string; height?: string }>`
   border-radius: 10px;
   box-shadow: 0px 4px 9px 0px #0000003f;
   max-width: 95vw;
+  max-height: 60vh;
+  overflow-y: scroll;
 `;
