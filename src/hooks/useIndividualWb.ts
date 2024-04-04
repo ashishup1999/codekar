@@ -1,4 +1,8 @@
-import { DEFAULT_PLAYGROUND, ERROR_MSGS } from "@/constants/CommonConstants";
+import {
+  DEFAULT_PLAYGROUND,
+  ERROR_MSGS,
+  TEST_REGEX,
+} from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
@@ -28,6 +32,7 @@ const initialState: {
   output: Array<string>;
   nameEdit: boolean;
   saved: boolean;
+  errTxt: boolean;
 } = {
   wbName: "",
   wbAuthor: "",
@@ -37,6 +42,7 @@ const initialState: {
   output: [],
   nameEdit: false,
   saved: false,
+  errTxt: false,
 };
 
 const useIndividualWb = ({ wbId }: { wbId: string }) => {
@@ -52,6 +58,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     output,
     nameEdit,
     saved,
+    errTxt,
   } = state;
   const { setBasicDetails } = useContext(BasicDetailsInterface);
 
@@ -113,7 +120,12 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
 
   const onChangewbName = (e: any) => {
     const { value } = e?.target;
-    dispatch({ payload: { wbName: value || "Untitled" } });
+    dispatch({
+      payload: {
+        wbName: value || "Untitled",
+        errTxt: !TEST_REGEX.alphaNumeric.test(value),
+      },
+    });
   };
 
   const onWbRun = async () => {
@@ -179,6 +191,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     pageNameRef,
     outRef,
     saved,
+    errTxt,
     nameEditToggle,
     selectLang,
     setValue,

@@ -26,6 +26,7 @@ import { PG_LANG_OPTIONS } from "@/constants/CommonConstants";
 import runIcon from "@/images/run.svg";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import useIndividualWb from "@/hooks/useIndividualWb";
+import { ErrorTxt } from "@/app/(pages)/projects/project/[projectId]/IndividualProject.styles";
 
 const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -40,6 +41,7 @@ const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
     pageNameRef,
     outRef,
     saved,
+    errTxt,
     nameEditToggle,
     selectLang,
     setValue,
@@ -65,12 +67,13 @@ const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
             ) : (
               <WbNameDiv onClick={nameEditToggle}>{wbName}</WbNameDiv>
             )}
-            {wbAuthor === basicDetails?.userName && (
+            {wbAuthor === basicDetails?.userName && !errTxt && (
               <>
                 <SaveBtn onClick={onSaveFile}>Save</SaveBtn>
                 {saved && <Saved>Saved...</Saved>}
               </>
             )}
+            {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}
           </SaveSection>
           <WbHeaderRightDiv>
             <RunButton src={runIcon} alt="" onClick={onWbRun} />

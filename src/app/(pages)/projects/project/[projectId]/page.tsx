@@ -2,6 +2,7 @@
 import {
   EditorSection,
   EditorWrapper,
+  ErrorTxt,
   FileName,
   FileNameDiv,
   FileSelectionDiv,
@@ -33,6 +34,7 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
     projectName,
     projectAuthor,
     saved,
+    errTxt,
     pageNameRef,
     nameEdit,
     selectFile,
@@ -79,12 +81,13 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
           ) : (
             <ProjectName onClick={nameEditToggle}>{projectName}</ProjectName>
           )}
-          {userName === projectAuthor && (
+          {userName === projectAuthor && !errTxt && (
             <>
               <SaveBtn onClick={onSaveProject}>Save</SaveBtn>
               {saved && <Saved>Saved...</Saved>}
             </>
           )}
+          {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}
         </SaveSection>
         <Preview>
           <PreviewFrame srcDoc={preview} frameBorder={0}></PreviewFrame>

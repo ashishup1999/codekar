@@ -26,6 +26,7 @@ import runIcon from "@/images/run.svg";
 import useIndividualPg from "@/hooks/useIndividualPg";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import Editor from "@/components/Editor";
+import { ErrorTxt } from "@/app/(pages)/projects/project/[projectId]/IndividualProject.styles";
 
 const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -40,6 +41,7 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
     pageNameRef,
     outRef,
     saved,
+    errTxt,
     nameEditToggle,
     selectLang,
     setValue,
@@ -65,12 +67,13 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
             ) : (
               <PgNameDiv onClick={nameEditToggle}>{pgName}</PgNameDiv>
             )}
-            {pgAuthor === basicDetails?.userName && (
+            {pgAuthor === basicDetails?.userName && !errTxt && (
               <>
                 <SaveBtn onClick={onSaveFile}>Save</SaveBtn>
                 {saved && <Saved>Saved...</Saved>}
               </>
             )}
+            {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}
           </SaveSection>
           <PgHeaderRightDiv>
             <RunButton src={runIcon} alt="" onClick={onPgRun} />

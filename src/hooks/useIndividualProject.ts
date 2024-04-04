@@ -1,4 +1,8 @@
-import { ERROR_MSGS, PROJECT_FILES } from "@/constants/CommonConstants";
+import {
+  ERROR_MSGS,
+  PROJECT_FILES,
+  TEST_REGEX,
+} from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import projectService from "@/services/ProjectService";
 import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
@@ -27,6 +31,7 @@ const initialState: {
   };
   preview: any;
   saved: boolean;
+  errTxt: boolean;
   nameEdit: boolean;
 } = {
   projectName: "",
@@ -39,6 +44,7 @@ const initialState: {
   },
   preview: null,
   saved: false,
+  errTxt: false,
   nameEdit: false,
 };
 
@@ -53,6 +59,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     preview,
     updatePreview,
     saved,
+    errTxt,
     nameEdit,
   } = state;
   const { setBasicDetails } = useContext(BasicDetailsInterface);
@@ -138,7 +145,12 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
 
   const onChangeFileName = (e: any) => {
     const { value } = e?.target;
-    dispatch({ payload: { projectName: value || "Untitled" } });
+    dispatch({
+      payload: {
+        projectName: value || "Untitled",
+        errTxt: !TEST_REGEX.alphaNumeric.test(value),
+      },
+    });
   };
 
   useEffect(() => {
@@ -158,6 +170,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     projectName,
     projectAuthor,
     saved,
+    errTxt,
     pageNameRef,
     nameEdit,
     selectFile,

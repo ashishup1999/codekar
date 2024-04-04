@@ -116,6 +116,15 @@ export const Saved = styled.p`
   border-radius: 12px;
 `;
 
+export const ErrorTxt = styled.p`
+  font-size: 12px;
+  padding: 3px 6px;
+  color: #a9a9a9;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  color: #e51c1c;
+`;
+
 export const FileTypeImage = styled(Image)`
   height: 15px;
   width: auto;
