@@ -6,6 +6,7 @@ export const Content = styled.div`
   width: 100%;
   height: calc(100% - 114px);
   padding: 10px;
+  overflow-y: scroll;
   @media only screen and (max-width: 768px) {
     flex: 1;
     height: auto;
