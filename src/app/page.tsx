@@ -1,6 +1,7 @@
 "use client";
 import React, { useContext, useEffect } from "react";
 import {
+  BellImg,
   ContentDiv,
   CopyrigthtText,
   FooterDiv,
@@ -12,6 +13,7 @@ import {
   NotifBadge,
   NotifImgWrapper,
   UserImg,
+  UserImgWrpr,
 } from "@/app/page.styles";
 import {
   COMMON_TEXTS,
@@ -24,11 +26,12 @@ import { useRouter } from "next/navigation";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import useNotificaton from "@/hooks/useNotification";
 import NotificationModal from "@/components/NotificationModal";
+import { getBase64Src } from "@/utils/CommonUtils";
 
 const Home = () => {
   const router = useRouter();
   const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
-  const { userName, errorMsg } = basicDetails;
+  const { userName, profileImg, errorMsg } = basicDetails;
   const { notifCnt, notifModalOpen, notifModalToggle, setNotifCount } =
     useNotificaton();
   const lsUserName =
@@ -58,14 +61,22 @@ const Home = () => {
               <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
             </HeaderTextSpan>
             <NotifImgWrapper onClick={() => notifModalToggle()}>
-              <UserImg src={COMMON_IMAGES.bell} alt="" />
+              <BellImg src={COMMON_IMAGES.bell} alt="" />
               {notifCnt !== 0 && <NotifBadge />}
             </NotifImgWrapper>
-            <UserImg
-              src={COMMON_IMAGES.userCircle}
-              alt=""
-              onClick={() => router.push(`/profile/${userName}`)}
-            />
+            <UserImgWrpr>
+              <UserImg
+                width={200}
+                height={200}
+                src={
+                  profileImg
+                    ? getBase64Src(profileImg)
+                    : COMMON_IMAGES.defaultProfileImg
+                }
+                alt=""
+                onClick={() => router.push(`/profile/${userName}`)}
+              />
+            </UserImgWrpr>
           </HeaderDiv>
           <ContentDiv>
             {HOME_OPTIONS.map((obj) => {

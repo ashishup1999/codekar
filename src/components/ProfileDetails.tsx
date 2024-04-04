@@ -1,6 +1,7 @@
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import {
   ProfileImage,
+  ProfileImageWrpr,
   ProfileInfoWrapper,
   TextInfos,
   UserFullName,
@@ -18,16 +19,18 @@ const ProfileDetails = ({
 }) => {
   return (
     <ProfileInfoWrapper>
-      <ProfileImage
-        width={200}
-        height={200}
-        src={
-          profileImg
-            ? `data:image/jpeg;base64,${profileImg}`
-            : COMMON_IMAGES.defaultProfileImg
-        }
-        alt=""
-      />
+      <ProfileImageWrpr>
+        <ProfileImage
+          width={200}
+          height={200}
+          src={
+            profileImg
+              ? `data:image/jpeg;base64,${profileImg}`
+              : COMMON_IMAGES.defaultProfileImg
+          }
+          alt=""
+        />
+      </ProfileImageWrpr>
       <TextInfos>
         <UserFullName>{fullName}</UserFullName>
         <UserName>{userName}</UserName>

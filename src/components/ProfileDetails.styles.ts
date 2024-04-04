@@ -18,22 +18,31 @@ export const ProfileInfoWrapper = styled.div`
   }
 `;
 
-export const ProfileImage = styled(Image)`
+export const ProfileImageWrpr = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 70px;
   height: 70px;
   box-shadow: 0px 0px 7px -3px #000000;
   border-radius: 100px;
-  border: 2px solid white; 
+  border: 2px solid white;
   background-color: white;
+  overflow: hidden;
+`;
+
+export const ProfileImage = styled(Image)`
+  height: auto;
+  width: 100%;
 `;
 
 export const TextInfos = styled.div`
   display: flex;
-  flex:1 ;
+  flex: 1;
   flex-direction: column;
   justify-centent: center;
   gap: 5px;
-//   align-items: center;
+  //   align-items: center;
 `;
 
 export const UserFullName = styled.p`

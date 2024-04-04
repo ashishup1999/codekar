@@ -42,6 +42,7 @@ import useConnection from "@/hooks/useConnection";
 import { NoNotification } from "@/components/NotificationModal.styles";
 import EditProfile from "@/components/EditProfile";
 import Link from "next/link";
+import { getBase64Src } from "@/utils/CommonUtils";
 
 const Profile = ({ params }: { params: { profileUserName: string } }) => {
   const router = useRouter();
@@ -80,7 +81,13 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
           </HeaderTextSpan>
           {userName !== profileUserName && (
             <UserImg
-              src={COMMON_IMAGES.userCircle}
+              width={200}
+              height={200}
+              src={
+                profileImg
+                  ? getBase64Src(profileImg)
+                  : COMMON_IMAGES.defaultProfileImg
+              }
               alt=""
               onClick={() => router.push(`/profile/${userName}`)}
             />
@@ -199,10 +206,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
         </Modal>
       )}
       {editModalOpen && (
-        <EditProfile
-          profileImg={profileImg}
-          modalToggle={editModalToggle}
-        />
+        <EditProfile profileImg={profileImg} modalToggle={editModalToggle} />
       )}
     </>
   );

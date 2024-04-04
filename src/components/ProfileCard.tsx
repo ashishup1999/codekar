@@ -5,13 +5,24 @@ import styled from "styled-components";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
 import { GRADIENTS } from "@/constants/CommonConstants";
 import { useRouter } from "next/navigation";
+import { getBase64Src } from "@/utils/CommonUtils";
 
-const ProfileImage = styled(Image)`
+const ProfileImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 60px;
   height: 60px;
-  padding: 10px;
   box-shadow: 0px 0px 7px -3px #000000;
   border-radius: 100px;
+  background-color: white;
+  overflow: hidden;
+  border: 2px solid white;
+`;
+
+const ProfileImage = styled(Image)`
+  height: 100%;
+  width: fit-content;
   background-color: white;
 `;
 
@@ -22,7 +33,13 @@ const UserName = styled.p`
   color: white;
 `;
 
-const ProfileCard = ({ userName }: { userName: string }) => {
+const ProfileCard = ({
+  userName,
+  profImg,
+}: {
+  userName: string;
+  profImg: string;
+}) => {
   const router = useRouter();
 
   return (
@@ -30,7 +47,14 @@ const ProfileCard = ({ userName }: { userName: string }) => {
       bggrad={GRADIENTS.redishPink}
       onClick={() => router.push(`/profile/${userName}`)}
     >
-      <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />
+      <ProfileImageWrapper>
+        <ProfileImage
+          width={200}
+          height={200}
+          src={profImg ? getBase64Src(profImg) : COMMON_IMAGES.defaultProfileImg}
+          alt=""
+        />
+      </ProfileImageWrapper>
       <UserName>{userName}</UserName>
     </UserInfoWrapper>
   );

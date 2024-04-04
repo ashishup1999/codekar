@@ -61,7 +61,13 @@ const Explore = () => {
             onScroll={() => handleScroll(profilesRef, 0)}
           >
             {profiles.map((obj) => {
-              return <ProfileCard key={obj?.userId} userName={obj?.userName} />;
+              return (
+                <ProfileCard
+                  key={obj?.userId}
+                  userName={obj?.userName}
+                  profImg={obj?.profileImg}
+                />
+              );
             })}
           </EachSection>
           {Boolean(projs?.length) && <SecName>Projects</SecName>}

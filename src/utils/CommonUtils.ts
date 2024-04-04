@@ -55,3 +55,7 @@ export function debounce(
 export const isObjEmpty = (obj: any) => {
   return obj || Object.keys(obj).length === 0;
 };
+
+export const getBase64Src = (base64: string) => {
+  return `data:image/jpeg;base64,${base64}`;
+};

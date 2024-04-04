@@ -77,7 +77,7 @@ export const NotifBadge = styled.div`
   background-color: ${COLORS.brightRed};
 `;
 
-export const UserImg = styled(Image)`
+export const BellImg = styled(Image)`
   height: 45px;
   width: 45px;
   padding: 0px 10px;
@@ -91,6 +91,31 @@ export const UserImg = styled(Image)`
     width: 35px;
     border-radius: 50px;
   }
+`;
+
+export const UserImgWrpr = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px -3px #000000;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  overflow: hidden;
+  @media only screen and (max-width: 768px) {
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+  }
+`;
+
+export const UserImg = styled(Image)`
+  height: auto;
+  width: 100%;
 `;
 
 export const ContentDiv = styled.div`

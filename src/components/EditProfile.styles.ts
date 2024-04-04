@@ -69,18 +69,19 @@ export const UserImageDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90px;
+  height: 90px;
   position: relative;
   margin: 20px;
   overflow: hidden;
-  border: 3px solid #7f104ccf;
+  border: 2px solid #7f104ccf;
   border-radius: 100px;
 `;
 
+
 export const UserImage = styled(Image)`
-  width: 90px;
-  height: 90px;
-  border-radius: 100px;
-  background-color: white;
+  height: auto;
+  width: 100%;
 `;
 
 export const ImageUploadDiv = styled.div`

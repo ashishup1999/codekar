@@ -31,6 +31,7 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
           connections: res?.connections || [],
         },
       });
+      setBasicDetails({ payload: { profileImg: res?.profileImg } });
     } catch (error: any) {
       if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
         setBasicDetails({ payload: { errorMsg: error?.message } });
