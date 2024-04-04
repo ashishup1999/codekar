@@ -9,6 +9,7 @@ import {
   FooterDiv,
   CopyrigthtText,
   UserImg,
+  UserImgWrpr,
   ModalHeader,
 } from "@/app/page.styles";
 import {
@@ -80,6 +81,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
           {userName !== profileUserName && (
+            <UserImgWrpr>
             <UserImg
               width={200}
               height={200}
@@ -91,6 +93,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
               alt=""
               onClick={() => router.push(`/profile/${userName}`)}
             />
+            </UserImgWrpr>
           )}
         </HeaderDiv>
         <ProfileWrapper>
