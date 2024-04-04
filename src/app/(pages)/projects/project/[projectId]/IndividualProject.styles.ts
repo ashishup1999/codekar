@@ -19,27 +19,26 @@ export const Wrapper = styled.div`
 export const EditorSection = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   height: 100%;
-  max-width: 50%;
+  width: 50%;
   @media only screen and (max-width: 768px) {
-    max-width: 100%;
-    min-height: 500px;
+    width: 100%;
+    height: 40vh;
   }
 `;
 
 export const PreviewSection = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   height: 100%;
-  max-width: 50%;
+  width: 50%;
   padding: 10px;
   border: 1px solid #d2d2d2;
   border-radius: 10px;
   background-color: white;
   @media only screen and (max-width: 768px) {
-    max-width: 100%;
+    width: 100%;
+    height: 70vh;
   }
 `;
 
