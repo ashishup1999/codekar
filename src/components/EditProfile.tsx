@@ -5,8 +5,13 @@ import {
   EditHeader,
   EditSecWrapper,
   FinalButton,
+  ImageUpload,
+  ImageUploadDiv,
+  ImageUploadInput,
   NormalText,
   OptionHeader,
+  UserImage,
+  UserImageDiv,
 } from "./EditProfile.styles";
 import { TextInput } from "@/app/(auth)/AuthInputs";
 import {
@@ -51,7 +56,13 @@ const CheckBox = ({
   );
 };
 
-const EditProfile = ({ modalToggle }: { modalToggle: Function }) => {
+const EditProfile = ({
+  profileImg,
+  modalToggle,
+}: {
+  profileImg: string;
+  modalToggle: Function;
+}) => {
   const {
     values,
     errors,
@@ -60,6 +71,7 @@ const EditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     isBtnActive,
     alertMsg,
     changeAlert,
+    uploadRef,
     onChangeUserName,
     onChangeEmail,
     onChangeFullName,
@@ -68,6 +80,8 @@ const EditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     onEyeClick,
     onChangeClick,
     onProceed,
+    onClickUpload,
+    onImgUpload,
   } = useEditProfile({ modalToggle });
   const noFieldsToEdit =
     change?.userName || change?.email || change?.fullName || change?.password;
@@ -81,6 +95,30 @@ const EditProfile = ({ modalToggle }: { modalToggle: Function }) => {
               <ErrAlerIcon src={ERROR_EXLAMATION} alt="" /> {alertMsg}
             </ErrAlertMessage>
           )}
+          <UserImageDiv>
+            <UserImage
+              width={200}
+              height={200}
+              src={
+                profileImg
+                  ? `data:image/jpeg;base64,${profileImg}`
+                  : COMMON_IMAGES.defaultProfileImg
+              }
+              alt=""
+            />
+            <ImageUploadDiv>
+              <ImageUpload
+                src={COMMON_IMAGES.imgUpload}
+                alt=""
+                onClick={onClickUpload}
+              />
+              <ImageUploadInput
+                ref={uploadRef}
+                type="file"
+                onChange={onImgUpload}
+              />
+            </ImageUploadDiv>
+          </UserImageDiv>
           {changeAlert ? (
             <ChangeSuccessSec>
               <ChangeSuccessIcon src={GREEN_TICK} alt="" /> {changeAlert}

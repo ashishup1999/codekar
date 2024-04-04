@@ -33,7 +33,8 @@ const API_CONSTANTS = {
   DELETE_PROJ: `${BASE_URL}/deleteProject`,
   DELETE_PG: `${BASE_URL}/deletePg`,
   DELETE_WB: `${BASE_URL}/deleteWb`,
-  UPDATE_USER_DETAILS:`${BASE_URL}/updateUserDetails`
+  UPDATE_USER_DETAILS: `${BASE_URL}/updateUserDetails`,
+  UPLOAD_PROFILE_IMG: `${BASE_URL}/uploadProfileImg`,
 };
 
 export default API_CONSTANTS;

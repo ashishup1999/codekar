@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const EditSecWrapper = styled.div`
@@ -62,4 +63,45 @@ export const NormalText = styled.p`
   line-height: 16px;
   font-weight: 600;
   margin-right: 15px;
+`;
+
+export const UserImageDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 20px;
+  overflow: hidden;
+  border: 3px solid #7f104ccf;
+  border-radius: 100px;
+`;
+
+export const UserImage = styled(Image)`
+  width: 90px;
+  height: 90px;
+  border-radius: 100px;
+  background-color: white;
+`;
+
+export const ImageUploadDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 35px;
+  background-color: #d9d9d9af;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 100px 100px;
+  cursor: pointer;
+`;
+
+export const ImageUpload = styled(Image)`
+  width: 20px;
+  height: 20px;
+`;
+
+export const ImageUploadInput = styled.input`
+  width: 0;
+  height: 0;
 `;

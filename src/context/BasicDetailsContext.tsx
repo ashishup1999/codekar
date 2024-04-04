@@ -8,6 +8,7 @@ export const BasicDetailsInterface = createContext<{
 
 const initialState = {
   userName: "",
+  profileImg: "",
   errorMsg: "",
 };
 

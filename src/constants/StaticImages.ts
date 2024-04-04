@@ -30,6 +30,8 @@ import eyeIcon from "@/images/eye.svg";
 import eyeCloseIcon from "@/images/eyeClose.svg";
 import tickCheck from "@/images/tickChecked.svg";
 import tickUncheck from "@/images/tickUnchecked.svg";
+import imgUpload from "@/images/imgUpload.svg";
+import defaultProfileImg from "@/images/defaultProfileImg.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -71,6 +73,8 @@ export const COMMON_IMAGES = {
   eyeCloseIcon,
   tickCheck,
   tickUncheck,
+  imgUpload,
+  defaultProfileImg,
 };
 
 export const ERROR_EXLAMATION = errorExl;

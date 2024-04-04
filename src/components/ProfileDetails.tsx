@@ -10,13 +10,24 @@ import {
 const ProfileDetails = ({
   userName,
   fullName,
+  profileImg,
 }: {
   userName: string;
   fullName: string;
+  profileImg: string;
 }) => {
   return (
     <ProfileInfoWrapper>
-      <ProfileImage src={COMMON_IMAGES.userCircle} alt="" />
+      <ProfileImage
+        width={200}
+        height={200}
+        src={
+          profileImg
+            ? `data:image/jpeg;base64,${profileImg}`
+            : COMMON_IMAGES.defaultProfileImg
+        }
+        alt=""
+      />
       <TextInfos>
         <UserFullName>{fullName}</UserFullName>
         <UserName>{userName}</UserName>

@@ -4,9 +4,17 @@ import {
   TEST_REGEX,
 } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import fileServices from "@/services/FileService";
 import userService from "@/services/UserService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
-import { Dispatch, useContext, useEffect, useReducer } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from "react";
 
 interface initIfc {
   values: { [key: string]: any };
@@ -48,6 +56,7 @@ const initialState: initIfc = {
 const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
   const [state, dispatch]: [state: initIfc, dispatch: Dispatch<any>] =
     useReducer(defaultStateReducer, initialState);
+  const uploadRef = useRef<HTMLInputElement>(null);
   const {
     values,
     errors,
@@ -96,6 +105,28 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     return isValid && values.currPassword && !errors.currPassword;
   };
 
+  const onImgUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      const { files }: { files: any } = e.target;
+      const file = files[0];
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("userName", basicDetails?.userName);
+        const res: any = await fileServices.uploadProfileImg(formData);
+        if (res?.status == "SUCCESS") {
+          setBasicDetails({
+            payload: { profileImg: res?.profileImg },
+          });
+        }
+      }
+    } catch (error) {
+      setBasicDetails({
+        payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
+      });
+    }
+  };
+
   const onChangeUserName = (e: any) => {
     const val = e.target.value;
     let err;
@@ -142,8 +173,10 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
   };
 
   const onChangeCurrPassword = (e: any) => {
-    const val = e.target.value?.replace(/\s/, "")
-    const err = TEST_REGEX.anythingWithoutSpace.test(val) ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "");
+    const err = TEST_REGEX.anythingWithoutSpace.test(val)
+      ? ""
+      : "Enter Valid Password";
     dispatch({
       payload: {
         values: { ...values, currPassword: val },
@@ -153,8 +186,10 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
   };
 
   const onChangeNewPassword = (e: any) => {
-    const val = e.target.value?.replace(/\s/, "")
-    const err = TEST_REGEX.anythingWithoutSpace.test(val) ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "");
+    const err = TEST_REGEX.anythingWithoutSpace.test(val)
+      ? ""
+      : "Enter Valid Password";
     dispatch({
       payload: {
         values: { ...values, password: val },
@@ -169,6 +204,11 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
 
   const onChangeClick = (key: string) => {
     dispatch({ payload: { change: { ...change, [key]: !change[key] } } });
+  };
+
+  const onClickUpload = () => {
+    let curr = uploadRef?.current;
+    if (curr) curr.click();
   };
 
   const onProceed = async () => {
@@ -207,6 +247,7 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     isBtnActive,
     alertMsg,
     changeAlert,
+    uploadRef,
     onChangeUserName,
     onChangeEmail,
     onChangeFullName,
@@ -214,6 +255,8 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     onChangeNewPassword,
     onEyeClick,
     onChangeClick,
+    onClickUpload,
+    onImgUpload,
     onProceed,
   };
 };

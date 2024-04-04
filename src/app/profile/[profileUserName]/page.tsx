@@ -47,7 +47,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
   const router = useRouter();
   const { profileUserName } = params;
   const { basicDetails } = useContext(BasicDetailsInterface);
-  const { userName } = basicDetails;
+  const { userName, profileImg } = basicDetails;
   const {
     fullName,
     connections,
@@ -88,7 +88,11 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
         </HeaderDiv>
         <ProfileWrapper>
           <ProfileDiv>
-            <ProfileDetails userName={profileUserName} fullName={fullName} />
+            <ProfileDetails
+              userName={profileUserName}
+              fullName={fullName}
+              profileImg={profileImg}
+            />
             <VisitSections>
               <VisitOptions
                 bggrad={GRADIENTS.orange}
@@ -194,7 +198,12 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
           </ConnectionWrapper>
         </Modal>
       )}
-      {editModalOpen && <EditProfile modalToggle={editModalToggle} />}
+      {editModalOpen && (
+        <EditProfile
+          profileImg={profileImg}
+          modalToggle={editModalToggle}
+        />
+      )}
     </>
   );
 };

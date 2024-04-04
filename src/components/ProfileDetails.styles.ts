@@ -21,9 +21,9 @@ export const ProfileInfoWrapper = styled.div`
 export const ProfileImage = styled(Image)`
   width: 70px;
   height: 70px;
-  padding: 8px;
   box-shadow: 0px 0px 7px -3px #000000;
   border-radius: 100px;
+  border: 2px solid white; 
   background-color: white;
 `;
 

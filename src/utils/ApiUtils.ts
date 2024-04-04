@@ -52,4 +52,18 @@ export const ajaxAPI = {
       return error.data;
     }
   },
+  postFormData: async (url: string, formData: any, ...config: any) => {
+    showLoader();
+    try {
+      const res = await axios.post(url, formData, {
+        ...{ headers: { "Content-Type": "multipart/form-data" } },
+        ...config,
+      });
+      hideLoader();
+      return res.data;
+    } catch (error: any) {
+      hideLoader();
+      return error.data;
+    }
+  },
 };
