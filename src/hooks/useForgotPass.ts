@@ -1,6 +1,10 @@
 import { defaultStateReducer } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer } from "react";
-import { ERROR_MSGS, RESP_MESSAGES } from "@/constants/CommonConstants";
+import {
+  ERROR_MSGS,
+  RESP_MESSAGES,
+  TEST_REGEX,
+} from "@/constants/CommonConstants";
 import { useRouter } from "next/navigation";
 import authService from "@/services/AuthService";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
@@ -78,7 +82,7 @@ const useForgotPass = () => {
 
   const onChangeEmail = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Email";
+    const err = TEST_REGEX.email.test(val) ? "" : "Enter Valid Email";
     dispatch({
       payload: {
         values: { ...values, email: val },
@@ -89,7 +93,7 @@ const useForgotPass = () => {
 
   const onChangeOtp = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid OTP";
+    const err = TEST_REGEX.otp.test(val) ? "" : "Enter Valid OTP";
     dispatch({
       payload: {
         values: { ...values, otp: val },
@@ -99,8 +103,13 @@ const useForgotPass = () => {
   };
 
   const onChangeNewPassword = (e: any) => {
-    const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "");
+    let err;
+    if (TEST_REGEX.anythingWithoutSpace.test(val)) {
+      err = "";
+    } else {
+      err = "Enter password";
+    }
     dispatch({
       payload: {
         values: { ...values, newPass: val },

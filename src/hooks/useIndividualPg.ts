@@ -78,7 +78,6 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
       };
       dispatch({ payload });
     } catch (error: any) {
-      debugger;
       if (error?.message === ERROR_MSGS.PG_DOES_NOT_EXISTS) {
         setBasicDetails({ payload: { errorMsg: error?.message } });
       } else {

@@ -14,7 +14,7 @@ const Projects = ({ params }: { params: { userName: string } }) => {
     isCreateModalOpen,
     projects,
     onFileNameChange,
-    onCreateNewClick,
+    createNewToggle,
     onCreateFile,
     deleteProject,
   } = useProjects({ userName: params.userName });
@@ -29,7 +29,7 @@ const Projects = ({ params }: { params: { userName: string } }) => {
             isModalOpen={isCreateModalOpen}
             fileName={createFileName}
             modalTitle="Project name"
-            onCreateNew={onCreateNewClick}
+            createNewToggle={createNewToggle}
             onCreateFile={onCreateFile}
             onFileNameChange={onFileNameChange}
           />

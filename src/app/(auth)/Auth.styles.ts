@@ -80,7 +80,6 @@ export const ExtraOptionDiv = styled.div`
   width: 100%;
   margin: 20px 0 0;
   flex-wrap: wrap;
-  gap: 10px;
 `;
 export const NormalText = styled.p`
   display: inline;
@@ -88,7 +87,6 @@ export const NormalText = styled.p`
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
-  margin-right: 15px;
 `;
 
 export const LinkText = styled(Link)`

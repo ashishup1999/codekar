@@ -1,4 +1,8 @@
-import { ERROR_MSGS, RESP_MESSAGES } from "@/constants/CommonConstants";
+import {
+  ERROR_MSGS,
+  RESP_MESSAGES,
+  TEST_REGEX,
+} from "@/constants/CommonConstants";
 import authService from "@/services/AuthService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer } from "react";
@@ -70,8 +74,15 @@ const useSignUp = () => {
   };
 
   const onChangeUserName = (e: any) => {
-    const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid User Name";
+    const val = e.target.value
+    let err;
+    if (TEST_REGEX.userName.test(val)) {
+      err = "";
+    } else if (!val) {
+      err = "Enter username";
+    } else {
+      err = "Username must have alphanumerics, underscore(_) and dot(.)";
+    }
     dispatch({
       payload: {
         values: { ...values, userName: val },
@@ -82,7 +93,12 @@ const useSignUp = () => {
 
   const onChangeEmail = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Email";
+    let err;
+    if (TEST_REGEX.email.test(val)) {
+      err = "";
+    } else {
+      err = "Enter valid full name";
+    }
     dispatch({
       payload: {
         values: { ...values, email: val },
@@ -93,7 +109,12 @@ const useSignUp = () => {
 
   const onChangeFullName = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Full Name";
+    let err;
+    if (TEST_REGEX.fullName.test(val)) {
+      err = "";
+    } else {
+      err = "Enter valid full name";
+    }
     dispatch({
       payload: {
         values: { ...values, fullName: val },
@@ -103,8 +124,13 @@ const useSignUp = () => {
   };
 
   const onChangePassword = (e: any) => {
-    const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "");
+    let err;
+    if (TEST_REGEX.anythingWithoutSpace.test(val)) {
+      err = "";
+    } else {
+      err = "Enter password";
+    }
     dispatch({
       payload: {
         values: { ...values, password: val },

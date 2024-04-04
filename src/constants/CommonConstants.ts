@@ -155,3 +155,15 @@ export const LANGUAGE_MODES: { [key: string]: string } = {
   html: "html",
   css: "css",
 };
+
+export const TEST_REGEX = {
+  email:
+    /^([a-zA-Z0-9]{1})([a-zA-Z0-9._]*)([a-zA-Z0-9]{1})([@]{1})([a-zA-Z0-9]+)([.]{1})([a-zA-Z0-9]+)$/,
+  userName: /^([a-zA-Z0-9_.]+)/,
+  fullName: /^([a-zA-Z ]*[a-zA-Z]{1})$/,
+  anythingWithoutSpace: /^([\S]+)$/,
+  alphaNumeric: /^([a-zA-Z0-9]+)$/,
+  number: /^([0-9]+)$/,
+  alphabets: /^([a-zA-Z]+)$/,
+  otp: /^([0-9]{6})$/,
+};

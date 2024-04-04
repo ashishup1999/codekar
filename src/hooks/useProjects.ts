@@ -56,8 +56,8 @@ const useProjects = ({ userName }: { userName: string }) => {
     }
   };
 
-  const onCreateNewClick = () => {
-    dispatch({ payload: { isCreateModalOpen: true } });
+  const createNewToggle = () => {
+    dispatch({ payload: { isCreateModalOpen: !isCreateModalOpen } });
   };
 
   const onCreateFile = async () => {
@@ -91,7 +91,7 @@ const useProjects = ({ userName }: { userName: string }) => {
     isCreateModalOpen,
     projects,
     onFileNameChange,
-    onCreateNewClick,
+    createNewToggle,
     onCreateFile,
     deleteProject,
   };

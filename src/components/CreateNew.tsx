@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, MouseEventHandler } from "react";
+import React, { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import {
   CreateBtn,
   CreateNewWrapper,
@@ -6,6 +6,10 @@ import {
   Title,
 } from "./CreateNew.styles";
 import Modal from "./Modal";
+import { CrossIcon } from "@/app/profile/[profileUserName]/Profile.styles";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
+import { TEST_REGEX } from "@/constants/CommonConstants";
+import { ErrorText } from "@/app/(auth)/Auth.styles";
 
 const CreateNew = ({
   title,
@@ -14,21 +18,41 @@ const CreateNew = ({
   themeGrad,
   onBtnClick,
   onNameChange,
+  createNewToggle,
 }: {
   title: string;
   inputVal: string;
-    themeColor: string;
-    themeGrad: string;
+  themeColor: string;
+  themeGrad: string;
   onBtnClick: MouseEventHandler;
   onNameChange: ChangeEventHandler;
+  createNewToggle: Function;
 }) => {
+  const [err, setErr] = useState("");
+  const onChange = (e: any) => {
+    const val = e.target.value;
+    if (TEST_REGEX.alphaNumeric.test(val)) {
+      onNameChange(e);
+      setErr("");
+    } else {
+      setErr("Project name must only have alphanumerics");
+    }
+  };
+
   return (
-    <Modal width="300px" height="220px">
-      <CreateNewWrapper bggrad={themeGrad}>
+    <Modal>
+      <CreateNewWrapper>
+        <CrossIcon
+          src={COMMON_IMAGES.cross}
+          alt=""
+          onClick={() => createNewToggle()}
+        />
         <Title>{title}</Title>
-        <NameInput value={inputVal} bdcolor={themeColor} onChange={onNameChange}/>
+        <NameInput value={inputVal} bdcolor={themeColor} onChange={onChange} />
+        {err && <ErrorText>{err}</ErrorText>}
         <CreateBtn
-          color={themeColor}
+          disabled={Boolean(!inputVal || err)}
+          bggrad={themeGrad}
           onClick={inputVal ? onBtnClick : () => {}}
         >
           Create

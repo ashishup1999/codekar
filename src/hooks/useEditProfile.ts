@@ -1,4 +1,8 @@
-import { ERROR_MSGS, RESP_MESSAGES } from "@/constants/CommonConstants";
+import {
+  ERROR_MSGS,
+  RESP_MESSAGES,
+  TEST_REGEX,
+} from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import userService from "@/services/UserService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
@@ -94,7 +98,14 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
 
   const onChangeUserName = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid User Name";
+    let err;
+    if (TEST_REGEX.userName.test(val)) {
+      err = "";
+    } else if (!val) {
+      err = "Enter username";
+    } else {
+      err = "Username can only have alphanumerics, underscore(_) and dot(.)";
+    }
     dispatch({
       payload: {
         values: { ...values, userName: val },
@@ -105,7 +116,12 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
 
   const onChangeEmail = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Email";
+    let err;
+    if (TEST_REGEX.email.test(val)) {
+      err = "";
+    } else {
+      err = "Enter valid email";
+    }
     dispatch({
       payload: {
         values: { ...values, email: val },
@@ -116,7 +132,7 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
 
   const onChangeFullName = (e: any) => {
     const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Full Name";
+    const err = TEST_REGEX.fullName.test(val) ? "" : "Enter Valid Full Name";
     dispatch({
       payload: {
         values: { ...values, fullName: val },
@@ -126,8 +142,8 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
   };
 
   const onChangeCurrPassword = (e: any) => {
-    const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "")
+    const err = TEST_REGEX.anythingWithoutSpace.test(val) ? "" : "Enter Valid Password";
     dispatch({
       payload: {
         values: { ...values, currPassword: val },
@@ -137,8 +153,8 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
   };
 
   const onChangeNewPassword = (e: any) => {
-    const val = e.target.value;
-    const err = val.length ? "" : "Enter Valid Password";
+    const val = e.target.value?.replace(/\s/, "")
+    const err = TEST_REGEX.anythingWithoutSpace.test(val) ? "" : "Enter Valid Password";
     dispatch({
       payload: {
         values: { ...values, password: val },

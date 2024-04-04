@@ -54,3 +54,12 @@ export const CheckOptionsDiv = styled.div`
   gap: 10px;
   margin-bottom: 20px;
 `;
+
+export const NormalText = styled.p`
+  display: inline;
+  color: #7f104c;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  margin-right: 15px;
+`;

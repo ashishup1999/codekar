@@ -41,7 +41,7 @@ const Plus = ({
   isModalOpen,
   fileName,
   modalTitle,
-  onCreateNew,
+  createNewToggle,
   onCreateFile,
   onFileNameChange,
 }: {
@@ -50,13 +50,13 @@ const Plus = ({
   isModalOpen: boolean;
   fileName: string;
   modalTitle: string;
-  onCreateNew: MouseEventHandler;
+  createNewToggle: MouseEventHandler;
   onCreateFile: MouseEventHandler;
   onFileNameChange: ChangeEventHandler;
 }) => {
   return (
     <PlusWrapper>
-      <PlusDiv grad={grad} onClick={onCreateNew}>
+      <PlusDiv grad={grad} onClick={createNewToggle}>
         <PlusImg src={plusIcon} alt="" />
         <PlusText>Create New</PlusText>
       </PlusDiv>
@@ -66,6 +66,7 @@ const Plus = ({
           inputVal={fileName}
           themeColor={themeColor}
           themeGrad={grad}
+          createNewToggle={createNewToggle}
           onBtnClick={onCreateFile}
           onNameChange={onFileNameChange}
         />

@@ -14,7 +14,7 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
     pgName,
     isCreateModalOpen,
     onCreateFile,
-    onCreateNewClick,
+    createNewToggle,
     onFileNameChange,
     deletePg,
   } = usePg({ userName: params.userName });
@@ -29,7 +29,7 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
             isModalOpen={isCreateModalOpen}
             fileName={pgName}
             modalTitle="Playground Name"
-            onCreateNew={onCreateNewClick}
+            createNewToggle={createNewToggle}
             onCreateFile={onCreateFile}
             onFileNameChange={onFileNameChange}
           />

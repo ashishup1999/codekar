@@ -5,6 +5,7 @@ import {
   EditHeader,
   EditSecWrapper,
   FinalButton,
+  NormalText,
   OptionHeader,
 } from "./EditProfile.styles";
 import { TextInput } from "@/app/(auth)/AuthInputs";
@@ -18,7 +19,6 @@ import {
   EyeDiv,
   EyeIcon,
   MinGapDiv,
-  NormalText,
 } from "@/app/(auth)/Auth.styles";
 import {
   COMMON_IMAGES,

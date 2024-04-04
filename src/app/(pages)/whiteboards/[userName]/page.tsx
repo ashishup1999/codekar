@@ -14,7 +14,7 @@ const WhiteBoards = ({ params }: { params: { userName: string } }) => {
     wbName,
     isCreateModalOpen,
     onCreateFile,
-    onCreateNewClick,
+    createNewToggle,
     onFileNameChange,
     deleteWb,
   } = useWb({ userName: params.userName });
@@ -29,7 +29,7 @@ const WhiteBoards = ({ params }: { params: { userName: string } }) => {
             isModalOpen={isCreateModalOpen}
             fileName={wbName}
             modalTitle="Whiteboard Name"
-            onCreateNew={onCreateNewClick}
+            createNewToggle={createNewToggle}
             onCreateFile={onCreateFile}
             onFileNameChange={onFileNameChange}
           />
