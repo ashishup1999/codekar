@@ -23,7 +23,7 @@ export const EditorSection = styled.div`
   width: 50%;
   @media only screen and (max-width: 768px) {
     width: 100%;
-    height: 40vh;
+    height: 70vh;
   }
 `;
 
@@ -38,13 +38,13 @@ export const PreviewSection = styled.div`
   background-color: white;
   @media only screen and (max-width: 768px) {
     width: 100%;
-    height: 70vh;
+    height: 30vh;
   }
 `;
 
 export const Preview = styled.div`
   display: flex;
-  flex: 1;
+  height: 100%;
   width: 100%;
   padding: 10px;
 `;
