@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   background-color: ${COLORS.vsBlack};
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
+    height: fit-content;
   }
 `;
 
