@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalBg = styled.div`
+export const ModalBg = styled.div<{ zInd?: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@ export const ModalBg = styled.div`
   height: 100vh;
   position: fixed;
   background-color: rgb(217, 217, 217, 7%);
-  z-index: 1;
+  z-index: ${(props) => props.zInd || "1"};
   top: 0;
   right: 0;
 `;

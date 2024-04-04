@@ -106,18 +106,14 @@ const EditProfile = ({
               }
               alt=""
             />
-            <ImageUploadDiv>
-              <ImageUpload
-                src={COMMON_IMAGES.imgUpload}
-                alt=""
-                onClick={onClickUpload}
-              />
-              <ImageUploadInput
-                ref={uploadRef}
-                type="file"
-                onChange={onImgUpload}
-              />
+            <ImageUploadDiv onClick={onClickUpload}>
+              <ImageUpload src={COMMON_IMAGES.imgUpload} alt="" />
             </ImageUploadDiv>
+            <ImageUploadInput
+              ref={uploadRef}
+              type="file"
+              onChange={onImgUpload}
+            />
           </UserImageDiv>
           {changeAlert ? (
             <ChangeSuccessSec>

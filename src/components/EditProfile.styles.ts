@@ -78,7 +78,6 @@ export const UserImageDiv = styled.div`
   border-radius: 100px;
 `;
 
-
 export const UserImage = styled(Image)`
   height: auto;
   width: 100%;
@@ -103,6 +102,5 @@ export const ImageUpload = styled(Image)`
 `;
 
 export const ImageUploadInput = styled.input`
-  width: 0;
-  height: 0;
+  display: none;
 `;

@@ -15,6 +15,7 @@ import {
   NotifBadge,
   NotifImgWrapper,
   UserImg,
+  UserImgWrpr,
 } from "../page.styles";
 import { Content } from "./layout.styles";
 import { useRouter } from "next/navigation";
@@ -69,17 +70,19 @@ export default function PageLayouts({
               <BellImg src={COMMON_IMAGES.bell} alt="" />
               {notifCnt !== 0 && <NotifBadge />}
             </NotifImgWrapper>
-            <UserImg
-              width={200}
-              height={200}
-              src={
-                profileImg
-                  ? getBase64Src(profileImg)
-                  : COMMON_IMAGES.defaultProfileImg
-              }
-              alt=""
-              onClick={() => router.push(`/profile/${userName}`)}
-            />
+            <UserImgWrpr>
+              <UserImg
+                width={200}
+                height={200}
+                src={
+                  profileImg
+                    ? getBase64Src(profileImg)
+                    : COMMON_IMAGES.defaultProfileImg
+                }
+                alt=""
+                onClick={() => router.push(`/profile/${userName}`)}
+              />
+            </UserImgWrpr>
           </HeaderDiv>
           <Content>{children}</Content>
           <FooterDiv>

@@ -10,7 +10,7 @@ export const LoaderBg = styled.div<{defaultDisp?:string}>`
   height: 100vh;
   position: fixed;
   background-color: #00000059;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   right: 0;
   @media only screen and (max-width: 768px) {
