@@ -25,4 +25,7 @@ export const ModalContainer = styled.div<{ width?: string; height?: string }>`
   max-height: 60vh;
   overflow-y: scroll;
   position: relative;
+  @media only screen and (max-width: 768px) {
+    width: 95vw;
+  }
 `;
