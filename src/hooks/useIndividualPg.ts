@@ -122,7 +122,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     const { value } = e?.target;
     dispatch({
       payload: {
-        pgName: value || "Untitled",
+        pgName: value,
         errTxt: !TEST_REGEX.alphaNumeric.test(value),
       },
     });

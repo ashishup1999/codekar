@@ -122,7 +122,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     const { value } = e?.target;
     dispatch({
       payload: {
-        wbName: value || "Untitled",
+        wbName: value,
         errTxt: !TEST_REGEX.alphaNumeric.test(value),
       },
     });

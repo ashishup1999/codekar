@@ -147,7 +147,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     const { value } = e?.target;
     dispatch({
       payload: {
-        projectName: value || "Untitled",
+        projectName: value,
         errTxt: !TEST_REGEX.alphaNumeric.test(value),
       },
     });
