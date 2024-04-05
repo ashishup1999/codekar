@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const useProfile = ({ profileUserName }: { profileUserName: string }) => {
-  const { setBasicDetails } = useContext(BasicDetailsInterface);
+  const { basicDetails, setBasicDetails } = useContext(BasicDetailsInterface);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     fullName,
@@ -26,7 +26,7 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
   useEffect(() => {
     getUserInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [basicDetails?.profileImg]);
 
   const getUserInfo = async () => {
     try {
@@ -39,6 +39,9 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
           currProfileImg: res?.profileImg,
         },
       });
+      if (basicDetails?.userName === profileUserName) {
+        setBasicDetails({ payload: { profileImg: res?.profileImg } });
+      }
     } catch (error: any) {
       if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
         setBasicDetails({ payload: { errorMsg: error?.message } });
