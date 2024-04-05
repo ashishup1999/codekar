@@ -143,6 +143,7 @@ export const ErrAlertMessage = styled.div`
   border-radius: 4px;
   box-shadow: 0px 0px 9px 0px #0000003f;
   position: absolute;
+  z-index: 1;
   top: 12%;
   gap: 7px;
 `;

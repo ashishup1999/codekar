@@ -7,6 +7,7 @@ import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import fileServices from "@/services/FileService";
 import userService from "@/services/UserService";
 import { defaultStateReducer } from "@/utils/CommonUtils";
+import { useRouter } from "next/navigation";
 import {
   ChangeEvent,
   Dispatch,
@@ -54,9 +55,11 @@ const initialState: initIfc = {
 };
 
 const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
+  const router = useRouter();
   const [state, dispatch]: [state: initIfc, dispatch: Dispatch<any>] =
     useReducer(defaultStateReducer, initialState);
   const uploadRef = useRef<HTMLInputElement>(null);
+  const alertRef = useRef<HTMLDivElement>(null);
   const {
     values,
     errors,
@@ -81,7 +84,13 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
       setTimeout(() => {
         dispatch({ payload: { changeAlert: "" } });
         modalToggle();
-      }, 3000);
+        if (change?.userName && values?.userName) {
+          if (localStorage.getItem("userName"))
+            localStorage.setItem("userName", values?.userName);
+          router.replace(`/profile/${values?.userName}`);
+          setBasicDetails({ payload: { userName: values?.userName } });
+        }
+      }, 1000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeAlert]);
@@ -231,6 +240,9 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     } catch (error: any) {
       if (Object.keys(RESP_MESSAGES).includes(error?.message)) {
         dispatch({ payload: { alertMsg: RESP_MESSAGES[error?.message] } });
+        if (alertRef?.current) {
+          alertRef?.current.scrollIntoView();
+        }
       } else {
         setBasicDetails({
           payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
@@ -248,6 +260,7 @@ const useEditProfile = ({ modalToggle }: { modalToggle: Function }) => {
     alertMsg,
     changeAlert,
     uploadRef,
+    alertRef,
     onChangeUserName,
     onChangeEmail,
     onChangeFullName,

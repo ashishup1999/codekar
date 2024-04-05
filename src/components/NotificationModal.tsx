@@ -7,6 +7,7 @@ import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import {
   Connection,
   ConnectionImg,
+  ConnectionImgWrpr,
   ConnName,
   NoNotification,
   NotifSec,
@@ -15,6 +16,7 @@ import {
 } from "./NotificationModal.styles";
 import useConnection from "@/hooks/useConnection";
 import { useRouter } from "next/navigation";
+import { getBase64Src } from "@/utils/CommonUtils";
 
 const NotificationModal = ({
   modalOpen,
@@ -60,21 +62,32 @@ const NotificationModal = ({
             {connReqs?.length !== 0 ? (
               <NotifSec>
                 <NotifType>Connection Requests</NotifType>
-                {connReqs?.map((str) => {
+                {connReqs?.map((obj: any) => {
                   return (
                     <>
                       <Connection
-                        key={str}
-                        onClick={() => router.push(`/profile/${str}`)}
+                        key={obj?.userName}
+                        onClick={() => router.push(`/profile/${obj?.userName}`)}
                       >
-                        <ConnectionImg src={COMMON_IMAGES.userCircle} alt="" />
-                        <ConnName>{str}</ConnName>
+                        <ConnectionImgWrpr>
+                          <ConnectionImg
+                            width={200}
+                            height={200}
+                            src={
+                              obj?.profileImg
+                                ? getBase64Src(obj?.profileImg)
+                                : COMMON_IMAGES.defaultProfileImg
+                            }
+                            alt=""
+                          />
+                        </ConnectionImgWrpr>
+                        <ConnName>{obj?.userName}</ConnName>
                         <OptionImg
                           src={COMMON_IMAGES.redTick}
                           alt=""
                           onClick={(e: any) => {
                             e.stopPropagation();
-                            acceptConnectionRequest(str, userName);
+                            acceptConnectionRequest(obj?.userName, userName);
                           }}
                         />
                         <OptionImg
@@ -82,7 +95,7 @@ const NotificationModal = ({
                           alt=""
                           onClick={(e: any) => {
                             e.stopPropagation();
-                            rejectConnectionRequest(str, userName);
+                            rejectConnectionRequest(obj?.userName, userName);
                           }}
                         />
                       </Connection>

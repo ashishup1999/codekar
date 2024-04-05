@@ -104,3 +104,20 @@ export const ImageUpload = styled(Image)`
 export const ImageUploadInput = styled.input`
   display: none;
 `;
+
+
+export const ErrAlertMessage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e51c1c;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 5px 0px #0000003f;
+  gap: 7px;
+`;

@@ -27,7 +27,6 @@ import {
   ExtraOptionSection,
   Icon,
   IconDiv,
-  IconSmall,
   IconText,
   ProfileDiv,
   ProfileWrapper,
@@ -40,7 +39,11 @@ import useProfile from "@/hooks/useProfile";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import useConnection from "@/hooks/useConnection";
-import { NoNotification } from "@/components/NotificationModal.styles";
+import {
+  ConnectionImg,
+  ConnectionImgWrpr,
+  NoNotification,
+} from "@/components/NotificationModal.styles";
 import EditProfile from "@/components/EditProfile";
 import Link from "next/link";
 import { getBase64Src } from "@/utils/CommonUtils";
@@ -55,6 +58,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
     connections,
     connModelOpen,
     editModalOpen,
+    currProfileImg,
     logOut,
     connToggle,
     editModalToggle,
@@ -68,7 +72,8 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
   } = useConnection();
 
   useEffect(() => {
-    connectionStatus(userName, profileUserName);
+    if (userName != profileUserName)
+      connectionStatus(userName, profileUserName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -82,17 +87,17 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
           </HeaderTextSpan>
           {userName !== profileUserName && (
             <UserImgWrpr>
-            <UserImg
-              width={200}
-              height={200}
-              src={
-                profileImg
-                  ? getBase64Src(profileImg)
-                  : COMMON_IMAGES.defaultProfileImg
-              }
-              alt=""
-              onClick={() => router.push(`/profile/${userName}`)}
-            />
+              <UserImg
+                width={200}
+                height={200}
+                src={
+                  profileImg
+                    ? getBase64Src(profileImg)
+                    : COMMON_IMAGES.defaultProfileImg
+                }
+                alt=""
+                onClick={() => router.push(`/profile/${userName}`)}
+              />
             </UserImgWrpr>
           )}
         </HeaderDiv>
@@ -101,7 +106,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             <ProfileDetails
               userName={profileUserName}
               fullName={fullName}
-              profileImg={profileImg}
+              profileImg={currProfileImg}
             />
             <VisitSections>
               <VisitOptions
@@ -190,11 +195,22 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                 {connections?.map((conn: any) => {
                   return (
                     <Connection
-                      key={conn}
-                      onClick={() => router.push(`/profile/${conn}`)}
+                      key={conn?.userName}
+                      onClick={() => router.push(`/profile/${conn?.userName}`)}
                     >
-                      <IconSmall src={COMMON_IMAGES.userCircle} alt="" />
-                      <ConnName>{conn}</ConnName>
+                      <ConnectionImgWrpr>
+                        <ConnectionImg
+                          width={200}
+                          height={200}
+                          src={
+                            conn?.profileImg
+                              ? getBase64Src(conn?.profileImg)
+                              : COMMON_IMAGES.defaultProfileImg
+                          }
+                          alt=""
+                        />
+                      </ConnectionImgWrpr>
+                      <ConnName>{conn?.userName}</ConnName>
                     </Connection>
                   );
                 })}

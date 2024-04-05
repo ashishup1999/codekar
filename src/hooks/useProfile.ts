@@ -7,6 +7,7 @@ import { useContext, useEffect, useReducer } from "react";
 const initialState = {
   fullName: "",
   connections: [],
+  currProfileImg: "",
   connModelOpen: false,
   editModalOpen: false,
 };
@@ -14,7 +15,13 @@ const initialState = {
 const useProfile = ({ profileUserName }: { profileUserName: string }) => {
   const { setBasicDetails } = useContext(BasicDetailsInterface);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
-  const { fullName, connections, connModelOpen, editModalOpen } = state;
+  const {
+    fullName,
+    connections,
+    connModelOpen,
+    editModalOpen,
+    currProfileImg,
+  } = state;
 
   useEffect(() => {
     getUserInfo();
@@ -29,9 +36,9 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
         payload: {
           fullName: res?.fullName,
           connections: res?.connections || [],
+          currProfileImg: res?.profileImg,
         },
       });
-      setBasicDetails({ payload: { profileImg: res?.profileImg } });
     } catch (error: any) {
       if (error?.message === ERROR_MSGS.USER_DOES_NOT_EXISTS) {
         setBasicDetails({ payload: { errorMsg: error?.message } });
@@ -61,6 +68,7 @@ const useProfile = ({ profileUserName }: { profileUserName: string }) => {
     connections,
     connModelOpen,
     editModalOpen,
+    currProfileImg,
     logOut,
     connToggle,
     editModalToggle,

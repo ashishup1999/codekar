@@ -4,6 +4,7 @@ import {
   CheckOptionsDiv,
   EditHeader,
   EditSecWrapper,
+  ErrAlertMessage,
   FinalButton,
   ImageUpload,
   ImageUploadDiv,
@@ -20,7 +21,6 @@ import {
   CheckBoxIcon,
   CheckBoxWrap,
   ErrAlerIcon,
-  ErrAlertMessage,
   EyeDiv,
   EyeIcon,
   MinGapDiv,
@@ -72,6 +72,7 @@ const EditProfile = ({
     alertMsg,
     changeAlert,
     uploadRef,
+    alertRef,
     onChangeUserName,
     onChangeEmail,
     onChangeFullName,
@@ -89,32 +90,29 @@ const EditProfile = ({
   return (
     <>
       <Modal>
-        <EditSecWrapper>
-          {alertMsg && (
-            <ErrAlertMessage>
-              <ErrAlerIcon src={ERROR_EXLAMATION} alt="" /> {alertMsg}
-            </ErrAlertMessage>
+        <EditSecWrapper ref={alertRef}>
+          {!changeAlert && (
+            <UserImageDiv>
+              <UserImage
+                width={200}
+                height={200}
+                src={
+                  profileImg
+                    ? `data:image/jpeg;base64,${profileImg}`
+                    : COMMON_IMAGES.defaultProfileImg
+                }
+                alt=""
+              />
+              <ImageUploadDiv onClick={onClickUpload}>
+                <ImageUpload src={COMMON_IMAGES.imgUpload} alt="" />
+              </ImageUploadDiv>
+              <ImageUploadInput
+                ref={uploadRef}
+                type="file"
+                onChange={onImgUpload}
+              />
+            </UserImageDiv>
           )}
-          <UserImageDiv>
-            <UserImage
-              width={200}
-              height={200}
-              src={
-                profileImg
-                  ? `data:image/jpeg;base64,${profileImg}`
-                  : COMMON_IMAGES.defaultProfileImg
-              }
-              alt=""
-            />
-            <ImageUploadDiv onClick={onClickUpload}>
-              <ImageUpload src={COMMON_IMAGES.imgUpload} alt="" />
-            </ImageUploadDiv>
-            <ImageUploadInput
-              ref={uploadRef}
-              type="file"
-              onChange={onImgUpload}
-            />
-          </UserImageDiv>
           {changeAlert ? (
             <ChangeSuccessSec>
               <ChangeSuccessIcon src={GREEN_TICK} alt="" /> {changeAlert}
@@ -156,6 +154,11 @@ const EditProfile = ({
               </CheckOptionsDiv>
               {noFieldsToEdit && (
                 <>
+                  {alertMsg && (
+                    <ErrAlertMessage>
+                      <ErrAlerIcon src={ERROR_EXLAMATION} alt="" /> {alertMsg}
+                    </ErrAlertMessage>
+                  )}
                   <OptionHeader>Edit fields</OptionHeader>
                   {change?.userName && (
                     <TextInput

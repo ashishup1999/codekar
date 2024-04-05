@@ -34,15 +34,25 @@ export const Connection = styled.div`
   cursor: pointer;
 `;
 
-export const ConnectionImg = styled(Image)`
-  width: 28px;
-  height: 28px;
+export const ConnectionImgWrpr = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
   background-color: white;
   box-shadow: 0px 0px 7px -3px #000000;
   border-radius: 30px;
+  border: 1px solid white;
   padding: 5px 0;
   cursor: pointer;
   margin: 0 10px;
+  overflow: hidden;
+`;
+
+export const ConnectionImg = styled(Image)`
+  width: 28px;
+  height: auto;
 `;
 
 export const ConnName = styled.p`
