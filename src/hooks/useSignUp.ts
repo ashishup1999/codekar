@@ -97,7 +97,7 @@ const useSignUp = () => {
     if (TEST_REGEX.email.test(val)) {
       err = "";
     } else {
-      err = "Enter valid full name";
+      err = "Enter valid email";
     }
     dispatch({
       payload: {
