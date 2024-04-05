@@ -32,11 +32,11 @@ const CreateNew = ({
   const onChange = (e: any) => {
     const val = e.target.value;
     if (TEST_REGEX.alphaNumeric.test(val)) {
-      onNameChange(e);
       setErr("");
     } else {
       setErr("Project name must only have alphanumerics");
     }
+    onNameChange(e);
   };
 
   return (
