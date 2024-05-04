@@ -6,6 +6,8 @@ import WbCard from "@/components/WbCard";
 import Plus from "@/components/Plus";
 import useWb from "@/hooks/useWb";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { ErrorContentDiv, ErrorIcon, ErrorText } from "@/app/page.styles";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const WhiteBoards = ({ params }: { params: { userName: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -34,10 +36,17 @@ const WhiteBoards = ({ params }: { params: { userName: string } }) => {
             onFileNameChange={onFileNameChange}
           />
         )}
-        <WbDiv>
-          {wbs.map((obj: any) => (
-            <WbCard key={obj?.id} wbInfo={obj} onDelete={deleteWb} />
-          ))}
+        <WbDiv align={!Boolean(wbs?.length)}>
+          {wbs?.length ? (
+            wbs.map((obj: any) => (
+              <WbCard key={obj?.id} wbInfo={obj} onDelete={deleteWb} />
+            ))
+          ) : (
+            <ErrorContentDiv>
+              <ErrorIcon src={COMMON_IMAGES.notFound} alt="" />
+              <ErrorText>No Whiteboards Found</ErrorText>
+            </ErrorContentDiv>
+          )}
         </WbDiv>
       </WbWrapper>
     </>

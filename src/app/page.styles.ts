@@ -178,11 +178,8 @@ export const NotifModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  width: 400px;
+  width: 100%;
   min-height: 200px;
-  @media only screen and (max-width: 768px) {
-    width: 97vw;
-  }
 `;
 
 export const ModalHeader = styled.div`

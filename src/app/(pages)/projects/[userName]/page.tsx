@@ -6,6 +6,8 @@ import Plus from "@/components/Plus";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
 import useProjects from "@/hooks/useProjects";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { ErrorContentDiv, ErrorIcon, ErrorText } from "@/app/page.styles";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const Projects = ({ params }: { params: { userName: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -34,14 +36,21 @@ const Projects = ({ params }: { params: { userName: string } }) => {
             onFileNameChange={onFileNameChange}
           />
         )}
-        <ProjectsDiv>
-          {projects.map((obj: any) => (
-            <ProjectCard
-              key={obj?.id}
-              projInfo={obj}
-              onDelete={deleteProject}
-            />
-          ))}
+        <ProjectsDiv align={!Boolean(projects?.length)}>
+          {projects?.length ? (
+            projects.map((obj: any) => (
+              <ProjectCard
+                key={obj?.id}
+                projInfo={obj}
+                onDelete={deleteProject}
+              />
+            ))
+          ) : (
+            <ErrorContentDiv>
+              <ErrorIcon src={COMMON_IMAGES.notFound} alt="" />
+              <ErrorText>No Projects Found</ErrorText>
+            </ErrorContentDiv>
+          )}
         </ProjectsDiv>
       </ProjectsWrapper>
     </>

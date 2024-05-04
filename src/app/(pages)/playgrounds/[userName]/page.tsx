@@ -6,6 +6,8 @@ import { PgDiv, PgWrapper } from "./page.styles";
 import PGCard from "@/components/PgCard";
 import Plus from "@/components/Plus";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
+import { ErrorContentDiv, ErrorIcon, ErrorText } from "@/app/page.styles";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const Playgrounds = ({ params }: { params: { userName: string } }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
@@ -34,10 +36,17 @@ const Playgrounds = ({ params }: { params: { userName: string } }) => {
             onFileNameChange={onFileNameChange}
           />
         )}
-        <PgDiv>
-          {pgs.map((obj: any) => (
-            <PGCard key={obj?.id} pgInfo={obj} onDelete={deletePg} />
-          ))}
+        <PgDiv align={!Boolean(pgs?.length)}>
+          {pgs?.length ? (
+            pgs.map((obj: any) => (
+              <PGCard key={obj?.id} pgInfo={obj} onDelete={deletePg} />
+            ))
+          ) : (
+            <ErrorContentDiv>
+              <ErrorIcon src={COMMON_IMAGES.notFound} alt="" />
+              <ErrorText>No Playground Found</ErrorText>
+            </ErrorContentDiv>
+          )}
         </PgDiv>
       </PgWrapper>
     </>

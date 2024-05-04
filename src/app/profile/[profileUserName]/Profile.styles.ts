@@ -86,14 +86,11 @@ export const ConnectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  width: 100%;
+  width: 83vw;
   height: 100%;
   position: relative;
-  width: 400px;
+  max-width: 350px;
   min-height: 200px;
-  @media only screen and (max-width: 768px) {
-    width: 97vw;
-  }
 `;
 
 export const ConnectionSec = styled.div`
@@ -111,16 +108,13 @@ export const Connection = styled.div`
   flex: 0;
   align-items: center;
   padding: 15px 10px;
-  min-width: 48.5%;
+  min-width: 100%;
+  flex: 1;
   height: fit-content;
   border-radius: 10px;
   background-image: ${GRADIENTS.redishPink};
   box-shadow: 0px 0px 7px -3px #000000;
   cursor: pointer;
-  @media only screen and (max-width: 768px) {
-    min-width: 100%;
-    flex: 1;
-  }
 `;
 
 export const ConnName = styled.p`

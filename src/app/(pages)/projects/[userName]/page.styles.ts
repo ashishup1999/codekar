@@ -12,9 +12,10 @@ export const ProjectsWrapper = styled.div`
   }
 `;
 
-export const ProjectsDiv = styled.div`
+export const ProjectsDiv = styled.div<{ align: boolean }>`
   display: flex;
-  justify-content: flex-start;
+  justify-content: ${(props) => (props.align ? "center" : "flex-start")};
+  margin: ${(props) => (props.align ? "auto" : "0")};
   width: 100%;
   flex-wrap: wrap;
 `;
