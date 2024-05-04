@@ -28,10 +28,10 @@ export const HeaderDiv = styled.div`
 `;
 
 export const LogoImg = styled(Image)`
-  height: 40px;
+  height: 35px;
+  width: 70px;
   cursor: pointer;
   @media only screen and (max-width: 768px) {
-    height: 35px;
     width: 50px;
     margin-right: 10px;
   }
@@ -47,7 +47,7 @@ export const HeaderText = styled.p`
   display: inline;
   font-weight: bolder;
   letter-spacing: 2.5px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   background: ${GRADIENTS.whiteGreyish};
   -webkit-background-clip: text;
@@ -59,7 +59,7 @@ export const HeaderText = styled.p`
 `;
 
 export const NotifImgWrapper = styled.div`
-  height: 45px;
+  height: 35px;
   cursor: pointer;
   position: relative;
   @media only screen and (max-width: 768px) {
@@ -75,42 +75,34 @@ export const NotifBadge = styled.div`
   right: -3px;
   top: -2px;
   background-color: ${COLORS.brightRed};
+  border-radius: 50px;
 `;
 
 export const BellImg = styled(Image)`
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   padding: 0px 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 7px -3px #000000;
   background-color: white;
   cursor: pointer;
   margin-left: 10px;
-  @media only screen and (max-width: 768px) {
-    height: 35px;
-    width: 35px;
-    border-radius: 50px;
-  }
+  border-radius: 50px;
 `;
 
 export const UserImgWrpr = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0px 0px 7px -3px #000000;
   background-color: white;
   cursor: pointer;
   margin-left: 10px;
   overflow: hidden;
-  @media only screen and (max-width: 768px) {
-    height: 35px;
-    width: 35px;
-    border-radius: 50px;
-  }
 `;
 
 export const UserImg = styled(Image)`
