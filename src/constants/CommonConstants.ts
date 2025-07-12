@@ -3,8 +3,8 @@ import { COMMON_IMAGES, OPTION_ICONS } from "./StaticImages";
 export const GRADIENTS = {
   radialBlackBlue:
     "radial-gradient(circle, rgba(46,46,46,1) 0%, rgba(0,0,0,1) 100%)",
-  lightOrange: "linear-gradient(0deg, #F1722B 0%, #9D491A 100%)",
-  orange: "linear-gradient(0deg, #DD5407 0%, #772D04 100%)",
+  lightOrange: "linear-gradient(0deg,rgb(104, 10, 104) 0%,rgb(132, 24, 132) 100%)",
+  orange: "linear-gradient(0deg,rgb(104, 10, 104) 0%, rgb(66, 16, 66) 100%)",
   lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
   lightGreen: "linear-gradient(0deg, #40AA26 0%, #2C7719 100%)",
   redishPink: "linear-gradient(0deg, #DF3A3A 0%, #7D1017 100%)",
@@ -12,7 +12,7 @@ export const GRADIENTS = {
 };
 
 export const COLORS = {
-  orange: "#DD5407",
+  orange: "rgb(132, 24, 132)",
   blue: "#0EA8D9",
   green: "#3FA526",
   brightRed: "#E31D29",
@@ -68,8 +68,8 @@ export const COLOR_CONSTANTS = {
 };
 
 export const COMMON_TEXTS = {
-  appName: "CodeKar",
-  copyRight: "CodeKar © 2024",
+  appName: "odepulse",
+  copyRight: "Codepulse © 2025",
 };
 
 export const PROJECT_FILES: { [key: string]: { id: string; name: string } } = {

@@ -1,14 +1,11 @@
 "use client";
 import React from "react";
-import { LoaderBg, LoaderImage, LoaderWrapper } from "./Loader.styles";
-import { COMMON_IMAGES } from "@/constants/StaticImages";
+import { LoaderBg, LoaderWrapper } from "./Loader.styles";
 
 const Loader = ({ defaultDisp }: { defaultDisp?: string }) => {
   return (
     <LoaderBg id="loader" defaultDisp={defaultDisp}>
-      <LoaderWrapper>
-        <LoaderImage src={COMMON_IMAGES.logoWhite} alt="" />
-      </LoaderWrapper>
+      <LoaderWrapper>{"</>"}</LoaderWrapper>
     </LoaderBg>
   );
 };

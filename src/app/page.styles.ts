@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bgLogo from "@/images/bgLogo.svg";
 import Image from "next/image";
 import { COLORS, GRADIENTS } from "@/constants/CommonConstants";
 
@@ -10,12 +9,7 @@ export const HomeWrapper = styled.div<{ plainBg?: boolean }>`
   width: 100dvw;
   min-width: 300px;
   height: 100dvh;
-  background: url(${(props) => props.plainBg || bgLogo.src}) no-repeat center;
   overflow-x: hidden;
-  @media only screen and (max-width: 768px) {
-    background: url(${(props) => props.plainBg || bgLogo.src}) no-repeat center;
-    background-size: 90%;
-  }
 `;
 
 export const HeaderDiv = styled.div`
@@ -29,18 +23,15 @@ export const HeaderDiv = styled.div`
 
 export const LogoImg = styled(Image)`
   height: 35px;
-  width: 70px;
+  width: 40px;
   cursor: pointer;
-  @media only screen and (max-width: 768px) {
-    width: 50px;
-    margin-right: 10px;
-  }
 `;
 
 export const HeaderTextSpan = styled.span`
   display: flex;
   cursor: pointer;
   margin-right: auto;
+  align-items: center;
 `;
 
 export const HeaderText = styled.p`
@@ -52,10 +43,6 @@ export const HeaderText = styled.p`
   background: ${GRADIENTS.whiteGreyish};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 3px;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const NotifImgWrapper = styled.div`

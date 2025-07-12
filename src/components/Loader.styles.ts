@@ -2,8 +2,9 @@ import { GRADIENTS } from "@/constants/CommonConstants";
 import Image from "next/image";
 import styled, { keyframes } from "styled-components";
 
-export const LoaderBg = styled.div<{defaultDisp?:string}>`
-  display: ${props=>props.defaultDisp || "none"};
+export const LoaderBg = styled.div<{ defaultDisp?: string }>`
+  // display: ${(props) => props.defaultDisp || "none"};
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -24,15 +25,21 @@ const loaderAnim = keyframes`
 `;
 
 export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100px;
   width: 100px;
   padding: 25px;
   border-radius: 50%;
   background-color: white;
+  font-size: 36px;
+  font-weight: 500;
   animation: ${loaderAnim} 0.6s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
-  background-image:${GRADIENTS.radialBlackBlue};
+  background-image: ${GRADIENTS.radialBlackBlue};
+  color: white;
 `;
 
 export const LoaderImage = styled(Image)`

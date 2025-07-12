@@ -34,7 +34,7 @@ export const PreviewSection = styled.div`
   height: 100%;
   width: 50%;
   padding: 10px;
-  border: 1px solid #d2d2d2;
+  border: 2px solid rgb(80, 79, 79);
   border-radius: 10px;
   background-color: white;
   @media only screen and (max-width: 768px) {
@@ -45,6 +45,9 @@ export const PreviewSection = styled.div`
 
 export const Preview = styled.div`
   display: flex;
+  margin-top: 10px;
+  border: 1px dashed;
+  border-radius: 8px;
   height: 100%;
   width: 100%;
   padding: 10px;

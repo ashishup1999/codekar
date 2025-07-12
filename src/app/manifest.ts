@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Codekar",
-    short_name: "CodeKar",
-    description: "Codekar befikr!!!",
+    name: "Codepulse",
+    short_name: "Codepulse",
+    description: "Codepulse befikr!!!",
     start_url: "/",
     display: "standalone",
     background_color: "#000000",

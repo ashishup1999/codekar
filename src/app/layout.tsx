@@ -29,7 +29,7 @@ export default function RootLayout({
         type="image/x-icon"
       ></link>
       <head>
-        <title>CodeKar</title>
+        <title>Codepulse</title>
       </head>
       <body>
         <BasicDetailsContext>

@@ -1,5 +1,5 @@
 {
-  "name": "codekar",
+  "name": "Codepulse",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "eslint-plugin-unused-imports": "^3.1.0",
     "html-to-image": "^1.11.11",
     "i": "^0.3.7",
-    "next": "14.1.0",
+    "next": "^14.2.30",
     "npm": "^10.5.0",
     "react": "^18",
     "react-ace": "^11.0.1",
