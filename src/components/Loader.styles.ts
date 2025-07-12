@@ -3,8 +3,7 @@ import Image from "next/image";
 import styled, { keyframes } from "styled-components";
 
 export const LoaderBg = styled.div<{ defaultDisp?: string }>`
-  // display: ${(props) => props.defaultDisp || "none"};
-  display: flex;
+  display: ${(props) => props.defaultDisp || "none"};
   justify-content: center;
   align-items: center;
   width: 100vw;
