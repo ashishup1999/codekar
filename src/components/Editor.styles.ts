@@ -17,7 +17,7 @@ import "ace-builds/src-noconflict/ext-elastic_tabstops_lite";
 //tools
 import "ace-builds/src-noconflict/ext-language_tools";
 
-export const AceEditorStyle = styled(AceEditor)`
+export const AceEditorStyle = styled(AceEditor as any)`
   border-radius: 0 0 10px 10px;
   * {
     font: inherit !important;
