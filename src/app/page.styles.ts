@@ -71,7 +71,7 @@ export const BellImg = styled(Image)`
   padding: 0px 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 7px -3px #000000;
-  background-color: white;
+  background-color: ${COLORS.offWhite};
   cursor: pointer;
   margin-left: 10px;
   border-radius: 50px;
@@ -83,10 +83,10 @@ export const UserImgWrpr = styled.div`
   align-items: center;
   height: 35px;
   width: 35px;
-  border: 2px solid white;
+  border: 2px solid ${COLORS.offWhite};
   border-radius: 50px;
   box-shadow: 0px 0px 7px -3px #000000;
-  background-color: white;
+  background-color: ${COLORS.offWhite};
   cursor: pointer;
   margin-left: 10px;
   overflow: hidden;
@@ -118,7 +118,7 @@ export const FooterDiv = styled.div`
 `;
 
 export const CopyrigthtText = styled.p`
-  color: white;
+  color: ${COLORS.offWhite};
   font-size: 14px;
 `;
 
@@ -142,7 +142,7 @@ export const ErrorIcon = styled(Image)`
 `;
 
 export const ErrorText = styled.p`
-  color: white;
+  color: ${COLORS.offWhite};
   font-weight: bold;
   font-size: 22px;
   text-align: center;
@@ -172,4 +172,6 @@ export const NotifModalWrapper = styled.div`
 export const ModalHeader = styled.div`
   width: 100%;
   font-weight: bold;
+  color: ${COLORS.purple};
+  margin-bottom: 10px;
 `;

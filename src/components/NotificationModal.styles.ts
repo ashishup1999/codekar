@@ -8,7 +8,7 @@ export const NotifType = styled.p`
   width: 100%;
   margin-bottom: 5px;
   margin-left: 2px;
-  color: ${COLORS.brightRed};
+  color: ${COLORS.bluishBlack};
 `;
 
 export const NotifSec = styled.div`

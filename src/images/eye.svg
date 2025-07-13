@@ -1,31 +1,5 @@
-<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_119_44)">
-<circle cx="17" cy="13" r="13" fill="#FAFAFA"/>
-</g>
-<g filter="url(#filter1_d_119_44)">
-<ellipse cx="17.283" cy="13.0417" rx="5.28302" ry="5.04167" fill="#7F104C"/>
-<ellipse cx="20.3019" cy="10.1607" rx="2.26415" ry="2.16071" fill="#FAFAFA"/>
-</g>
-<defs>
-<filter id="filter0_d_119_44" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_119_44"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_119_44" result="shape"/>
-</filter>
-<filter id="filter1_d_119_44" x="8" y="8" width="18.566" height="18.0833" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_119_44"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_119_44" result="shape"/>
-</filter>
-</defs>
+<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+fill="white" viewBox="0 0 24 24" >
+<!--Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free-->
+<path d="M12 5c-7.63 0-9.93 6.62-9.95 6.68-.07.21-.07.43 0 .63.02.07 2.32 6.68 9.95 6.68s9.93-6.62 9.95-6.68c.07-.21.07-.43 0-.63C21.93 11.61 19.63 5 12 5m0 12c-5.35 0-7.42-3.84-7.93-5 .5-1.16 2.58-5 7.93-5s7.42 3.85 7.93 5c-.5 1.16-2.58 5-7.93 5"></path><path d="M13.5 12c-.83 0-1.5-.67-1.5-1.5 0-.6.36-1.12.87-1.35-.28-.09-.56-.15-.87-.15-1.64 0-3 1.36-3 3s1.36 3 3 3 3-1.36 3-3c0-.3-.06-.59-.15-.87-.24.51-.75.87-1.35.87"></path>
 </svg>

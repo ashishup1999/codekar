@@ -7,6 +7,7 @@ import {
   SearchBarInput,
   SearchIcon,
   SecName,
+  ViewMore,
 } from "./page.styles";
 import { COMMON_IMAGES, OPTION_ICONS } from "@/constants/StaticImages";
 import useExplore from "@/hooks/useExplore";
@@ -27,8 +28,9 @@ const Explore = () => {
     pgs,
     wbs,
     searchKey,
+    pageSize,
     onChangeSearch,
-    handleScroll,
+    onViewMore,
   } = useExplore();
   const outNos =
     Number(profiles?.length) +
@@ -54,80 +56,95 @@ const Explore = () => {
           </ErrorContentDiv>
         )}
         <ExploreDiv>
-          {Boolean(profiles?.length) && <SecName>Profiles</SecName>}
-          <EachSection
-            className="EachSection"
-            ref={profilesRef}
-            onScroll={() => handleScroll(profilesRef, 0)}
-          >
-            {profiles.map((obj) => {
-              return (
-                <ProfileCard
-                  key={obj?.userId}
-                  userName={obj?.userName}
-                  profImg={obj?.profileImg}
-                />
-              );
-            })}
-          </EachSection>
-          {Boolean(projs?.length) && <SecName>Projects</SecName>}
-          <EachSection
-            className="EachSection"
-            ref={projsRef}
-            onScroll={() => handleScroll(projsRef, 1)}
-          >
-            {projs.map((obj) => {
-              return (
-                <ProjectCard
-                  key={obj?.projectId}
-                  projInfo={{
-                    id: obj?.projectId,
-                    name: obj?.projectName,
-                    author: obj?.userName,
-                    previewHtml: obj?.previewHtml,
-                  }}
-                />
-              );
-            })}
-          </EachSection>
-          {Boolean(pgs?.length) && <SecName>Playgrounds</SecName>}
-          <EachSection
-            className="EachSection"
-            ref={pgsRef}
-            onScroll={() => handleScroll(pgsRef, 2)}
-          >
-            {pgs.map((obj) => {
-              return (
-                <PgCard
-                  key={obj?.pgId}
-                  pgInfo={{
-                    id: obj?.pgId,
-                    name: obj?.pgName,
-                    author: obj?.userName,
-                  }}
-                />
-              );
-            })}
-          </EachSection>
-          {Boolean(wbs.length) && <SecName>Whiteboards</SecName>}
-          <EachSection
-            className="EachSection"
-            ref={wbsRef}
-            onScroll={() => handleScroll(wbsRef, 3)}
-          >
-            {wbs.map((obj) => {
-              return (
-                <WbCard
-                  key={obj?.wbId}
-                  wbInfo={{
-                    id: obj?.wbId,
-                    name: obj?.wbName,
-                    author: obj?.userName,
-                  }}
-                />
-              );
-            })}
-          </EachSection>
+          {Boolean(profiles?.length) && (
+            <>
+              <SecName>Profiles</SecName>
+              <EachSection className="EachSection" ref={profilesRef}>
+                {profiles.map((obj) => {
+                  return (
+                    <ProfileCard
+                      key={obj?.userId}
+                      userName={obj?.userName}
+                      profImg={obj?.profileImg}
+                    />
+                  );
+                })}
+                {!(profiles?.length % pageSize) && (
+                  <ViewMore onClick={() => onViewMore(0)}>View More</ViewMore>
+                )}
+              </EachSection>
+            </>
+          )}
+
+          {Boolean(projs?.length) && (
+            <>
+              <SecName>Projects</SecName>
+              <EachSection className="EachSection" ref={projsRef}>
+                {projs.map((obj) => {
+                  return (
+                    <ProjectCard
+                      key={obj?.projectId}
+                      projInfo={{
+                        id: obj?.projectId,
+                        name: obj?.projectName,
+                        author: obj?.userName,
+                        previewHtml: obj?.previewHtml,
+                      }}
+                    />
+                  );
+                })}
+                {!(projs?.length % pageSize) && (
+                  <ViewMore onClick={() => onViewMore(1)}>View More</ViewMore>
+                )}
+              </EachSection>
+            </>
+          )}
+
+          {Boolean(pgs?.length) && (
+            <>
+              <SecName>Playgrounds</SecName>
+              <EachSection className="EachSection" ref={pgsRef}>
+                {pgs.map((obj) => {
+                  return (
+                    <PgCard
+                      key={obj?.pgId}
+                      pgInfo={{
+                        id: obj?.pgId,
+                        name: obj?.pgName,
+                        author: obj?.userName,
+                      }}
+                    />
+                  );
+                })}
+                {!(pgs?.length % pageSize) && (
+                  <ViewMore onClick={() => onViewMore(2)}>View More</ViewMore>
+                )}
+              </EachSection>
+            </>
+          )}
+
+          {Boolean(wbs.length) && (
+            <>
+              <SecName>Whiteboards</SecName>
+              <EachSection className="EachSection" ref={wbsRef}>
+                {wbs.map((obj) => {
+                  return (
+                    <WbCard
+                      key={obj?.wbId}
+                      wbInfo={{
+                        id: obj?.wbId,
+                        name: obj?.wbName,
+                        author: obj?.userName,
+                      }}
+                    />
+                  );
+                })}
+                {!(wbs?.length % pageSize) && (
+                  <ViewMore onClick={() => onViewMore(3)}>View More</ViewMore>
+                )}
+              </EachSection>
+            </>
+          )}
         </ExploreDiv>
       </ExploreWrapper>
     </>

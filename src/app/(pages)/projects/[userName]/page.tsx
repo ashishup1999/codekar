@@ -26,8 +26,8 @@ const Projects = ({ params }: { params: { userName: string } }) => {
       <ProjectsWrapper>
         {basicDetails.userName === params.userName && (
           <Plus
-            themeColor={COLORS.orange}
-            grad={GRADIENTS.orange}
+            themeColor={COLORS.purple}
+            grad={GRADIENTS.purple}
             isModalOpen={isCreateModalOpen}
             fileName={createFileName}
             modalTitle="Project name"

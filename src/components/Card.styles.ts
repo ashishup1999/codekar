@@ -159,7 +159,7 @@ export const PCPreview = styled.iframe`
   border-radius: 22px;
   border: none;
   overflow: hidden;
-  border: 5px solid ${COLORS.orange};
+  border: 5px solid ${COLORS.purple};
   background-color: white;
 `;
 

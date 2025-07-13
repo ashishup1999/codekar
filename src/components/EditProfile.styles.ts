@@ -24,7 +24,8 @@ export const FinalButton = styled.button<{ disabled: boolean }>`
   color: white;
   margin: auto;
   margin-bottom: 10px;
-  background-color: ${(props) => (props.disabled ? "grey" : "#7f104c")};
+  background-color: ${(props) =>
+    props.disabled ? "grey" : "rgb(104, 10, 104)"};
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -32,7 +33,7 @@ export const FinalButton = styled.button<{ disabled: boolean }>`
 `;
 
 export const EditHeader = styled.p`
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   width: 100%;
   font-size: 22px;
   font-weight: bold;
@@ -58,7 +59,7 @@ export const CheckOptionsDiv = styled.div`
 
 export const NormalText = styled.p`
   display: inline;
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -104,7 +105,6 @@ export const ImageUpload = styled(Image)`
 export const ImageUploadInput = styled.input`
   display: none;
 `;
-
 
 export const ErrAlertMessage = styled.div`
   display: flex;

@@ -94,8 +94,8 @@ export const ProjectName = styled.div`
   padding: 5px 10px;
   justify-content: center;
   font-size: 12px;
-  background-color: ${COLORS.orange};
-  border: 1px solid ${COLORS.orange};
+  background-color: ${COLORS.purple};
+  border: 1px solid ${COLORS.purple};
 `;
 
 export const SaveBtn = styled.div`

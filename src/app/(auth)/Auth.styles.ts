@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 export const AuthHeader = styled.p`
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   width: 100%;
   font-size: 22px;
   font-weight: bold;
@@ -18,7 +18,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const LabelText = styled.label`
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -63,14 +63,13 @@ export const EyeDiv = styled.div`
   align-items: center;
   height: 100%;
   aspect-ratio: 1;
-  background-color: #7f104c;
+  background-color: rgb(104, 10, 104);
   border-radius: 5px;
   cursor: pointer;
 `;
 
 export const EyeIcon = styled(Image)`
-  margin-top: 5px;
-  height: 60%;
+  height: 20px;
   width: auto;
 `;
 
@@ -83,7 +82,7 @@ export const ExtraOptionDiv = styled.div`
 `;
 export const NormalText = styled.p`
   display: inline;
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -91,7 +90,7 @@ export const NormalText = styled.p`
 
 export const LinkText = styled(Link)`
   display: inline;
-  color: #7f104c;
+  color: rgb(104, 10, 104);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -119,7 +118,8 @@ export const FinalButton = styled.button<{ disabled: boolean }>`
   color: white;
   margin-top: auto;
   margin-bottom: 5px;
-  background-color: ${(props) => (props.disabled ? "grey" : "#7f104c")};
+  background-color: ${(props) =>
+    props.disabled ? "grey" : "rgb(104, 10, 104)"};
   border: none;
   border-radius: 10px;
   cursor: pointer;

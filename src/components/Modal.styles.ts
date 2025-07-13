@@ -7,7 +7,7 @@ export const ModalBg = styled.div<{ zInd?: number }>`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-color: rgb(217, 217, 217, 7%);
+  background-color: rgb(0, 0, 0, 70%);
   z-index: ${(props) => props.zInd || "1"};
   top: 0;
   right: 0;

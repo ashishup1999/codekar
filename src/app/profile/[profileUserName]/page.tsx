@@ -110,7 +110,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
             />
             <VisitSections>
               <VisitOptions
-                bggrad={GRADIENTS.orange}
+                bggrad={GRADIENTS.purple}
                 onClick={() => router.push(`/projects/${profileUserName}`)}
               >
                 Projects
@@ -136,11 +136,11 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                     <IconText>Connections</IconText>
                   </IconDiv>
                   <IconDiv onClick={editModalToggle}>
-                    <Icon src={COMMON_IMAGES.redPen} alt="" />
+                    <Icon src={COMMON_IMAGES.pen} alt="" />
                     <IconText>Edit Profile</IconText>
                   </IconDiv>
                   <IconDiv onClick={logOut}>
-                    <Icon src={COMMON_IMAGES.powerOnOff} alt="" />
+                    <Icon src={COMMON_IMAGES.arrowOut} alt="" />
                     <IconText>Log Out</IconText>
                   </IconDiv>
                 </>
@@ -152,7 +152,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                         sendConnectionRequest(userName, profileUserName)
                       }
                     >
-                      <Icon src={COMMON_IMAGES.redPlus} alt="" />
+                      <Icon src={COMMON_IMAGES.plus} alt="" />
                       <IconText>Request Connection</IconText>
                     </IconDiv>
                   )}
@@ -162,7 +162,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                         removeConnection(userName, profileUserName)
                       }
                     >
-                      <Icon src={COMMON_IMAGES.redCross} alt="" />
+                      <Icon src={COMMON_IMAGES.cross} alt="" />
                       <IconText>Remove Connection</IconText>
                     </IconDiv>
                   )}
@@ -172,7 +172,7 @@ const Profile = ({ params }: { params: { profileUserName: string } }) => {
                         rejectConnectionRequest(userName, profileUserName)
                       }
                     >
-                      <Icon src={COMMON_IMAGES.redCross} alt="" />
+                      <Icon src={COMMON_IMAGES.cross} alt="" />
                       <IconText>Withdraw Request</IconText>
                     </IconDiv>
                   )}

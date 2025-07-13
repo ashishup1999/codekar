@@ -83,7 +83,7 @@ const NotificationModal = ({
                         </ConnectionImgWrpr>
                         <ConnName>{obj?.userName}</ConnName>
                         <OptionImg
-                          src={COMMON_IMAGES.redTick}
+                          src={COMMON_IMAGES.tick}
                           alt=""
                           onClick={(e: any) => {
                             e.stopPropagation();
@@ -91,7 +91,7 @@ const NotificationModal = ({
                           }}
                         />
                         <OptionImg
-                          src={COMMON_IMAGES.redCross}
+                          src={COMMON_IMAGES.cross}
                           alt=""
                           onClick={(e: any) => {
                             e.stopPropagation();

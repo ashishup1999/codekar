@@ -3,16 +3,17 @@ import { COMMON_IMAGES, OPTION_ICONS } from "./StaticImages";
 export const GRADIENTS = {
   radialBlackBlue:
     "radial-gradient(circle, rgba(46,46,46,1) 0%, rgba(0,0,0,1) 100%)",
-  lightOrange: "linear-gradient(0deg,rgb(104, 10, 104) 0%,rgb(132, 24, 132) 100%)",
-  orange: "linear-gradient(0deg,rgb(104, 10, 104) 0%, rgb(66, 16, 66) 100%)",
+  lightPurple:
+    "linear-gradient(0deg,rgb(104, 10, 104) 0%,rgb(132, 24, 132) 100%)",
+  purple: "linear-gradient(0deg,rgb(104, 10, 104) 0%, rgb(66, 16, 66) 100%)",
   lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
   lightGreen: "linear-gradient(0deg, #40AA26 0%, #2C7719 100%)",
-  redishPink: "linear-gradient(0deg, #DF3A3A 0%, #7D1017 100%)",
+  redishPink: "linear-gradient(0deg, #2b2b2bff 0%, #030303ff 100%)",
   whiteGreyish: "linear-gradient(0deg, #FFFEFE 0%, #777777 100%)",
 };
 
 export const COLORS = {
-  orange: "rgb(132, 24, 132)",
+  purple: "#680a68",
   blue: "#0EA8D9",
   green: "#3FA526",
   brightRed: "#E31D29",
@@ -21,6 +22,7 @@ export const COLORS = {
   githubDark: "#24292E",
   githubBlue: "#01346E",
   greenBoard: "#035430",
+  offWhite: "#FAF9F6",
 };
 
 export const HOME_OPTIONS = [
@@ -28,8 +30,8 @@ export const HOME_OPTIONS = [
     imgSrc: OPTION_ICONS.ui,
     imgAlt: "UI/UX",
     toRoute: "/projects",
-    themeColor: COLORS.orange,
-    themeGrad: GRADIENTS.lightOrange,
+    themeColor: COLORS.purple,
+    themeGrad: GRADIENTS.lightPurple,
     buttonTitle: "Projects",
     userDep: true,
   },

@@ -112,7 +112,7 @@ export const Connection = styled.div`
   flex: 1;
   height: fit-content;
   border-radius: 10px;
-  background-image: ${GRADIENTS.redishPink};
+  background-image: ${GRADIENTS.lightPurple};
   box-shadow: 0px 0px 7px -3px #000000;
   cursor: pointer;
 `;
@@ -124,14 +124,14 @@ export const ConnName = styled.p`
 `;
 
 export const CrossIcon = styled(Image)`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   padding: 5px;
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: 15px;
+  margin-right: 15px;
   cursor: pointer;
   z-index: 1;
 `;

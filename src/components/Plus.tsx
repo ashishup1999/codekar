@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import styled from "styled-components";
-import plusIcon from "@/images/plus.svg";
 import { ChangeEventHandler, MouseEventHandler } from "react";
-import CreateNew from "./CreateNew";
+import CreateNew from "@/components/CreateNew";
+import { COMMON_IMAGES } from "@/constants/StaticImages";
 
 const PlusWrapper = styled.div`
   margin-right: auto;
@@ -24,9 +24,8 @@ const PlusDiv = styled.div<{ grad: string }>`
 `;
 
 const PlusImg = styled(Image)`
-  height: 16px;
-  width: 16px;
-  margin: 3px 0 1px;
+  height: 20px;
+  width: 20px;
 `;
 
 const PlusText = styled.p`
@@ -57,7 +56,7 @@ const Plus = ({
   return (
     <PlusWrapper>
       <PlusDiv grad={grad} onClick={createNewToggle}>
-        <PlusImg src={plusIcon} alt="" />
+        <PlusImg src={COMMON_IMAGES.plusWhite} alt="" />
         <PlusText>Create New</PlusText>
       </PlusDiv>
       {isModalOpen && (

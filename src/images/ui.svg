@@ -1,10 +1,10 @@
 <svg width="120" height="92" viewBox="0 0 120 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="2.64557" y="2.2095" width="114.708" height="87.3195" rx="23" fill="#FAFAFA" stroke="#DD5407" stroke-width="4"/>
-<line x1="4.64557" y1="27.4346" x2="115.364" y2="27.4346" stroke="#DD5407" stroke-width="4"/>
-<line x1="9.91742" y1="41.987" x2="107.823" y2="41.987" stroke="#DD5407" stroke-width="7"/>
-<line x1="9.91742" y1="71.0342" x2="73.937" y2="71.0342" stroke="#DD5407" stroke-width="7"/>
-<line x1="9.91742" y1="55.746" x2="73.9326" y2="55.746" stroke="#DD5407" stroke-width="7"/>
-<ellipse cx="97.279" cy="63.8323" rx="10.5436" ry="10.7016" fill="#DD5407"/>
-<ellipse cx="97.6558" cy="16.8222" rx="4.89525" ry="4.96858" fill="#DD5407"/>
-<ellipse cx="81.0869" cy="16.8222" rx="4.89525" ry="4.96858" fill="#DD5407"/>
+<rect x="2.64557" y="2.2095" width="114.708" height="87.3195" rx="23" fill="#FAFAFA" stroke="#680a68" stroke-width="4"/>
+<line x1="4.64557" y1="27.4346" x2="115.364" y2="27.4346" stroke="#680a68" stroke-width="4"/>
+<line x1="9.91742" y1="41.987" x2="107.823" y2="41.987" stroke="#680a68" stroke-width="7"/>
+<line x1="9.91742" y1="71.0342" x2="73.937" y2="71.0342" stroke="#680a68" stroke-width="7"/>
+<line x1="9.91742" y1="55.746" x2="73.9326" y2="55.746" stroke="#680a68" stroke-width="7"/>
+<ellipse cx="97.279" cy="63.8323" rx="10.5436" ry="10.7016" fill="#680a68"/>
+<ellipse cx="97.6558" cy="16.8222" rx="4.89525" ry="4.96858" fill="#680a68"/>
+<ellipse cx="81.0869" cy="16.8222" rx="4.89525" ry="4.96858" fill="#680a68"/>
 </svg>

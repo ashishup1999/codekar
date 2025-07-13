@@ -20,7 +20,7 @@ const initialState: StateInterface = {
   projs: [],
   pgs: [],
   wbs: [],
-  pageSize: 10,
+  pageSize: 5,
   connections: [],
 };
 
@@ -75,10 +75,11 @@ const useExplore = () => {
 
   const getProfiles = async () => {
     try {
-      if (profiles.length % 10 !== 0) return;
-      const req: { name: string; pageNo: Number } = {
+      if (profiles.length % pageSize !== 0) return;
+      const req: { name: string; pageNo: Number; pageSize: Number } = {
         name: searchKey,
         pageNo: Math.floor(profiles.length / pageSize) + 1,
+        pageSize,
       };
       const res: any = await exploreService.getProfilesByName(req);
       if (res?.status === "SUCCESS" && res?.profiles) {
@@ -93,10 +94,11 @@ const useExplore = () => {
 
   const getProjs = async () => {
     try {
-      if (projs.length % 10 !== 0) return;
-      const req: { projName: string; pageNo: Number } = {
+      if (projs.length % pageSize !== 0) return;
+      const req: { projName: string; pageNo: Number; pageSize: Number } = {
         projName: searchKey,
         pageNo: Math.floor(projs.length / pageSize) + 1,
+        pageSize,
       };
       const res: any = await exploreService.getProjsByName(req);
       if (res?.status === "SUCCESS" && res?.projects) {
@@ -111,10 +113,11 @@ const useExplore = () => {
 
   const getPgs = async () => {
     try {
-      if (pgs.length % 10 !== 0) return;
-      const req: { pgName: string; pageNo: Number } = {
+      if (pgs.length % pageSize !== 0) return;
+      const req: { pgName: string; pageNo: Number; pageSize: Number } = {
         pgName: searchKey,
         pageNo: Math.floor(pgs.length / pageSize) + 1,
+        pageSize,
       };
       const res: any = await exploreService.getPgsByName(req);
       if (res?.status === "SUCCESS" && res?.pgs) {
@@ -129,10 +132,11 @@ const useExplore = () => {
 
   const getWbs = async () => {
     try {
-      if (wbs.length % 10 !== 0) return;
-      const req: { wbName: string; pageNo: Number } = {
+      if (wbs.length % pageSize !== 0) return;
+      const req: { wbName: string; pageNo: Number; pageSize: Number } = {
         wbName: searchKey,
         pageNo: Math.floor(wbs.length / pageSize) + 1,
+        pageSize,
       };
       const res: any = await exploreService.getWbsByName(req);
       if (res?.status === "SUCCESS" && res?.wbs) {
@@ -147,26 +151,9 @@ const useExplore = () => {
 
   const getFns = [getProfiles, getProjs, getPgs, getWbs];
 
-  const handleScroll = (ref: any, fnNo: any) => {
-    const cur = ref.current;
-    if (cur && cur?.scrollLeft + cur?.clientWidth === cur?.scrollWidth) {
-      getFns[fnNo]();
-    }
+  const onViewMore = (fnNo: number) => {
+    getFns[fnNo]();
   };
-
-  // const getConnections = async () => {
-  //   try {
-  //     const res = await userService.getConnectionsByUser(
-  //       basicDetails?.userName
-  //     );
-  //     if (res?.status != "SUCCESS") throw res;
-  //     dispatch({ payload: { connections: res?.connections } });
-  //   } catch (error) {
-  //     setBasicDetails({
-  //       payload: { errorMsg: ERROR_MSGS.TECH_ERROR },
-  //     });
-  //   }
-  // };
 
   return {
     profilesRef,
@@ -179,8 +166,9 @@ const useExplore = () => {
     wbs,
     searchKey,
     connections,
+    pageSize,
     onChangeSearch,
-    handleScroll,
+    onViewMore,
   };
 };
 

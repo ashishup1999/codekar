@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/CommonConstants";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -56,21 +57,17 @@ export const EachSection = styled.div`
   width: fit-content;
   max-width: 100%;
   align-items: center;
-  overflow-x: scroll;
+  flex-wrap: wrap;
   margin-bottom: 20px;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-  & ::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  &: hover {
-    -ms-overflow-style: auto; /* Internet Explorer 10+ */
-    scrollbar-width: auto; /* Firefox */
-    & ::-webkit-scrollbar {
-      display: auto; /* Safari and Chrome */
-    }
-  }
+`;
+
+export const  ViewMore = styled.div`
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background-color: ${COLORS.offWhite};
+  cursor: pointer;
+  margin-left: 20px;
 `;
 
 export const SecName = styled.p`

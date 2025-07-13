@@ -16,16 +16,16 @@ import userCircle from "@/images/userCircle.svg";
 import deleteIcon from "@/images/delete.svg";
 import group from "@/images/group.svg";
 import setting from "@/images/setting.svg";
-import redPen from "@/images/redPen.svg";
-import powerOnOff from "@/images/powerOnOff.svg";
+import pen from "@/images/pen.svg";
+import arrowOut from "@/images/arrowOut.svg";
 import cross from "@/images/cross.svg";
 import techErr from "@/images/techError.svg";
 import notFound from "@/images/notFound.svg";
 import tokenExpire from "@/images/tokenExpire.svg";
 import bell from "@/images/bell.svg";
-import redPlus from "@/images/redPlus.svg";
-import redCross from "@/images/redCross.svg";
-import redTick from "@/images/redTick.svg";
+import plus from "@/images/plus.svg";
+import plusWhite from "@/images/plusWhite.svg";
+import tick from "@/images/tick.svg";
 import eyeIcon from "@/images/eye.svg";
 import eyeCloseIcon from "@/images/eyeClose.svg";
 import tickCheck from "@/images/tickChecked.svg";
@@ -58,17 +58,17 @@ export const COMMON_IMAGES = {
   deleteIcon,
   group,
   setting,
-  redPen,
-  powerOnOff,
+  pen,
+  arrowOut,
   cross,
   techErr,
   tokenExpire,
   notFound,
   bell,
   logoWhitePng,
-  redPlus,
-  redCross,
-  redTick,
+  plus,
+  plusWhite,
+  tick,
   eyeIcon,
   eyeCloseIcon,
   tickCheck,

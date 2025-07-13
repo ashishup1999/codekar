@@ -27,8 +27,8 @@ const ProjectCard = ({
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
   return (
-    <PCWrapper2 bggrad={GRADIENTS.orange}>
-      <PCInfo bggrad={GRADIENTS.lightOrange}>
+    <PCWrapper2 bggrad={GRADIENTS.purple}>
+      <PCInfo bggrad={GRADIENTS.lightPurple}>
         <PCName>{projInfo?.name}</PCName>
         <PCAuthorSpan>
           <PCAuthorTitle>by </PCAuthorTitle>
