@@ -9,7 +9,6 @@ import css from "@/images/css.svg";
 import javascript from "@/images/js.svg";
 import errorExl from "@/images/errorExclamation.svg";
 import greenTick from "@/images/greenTick.svg";
-import logo from "@/images/logo.svg";
 import logoWhite from "@/images/logoWhite.svg";
 import logoWhitePng from "@/images/logoWhite.png";
 import userCircle from "@/images/userCircle.svg";
@@ -52,7 +51,6 @@ export const LANG_ICONS: { [key: string]: string } = {
 };
 
 export const COMMON_IMAGES = {
-  logo,
   logoWhite,
   userCircle,
   deleteIcon,

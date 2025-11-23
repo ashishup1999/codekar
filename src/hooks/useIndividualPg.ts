@@ -6,7 +6,7 @@ import {
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import pgService from "@/services/PgService";
-import { defaultStateReducer } from "@/utils/CommonUtils";
+import { defaultStateReducer, getDebounceFn } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetPgRespIntr {
@@ -67,6 +67,11 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (values) onSaveFile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
   const getPgInfo = async () => {
     try {
       const res: GetPgRespIntr = await pgService.getPgById(pgId);
@@ -103,6 +108,8 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
   const setValue = (key: string, val: string) => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
+
+  const debouncedSetValue = getDebounceFn(setValue, 2000);
 
   const setInput = (e: any) => {
     dispatch({ payload: { input: `${e?.target?.value}` } });
@@ -194,7 +201,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     errTxt,
     nameEditToggle,
     selectLang,
-    setValue,
+    setValue: debouncedSetValue,
     setInput,
     onChangePgName,
     onPgRun,

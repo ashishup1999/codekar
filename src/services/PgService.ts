@@ -14,7 +14,9 @@ const getPgById = async (id: string) => {
 };
 
 const updatePg = async (payload: any) => {
-  return await ajaxAPI.post(API_CONSTANTS.UPDATE_PG, payload);
+  return await ajaxAPI.post(API_CONSTANTS.UPDATE_PG, payload, {
+    disableLoader: true,
+  });
 };
 
 const deletePg = async (id: string) => {

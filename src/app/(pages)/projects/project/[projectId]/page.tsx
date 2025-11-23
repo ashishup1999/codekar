@@ -62,6 +62,7 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
         </FileSelectionDiv>
         <EditorWrapper>
           <Editor
+            key={currFile}
             value={values[currFile]}
             selectedLang={currFile}
             setValue={setValue}
@@ -90,7 +91,11 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
           {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}
         </SaveSection>
         <Preview>
-          <PreviewFrame srcDoc={preview} frameBorder={0}></PreviewFrame>
+          <PreviewFrame
+            srcDoc={preview}
+            frameBorder={0}
+            sandbox=""
+          ></PreviewFrame>
         </Preview>
       </PreviewSection>
     </Wrapper>

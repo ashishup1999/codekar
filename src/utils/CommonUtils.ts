@@ -59,3 +59,32 @@ export const isObjEmpty = (obj: any) => {
 export const getBase64Src = (base64: string) => {
   return `data:image/jpeg;base64,${base64}`;
 };
+
+export const getDebounceFn = function (
+  fn: Function,
+  delay: number,
+  trail = true
+) {
+  // let fnRan = false; // For leading debounce
+  let timerId: any;
+  return function (...args: any) {
+    if (trail) {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    } else {
+      // !timerId means all previous timeouts executed (delay period is over)
+      if (!timerId) {
+        fn(...args);
+      } else {
+        // clear previous pending timeout
+        clearTimeout(timerId);
+      }
+      // on each event we need to create new timeout (After prevous one is either executed or in execution)
+      timerId = setTimeout(() => {
+        timerId = null; // reset to null for any new execution
+      }, delay);
+    }
+  };
+};

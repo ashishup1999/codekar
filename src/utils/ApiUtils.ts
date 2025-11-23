@@ -24,45 +24,45 @@ export const ajaxAPI = {
   headers: {
     "Content-Type": "application/json",
   },
-  get: async (url: string, ...config: any) => {
-    showLoader();
+  get: async (url: string, config?: any) => {
+    if (!config?.disableLoader) showLoader();
     try {
       const res = await axios.get(url, {
         ...{ headers: ajaxAPI.headers },
         ...config,
       });
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return res.data;
     } catch (error: any) {
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return error.data;
     }
   },
-  post: async (url: string, payload: any, ...config: any) => {
-    showLoader();
+  post: async (url: string, payload: any, config?: any) => {
+    if (!config?.disableLoader) showLoader();
     try {
       const res = await axios.post(url, payload, {
         ...{ headers: ajaxAPI.headers },
         ...config,
       });
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return res.data;
     } catch (error: any) {
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return error.data;
     }
   },
-  postFormData: async (url: string, formData: any, ...config: any) => {
-    showLoader();
+  postFormData: async (url: string, formData: any, config?: any) => {
+    if (!config?.disableLoader) showLoader();
     try {
       const res = await axios.post(url, formData, {
         ...{ headers: { "Content-Type": "multipart/form-data" } },
         ...config,
       });
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return res.data;
     } catch (error: any) {
-      hideLoader();
+      if (!config?.disableLoader) hideLoader();
       return error.data;
     }
   },

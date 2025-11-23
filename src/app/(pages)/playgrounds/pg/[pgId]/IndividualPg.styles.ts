@@ -79,7 +79,7 @@ export const InputDiv = styled.div`
   width: 100%;
   height: 30%;
   border-radius: 5px;
-  background-color:${COLORS.githubBlue};
+  background-color: ${COLORS.githubBlue};
   @media only screen and (max-width: 768px) {
     margin-bottom: 10px;
   }
@@ -165,7 +165,7 @@ export const PgNameEdit = styled.input`
   border-radius: 5px;
   color: black;
   border: 1px solid #d9d9d9;
-  &: focus {
+  &:focus {
     outline: none;
   }
 `;
@@ -218,9 +218,4 @@ export const EditorWrapper = styled.div`
   flex: 1;
   max-height: calc(100% - 45px);
   width: 100%;
-`;
-
-export const PreviewFrame = styled.iframe`
-  width: 100%;
-  height: 100%;
 `;

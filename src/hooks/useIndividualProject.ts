@@ -5,7 +5,11 @@ import {
 } from "@/constants/CommonConstants";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import projectService from "@/services/ProjectService";
-import { defaultStateReducer, getPreview } from "@/utils/CommonUtils";
+import {
+  defaultStateReducer,
+  getDebounceFn,
+  getPreview,
+} from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
@@ -102,6 +106,11 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values, updatePreview]);
 
+  useEffect(() => {
+    if (values) onSaveProject();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
   const selectFile = (val: string) => {
     dispatch({ payload: { currFile: val } });
   };
@@ -109,6 +118,8 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
   const setValue = (key: string, val: string) => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
+
+  const debouncedSetValue = getDebounceFn(setValue, 2000);
 
   const getHtmlPreviewAPI = () => {
     const data = getPreview(values);
@@ -174,7 +185,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     pageNameRef,
     nameEdit,
     selectFile,
-    setValue,
+    setValue: debouncedSetValue,
     onSaveProject,
     nameEditToggle,
     onChangeFileName,

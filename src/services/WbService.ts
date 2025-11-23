@@ -14,7 +14,9 @@ const getWbById = async (id: string) => {
 };
 
 const updateWb = async (payload: any) => {
-  return await ajaxAPI.post(API_CONSTANTS.UPDATE_WB, payload);
+  return await ajaxAPI.post(API_CONSTANTS.UPDATE_WB, payload, {
+    disableLoader: true,
+  });
 };
 
 const deleteWb = async (id: string) => {

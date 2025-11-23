@@ -16,7 +16,9 @@ const getProjectById = async (id: string) => {
 };
 
 const updateProject = async (payload: any) => {
-  return await ajaxAPI.post(API_CONSTANTS.UPDATE_PROJ, payload);
+  return await ajaxAPI.post(API_CONSTANTS.UPDATE_PROJ, payload, {
+    disableLoader: true,
+  });
 };
 
 const deleteProject = async (id: string) => {

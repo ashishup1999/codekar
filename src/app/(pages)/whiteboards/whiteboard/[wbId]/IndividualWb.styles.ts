@@ -178,7 +178,7 @@ export const WbNameEdit = styled.input`
   border-radius: 5px;
   color: black;
   border: 1px solid #d9d9d9;
-  &: focus {
+  &:focus {
     outline: none;
   }
 `;
@@ -231,9 +231,4 @@ export const EditorWrapper = styled.div`
   flex: 1;
   max-height: calc(100% - 45px);
   width: 100%;
-`;
-
-export const PreviewFrame = styled.iframe`
-  width: 100%;
-  height: 100%;
 `;

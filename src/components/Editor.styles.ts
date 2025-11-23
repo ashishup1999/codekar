@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import AceEditor from "react-ace";
+import MonacoEditor from "@monaco-editor/react";
 
 //languages
 import "ace-builds/src-noconflict/mode-java";
@@ -18,6 +19,14 @@ import "ace-builds/src-noconflict/ext-elastic_tabstops_lite";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 export const AceEditorStyle = styled(AceEditor as any)`
+  border-radius: 0 0 10px 10px;
+  * {
+    font: inherit !important;
+    font-size: 14px !important;
+  }
+`;
+
+export const MonacoEditorStyle = styled(MonacoEditor as any)`
   border-radius: 0 0 10px 10px;
   * {
     font: inherit !important;

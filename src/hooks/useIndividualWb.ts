@@ -6,7 +6,7 @@ import {
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
-import { defaultStateReducer } from "@/utils/CommonUtils";
+import { defaultStateReducer, getDebounceFn } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetWbRespIntr {
@@ -67,6 +67,11 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (values) onSaveFile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
   const getWbInfo = async () => {
     try {
       const res: GetWbRespIntr = await wbService.getWbById(wbId);
@@ -103,6 +108,8 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
   const setValue = (key: string, val: string) => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
+
+  const debouncedSetValue = getDebounceFn(setValue, 2000);
 
   const setInput = (e: any) => {
     dispatch({ payload: { input: `${e?.target?.value}` } });
@@ -194,7 +201,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     errTxt,
     nameEditToggle,
     selectLang,
-    setValue,
+    setValue: debouncedSetValue,
     setInput,
     onChangewbName,
     onWbRun,

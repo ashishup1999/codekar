@@ -3,9 +3,8 @@ import { COMMON_IMAGES, OPTION_ICONS } from "./StaticImages";
 export const GRADIENTS = {
   radialBlackBlue:
     "radial-gradient(circle, rgba(46,46,46,1) 0%, rgba(0,0,0,1) 100%)",
-  lightPurple:
-    "linear-gradient(0deg,rgb(104, 10, 104) 0%,rgb(132, 24, 132) 100%)",
-  purple: "linear-gradient(0deg,rgb(104, 10, 104) 0%, rgb(66, 16, 66) 100%)",
+  lightPurple: "linear-gradient(180deg, #6441a5 0%, #2a0845 100%)",
+  purple: "linear-gradient(90deg, #6441a5 0%, #2a0845 100%)",
   lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
   lightGreen: "linear-gradient(0deg, #40AA26 0%, #2C7719 100%)",
   redishPink: "linear-gradient(0deg, #2b2b2bff 0%, #030303ff 100%)",
@@ -13,7 +12,7 @@ export const GRADIENTS = {
 };
 
 export const COLORS = {
-  purple: "#680a68",
+  purple: "#6441a5",
   blue: "#0EA8D9",
   green: "#3FA526",
   brightRed: "#E31D29",

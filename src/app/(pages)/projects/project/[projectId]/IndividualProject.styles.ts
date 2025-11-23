@@ -39,7 +39,7 @@ export const PreviewSection = styled.div`
   background-color: white;
   @media only screen and (max-width: 768px) {
     width: 100%;
-    height: 30vh;
+    height: 40vh;
   }
 `;
 
@@ -51,6 +51,9 @@ export const Preview = styled.div`
   height: 100%;
   width: 100%;
   padding: 10px;
+  @media only screen and (max-width: 768px) {
+    height: 80%;
+  }
 `;
 
 export const FileSelectionDiv = styled.div`
