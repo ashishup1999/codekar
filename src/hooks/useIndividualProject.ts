@@ -9,6 +9,7 @@ import {
   defaultStateReducer,
   getDebounceFn,
   getPreview,
+  isObjEmpty,
 } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
@@ -107,7 +108,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
   }, [values, updatePreview]);
 
   useEffect(() => {
-    if (values) onSaveProject();
+    if (values?.html || values?.css || values?.javascript) onSaveProject();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
 

@@ -6,7 +6,11 @@ import {
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
-import { defaultStateReducer, getDebounceFn } from "@/utils/CommonUtils";
+import {
+  defaultStateReducer,
+  getDebounceFn,
+  isObjEmpty,
+} from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetWbRespIntr {
@@ -68,7 +72,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
   }, []);
 
   useEffect(() => {
-    if (values) onSaveFile();
+    if (!isObjEmpty(values)) onSaveFile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
 
