@@ -46,7 +46,7 @@ const ProjectCard = ({
       </PCInfo>
       <PCPreviewWrapper>
         <PCLink href={`/projects/project/${projInfo?.id}`} />
-        <PCPreview srcDoc={projInfo?.previewHtml} />
+        <PCPreview srcDoc={projInfo?.previewHtml} sandbox="" />
       </PCPreviewWrapper>
     </PCWrapper2>
   );
