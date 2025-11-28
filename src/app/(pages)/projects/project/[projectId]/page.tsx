@@ -85,7 +85,7 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
           {userName === projectAuthor && !errTxt && (
             <>
               <SaveBtn onClick={onSaveProject}>Save</SaveBtn>
-              {saved && <Saved>Saved...</Saved>}
+              {saved && <Saved>Saving...</Saved>}
             </>
           )}
           {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}
@@ -94,8 +94,10 @@ const IndividualProjects = ({ params }: { params: { projectId: string } }) => {
           <PreviewFrame
             srcDoc={preview}
             frameBorder={0}
-            sandbox=""
-          ></PreviewFrame>
+            sandbox="allow-scripts allow-same-origin"
+          >
+            {preview}
+          </PreviewFrame>
         </Preview>
       </PreviewSection>
     </Wrapper>

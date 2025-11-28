@@ -11,7 +11,7 @@ import {
   getPreview,
   isObjEmpty,
 } from "@/utils/CommonUtils";
-import { useContext, useEffect, useReducer, useRef } from "react";
+import { useCallback, useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
   status: string;
@@ -25,28 +25,28 @@ interface GetProjRespIntr {
   };
 }
 
-const initialState: {
+type IntialStateType = {
   projectName: string;
   projectAuthor: string;
   currFile: string;
-  values: {
-    html: string;
-    css: string;
-    javascript: string;
-  };
+  values:
+    | {
+        html: string;
+        css: string;
+        javascript: string;
+      }
+    | {};
   preview: any;
   saved: boolean;
   errTxt: boolean;
   nameEdit: boolean;
-} = {
+};
+
+const initialState: IntialStateType = {
   projectName: "",
   projectAuthor: "",
   currFile: PROJECT_FILES.html.id,
-  values: {
-    html: "",
-    css: "",
-    javascript: "",
-  },
+  values: {},
   preview: null,
   saved: false,
   errTxt: false,
@@ -62,7 +62,6 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     currFile,
     values,
     preview,
-    updatePreview,
     saved,
     errTxt,
     nameEdit,
@@ -74,6 +73,27 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!isObjEmpty(values)) {
+      saveProject();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
+  useEffect(() => {
+    if (saved) {
+      setTimeout(() => {
+        dispatch({ payload: { saved: false } });
+      }, 1000);
+    }
+  }, [saved]);
+
+  useEffect(() => {
+    if (nameEdit && pageNameRef?.current) {
+      pageNameRef.current.focus();
+    }
+  }, [nameEdit]);
+
   const getProjectInfo = async () => {
     try {
       const res: GetProjRespIntr = await projectService.getProjectById(
@@ -81,7 +101,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
       );
       if (res?.status != "SUCCESS") throw res;
       const { projectData } = res;
-      const payload = {
+      const payload: any = {
         projectName: projectData?.projectName,
         projectAuthor: projectData?.userName,
         values: {
@@ -90,6 +110,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
           javascript: projectData?.javascript,
         },
       };
+      payload.preview = getPreview(payload.values);
       dispatch({ payload });
     } catch (error: any) {
       if (error?.message === ERROR_MSGS.PROJECT_DOES_NOT_EXISTS) {
@@ -102,40 +123,22 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     }
   };
 
-  useEffect(() => {
-    getHtmlPreviewAPI();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values, updatePreview]);
-
-  useEffect(() => {
-    if (values?.html || values?.css || values?.javascript) onSaveProject();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
-
   const selectFile = (val: string) => {
     dispatch({ payload: { currFile: val } });
   };
 
   const setValue = (key: string, val: string) => {
-    dispatch({ payload: { values: { ...values, [key]: val } } });
+    const newValues = { ...values, [key]: val };
+    const previewData = getPreview(newValues);
+    dispatch({ payload: { values: newValues, preview: previewData } });
   };
 
-  const debouncedSetValue = getDebounceFn(setValue, 2000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedSetValue = useCallback(getDebounceFn(setValue, 1500), [
+    values,
+  ]);
 
-  const getHtmlPreviewAPI = () => {
-    const data = getPreview(values);
-    dispatch({ payload: { preview: data } });
-  };
-
-  useEffect(() => {
-    if (saved) {
-      setTimeout(() => {
-        dispatch({ payload: { saved: false } });
-      }, 1000);
-    }
-  }, [saved]);
-
-  const onSaveProject = async () => {
+  const saveProject = async () => {
     try {
       const req = {
         projectId: projectId,
@@ -165,12 +168,6 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     });
   };
 
-  useEffect(() => {
-    if (nameEdit && pageNameRef?.current) {
-      pageNameRef.current.focus();
-    }
-  }, [nameEdit]);
-
   const nameEditToggle = () => {
     dispatch({ payload: { nameEdit: !nameEdit } });
   };
@@ -187,7 +184,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     nameEdit,
     selectFile,
     setValue: debouncedSetValue,
-    onSaveProject,
+    onSaveProject: saveProject,
     nameEditToggle,
     onChangeFileName,
   };

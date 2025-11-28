@@ -70,7 +70,7 @@ const IndividualPlayGround = ({ params }: { params: { pgId: string } }) => {
             {pgAuthor === basicDetails?.userName && !errTxt && (
               <>
                 <SaveBtn onClick={onSaveFile}>Save</SaveBtn>
-                {saved && <Saved>Saved...</Saved>}
+                {saved && <Saved>Saving...</Saved>}
               </>
             )}
             {errTxt && <ErrorTxt>Invalid Name</ErrorTxt>}

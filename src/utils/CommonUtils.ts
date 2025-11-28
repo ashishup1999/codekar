@@ -29,6 +29,8 @@ export const getPreview = (values: { [key: string]: string }) => {
   <body>
     ${values?.html}
     <script>
+    history.pushState = function() {};
+    history.replaceState = function() {};
     ${values?.javascript}
     </script>
   </body>
@@ -53,7 +55,7 @@ export function debounce(
 }
 
 export const isObjEmpty = (obj: any) => {
-  return obj || Object.keys(obj).length === 0;
+  return !obj || Object.keys(obj).length === 0;
 };
 
 export const getBase64Src = (base64: string) => {

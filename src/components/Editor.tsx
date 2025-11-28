@@ -13,17 +13,60 @@ const Editor = ({
 }) => {
   const handleEditorMount = useCallback(
     function (editor: any, monaco: any) {
+      // Set theme
       monaco.editor.setTheme("vs-dark");
+
+      // Ctrl+S: Format + Save
       editor.addCommand(
         monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
         async () => {
           await editor.getAction("editor.action.formatDocument").run();
-          // Get new formatted code
           const updatedValue = editor.getValue();
-          // Call your onChange function
           setValue(selectedLang, updatedValue);
         }
       );
+
+      // Ctrl+Space: Trigger IntelliSense
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Space, () =>
+        monaco.editor.trigger("keyboard", "editor.action.triggerSuggest", {})
+      );
+
+      // Enable ALL essential IntelliSense features
+      editor.updateOptions({
+        // Core IntelliSense
+        quickSuggestions: true,
+        suggestOnTriggerCharacters: true,
+        acceptSuggestionOnCommitCharacter: true,
+        acceptSuggestionOnEnter: "on",
+        tabCompletion: "on",
+        snippetSuggestions: "inline",
+
+        // Formatting
+        formatOnType: true,
+        formatOnPaste: true,
+        autoIndent: "full",
+
+        // UI/UX
+        parameterHints: { enabled: true },
+        matchBrackets: "always",
+        autoClosingBrackets: "always",
+        autoClosingOvertype: "always",
+        wordBasedSuggestions: true,
+
+        // Enhanced suggestions
+        suggest: {
+          showWords: true,
+          showFunctions: true,
+          showClasses: true,
+          showConstructors: true,
+          showFields: true,
+          showInterfaces: true,
+          showModules: true,
+          showProperties: true,
+          showTypes: true,
+          showVariables: true,
+        },
+      });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedLang]
@@ -48,29 +91,45 @@ const Editor = ({
         />
       )}
       <MonacoEditorStyle
+        key={selectedLang} // Stable key prevents remounts
         language={selectedLang}
         value={value}
-        theme="github-dark"
+        theme="vs-dark" // Match handleEditorMount theme
         width="100%"
         height="100%"
         onChange={(val: any) => setValue(selectedLang, val ?? "")}
         onMount={handleEditorMount}
         options={{
+          // IntelliSense - Full suite
           quickSuggestions: true,
           suggestOnTriggerCharacters: true,
-          snippets: true,
+          acceptSuggestionOnCommitCharacter: true,
+          acceptSuggestionOnEnter: "on",
+          tabCompletion: "on",
+          snippetSuggestions: "inline",
+
+          // Formatting
+          formatOnType: true,
+          formatOnPaste: true,
+          autoIndent: "full",
+
+          // UI/UX
           minimap: { enabled: true },
           scrollbar: { verticalScrollbarSize: 6 },
           wordWrap: "on",
-          tabCompletion: "on",
           parameterHints: { enabled: true },
+          matchBrackets: "always",
           autoClosingBrackets: "always",
-          formatOnType: true,
+
+          // Essential
           smoothScrolling: true,
           lineNumbers: "on",
           cursorBlinking: "smooth",
-          tabSize: 4, // Size of a tab character
-          indentSize: 4,
+          automaticLayout: true,
+          fontSize: 14,
+
+          // Language server
+          wordBasedSuggestions: true,
         }}
       />
     </>

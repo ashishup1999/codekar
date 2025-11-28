@@ -19,9 +19,20 @@ const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete?: Function }) => {
   const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
+
+  const confirmDelete = () => {
+    const answer = prompt(
+      `Are you sure you want to delete this whiteboard? If yes please type "${wbInfo?.name}" to delete.`
+    );
+    if (answer === wbInfo?.name && onDelete) {
+      onDelete(wbInfo?.id);
+    }
+  };
   return (
     <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
-      <PCLinkWrapper onClick={() => router.push(`/whiteboards/whiteboard/${wbInfo?.id}`)}>
+      <PCLinkWrapper
+        onClick={() => router.push(`/whiteboards/whiteboard/${wbInfo?.id}`)}
+      >
         <PCName>{wbInfo?.name}</PCName>
         <PCAuthorSpan>
           <PCAuthorTitle>Author : </PCAuthorTitle>
@@ -33,7 +44,7 @@ const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete?: Function }) => {
           <ActionIcon
             src={COMMON_IMAGES.deleteIcon}
             alt=""
-            onClick={() => onDelete(wbInfo?.id)}
+            onClick={confirmDelete}
           />
         </ActionDiv>
       )}

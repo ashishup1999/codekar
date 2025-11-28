@@ -37,21 +37,21 @@ const Projects = ({ params }: { params: { userName: string } }) => {
           />
         )}
         <ProjectsDiv align={!Boolean(projects?.length)}>
-          {projects?.length ? (
+          {projects?.length &&
             projects.map((obj: any) => (
               <ProjectCard
                 key={obj?.id}
                 projInfo={obj}
                 onDelete={deleteProject}
               />
-            ))
-          ) : (
-            <ErrorContentDiv>
-              <ErrorIcon src={COMMON_IMAGES.notFound} alt="" />
-              <ErrorText>No Projects Found</ErrorText>
-            </ErrorContentDiv>
-          )}
+            ))}
         </ProjectsDiv>
+        {!projects?.length && (
+          <ErrorContentDiv>
+            <ErrorIcon src={COMMON_IMAGES.notFound} alt="" />
+            <ErrorText>No Projects Found</ErrorText>
+          </ErrorContentDiv>
+        )}
       </ProjectsWrapper>
     </>
   );

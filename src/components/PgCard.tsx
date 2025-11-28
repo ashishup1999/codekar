@@ -19,6 +19,15 @@ const PgCard = ({ pgInfo, onDelete }: { pgInfo: any; onDelete?: Function }) => {
   const router = useRouter();
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
+
+  const confirmDelete = () => {
+    const answer = prompt(
+      `Are you sure you want to delete this playground? If yes please type "${pgInfo?.name}" to delete.`
+    );
+    if (answer === pgInfo?.name && onDelete) {
+      onDelete(pgInfo?.id);
+    }
+  };
   return (
     <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
       <PCLinkWrapper
@@ -31,7 +40,7 @@ const PgCard = ({ pgInfo, onDelete }: { pgInfo: any; onDelete?: Function }) => {
         </PCAuthorSpan>
       </PCLinkWrapper>
       {userName === pgInfo?.author && onDelete && (
-        <ActionDiv className="del" onClick={() => onDelete(pgInfo?.id)}>
+        <ActionDiv className="del" onClick={confirmDelete}>
           <ActionIcon src={COMMON_IMAGES.deleteIcon} alt="" />
         </ActionDiv>
       )}

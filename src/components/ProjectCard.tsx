@@ -26,8 +26,16 @@ const ProjectCard = ({
 }) => {
   const { basicDetails } = useContext(BasicDetailsInterface);
   const { userName } = basicDetails;
+  const confirmDelete = () => {
+    const answer = prompt(
+      `Are you sure you want to delete this project? If yes please type "${projInfo?.name}" to delete.`
+    );
+    if (answer === projInfo?.name && onDelete) {
+      onDelete(projInfo?.id);
+    }
+  };
   return (
-    <PCWrapper2 bggrad={GRADIENTS.purple}>
+    <PCWrapper2 className="pc" bggrad={GRADIENTS.purple}>
       <PCInfo bggrad={GRADIENTS.lightPurple}>
         <PCName>{projInfo?.name}</PCName>
         <PCAuthorSpan>
@@ -39,7 +47,7 @@ const ProjectCard = ({
             <ActionIcon
               src={COMMON_IMAGES.deleteIcon}
               alt=""
-              onClick={() => onDelete(projInfo?.id)}
+              onClick={confirmDelete}
             />
           </ActionDiv>
         )}

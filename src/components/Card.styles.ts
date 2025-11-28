@@ -107,7 +107,6 @@ export const PCWrapper2 = styled.div<{ bggrad: string }>`
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  width: 23vw;
   aspect-ratio: 1.3;
   padding: 12px;
   border-radius: 22px;
@@ -115,15 +114,6 @@ export const PCWrapper2 = styled.div<{ bggrad: string }>`
   margin: 10px;
   background-image: ${(props) => props.bggrad};
   position: relative;
-  @media (max-width: 1400px) {
-    width: 30vw;
-  }
-  @media (max-width: 1100px) {
-    width: 43vw;
-  }
-  @media (max-width: 750px) {
-    width: 90vw;
-  }
 `;
 
 export const PCInfo = styled.div<{ bggrad: string }>`
@@ -155,7 +145,7 @@ export const PCPreview = styled.iframe`
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 2px;
   border-radius: 22px;
   border: none;
   overflow: hidden;
@@ -169,6 +159,7 @@ export const ActionDiv = styled.div`
 `;
 
 export const ActionIcon = styled(Image)`
+  margin-top: 10px;
   width: 20px;
   height: 20px;
 `;
