@@ -29,7 +29,7 @@ const PgCard = ({ pgInfo, onDelete }: { pgInfo: any; onDelete?: Function }) => {
     }
   };
   return (
-    <PCMiniWrapper key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
+    <PCMiniWrapper className="pg" key={pgInfo?.id} bggrad={GRADIENTS.lightBlue}>
       <PCLinkWrapper
         onClick={() => router.push(`/playgrounds/pg/${pgInfo?.id}`)}
       >

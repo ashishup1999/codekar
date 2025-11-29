@@ -1,9 +1,27 @@
+import { COLORS } from "@/constants/CommonConstants";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
+export const AuthContentDiv = styled.div`
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+    margin-bottom: auto;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 20px;
+  }
+`;
+
 export const AuthHeader = styled.p`
-  color: rgb(104, 10, 104);
+  color: white;
   width: 100%;
   font-size: 22px;
   font-weight: bold;
@@ -18,7 +36,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const LabelText = styled.label`
-  color: rgb(104, 10, 104);
+  color: white;
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -63,7 +81,7 @@ export const EyeDiv = styled.div`
   align-items: center;
   height: 100%;
   aspect-ratio: 1;
-  background-color: rgb(104, 10, 104);
+  background-color: white;
   border-radius: 5px;
   cursor: pointer;
 `;
@@ -82,7 +100,7 @@ export const ExtraOptionDiv = styled.div`
 `;
 export const NormalText = styled.p`
   display: inline;
-  color: rgb(104, 10, 104);
+  color: white;
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -90,7 +108,7 @@ export const NormalText = styled.p`
 
 export const LinkText = styled(Link)`
   display: inline;
-  color: rgb(104, 10, 104);
+  color: white;
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -114,12 +132,11 @@ export const CheckBoxWrap = styled.div`
 export const FinalButton = styled.button<{ disabled: boolean }>`
   min-width: 120px;
   font-size: 18px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   color: white;
   margin-top: auto;
   margin-bottom: 5px;
-  background-color: ${(props) =>
-    props.disabled ? "grey" : "rgb(104, 10, 104)"};
+  background-color: ${(props) => (props.disabled ? "grey" : COLORS.githubBlue)};
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -154,10 +171,10 @@ export const ErrAlerIcon = styled(Image)`
 `;
 
 export const ChangeSuccessSec = styled.span`
-  text-content: center;
+  text-align: center;
   margin-top: auto;
   margin-bottom: auto;
-  fontweight: bold;
+  font-weight: bold;
 `;
 
 export const ChangeSuccessIcon = styled(Image)`

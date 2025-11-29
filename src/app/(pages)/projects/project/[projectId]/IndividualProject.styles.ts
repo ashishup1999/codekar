@@ -4,13 +4,15 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 10px;
-  gap: 10px;
+  gap: 20px;
   box-shadow: 0px 0px 6px -3px #000000;
   border-radius: 10px;
   background-color: ${COLORS.vsBlack};
+  justify-content: space-between;
   @media only screen and (max-width: 768px) {
     flex-direction: column-reverse;
     height: fit-content;
@@ -73,7 +75,8 @@ export const FileNameDiv = styled.div<{ selected: boolean }>`
   align-items: center;
   width: 33.3%;
   height: 100%;
-  background-color: ${(props) => (props.selected ? "white" : "inherit")};
+  background-color: ${(props) => (props.selected ? COLORS.offWhite : "inherit")};
+  /* color: ${(props) => (props.selected ? 'white' : "inherit")}; */
   box-shadow: ${(props) =>
     props.selected ? "0px 0px 9px 0px #0000003f" : "none"};
   border-radius: 10px;

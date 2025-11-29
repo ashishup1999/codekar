@@ -3,7 +3,11 @@ import "@/app/global.css";
 import StyledComponentsRegistry from "@/app/registry";
 import Loader from "@/components/Loader";
 import { COMMON_IMAGES } from "@/constants/StaticImages";
+import { Sansita } from "next/font/google";
 import BasicDetailsContext from "@/context/BasicDetailsContext";
+import SizeProvider from "@/context/SizeProvider";
+
+export const sansitaFont = Sansita({ weight: "400", preload: false });
 
 export default function RootLayout({
   children,
@@ -31,13 +35,15 @@ export default function RootLayout({
       <head>
         <title>Codepulse</title>
       </head>
-      <body>
-        <BasicDetailsContext>
-          <StyledComponentsRegistry>
-            <Loader />
-            {children}
-          </StyledComponentsRegistry>
-        </BasicDetailsContext>
+      <body className={sansitaFont.className}>
+        <SizeProvider>
+          <BasicDetailsContext>
+            <StyledComponentsRegistry>
+              <Loader />
+              {children}
+            </StyledComponentsRegistry>
+          </BasicDetailsContext>
+        </SizeProvider>
       </body>
     </html>
   );

@@ -3,18 +3,24 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const ExploreWrapper = styled.div<{ hide?: boolean }>`
-  display: ${(props) => (props.hide ? "none" : "flex")};
+  display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
+  max-width: 500px;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 10px;
-  gap: 40px;
-  max-width: 1000px;
-  @media (max-width: 450px) {
+  gap: 15px;
+  position: absolute;
+  top: 20%;
+  z-index: 1;
+  background-color: ${COLORS.vsBlack};
+  border-radius: 15px;
+  max-height: 60vh;
+  overflow-y: scroll;
+  @media (max-width: 780px) {
+    top: 7%;
+    width: calc(90% - 10px);
     align-items: center;
-    padding: 10px 0;
   }
 `;
 
@@ -24,17 +30,19 @@ export const ExploreDiv = styled.div`
   width: 100%;
   max-height: 80vh;
   overflow-y: scroll;
+  padding: 10px;
 `;
 
 export const SearchBarDiv = styled.div`
   display: flex;
   width: 100%;
-  height: 45px;
+  height: 55px;
   box-shadow: 0px 0px 9px 0px #0000003f;
   border-radius: 15px;
   margin-top: 5px;
-  background-color: white;
+  background-color: ${COLORS.githubDark};
   margin: 0 auto;
+  padding: 0 10px;
 `;
 
 export const SearchBarInput = styled.input`
@@ -43,6 +51,9 @@ export const SearchBarInput = styled.input`
   border: none;
   border-radius: 15px;
   padding: 0 15px;
+  background-color: inherit;
+  color: white;
+  font-size: 15px;
   &:focus {
     outline: none;
   }
@@ -52,22 +63,39 @@ export const SearchBarInput = styled.input`
 `;
 
 export const SearchIcon = styled(Image)`
-  height: 100%;
+  height: 45px;
   width: auto;
+  margin: auto;
   padding: 12px;
   margin-left: auto;
 `;
 
 export const EachSection = styled.div`
   display: flex;
-  flex-direction: row;
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
   align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 20px;
   .pc {
-    width: 350px;
+    width: 47%;
+    aspect-ratio: inherit;
+    margin: 0;
+    padding: 0;
+    &>div:first-child {
+      margin: 0;
+      width: 100%;
+      aspect-ratio: inherit;
+    }
+    &>div:nth-child(2) {
+      display: none;
+    }
+  }
+  .pg, .wb {
+    width: 47%;
+    margin: 0;
+    padding: 15px;
+    aspect-ratio: inherit;
   }
 `;
 
@@ -75,15 +103,17 @@ export const ViewMore = styled.div`
   padding: 10px;
   border-radius: 20px;
   font-size: 12px;
-  background-color: ${COLORS.offWhite};
   cursor: pointer;
-  margin-left: 20px;
+  text-decoration: underline;
+  color: ${COLORS.offWhite};
 `;
 
 export const SecName = styled.p`
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: black;
   color: white;
+  margin-bottom: 10px;
 `;

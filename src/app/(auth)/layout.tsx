@@ -1,8 +1,11 @@
 "use client";
-import { COMMON_TEXTS, FULL_PAGE_ERRORS } from "@/constants/CommonConstants";
+import {
+  COMMON_TEXTS,
+  FULL_PAGE_ERRORS,
+} from "@/constants/CommonConstants";
 import {
   AuthDiv,
-  ContentDiv,
+  AuthContentDiv,
   CopyrigthtText,
   FooterDiv,
   HeaderDiv,
@@ -10,6 +13,9 @@ import {
   HeaderTextSpan,
   HomeWrapper,
   LogoImg,
+  TagLine,
+  TagLineDiv,
+  TagSubLine,
 } from "../page.styles";
 import { useContext, useEffect } from "react";
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
@@ -42,14 +48,23 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <HomeWrapper>
         <HeaderDiv>
-        <HeaderTextSpan onClick={() => router.push(`/`)}>
+          <HeaderTextSpan onClick={() => router.push(`/`)}>
             <LogoImg src={COMMON_IMAGES.logoWhite} alt="" />
             <HeaderText>{COMMON_TEXTS.appName}</HeaderText>
           </HeaderTextSpan>
         </HeaderDiv>
-        <ContentDiv>
+        <AuthContentDiv>
           <AuthDiv>{children}</AuthDiv>
-        </ContentDiv>
+          <TagLineDiv>
+            <TagLine>Codepulse – Your coding story, in one place.</TagLine>
+            <TagSubLine>
+              Codepulse is a personal developer platform where you securely log
+              in, manage your coding identity, and showcase all your projects in
+              one place, giving you a clean, portfolio-style home for your work
+              and progress as a software engineer.
+            </TagSubLine>
+          </TagLineDiv>
+        </AuthContentDiv>
         <FooterDiv>
           <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>
         </FooterDiv>

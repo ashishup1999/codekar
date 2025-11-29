@@ -29,7 +29,7 @@ const WbCard = ({ wbInfo, onDelete }: { wbInfo: any; onDelete?: Function }) => {
     }
   };
   return (
-    <PCMiniWrapper key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
+    <PCMiniWrapper className="wb" key={wbInfo?.id} bggrad={GRADIENTS.lightGreen}>
       <PCLinkWrapper
         onClick={() => router.push(`/whiteboards/whiteboard/${wbInfo?.id}`)}
       >

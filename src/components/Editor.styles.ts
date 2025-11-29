@@ -28,8 +28,4 @@ export const AceEditorStyle = styled(AceEditor as any)`
 
 export const MonacoEditorStyle = styled(MonacoEditor as any)`
   border-radius: 0 0 10px 10px;
-  * {
-    font: inherit !important;
-    font-size: 14px !important;
-  }
 `;

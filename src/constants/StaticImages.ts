@@ -31,6 +31,7 @@ import tickCheck from "@/images/tickChecked.svg";
 import tickUncheck from "@/images/tickUnchecked.svg";
 import imgUpload from "@/images/imgUpload.svg";
 import defaultProfileImg from "@/images/defaultProfileImg.svg";
+import dragIcon from "@/images/drag.svg";
 
 export const OPTION_ICONS = {
   playCode,
@@ -73,6 +74,7 @@ export const COMMON_IMAGES = {
   tickUncheck,
   imgUpload,
   defaultProfileImg,
+  dragIcon,
 };
 
 export const ERROR_EXLAMATION = errorExl;

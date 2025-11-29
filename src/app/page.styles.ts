@@ -10,20 +10,20 @@ export const HomeWrapper = styled.div<{ plainBg?: boolean }>`
   min-width: 300px;
   height: 100dvh;
   overflow-x: hidden;
+  background-image: ${GRADIENTS.grad1};
 `;
 
-export const HeaderDiv = styled.div`
+export const HeaderDiv = styled.nav`
   display: flex;
   width: 100%;
+  height: 50px;
   align-items: center;
-  margin-bottom: auto;
   padding: 10px 25px;
-  margin-top: 20px;
 `;
 
 export const LogoImg = styled(Image)`
-  height: 35px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
 `;
 
@@ -38,20 +38,18 @@ export const HeaderText = styled.p`
   display: inline;
   font-weight: bolder;
   letter-spacing: 2.5px;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   background: ${GRADIENTS.whiteGreyish};
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
 export const NotifImgWrapper = styled.div`
-  height: 35px;
+  height: 30px;
   cursor: pointer;
   position: relative;
-  @media only screen and (max-width: 768px) {
-    height: 35px;
-  }
 `;
 
 export const NotifBadge = styled.div`
@@ -66,9 +64,9 @@ export const NotifBadge = styled.div`
 `;
 
 export const BellImg = styled(Image)`
-  height: 35px;
-  width: 35px;
-  padding: 0px 10px;
+  height: 30px;
+  width: 30px;
+  padding: 0px 8px;
   border-radius: 10px;
   box-shadow: 0px 0px 7px -3px #000000;
   background-color: ${COLORS.offWhite};
@@ -81,8 +79,8 @@ export const UserImgWrpr = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   border: 2px solid ${COLORS.offWhite};
   border-radius: 50px;
   box-shadow: 0px 0px 7px -3px #000000;
@@ -99,6 +97,15 @@ export const UserImg = styled(Image)`
 
 export const ContentDiv = styled.div`
   display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const HomeContentWrap = styled.div`
+  display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -107,14 +114,30 @@ export const ContentDiv = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 10px;
     margin-bottom: auto;
+    margin-top: 100px;
+  }
+`;
+
+export const AuthContentDiv = styled.div`
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+    margin-bottom: auto;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 20px;
   }
 `;
 
 export const FooterDiv = styled.div`
   width: 100%;
   padding: 5px 15px;
-  margin-top: auto;
-  background-color: black;
 `;
 
 export const CopyrigthtText = styled.p`
@@ -133,7 +156,7 @@ export const AuthDiv = styled.div`
   align-items: center;
   padding: 30px 40px;
   border-radius: 25px;
-  background-color: #ffffffef;
+  background: ${COLORS.vsBlack};
   box-shadow: 0px 0px 12px -6px #000000;
 `;
 
@@ -144,7 +167,7 @@ export const ErrorIcon = styled(Image)`
 export const ErrorText = styled.p`
   color: ${COLORS.offWhite};
   font-weight: bold;
-  font-size: 22px;
+  font-size: 14px;
   text-align: center;
 `;
 
@@ -155,7 +178,7 @@ export const ErrorContentDiv = styled.div`
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 0 20px;
+  padding: 20px;
 `;
 
 export const NotifModalWrapper = styled.div`
@@ -163,6 +186,7 @@ export const NotifModalWrapper = styled.div`
   flex-direction: column;
   padding: 20px;
   width: 100%;
+  min-width: 300px;
   height: 100%;
   position: relative;
   width: 100%;
@@ -174,4 +198,39 @@ export const ModalHeader = styled.div`
   font-weight: bold;
   color: ${COLORS.purple};
   margin-bottom: 10px;
+`;
+
+export const TagLineDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 40%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+    display: none;
+  }
+`;
+
+export const TagLine = styled.p`
+  font-size: 50px;
+  color: ${COLORS.blue};
+  position: relative;
+  padding-bottom: 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: ${COLORS.offWhite};
+    left: 0;
+    bottom: 0;
+  }
+`;
+
+export const TagSubLine = styled.p`
+  font-size: 20px;
+  color: #faf9f6;
+  text-align: justify;
+  margin-top: 20px;
+  color: ${COLORS.offWhite};
 `;

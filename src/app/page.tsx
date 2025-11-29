@@ -8,6 +8,7 @@ import {
   HeaderDiv,
   HeaderText,
   HeaderTextSpan,
+  HomeContentWrap,
   HomeWrapper,
   LogoImg,
   NotifBadge,
@@ -27,6 +28,7 @@ import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import useNotificaton from "@/hooks/useNotification";
 import NotificationModal from "@/components/NotificationModal";
 import { getBase64Src } from "@/utils/CommonUtils";
+import Explore from "../components/Explore";
 
 const Home = () => {
   const router = useRouter();
@@ -79,17 +81,22 @@ const Home = () => {
             </UserImgWrpr>
           </HeaderDiv>
           <ContentDiv>
-            {HOME_OPTIONS.map((obj) => {
-              return (
-                <OptionCards
-                  key={obj?.buttonTitle}
-                  {...obj}
-                  toRoute={
-                    obj?.userDep ? `${obj?.toRoute}/${userName}` : obj?.toRoute
-                  }
-                />
-              );
-            })}
+            <Explore />
+            <HomeContentWrap>
+              {HOME_OPTIONS.map((obj) => {
+                return (
+                  <OptionCards
+                    key={obj?.buttonTitle}
+                    {...obj}
+                    toRoute={
+                      obj?.userDep
+                        ? `${obj?.toRoute}/${userName}`
+                        : obj?.toRoute
+                    }
+                  />
+                );
+              })}
+            </HomeContentWrap>
           </ContentDiv>
           <FooterDiv>
             <CopyrigthtText>{COMMON_TEXTS.copyRight}</CopyrigthtText>

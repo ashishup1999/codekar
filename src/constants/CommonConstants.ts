@@ -7,8 +7,10 @@ export const GRADIENTS = {
   purple: "linear-gradient(90deg, #6441a5 0%, #2a0845 100%)",
   lightBlue: "linear-gradient(0deg, #0EA8D9 0%, #075973 100%)",
   lightGreen: "linear-gradient(0deg, #40AA26 0%, #2C7719 100%)",
-  redishPink: "linear-gradient(0deg, #2b2b2bff 0%, #030303ff 100%)",
+  redishPink: "linear-gradient(90deg, #8c092cff 0%, #4f1105ff 100%)",
   whiteGreyish: "linear-gradient(0deg, #FFFEFE 0%, #777777 100%)",
+  grad1:
+    "linear-gradient(0deg,rgba(30, 30, 30, 1) 0%, rgba(3, 2, 18, 1) 100%)",
 };
 
 export const COLORS = {
@@ -51,15 +53,6 @@ export const HOME_OPTIONS = [
     themeGrad: GRADIENTS.lightGreen,
     buttonTitle: "Whiteboards",
     userDep: true,
-  },
-  {
-    imgSrc: OPTION_ICONS.search,
-    imgAlt: "explr",
-    toRoute: "/explore",
-    themeColor: COLORS.brightRed,
-    themeGrad: GRADIENTS.redishPink,
-    buttonTitle: "Explore",
-    userDep: false,
   },
 ];
 

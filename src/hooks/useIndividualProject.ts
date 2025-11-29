@@ -40,6 +40,7 @@ type IntialStateType = {
   saved: boolean;
   errTxt: boolean;
   nameEdit: boolean;
+  dividerLeft: number;
 };
 
 const initialState: IntialStateType = {
@@ -51,10 +52,13 @@ const initialState: IntialStateType = {
   saved: false,
   errTxt: false,
   nameEdit: false,
+  dividerLeft: 50,
 };
 
 const useIndividualProject = ({ projectId }: { projectId: string }) => {
   const pageNameRef: any = useRef(null);
+  const editorRef = useRef<HTMLDivElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     projectName,
@@ -65,6 +69,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     saved,
     errTxt,
     nameEdit,
+    dividerLeft,
   } = state;
   const { setBasicDetails } = useContext(BasicDetailsInterface);
 
@@ -172,6 +177,26 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     dispatch({ payload: { nameEdit: !nameEdit } });
   };
 
+  const debouncedSetDividerLeft = getDebounceFn(
+    (val: number) => dispatch({ payload: { dividerLeft: val } }),
+    200
+  );
+
+  const onResize = (currLeft: number) => {
+    if (editorRef.current && previewRef.current) {
+      editorRef.current.style.width = `calc(${currLeft + "%"} - 15px)`;
+      previewRef.current.style.width = `calc(${100 - currLeft + "%"} - 15px)`;
+      debouncedSetDividerLeft(currLeft);
+    }
+  };
+
+  const onResetResize = () => {
+    if (editorRef.current && previewRef.current) {
+      editorRef.current.style.width = "inherit";
+      previewRef.current.style.width = "inherit";
+    }
+  };
+
   return {
     currFile,
     values,
@@ -181,12 +206,17 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     saved,
     errTxt,
     pageNameRef,
+    editorRef,
+    previewRef,
     nameEdit,
+    dividerLeft,
     selectFile,
     setValue: debouncedSetValue,
     onSaveProject: saveProject,
     nameEditToggle,
     onChangeFileName,
+    onResize,
+    onResetResize,
   };
 };
 

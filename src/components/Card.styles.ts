@@ -166,16 +166,14 @@ export const ActionIcon = styled(Image)`
 
 export const UserInfoWrapper = styled.div<{ bggrad: string }>`
   display: flex;
-  flex-direction: column;
   flex-shrink: 0;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  width: 200px;
-  height: 180px;
-  padding: 20px;
-  border-radius: 22px;
+  gap: 10px;
+  min-width: 47%;
+  border: 1px solid maroon;
+  border-radius: 30px;
   box-shadow: 0px 0px 7px -3px #000000;
-  margin: 10px;
   background-image: ${(props) => props.bggrad};
   cursor: pointer;
   position: relative;

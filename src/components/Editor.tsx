@@ -114,7 +114,7 @@ const Editor = ({
           autoIndent: "full",
 
           // UI/UX
-          minimap: { enabled: true },
+          minimap: { enabled: false },
           scrollbar: { verticalScrollbarSize: 6 },
           wordWrap: "on",
           parameterHints: { enabled: true },

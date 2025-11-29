@@ -33,6 +33,7 @@ const useExplore = () => {
   const projsRef = useRef<HTMLDivElement>(null);
   const pgsRef = useRef<HTMLDivElement>(null);
   const wbsRef = useRef<HTMLDivElement>(null);
+  const exploreDivRef = useRef<HTMLInputElement>(null);
   const { setBasicDetails } = useContext(BasicDetailsInterface);
 
   useEffect(() => {
@@ -43,6 +44,28 @@ const useExplore = () => {
         es.scrollLeft += 3 * event.deltaY;
       });
     });
+  }, []);
+
+  useEffect(() => {
+    const handleExploreOutsideClick = (e: any) => {
+      if (
+        e.target != exploreDivRef.current &&
+        !exploreDivRef.current?.contains(e.target)
+      ) {
+        dispatch({
+          payload: {
+            searchKey: "",
+            profiles: [],
+            projs: [],
+            pgs: [],
+            wbs: [],
+          },
+        });
+      }
+    };
+    document.addEventListener("click", handleExploreOutsideClick);
+    return () =>
+      document.removeEventListener("click", handleExploreOutsideClick);
   }, []);
 
   const onChangeSearch = (e: any) => {
@@ -69,7 +92,7 @@ const useExplore = () => {
   );
 
   useEffect(() => {
-    delayedSearchKeyword();
+    if (searchKey) delayedSearchKeyword();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey]);
 
@@ -156,6 +179,7 @@ const useExplore = () => {
   };
 
   return {
+    exploreDivRef,
     profilesRef,
     projsRef,
     pgsRef,
