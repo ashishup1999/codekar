@@ -6,10 +6,7 @@ import {
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
-import {
-  defaultStateReducer,
-  isObjEmpty,
-} from "@/utils/CommonUtils";
+import { defaultStateReducer, isObjEmpty } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetWbRespIntr {
@@ -23,6 +20,7 @@ interface GetWbRespIntr {
     python: string;
     cpp: string;
     go: string;
+    lastUsedLanguage: string;
   };
 }
 
@@ -87,6 +85,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
       const payload = {
         wbName: wbData?.wbName,
         wbAuthor: wbData?.userName,
+        selectedLang: wbData?.lastUsedLanguage || DEFAULT_PLAYGROUND,
         values: {
           javascript: wbData?.javascript,
           java: wbData?.java,
@@ -179,6 +178,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
         python: values?.python,
         cpp: values?.cpp,
         go: values?.go,
+        lastUsedLanguage: selectedLang,
         wbName,
       };
       const res = await wbService.updateWb(req);

@@ -20,6 +20,7 @@ interface GetPgRespIntr {
     python: string;
     cpp: string;
     go: string;
+    lastUsedLanguage: string;
   };
 }
 
@@ -84,6 +85,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
       const payload = {
         pgName: pgData?.pgName,
         pgAuthor: pgData?.userName,
+        selectedLang: pgData?.lastUsedLanguage || DEFAULT_PLAYGROUND,
         values: {
           javascript: pgData?.javascript,
           java: pgData?.java,
@@ -177,6 +179,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
         cpp: values?.cpp,
         go: values?.go,
         pgName,
+        lastUsedLanguage: selectedLang,
       };
       const res = await pgService.updatePg(req);
       if (res?.status === "SUCCESS") {
