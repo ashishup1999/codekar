@@ -6,11 +6,7 @@ import {
 import { BasicDetailsInterface } from "@/context/BasicDetailsContext";
 import commonService from "@/services/CommonService";
 import pgService from "@/services/PgService";
-import {
-  defaultStateReducer,
-  getDebounceFn,
-  isObjEmpty,
-} from "@/utils/CommonUtils";
+import { defaultStateReducer, isObjEmpty } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetPgRespIntr {
@@ -52,6 +48,7 @@ const initialState: {
 const useIndividualPg = ({ pgId }: { pgId: string }) => {
   const pageNameRef: any = useRef(null);
   const outRef: any = useRef(null);
+  const saveTimerId = useRef<any>(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     pgName,
@@ -72,7 +69,10 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
   }, []);
 
   useEffect(() => {
-    if (!isObjEmpty(values)) onSaveFile();
+    if (!isObjEmpty(values)) {
+      clearTimeout(saveTimerId.current);
+      saveTimerId.current = setTimeout(onSaveFile, 2000);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
 
@@ -112,8 +112,6 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
   const setValue = (key: string, val: string) => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
-
-  const debouncedSetValue = getDebounceFn(setValue, 2000);
 
   const setInput = (e: any) => {
     dispatch({ payload: { input: `${e?.target?.value}` } });
@@ -205,7 +203,7 @@ const useIndividualPg = ({ pgId }: { pgId: string }) => {
     errTxt,
     nameEditToggle,
     selectLang,
-    setValue: debouncedSetValue,
+    setValue,
     setInput,
     onChangePgName,
     onPgRun,

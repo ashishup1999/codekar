@@ -11,7 +11,7 @@ import {
   getPreview,
   isObjEmpty,
 } from "@/utils/CommonUtils";
-import { useCallback, useContext, useEffect, useReducer, useRef } from "react";
+import { useContext, useEffect, useReducer, useRef } from "react";
 
 interface GetProjRespIntr {
   status: string;
@@ -59,6 +59,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
   const pageNameRef: any = useRef(null);
   const editorRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const saveTimerId = useRef<any>(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     projectName,
@@ -80,7 +81,8 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
 
   useEffect(() => {
     if (!isObjEmpty(values)) {
-      saveProject();
+      clearTimeout(saveTimerId.current);
+      saveTimerId.current = setTimeout(saveProject, 2000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
@@ -137,11 +139,6 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     const previewData = getPreview(newValues);
     dispatch({ payload: { values: newValues, preview: previewData } });
   };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedSetValue = useCallback(getDebounceFn(setValue, 1500), [
-    values,
-  ]);
 
   const saveProject = async () => {
     try {
@@ -211,7 +208,7 @@ const useIndividualProject = ({ projectId }: { projectId: string }) => {
     nameEdit,
     dividerLeft,
     selectFile,
-    setValue: debouncedSetValue,
+    setValue,
     onSaveProject: saveProject,
     nameEditToggle,
     onChangeFileName,

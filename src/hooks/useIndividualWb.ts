@@ -8,7 +8,6 @@ import commonService from "@/services/CommonService";
 import wbService from "@/services/WbService";
 import {
   defaultStateReducer,
-  getDebounceFn,
   isObjEmpty,
 } from "@/utils/CommonUtils";
 import { useContext, useEffect, useReducer, useRef } from "react";
@@ -52,6 +51,7 @@ const initialState: {
 const useIndividualWb = ({ wbId }: { wbId: string }) => {
   const pageNameRef: any = useRef(null);
   const outRef: any = useRef(null);
+  const saveTimerId = useRef<any>(null);
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
   const {
     wbName,
@@ -72,7 +72,10 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
   }, []);
 
   useEffect(() => {
-    if (!isObjEmpty(values)) onSaveFile();
+    if (!isObjEmpty(values)) {
+      clearTimeout(saveTimerId.current);
+      saveTimerId.current = setTimeout(onSaveFile, 2000);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
 
@@ -112,8 +115,6 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
   const setValue = (key: string, val: string) => {
     dispatch({ payload: { values: { ...values, [key]: val } } });
   };
-
-  const debouncedSetValue = getDebounceFn(setValue, 2000);
 
   const setInput = (e: any) => {
     dispatch({ payload: { input: `${e?.target?.value}` } });
@@ -205,7 +206,7 @@ const useIndividualWb = ({ wbId }: { wbId: string }) => {
     errTxt,
     nameEditToggle,
     selectLang,
-    setValue: debouncedSetValue,
+    setValue,
     setInput,
     onChangewbName,
     onWbRun,
