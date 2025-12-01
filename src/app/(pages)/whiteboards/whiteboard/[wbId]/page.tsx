@@ -103,8 +103,8 @@ const IndividualWhiteBoard = ({ params }: { params: { wbId: string } }) => {
         <OutputDiv ref={outRef}>
           <FieldName>Output</FieldName>
           <OutputArea>
-            {output.map((val: any) => (
-              <p key={val}>{val}</p>
+            {output.map((val: any, idx: number) => (
+              <p key={idx}>{val}</p>
             ))}
           </OutputArea>
         </OutputDiv>
