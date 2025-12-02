@@ -24,17 +24,14 @@
   display: none;
 }
 
-@media (max-width: 450px) {
-  /* hidding scrollbar for mobile view */
-  * {
-    scroll-behavior: smooth;
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
+* {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
 
-  *::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 html {
